@@ -1,0 +1,35 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LIFE-CODE Codebook v0.8</title>
+<style>
+:root{--bg:#070a0e;--panel:#0e151d;--line:#233444;--text:#eaf2f7;--muted:#8fa6b6;--cyan:#59ddff;--green:#79efaa;--red:#ff7584}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,Segoe UI,sans-serif}
+header{padding:20px 24px;border-bottom:1px solid var(--line)}h1{font-size:22px;margin:2px 0}.tag{color:var(--cyan);font-weight:800}.muted{color:var(--muted)}
+main{display:grid;grid-template-columns:320px 1fr;min-height:calc(100vh - 90px)}aside{border-right:1px solid var(--line);padding:16px}section{padding:22px}
+.row{display:flex;gap:7px}input,button{background:#0b1219;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:9px}input{flex:1}
+.item,.card{background:var(--panel);border:1px solid var(--line);border-radius:10px}.item{padding:10px;margin:8px 0;cursor:pointer}.item:hover{border-color:var(--cyan)}.card{padding:15px;margin:12px 0}
+.pill{display:inline-block;padding:3px 7px;border:1px solid var(--line);border-radius:999px;margin:2px;font-size:11px}.good{color:var(--green)}.bad{color:var(--red)}
+.seq{font:13px ui-monospace,Consolas,monospace;word-break:break-all;color:#bcecff}table{width:100%;border-collapse:collapse}td,th{padding:7px;border-bottom:1px solid var(--line);text-align:left}
+pre{white-space:pre-wrap;word-break:break-word;background:#06090d;padding:10px;border:1px solid var(--line);border-radius:8px}a{color:var(--cyan)}
+@media(max-width:800px){main{grid-template-columns:1fr}aside{border-right:0;border-bottom:1px solid var(--line)}}
+</style></head>
+<body><header><div class="tag">REAL DATABASE UI · REQUIRES LOCAL PYTHON SERVER</div><h1>LIFE-CODE Codebook Core v0.8</h1>
+<div class="muted">This screen queries SQLite live. Scientific records are not hard-coded into this HTML.</div></header>
+<main><aside><div class="row"><input id="q" placeholder="Search objects"><button onclick="loadList()">Search</button></div><div id="list"></div></aside>
+<section id="view"><div class="card"><b>Waiting for database...</b><p class="muted">If this page was opened directly as a file, run <code>python3 lifecode_codebook_server.py</code> and open http://127.0.0.1:8765/ instead.</p></div></section></main>
+<script>
+const L=document.getElementById('list'),V=document.getElementById('view');
+async function J(u){let r=await fetch(u);if(!r.ok)throw new Error(await r.text());return await r.json()}
+async function loadList(){try{let q=document.getElementById('q').value,d=await J('/api/objects?q='+encodeURIComponent(q));L.innerHTML=d.map(x=>`<div class=item onclick="show('${x.object_id}')"><b>${x.object_id}</b><br><span class=muted>${x.object_type} · ${x.evidence_state}</span><br>${x.label}</div>`).join('');}catch(e){V.innerHTML=`<div class=card><b>Database server not connected.</b><pre>${e}</pre></div>`}}
+function val(x){return x===null||x===undefined?'—':x}
+async function show(id){let d=await J('/api/object/'+encodeURIComponent(id)),o=d.object;
+let ee=[...d.edges_out.map(e=>`<tr><td>OUT</td><td>${e.edge_type}</td><td><a href="#" onclick="show('${e.target_object_id}')">${e.target_object_id}</a></td><td>${val(e.exact_distance_bp??(e.min_distance_bp!=null?e.min_distance_bp+'–'+e.max_distance_bp:null))}</td></tr>`),
+...d.edges_in.map(e=>`<tr><td>IN</td><td>${e.edge_type}</td><td><a href="#" onclick="show('${e.source_object_id}')">${e.source_object_id}</a></td><td>${val(e.exact_distance_bp)}</td></tr>`)].join('');
+V.innerHTML=`<h2>${o.object_id}</h2><span class=pill>${o.object_type}</span><span class="pill ${o.evidence_state==='FALSIFIED'?'bad':'good'}">${o.evidence_state}</span><span class=pill>${o.status}</span>
+<div class=card><h3>${o.label}</h3><p>${val(o.description)}</p><div class=muted>length=${val(o.length_bp)} bp · semantic=${o.semantic_state} · completeness=${o.data_completeness}</div>
+${o.sequence?`<h4>Exact sequence</h4><div class=seq>${o.sequence}</div><div class=muted>SHA-256 ${o.sequence_sha256}</div>`:`<p class=muted><b>No sequence populated.</b> Deliberate when the recovered source does not provide the original string.</p>`}</div>
+<div class=card><h3>Graph relationships</h3><table><tr><th>Dir</th><th>Type</th><th>Object</th><th>bp</th></tr>${ee||'<tr><td colspan=4>None</td></tr>'}</table></div>
+<div class=card><h3>Post-freeze annotation</h3>${d.annotations.map(a=>`<p><b>${a.annotation_type}</b><br>${a.annotation_value}<br><span class=muted>revealed_after_freeze=${a.revealed_after_freeze}</span></p>`).join('')||'<span class=muted>None</span>'}</div>
+<div class=card><h3>Source provenance</h3><pre>${JSON.stringify(d.artifact,null,2)}</pre></div>`}
+loadList();
+</script></body></html>

@@ -1,0 +1,3 @@
+*.openai-download-*
+__pycache__/
+*.py[cod]
