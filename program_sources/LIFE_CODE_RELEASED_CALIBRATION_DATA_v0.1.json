@@ -1,0 +1,79 @@
+{
+  "project": "LIFE-CODE",
+  "dataset": "released_calibration_evidence_v0.1",
+  "exp0002_results_included": false,
+  "vocabulary_ladder": {
+    "8": 64583,
+    "10": 554725,
+    "12": 232939,
+    "14": 5561,
+    "16": 54,
+    "18_plus": 0
+  },
+  "proof_case_0001": {
+    "status": "CALIBRATION PROOF CASE",
+    "shared_16mers": 54,
+    "block_a_bp": 24,
+    "nested_core_bp": 16,
+    "block_b_bp": 25,
+    "spacings_bp": [
+      3035,
+      2943,
+      3036,
+      3029,
+      2943,
+      2969
+    ],
+    "spacing_range_bp": 93,
+    "mono_null_mean": 9.0,
+    "dinuc_null_mean": 19.8,
+    "spatial_null_draws": 5000000,
+    "spatial_null_all_five_hits": 0,
+    "post_freeze_annotation": "16S/23S large-rRNA organizational system; yeast core in mitochondrial 21S large-subunit rRNA"
+  },
+  "proof_case_0002": {
+    "status": "CALIBRATION / POST-FREEZE VALIDATION",
+    "shared_16mers": 19112,
+    "high_complexity_multiblock_clusters": 6,
+    "mitochondrial_clusters": 5,
+    "block_C": {
+      "sequence_raw": "CAGTAGAACCGGAACCACCGTGGAA",
+      "bp": 25,
+      "coding_start_0based": 789,
+      "coding_oriented": "TTCCACGGTGGTTCCGGTTCTACTG",
+      "complete_codons": "FHGGSGST"
+    },
+    "block_D": {
+      "sequence_raw": "TCTTCTTCACCACCGGT",
+      "bp": 17,
+      "coding_start_0based": 534,
+      "coding_oriented": "ACCGGTGGTGAAGAAGA",
+      "complete_codons": "TGGEE"
+    },
+    "raw_start_spacing_bp": 263,
+    "coding_region_bp_each": 1080,
+    "nucleotide_identity_percent": 50.9,
+    "protein_identity_percent": 38.7,
+    "post_freeze_annotation": "E. coli fbaA and S. cerevisiae FBA1, class-II fructose-bisphosphate aldolase family"
+  },
+  "negative_calibrations": [
+    {
+      "id": "NEG-FLAT-DICT",
+      "state": "FALSIFIED",
+      "claim": "A single flat fixed-length exact dictionary is sufficient to beat raw 2-bit/base coding after dictionary/reference costs.",
+      "result": "No valid tested fixed-length exact dictionary beat the baseline."
+    },
+    {
+      "id": "NEG-EXACT-GAP",
+      "state": "FALSIFIED",
+      "claim": "Exact A\u2192B inter-block gap transfers across deep held-out domains.",
+      "result": "Zero held-out transfer in every pilot fold."
+    },
+    {
+      "id": "NEG-ORDER-WINDOW",
+      "state": "FALSIFIED",
+      "claim": "A before B within 10 kb transfers as higher-order syntax across the deeply separated third domain.",
+      "result": "Zero held-out higher-order module transfer in all three folds despite hundreds to thousands of training-pair relations."
+    }
+  ]
+}

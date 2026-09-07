@@ -1,6 +1,7 @@
 
 "use strict";
 const S=window.LIFE_CODE_SNAPSHOT;if(!S)throw new Error("LIFE-CODE snapshot did not load.");
+const P=window.LIFE_CODE_PROGRAM_CONTEXT||{benchmarks:[],prediction_maturity_ladder:[],program_history:[],sources:[]};
 const $=id=>document.getElementById(id),objects=S.code_objects||[],byId=Object.fromEntries(objects.map(x=>[x.object_id,x]));
 const artById=Object.fromEntries((S.artifacts||[]).map(x=>[x.artifact_id,x])),expById=Object.fromEntries((S.experiments||[]).map(x=>[x.experiment_id,x]));
 let lens=localStorage.getItem("lifecode-lens")||"explore",view="home",current=null,tab="overview";
@@ -45,6 +46,9 @@ const notProof={
 function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]))}
 function fmt(v){return v===null||v===undefined||v===""?"—":esc(v)}
 function comma(v){return Number(v).toLocaleString("en-US")}
+function measures(subject,metric){return (S.measurements||[]).filter(m=>m.subject_id===subject&&(!metric||m.metric===metric))}
+function mval(subject,metric,notes){const a=measures(subject,metric).find(m=>!notes||(m.notes||"").includes(notes));return a?a.value_num??a.value_text:null}
+function setExplorer(on){$("explorerPane").hidden=!on;$("workspace").classList.toggle("has-explorer",!!on)}
 function badge(s,c=""){return `<span class="badge ${c}">${esc(s)}</span>`}
 function term(t,label=t){return `<button class="termchip" data-term="${esc(t)}">${esc(label)}</button>`}
 function keyValue(rows){return `<table><tr><th>Field</th><th>Value</th></tr>${rows.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${fmt(v)}</td></tr>`).join("")}</table>`}
@@ -56,7 +60,7 @@ function setLens(x){
 }
 function setView(v){
  view=v;current=null;tab="overview";document.querySelectorAll(".nav").forEach(b=>b.classList.toggle("active",b.dataset.view===v));
- $("explorerPane").hidden=v!=="codebook";renderList();render();$("content").focus({preventScroll:true});
+ setExplorer(v==="codebook");renderList();render();$("content").focus({preventScroll:true});
 }
 function bindTerms(){
  document.querySelectorAll("[data-term]").forEach(b=>b.onclick=()=>{const t=b.dataset.term;alert(`${t}\n\n${GLOSSARY[t]||"Definition not available."}`)});
@@ -85,21 +89,29 @@ function home(){
  $("goFindings").onclick=()=>setView("findings");bindTerms();
 }
 function findings(){
- const pc1=byId["PC1-MODULE-RIBO"],pc2=byId["PC2-MODULE-FBA"];
+ const spacings=measures("PC1-MODULE-RIBO","observed_A_to_B_spacing").map(x=>x.value_num);
+ const pc2C=byId["PC2-BLOCK-C25"],pc2D=byId["PC2-BLOCK-D17"];
  $("content").innerHTML=`
- <div class=hero><div class=eyebrow>What we found</div><h2>Two positive proof cases—and several failures that matter just as much.</h2><p>The point is not to show only successes. A useful Codebook must also record simple ideas that failed.</p></div>
- <div class=finding><div class=question>Proof Case 0001</div><h3>A blind cross-domain search recovered a repeated neighborhood.</h3><p class=why>A 24-base block, a nested 16-base core, and a second 25-base block formed a repeated spatial pattern across the pilot genomes. After the result was frozen, annotation linked the module to ribosomal organization; the yeast core maps to mitochondrial large-subunit rRNA.</p>
- <div class="plainOnly callout"><b>Think of it like this:</b> three books written in four letters contain the same short phrase, and two of the books also keep another phrase nearby in a similar arrangement.</div>
- <div class=learnBlock><p>${term("annotation-blind","Annotation-blind")} means those biological labels were not used to guide the search.</p></div>
- <button class=action data-goto="PC1-MODULE-RIBO">Open the evidence</button></div>
- <div class=finding><div class=question>Proof Case 0002</div><h3>Two exact blocks landed at matching coding positions in E. coli and yeast.</h3><p class=why>The raw block starts are exactly 263 bp apart in both genomes. Both coding regions are 1080 bp. After the blind result was frozen, both locations were identified inside fructose-bisphosphate aldolase genes.</p>
- <div class="plainOnly callout"><b>Why that is interesting:</b> the search did not begin by asking for the same gene. It found the structure first.</div>
- <button class=action data-goto="PC2-MODULE-FBA">Open the evidence</button></div>
- <div class=finding><div class=question>Negative calibrations</div><h3>Three intuitive “grammar” ideas failed.</h3><p class=why>A flat exact dictionary, exact-gap transfer, and a looser ordered-window rule all failed at their tested abstraction levels. They remain in the Codebook because ruling out an attractive wrong model is scientific progress.</p>
- <div class="researchBlock"><p>These are stored as <code>FALSIFIED_MODEL</code> objects rather than being erased from the interface.</p></div>
- <button class=action id=goFailed>Show the failed models</button></div>`;
- document.querySelectorAll("[data-goto]").forEach(b=>b.onclick=()=>selectObject(b.dataset.goto));
- $("goFailed").onclick=()=>{setView("codebook");$("type").value="FALSIFIED_MODEL";renderList();};
+ <div class=hero><div class=eyebrow>What we found</div><h2>Start with the result, then decide how deep you want to go.</h2><p>Two proof cases survived their frozen calibration tests. Three intuitive models failed. All five outcomes stay visible.</p></div>
+ <div class=storygrid>
+  <div class=story><div class=question>Proof Case 0001 · cross-domain structure</div><h3>A repeated DNA neighborhood appeared across very different organisms.</h3>
+   <div class=statstrip><div class=stat><b>${comma(mval("PC-0001","shared_16mers"))}</b><span>exact 16-letter words shared by all three pilot domains</span></div><div class=stat><b>24 / 16 / 25</b><span>base-pair sizes of block A, its nested core, and block B</span></div><div class=stat><b>${mval("PC-0001","spacing_range")} bp</b><span>range across six observed A→B spacings</span></div></div>
+   <p>Six observed spacings cluster around roughly three thousand bases: <b>${spacings.map(x=>comma(x)).join(", ")} bp</b>.</p>
+   <div class="plainOnly callout"><b>Picture it:</b> not just the same short phrase in different books, but another phrase repeatedly appearing nearby.</div>
+   <div class=learnBlock><p>A 5,000,000-draw spatial null produced <b>zero</b> random cases matching all five E. coli downstream hits. This is calibration evidence, not a corrected publication p-value.</p></div>
+   <div class=researchBlock><div class=compare><div><div class=statusnote>older PC-0001 summary</div><div class=value>${mval("PC-0001","mono_null_mean")} / ${mval("PC-0001","dinuc_null_mean")}</div><span>mono / dinucleotide k=16 null means</span></div><div><div class=statusnote>full vocabulary ladder</div><div class=value>${mval("CAL-VOCAB","mono_null_mean_k16")} / ${mval("CAL-VOCAB","dinuc_null_mean_k16")}</div><span>mono / dinucleotide k=16 null means</span></div></div><div class=callout><b>Open provenance issue:</b> these k=16 null summaries disagree slightly and remain explicitly unresolved until their source lineage is reconciled.</div></div>
+   <button class=action data-goto="PC1-MODULE-RIBO">Open Codebook evidence</button>
+  </div>
+  <div class=story><div class=question>Proof Case 0002 · blind coding structure</div><h3>The search found a matching two-block pattern before it knew the gene names.</h3>
+   <div class=statstrip><div class=stat><b>${comma(mval("PC-0002","shared_16mers"))}</b><span>E. coli ↔ yeast shared exact 16-mers</span></div><div class=stat><b>${mval("PC-0002","raw_start_spacing")} bp</b><span>raw start spacing in both genomes</span></div><div class=stat><b>${mval("PC-0002","coding_region_length_each")} bp</b><span>length of each coding region</span></div></div>
+   <p>Six high-complexity multiblock clusters were recovered; five were mitochondrial. The remaining non-mitochondrial module became the FBA proof case after post-freeze annotation.</p>
+   <div class=learnBlock><div class=simpletable><div class=simpleRow><b>Block C</b><span><code>${esc(pc2C?.sequence||"sequence in Codebook")}</code></span></div><div class=simpleRow><b>Block D</b><span><code>${esc(pc2D?.sequence||"sequence in Codebook")}</code></span></div><div class=simpleRow><b>Nucleotide identity</b><span>${mval("PC-0002","positionwise_nucleotide_identity")}% across the 1080-bp coding regions</span></div><div class=simpleRow><b>Protein identity</b><span>${mval("PC-0002","protein_identity_corresponding_positions")}% at corresponding translated positions</span></div></div></div>
+   <div class=researchBlock><p>Block coding starts: C=${mval("PC-0002","block_C_coding_start_0based")}, D=${mval("PC-0002","block_D_coding_start_0based")} (0-based). Post-freeze annotation identified <i>E. coli</i> <code>fbaA</code> and yeast <code>FBA1</code>.</p></div>
+   <button class=action data-goto="PC2-MODULE-FBA">Open Codebook evidence</button>
+  </div>
+ </div>
+ <div class=finding><div class=question>And the failures?</div><h3>Three simple models were tested hard enough to fail.</h3><p class=why>They are not footnotes. They tell us that reusable structure—if it exists at larger scale—is not captured by a flat exact dictionary, an exact fixed gap, or a simple “A before B within 10 kb” rule.</p><button class=action id=goModels>See what failed and the actual test counts →</button></div>`;
+ document.querySelectorAll("[data-goto]").forEach(b=>b.onclick=()=>selectObject(b.dataset.goto));$("goModels").onclick=()=>setView("models");
 }
 function initFilters(){
  const types=[...new Set(objects.map(o=>o.object_type))].sort(),states=[...new Set(objects.map(o=>o.evidence_state))].sort();
@@ -112,7 +124,7 @@ function renderList(){
  $("objectList").innerHTML=f.map(o=>`<button class="item ${current===o.object_id?"active":""}" data-object="${esc(o.object_id)}"><div class=itemid>${esc(o.object_id)}</div><div class=itemmeta>${esc(o.object_type)} · ${esc(o.evidence_state)}</div><div class=itemlabel>${esc(o.label)}</div></button>`).join("");
  document.querySelectorAll("[data-object]").forEach(b=>b.onclick=()=>{current=b.dataset.object;tab="overview";renderList();renderObject()});
 }
-function selectObject(id){view="codebook";current=id;tab="overview";document.querySelectorAll(".nav").forEach(b=>b.classList.toggle("active",b.dataset.view==="codebook"));$("explorerPane").hidden=false;renderList();renderObject()}
+function selectObject(id){view="codebook";current=id;tab="overview";document.querySelectorAll(".nav").forEach(b=>b.classList.toggle("active",b.dataset.view==="codebook"));setExplorer(true);renderList();renderObject()}
 function objectLanding(){
  $("content").innerHTML=`<div class=hero><div class=eyebrow>Explore the Codebook</div><h2>Choose a released object. Start with the explanation, then open as much evidence as you want.</h2><p>The reading-depth control changes presentation, not the underlying record.</p></div><div class=card><h3>What kinds of objects are here?</h3><p><b>Blocks</b> are exact DNA sequences. <b>Modules</b> are relationships among pieces. <b>Falsified models</b> are tested ideas that failed.</p></div>`;
 }
@@ -166,6 +178,32 @@ function vocabulary(){
  <div class=researchBlock><div class=card><h3>Pairwise counts</h3><table><tr><th>k</th><th>E. coli ↔ Pyrococcus</th><th>E. coli ↔ yeast</th><th>Pyrococcus ↔ yeast</th><th>All three</th></tr>${rows.map(r=>`<tr><td>${r.k}</td><td>${comma(r.shared_exact_kmers_ecoli_pyro||0)}</td><td>${comma(r.shared_exact_kmers_ecoli_yeast||0)}</td><td>${comma(r.shared_exact_kmers_pyro_yeast||0)}</td><td>${comma(r.shared_exact_kmers_all_three||0)}</td></tr>`).join("")}</table></div></div>`;
  bindTerms();
 }
+function models(){
+ const ow=["training=ECOLI+PYRO; heldout=YEAST","training=ECOLI+YEAST; heldout=PYRO","training=PYRO+YEAST; heldout=ECOLI"];
+ const compression=measures("CAL-COMPRESS");
+ const groups={};compression.forEach(m=>{const k=(m.notes||"");(groups[k]??={notes:k})[m.metric]=m.value_num});
+ $("content").innerHTML=`<div class=hero><div class=eyebrow>What failed</div><h2>Wrong models are useful when we keep them.</h2><p>LIFE-CODE stores falsified representations as first-class evidence. That narrows the space of explanations without rewriting the rules after seeing the answer.</p></div>
+ <div class=storygrid>
+  <div class=story><div class=question>Flat dictionary</div><h3>Exact words alone did not pay for themselves.</h3><p>Across the tested fixed-length dictionaries, no valid configuration beat raw 2-bit/base coding after dictionary/reference costs.</p><div class=learnBlock><p>The strongest-looking coverage values occurred at shorter k, but the dictionary overhead erased the apparent gain.</p></div></div>
+  <div class=story><div class=question>Exact gap</div><h3>“Keep exactly the same distance” did not transfer.</h3><p>Exact A→B gap structure produced zero held-out deep-domain modules in every pilot fold.</p></div>
+  <div class=story><div class=question>Ordered 10 kb window</div><h3>Even a looser neighborhood rule still failed held-out transfer.</h3>${ow.map(n=>`<div class=simpleRow><b>${esc(n.replace('training=','train ').replace('; heldout=',' → holdout '))}</b><span>${comma(mval("CAL-ORDERWIN","training_modules",n))} training modules → <b>${comma(mval("CAL-ORDERWIN","transferred_modules",n))} transferred</b></span></div>`).join("")}<div class=callout><b>Null check:</b> ${comma(mval("CAL-ORDERWIN","complete_shuffled_null_genomes"))} complete shuffled held-out null genomes also produced ${comma(mval("CAL-ORDERWIN","transferred_modules_across_all_nulls"))} transferred modules.</div></div>
+ </div>
+ <div class=researchBlock><div class=card><h3>Flat-dictionary calibration table</h3><table><tr><th>Training / holdout / k</th><th>coverage %</th><th>dictionary entries</th><th>used in holdout</th><th>full overhead %</th><th>oracle overhead %</th></tr>${Object.values(groups).map(g=>`<tr><td>${esc(g.notes)}</td><td>${fmt(g.coverage_percent)}</td><td>${fmt(g.dictionary_entries)}</td><td>${fmt(g.used_in_heldout)}</td><td>${fmt(g.full_vs_raw_overhead_percent)}</td><td>${fmt(g.oracle_vs_raw_overhead_percent)}</td></tr>`).join("")}</table></div></div>`;
+}
+function program(){
+ const bench=P.benchmarks||[],lad=P.prediction_maturity_ladder||[];
+ $("content").innerHTML=`<div class=hero><div class=eyebrow>What comes next</div><h2>The Codebook is only the evidence layer. LIFE-CODE already has a larger test architecture around it.</h2><p>This page shows work that is built as architecture, contracts, and benchmark plans. It is deliberately separated from completed experimental results.</p></div>
+ <div class=card><div class=question>Whole-program flow</div><div class=pipeline>${(P.core_flow||[]).map(x=>`<div class=pipe>${esc(x)}</div>`).join("")}</div><p class=learnBlock>Evidence enters first. History and trait interpretation happen downstream. A renderer is last and cannot upgrade weak evidence into a stronger scientific claim.</p></div>
+ <div class=storygrid>
+  <div class=story><div class=statusnote>built contract · not a result</div><h3>Retrodiction before extrapolation</h3><p>Before LIFE-CODE is allowed to predict an unobserved biological state, it must first predict a real state that was deliberately hidden until after the prediction was frozen.</p></div>
+  <div class=story><div class=statusnote>built contract · not a result</div><h3>The packet, not the picture</h3><p>A visual can be compelling and still scientifically unsupported. The machine-readable prediction packet carries the claim; the renderer only visualizes it.</p></div>
+  <div class=story><div class=statusnote>built contract · not a result</div><h3>The pixel needs provenance</h3><p>For spatial predictions, every scientifically meaningful region must trace back to a frozen prediction channel. Unsupported detail must be marked artistic-only, ghosted, or omitted.</p></div>
+  <div class=story><div class=statusnote>built contract · not a result</div><h3>Biological Diff</h3><p>The framework includes a machine-readable diff layer intended to compare biological states/branches before semantic reveal, then test recurrent changes across independent contrasts.</p></div>
+ </div>
+ <div class=card><h3>Prediction maturity ladder</h3><div class=ladder>${lad.map(x=>`<div class=rung><span class=lvl>${esc(x.level)}</span><span class=name>${esc(x.name)}</span><span class=req>${esc(x.requirement)}</span></div>`).join("")}</div></div>
+ <div class=card><h3>Real benchmark bridge already designed</h3>${bench.map(b=>`<div class=finding><div class=statusnote>${esc(b.status)}</div><h3>${esc(b.benchmark_id)} · ${esc(b.name)}</h3><p>${esc(b.purpose)}</p>${b.published_cohort?`<div class=statstrip><div class=stat><b>${b.published_cohort.n_total}</b><span>published subjects</span></div><div class=stat><b>${b.published_cohort.yellow} / ${b.published_cohort.white}</b><span>yellow / white male forewing phenotypes</span></div><div class=stat><b>${b.frozen_split_contract.expected_train.total} / ${b.frozen_split_contract.expected_holdout.total}</b><span>planned train / sealed holdout</span></div></div>`:""}${b.panel_summary?`<div class=statstrip><div class=stat><b>${b.panel_summary.published_study_species}</b><span>rockfish species in source study</span></div><div class=stat><b>${b.panel_summary.extreme_panel_species}</b><span>extreme-panel species</span></div><div class=stat><b>${b.panel_summary.independent_trait_shifts}</b><span>independent trait shifts reported in source design context</span></div></div>`:""}<div class=sourcebox>Program source: <a href="program_sources/${esc(b.source_file)}">${esc(b.source_file)}</a></div></div>`).join("")}</div>
+ <div class=researchBlock><div class=card><h3>Program source manifest</h3><table><tr><th>File</th><th>Bytes</th><th>SHA-256</th></tr>${(P.sources||[]).map(s=>`<tr><td><a href="program_sources/${esc(s.file)}">${esc(s.file)}</a></td><td>${comma(s.bytes)}</td><td><code>${esc(s.sha256)}</code></td></tr>`).join("")}</table></div></div>`;
+}
 function claims(){
  $("content").innerHTML=`<div class=hero><div class=eyebrow>What we can claim</div><h2>The boundary is part of the result.</h2><p>Every released claim carries a line it is not allowed to cross.</p></div>${S.claims.map(c=>`<div class=finding><div class=badges>${badge(c.evidence_state,c.evidence_state==="FALSIFIED"?"bad":"good")}${badge(c.status)}</div><h3>${esc(c.claim_text)}</h3><div class=callout><b>Boundary:</b> ${esc(c.boundary_text||"—")}</div><div class=researchBlock><code>${esc(c.claim_id)}</code></div></div>`).join("")}`;
 }
@@ -180,8 +218,8 @@ function integrity(){
  <div class=card><h3>Known open reconciliation items</h3><ul><li>Exact Proof Case 0001 sequence strings and occurrence coordinates remain unpopulated in this public database pending archive-level recovery and verification.</li><li>The older Proof Case 0001 k=16 null summary and the later full vocabulary-ladder k=16 summary require source-level reconciliation.</li></ul></div>
  <div class=downloads><a href="data/LIFE_CODE_PUBLIC_CODEBOOK_v0.9.json" download>Download public JSON</a><a href="downloads/LIFE_CODE_CODEBOOK_CONTINUATION_v0.8.sqlite" download>Download SQLite Codebook</a><a href="SCIENTIFIC_RELEASE_POLICY.md">Release policy</a></div>`;
 }
-function render(){if(view==="home")home();else if(view==="findings")findings();else if(view==="codebook")current?renderObject():objectLanding();else if(view==="experiments")experiments();else if(view==="vocabulary")vocabulary();else if(view==="claims")claims();else if(view==="glossary")glossary();else integrity();bindTerms()}
+function render(){if(view==="home")home();else if(view==="findings")findings();else if(view==="codebook")current?renderObject():objectLanding();else if(view==="experiments")experiments();else if(view==="models")models();else if(view==="vocabulary")vocabulary();else if(view==="program")program();else if(view==="claims")claims();else if(view==="glossary")glossary();else integrity();bindTerms()}
 $("exploreLens").onclick=()=>setLens("explore");$("learnLens").onclick=()=>setLens("learn");$("researchLens").onclick=()=>setLens("research");
 document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>setView(b.dataset.view));
 ["search","type","state"].forEach(id=>$(id).addEventListener(id==="search"?"input":"change",renderList));
-initFilters();renderList();setLens(lens);$("explorerPane").hidden=true;$("footerVersion").textContent=`${S.snapshot_schema} · Interface ${window.LIFE_CODE_INTERFACE_VERSION}`;
+initFilters();renderList();setLens(lens);setExplorer(false);$("footerVersion").textContent=`${S.snapshot_schema} · Interface ${window.LIFE_CODE_INTERFACE_VERSION}`;
