@@ -1,0 +1,8 @@
+Proposed software license: GNU Affero General Public License v3.0 or later (AGPL-3.0-or-later).
+
+This file records the intended open-source direction but is not a substitute for the full
+license text. Before the first public repository release, add the official AGPL-3.0 text
+and confirm the licensing choice.
+
+Scientific/derived data licensing should be documented separately after a source-by-source
+rights/provenance audit. Third-party source data remains subject to its original terms.

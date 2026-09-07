@@ -1,38 +1,25 @@
-# LIFE-CODE Public Codebook Core v0.8
+# LIFE-CODE Public Codebook
 
-This repository publishes the evidence-bounded LIFE-CODE Codebook Core v0.8.
+**Scientific data:** Public Codebook v0.9  
+**Browser interface:** v0.9.2  
+**Status:** real released calibration data; EXP-0002 reveal firewall active.
 
-The **SQLite Codebook is the scientific product**. The Cloudflare Pages interface is a read-only client generated from the database; scientific facts do not originate in presentation code.
+The Codebook is the scientific product. The browser is a read-only explanatory client.
 
-## Release contents
+Interface v0.9.2 introduces three presentation depths over the exact same evidence:
 
-- `LIFE_CODE_CODEBOOK_CONTINUATION_v0.8.sqlite` — canonical continuation database
-- `lifecode_codebook.py` — standard-library CLI and JSON exporter
-- `lifecode_codebook_server.py` — standard-library local browser server
-- `LIFE_CODE_CODEBOOK_UI_v0.8.html` — original local database-backed interface
-- `index.html` — static Cloudflare Pages client
-- `codebook-v0.8.json` — deterministic public export from the SQLite database
-- `README_CODEBOOK_v0.8.md` — local operating instructions
+- **Explore** — plain-language default for a general reader
+- **Learn** — introduces the scientific concepts and vocabulary
+- **Research** — exposes raw records, measurements, hashes and provenance
 
-## Verify locally
+No scientific record is changed by switching presentation depth.
 
-```bash
-python3 lifecode_codebook.py verify
-python3 lifecode_codebook.py stats
-python3 lifecode_codebook.py show PC2-MODULE-FBA
-```
+Public JSON SHA-256 remains:
 
-## Public boundary
+`44a204e458dbf9794d950ca506322835fc0f6d3e4fc8bbdd98e9fcb849bfe030`
 
-- Released Tier-A LIFE-CODE calibration/proof evidence only.
-- No EXP-0002 outcome values.
-- No invented Proof Case 0001 sequences.
-- No reconstruction of the unmounted `LIFE_CODE_CODEBOOK_v0.0.81.zip` archive.
+SQLite Codebook SHA-256 remains:
 
-The protected prior archive remains separately identified by SHA-256 `081ad5bab0cb2c125297b9acb32905fca70f9d09d5e0911f75e91f5a6d9f44e2` and must not be overwritten or reconstructed until its 112,174,983 bytes are physically mounted and verified.
+`63910fdf80df38e543cb3b755c60cd3ce146e58140ab7fae9e051153b05b93bb`
 
-## Data path
-
-`raw evidence → validated ingest → Codebook → query/analysis engine → UI`
-
-The UI is not an authority and must never be used to create scientific facts.
+No EXP-0002 outcome values are included. Missing Proof Case 0001 literals/coordinates remain explicitly missing pending verified archive recovery.
