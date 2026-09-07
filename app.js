@@ -1,0 +1,187 @@
+
+"use strict";
+const S=window.LIFE_CODE_SNAPSHOT;if(!S)throw new Error("LIFE-CODE snapshot did not load.");
+const $=id=>document.getElementById(id),objects=S.code_objects||[],byId=Object.fromEntries(objects.map(x=>[x.object_id,x]));
+const artById=Object.fromEntries((S.artifacts||[]).map(x=>[x.artifact_id,x])),expById=Object.fromEntries((S.experiments||[]).map(x=>[x.experiment_id,x]));
+let lens=localStorage.getItem("lifecode-lens")||"explore",view="home",current=null,tab="overview";
+
+const GLOSSARY={
+ DNA:"The molecule that stores hereditary information using four chemical bases usually written A, C, G and T.",
+ genome:"The complete DNA sequence being studied for an organism or cell.",
+ "exact match":"The same sequence of A, C, G and T appears without substitutions in both places being compared.",
+ "k-mer":"A DNA word exactly k bases long. For example, a 16-mer contains 16 DNA letters.",
+ "annotation-blind":"The search is performed without using gene names or known biological labels to guide where to look.",
+ calibration:"A test used to learn how a method behaves and where its limits are before making broader claims.",
+ "null model":"A comparison model representing what we might expect from chance under specified constraints.",
+ "held-out test":"Data deliberately excluded while a rule is formed, then used afterward to test whether the rule transfers.",
+ module:"A higher-level grouping or relationship among lower-level sequence objects.",
+ provenance:"The traceable path back from a displayed result to its source record or artifact.",
+ freeze:"The point where a discovery result is locked before biological labels are revealed.",
+ "post-freeze annotation":"Biological interpretation added only after the sequence result has already been frozen.",
+ falsified:"A tested model that failed its stated test. It stays in the Codebook as useful negative evidence.",
+ block:"An exact released DNA sequence object.",
+ "evidence tier":"A project label describing what evidence is allowed to appear in a given release layer."
+};
+const plain={
+"PC1-BLOCK-A24":"A 24-letter DNA piece found independently in a bacterium and an archaeon.",
+"PC1-CORE-16":"A 16-letter core inside that block also appears in yeast.",
+"PC1-BLOCK-B25":"A second 25-letter DNA piece repeatedly appears nearby.",
+"PC1-MODULE-RIBO":"Those pieces form a repeated neighborhood. Only after the blind result was frozen did biological annotation connect it to ribosomal organization.",
+"PC2-BLOCK-C25":"One of two exact DNA pieces recovered independently in E. coli and yeast.",
+"PC2-BLOCK-D17":"The second exact piece in the same blind comparison.",
+"PC2-MODULE-FBA":"The two pieces landed at matching relative positions in both genomes. After freezing the result, both were found inside fructose-bisphosphate aldolase genes.",
+"NEG-FLAT-DICT":"A simple 'one big dictionary of exact DNA words' model did not compress the tested genomes better than raw 2-bit DNA after costs.",
+"NEG-EXACT-GAP":"A rule requiring the exact same distance between two DNA pieces did not transfer to the held-out third domain.",
+"NEG-ORDER-WINDOW":"A looser rule—A before B within 10,000 bases—also failed to transfer to the held-out third domain."
+};
+const notProof={
+"PC1-MODULE-RIBO":"This does not reconstruct the whole evolutionary history of ribosomes or mitochondria.",
+"PC2-MODULE-FBA":"This validates the blind-recovery method on this case; it does not prove a universal genomic language.",
+"NEG-FLAT-DICT":"The failure of one simple model does not mean genomes lack reusable structure.",
+"NEG-EXACT-GAP":"The failure of exact spacing does not rule out more flexible relationships.",
+"NEG-ORDER-WINDOW":"The failure of this window rule does not mean function itself is unconserved."
+};
+
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]))}
+function fmt(v){return v===null||v===undefined||v===""?"—":esc(v)}
+function comma(v){return Number(v).toLocaleString("en-US")}
+function badge(s,c=""){return `<span class="badge ${c}">${esc(s)}</span>`}
+function term(t,label=t){return `<button class="termchip" data-term="${esc(t)}">${esc(label)}</button>`}
+function keyValue(rows){return `<table><tr><th>Field</th><th>Value</th></tr>${rows.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${fmt(v)}</td></tr>`).join("")}</table>`}
+function setLens(x){
+ lens=x;localStorage.setItem("lifecode-lens",x);
+ document.body.classList.remove("lens-learn","lens-research");if(x==="learn")document.body.classList.add("lens-learn");if(x==="research")document.body.classList.add("lens-research");
+ [["exploreLens","explore"],["learnLens","learn"],["researchLens","research"]].forEach(([id,val])=>{$(id).classList.toggle("active",x===val);$(id).setAttribute("aria-pressed",x===val)});
+ render();
+}
+function setView(v){
+ view=v;current=null;tab="overview";document.querySelectorAll(".nav").forEach(b=>b.classList.toggle("active",b.dataset.view===v));
+ $("explorerPane").hidden=v!=="codebook";renderList();render();$("content").focus({preventScroll:true});
+}
+function bindTerms(){
+ document.querySelectorAll("[data-term]").forEach(b=>b.onclick=()=>{const t=b.dataset.term;alert(`${t}\n\n${GLOSSARY[t]||"Definition not available."}`)});
+}
+function home(){
+ $("content").innerHTML=`
+ <div class=hero><div class=eyebrow>What is LIFE-CODE?</div>
+ <h2>We are testing whether genomes contain reusable sequence pieces and relationships that can be discovered before we use biological labels.</h2>
+ <p class=answer>In plain terms: can a computer find recurring DNA structure first, lock what it found, and only afterward ask biology what those pieces are?</p></div>
+ <div class=stepbar>
+  <div class=step><b>1 · Ignore the labels</b>Search raw DNA without starting from gene names.</div>
+  <div class=step><b>2 · Find recurrence</b>Record exact pieces and relationships that repeat.</div>
+  <div class=step><b>3 · Freeze the result</b>Lock the sequence result before interpretation.</div>
+  <div class=step><b>4 · Reveal meaning</b>Only then compare the result with known biology.</div>
+ </div>
+ <div class="grid">
+  <div class=metric><div class=n>${S.counts.code_objects}</div><div class=l>released Codebook objects</div></div>
+  <div class=metric><div class=n>${S.counts.experiments}</div><div class=l>released proof/calibration experiments</div></div>
+  <div class=metric><div class=n>${S.counts.measurements}</div><div class=l>released measurements</div></div>
+ </div>
+ <div class="card plainOnly"><div class=question>Why would anyone care?</div><p>If useful structure can be recovered without telling the system what genes are supposed to matter, the Codebook can become a neutral map of recurring genomic structure rather than a list built from existing annotations.</p></div>
+ <div class="card learnBlock"><h3>What makes this different from simply finding matching DNA?</h3><p>Matching sequence is old science. LIFE-CODE is testing a stricter architecture: annotation-blind discovery, explicit physical relationships, frozen results, post-freeze interpretation, negative calibrations, provenance, and held-out tests. The contribution—if it survives larger experiments—is the combined method, not the existence of ${term("k-mer","k-mers")} or conservation.</p></div>
+ <div class="card researchBlock"><h3>Release state</h3>${keyValue([["Snapshot schema",S.snapshot_schema],["Generated UTC",S.generated_utc],["Source database",S.source_database.filename],["Source DB SHA-256",S.source_database.sha256],["Release gate",S.public_release_gates.passed?"PASS":"FAIL"]])}</div>
+ <div class=callout><b>Important:</b> this is calibration-stage science. LIFE-CODE has not “decoded DNA,” and the current public release does not contain EXP-0002 outcome values.</div>
+ <div><button class=action id=goFindings>See what the blind searches actually found →</button></div>`;
+ $("goFindings").onclick=()=>setView("findings");bindTerms();
+}
+function findings(){
+ const pc1=byId["PC1-MODULE-RIBO"],pc2=byId["PC2-MODULE-FBA"];
+ $("content").innerHTML=`
+ <div class=hero><div class=eyebrow>What we found</div><h2>Two positive proof cases—and several failures that matter just as much.</h2><p>The point is not to show only successes. A useful Codebook must also record simple ideas that failed.</p></div>
+ <div class=finding><div class=question>Proof Case 0001</div><h3>A blind cross-domain search recovered a repeated neighborhood.</h3><p class=why>A 24-base block, a nested 16-base core, and a second 25-base block formed a repeated spatial pattern across the pilot genomes. After the result was frozen, annotation linked the module to ribosomal organization; the yeast core maps to mitochondrial large-subunit rRNA.</p>
+ <div class="plainOnly callout"><b>Think of it like this:</b> three books written in four letters contain the same short phrase, and two of the books also keep another phrase nearby in a similar arrangement.</div>
+ <div class=learnBlock><p>${term("annotation-blind","Annotation-blind")} means those biological labels were not used to guide the search.</p></div>
+ <button class=action data-goto="PC1-MODULE-RIBO">Open the evidence</button></div>
+ <div class=finding><div class=question>Proof Case 0002</div><h3>Two exact blocks landed at matching coding positions in E. coli and yeast.</h3><p class=why>The raw block starts are exactly 263 bp apart in both genomes. Both coding regions are 1080 bp. After the blind result was frozen, both locations were identified inside fructose-bisphosphate aldolase genes.</p>
+ <div class="plainOnly callout"><b>Why that is interesting:</b> the search did not begin by asking for the same gene. It found the structure first.</div>
+ <button class=action data-goto="PC2-MODULE-FBA">Open the evidence</button></div>
+ <div class=finding><div class=question>Negative calibrations</div><h3>Three intuitive “grammar” ideas failed.</h3><p class=why>A flat exact dictionary, exact-gap transfer, and a looser ordered-window rule all failed at their tested abstraction levels. They remain in the Codebook because ruling out an attractive wrong model is scientific progress.</p>
+ <div class="researchBlock"><p>These are stored as <code>FALSIFIED_MODEL</code> objects rather than being erased from the interface.</p></div>
+ <button class=action id=goFailed>Show the failed models</button></div>`;
+ document.querySelectorAll("[data-goto]").forEach(b=>b.onclick=()=>selectObject(b.dataset.goto));
+ $("goFailed").onclick=()=>{setView("codebook");$("type").value="FALSIFIED_MODEL";renderList();};
+}
+function initFilters(){
+ const types=[...new Set(objects.map(o=>o.object_type))].sort(),states=[...new Set(objects.map(o=>o.evidence_state))].sort();
+ $("type").innerHTML='<option value="">All</option>'+types.map(x=>`<option>${esc(x)}</option>`).join("");
+ $("state").innerHTML='<option value="">All</option>'+states.map(x=>`<option>${esc(x)}</option>`).join("");
+}
+function filtered(){const q=$("search").value.trim().toLowerCase(),t=$("type").value,s=$("state").value;return objects.filter(o=>(!q||[o.object_id,o.object_type,o.label,o.description,o.status].join(" ").toLowerCase().includes(q))&&(!t||o.object_type===t)&&(!s||o.evidence_state===s))}
+function renderList(){
+ const f=filtered();$("count").textContent=`${f.length} of ${objects.length} objects`;
+ $("objectList").innerHTML=f.map(o=>`<button class="item ${current===o.object_id?"active":""}" data-object="${esc(o.object_id)}"><div class=itemid>${esc(o.object_id)}</div><div class=itemmeta>${esc(o.object_type)} · ${esc(o.evidence_state)}</div><div class=itemlabel>${esc(o.label)}</div></button>`).join("");
+ document.querySelectorAll("[data-object]").forEach(b=>b.onclick=()=>{current=b.dataset.object;tab="overview";renderList();renderObject()});
+}
+function selectObject(id){view="codebook";current=id;tab="overview";document.querySelectorAll(".nav").forEach(b=>b.classList.toggle("active",b.dataset.view==="codebook"));$("explorerPane").hidden=false;renderList();renderObject()}
+function objectLanding(){
+ $("content").innerHTML=`<div class=hero><div class=eyebrow>Explore the Codebook</div><h2>Choose a released object. Start with the explanation, then open as much evidence as you want.</h2><p>The reading-depth control changes presentation, not the underlying record.</p></div><div class=card><h3>What kinds of objects are here?</h3><p><b>Blocks</b> are exact DNA sequences. <b>Modules</b> are relationships among pieces. <b>Falsified models</b> are tested ideas that failed.</p></div>`;
+}
+function objectTabs(){let n=lens==="explore"?["overview","connections"]:lens==="learn"?["overview","connections","evidence"]:["overview","graph","measurements","provenance","raw"];return `<div class=tabs>${n.map(x=>`<button class="tab ${tab===x?"active":""}" data-tab="${x}">${x}</button>`).join("")}</div>`}
+function renderObject(){
+ const o=byId[current];if(!o){objectLanding();return}const anns=S.annotations.filter(a=>a.subject_type==="OBJECT"&&a.subject_id===o.object_id),ex=expById[o.discovery_experiment_id],art=artById[o.source_artifact_id];
+ let html=objectTabs();
+ if(tab==="overview"){
+  html+=`<div class=card><div class=badges>${badge(o.object_type)}${badge(o.evidence_state,o.evidence_state==="FALSIFIED"?"bad":"good")}${badge("TIER "+o.evidence_tier)}</div><h2>${esc(o.label)}</h2>
+  <p class=answer>${esc(plain[o.object_id]||o.description||"Released Codebook object.")}</p>
+  ${notProof[o.object_id]?`<div class=callout><b>What this does not prove:</b> ${esc(notProof[o.object_id])}</div>`:""}
+  <div class=learnBlock><h3>Scientific description</h3><p>${fmt(o.description)}</p></div>
+  <div class=researchBlock>${keyValue([["Length (bp)",o.length_bp],["Orientation semantics",o.orientation_semantics],["Semantic state",o.semantic_state],["Data completeness",o.data_completeness],["Discovery experiment",o.discovery_experiment_id],["Source artifact",o.source_artifact_id]])}</div>
+  ${o.sequence?`<div class=researchBlock><h3>Exact released sequence</h3><div class=seq>${esc(o.sequence)}</div><div class=muted>SHA-256 ${esc(o.sequence_sha256)}</div></div>`:`<div class="researchBlock callout warn"><b>Sequence not populated.</b> ${esc(o.data_completeness)}. Missing data stays missing rather than being reconstructed.</div>`}
+  </div>
+  <div class=learnBlock><div class=card><h3>Post-freeze interpretation</h3>${anns.length?anns.map(a=>`<p>${esc(a.annotation_value)}<br><span class=muted>${esc(a.annotation_type)} · ${esc(a.evidence_state)}</span></p>`).join(""):"<p class=muted>No post-freeze annotation stored.</p>"}</div></div>`;
+ } else if(tab==="connections"){html+=`<div class=card><h3>Connections</h3>${edgeTable(o.object_id,true)}</div>`}
+ else if(tab==="evidence"){html+=`<div class=card><h3>Evidence path</h3>${trail(o,ex,art)}</div>`}
+ else if(tab==="graph"){html+=graph(o.object_id)}
+ else if(tab==="measurements"){html+=`<div class=card><h3>Measurements for this object</h3>${measurementTable(S.measurements.filter(m=>m.subject_type==="OBJECT"&&m.subject_id===o.object_id))}</div><div class=card><h3>Measurements from its discovery experiment</h3>${measurementTable(S.measurements.filter(m=>m.subject_type==="EXPERIMENT"&&m.subject_id===o.discovery_experiment_id))}</div>`}
+ else if(tab==="provenance"){html+=`<div class=card><h3>Reverse provenance</h3>${trail(o,ex,art)}</div><div class=card><h3>Artifact record</h3><pre>${esc(JSON.stringify(art,null,2))}</pre></div>`}
+ else html+=`<div class=card><h3>Raw Codebook record</h3><pre>${esc(JSON.stringify(o,null,2))}</pre></div>`;
+ $("content").innerHTML=html;document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;renderObject()});document.querySelectorAll("[data-goto-object]").forEach(b=>b.onclick=e=>{e.preventDefault();selectObject(b.dataset.gotoObject)});bindTerms();
+}
+function edgeTable(id,human){
+ const es=S.edges.filter(e=>e.source_object_id===id||e.target_object_id===id);if(!es.length)return "<p class=muted>No graph edges stored for this object.</p>";
+ const names={CONTAINS:"contains",HAS_MEMBER:"has member",ORDERED_NEIGHBORHOOD:"appears in an ordered neighborhood with",EXACT_COLINEAR_SPACING:"keeps the same exact spacing relationship with"};
+ return `<table><tr><th>Relationship</th><th>Other object</th><th>Distance</th><th>Evidence</th></tr>${es.map(e=>{const other=e.source_object_id===id?e.target_object_id:e.source_object_id,dist=e.exact_distance_bp??(e.min_distance_bp!=null?`${e.min_distance_bp}–${e.max_distance_bp} bp`:"—");return `<tr><td>${esc(human?(names[e.edge_type]||e.edge_type):e.edge_type)}</td><td><a href="#" data-goto-object="${esc(other)}">${esc(other)}</a></td><td>${esc(dist)}</td><td>${esc(e.evidence_state)}</td></tr>`}).join("")}</table>`;
+}
+function trail(o,ex,art){return `<ol><li><b>Source artifact</b> — ${esc(art?.name||o.source_artifact_id)}</li><li><b>Experiment</b> — ${esc(ex?.experiment_id||o.discovery_experiment_id)} · ${esc(ex?.title||"")}</li><li><b>Codebook object</b> — ${esc(o.object_id)} · ${esc(o.evidence_state)}</li><li><b>Interface</b> — this page renders that released record.</li></ol><p class=muted>${term("provenance","Provenance")} means being able to trace a displayed statement back toward its source.</p>`}
+function measurementTable(ms){if(!ms.length)return "<p class=muted>No measurements stored for this subject.</p>";return `<table><tr><th>Metric</th><th>Value</th><th>Unit</th><th>Notes</th></tr>${ms.map(m=>`<tr><td>${esc(m.metric)}</td><td>${fmt(m.value_num??m.value_text)}</td><td>${fmt(m.unit)}</td><td>${fmt(m.notes)}</td></tr>`).join("")}</table>`}
+function graph(root){
+ const es=S.edges.filter(e=>e.source_object_id===root||e.target_object_id===root),ids=[root,...new Set(es.flatMap(e=>[e.source_object_id,e.target_object_id]).filter(x=>x!==root))],W=900,H=410,cx=450,cy=200,R=145,pos={[root]:[cx,cy]};
+ ids.slice(1).forEach((id,i)=>{const a=2*Math.PI*i/Math.max(1,ids.length-1)-Math.PI/2;pos[id]=[cx+Math.cos(a)*R,cy+Math.sin(a)*R]});
+ const lines=es.map(e=>{const a=pos[e.source_object_id],b=pos[e.target_object_id];return `<line class=edge x1=${a[0]} y1=${a[1]} x2=${b[0]} y2=${b[1]}><title>${esc(e.edge_type)}</title></line>`}).join("");
+ const nodes=ids.map(id=>{const [x,y]=pos[id];return `<g class=node data-node="${esc(id)}" style="cursor:pointer"><circle cx=${x} cy=${y} r=${id===root?35:29}></circle><text x=${x} y=${y+4} text-anchor=middle>${esc(id.length>17?id.slice(0,15)+"…":id)}</text></g>`}).join("");
+ setTimeout(()=>document.querySelectorAll("[data-node]").forEach(n=>n.onclick=()=>selectObject(n.dataset.node)),0);return `<div class=card><h3>Immediate evidence graph</h3><svg class=graph viewBox="0 0 ${W} ${H}"><defs><marker id=arrow markerWidth=8 markerHeight=8 refX=7 refY=3 orient=auto><path d="M0,0 L0,6 L7,3 z" fill="#617989"/></marker></defs>${lines}${nodes}</svg></div>`;
+}
+function experiments(){
+ const plainExp={"PC-0001":"Can exact DNA pieces and their neighborhood be recovered across three very different domains without using gene labels?","PC-0002":"Can a blind search recover a conserved coding pattern in E. coli and yeast?","CAL-VOCAB":"How quickly does exact shared DNA vocabulary thin out as the word length gets longer?","CAL-EXACTGAP":"Does the same exact gap between two pieces transfer to a held-out domain?","CAL-ORDERWIN":"Does a looser A-before-B window transfer to a held-out domain?","CAL-COMPRESS":"Is one flat exact dictionary a good compression model?"};
+ $("content").innerHTML=`<div class=hero><div class=eyebrow>Experiments</div><h2>Every experiment should answer a question—even when the answer is “no.”</h2><p>Positive proof cases and negative calibrations are shown together.</p></div>${S.experiments.map(e=>{const n=S.measurements.filter(m=>m.subject_type==="EXPERIMENT"&&m.subject_id===e.experiment_id).length;return `<div class=finding><div class=question>${esc(e.experiment_id)}</div><h3>${esc(plainExp[e.experiment_id]||e.title)}</h3><p class=learnBlock>${esc(e.title)}</p><div class=badges>${badge(e.status,e.status.includes("NEGATIVE")?"bad":"good")}${badge("TIER "+e.evidence_tier)}${badge(e.annotation_blind?"ANNOTATION-BLIND":"ANNOTATED")}</div><p class=muted>${n} stored measurements</p><button class=action data-exp="${esc(e.experiment_id)}">Open experiment</button></div>`}).join("")}`;
+ document.querySelectorAll("[data-exp]").forEach(b=>b.onclick=()=>experimentDetail(b.dataset.exp));
+}
+function experimentDetail(id){const e=expById[id],ms=S.measurements.filter(m=>m.subject_type==="EXPERIMENT"&&m.subject_id===id);$("content").innerHTML=`<button class=tab id=backExp>← Experiments</button><div class=card><h2>${esc(e.title)}</h2><div class=badges>${badge(e.status)}${badge("TIER "+e.evidence_tier)}</div><div class=learnBlock>${keyValue([["Experiment ID",e.experiment_id],["Date",e.experiment_date],["Reveal state",e.reveal_state],["Annotation blind",e.annotation_blind]])}</div></div><div class=card><h3>Measurements (${ms.length})</h3>${measurementTable(ms)}</div><div class=researchBlock><div class=card><h3>Raw experiment record</h3><pre>${esc(JSON.stringify(e,null,2))}</pre></div></div>`;$("backExp").onclick=experiments}
+function vocabRows(){const ms=S.measurements.filter(m=>m.subject_id==="CAL-VOCAB"&&m.metric.startsWith("shared_exact_kmers_")),byK={};ms.forEach(m=>{const z=/k=(\d+)/.exec(m.notes||"");if(!z)return;(byK[+z[1]]??={})[m.metric]=m.value_num});return Object.entries(byK).map(([k,v])=>({k:+k,...v})).sort((a,b)=>a.k-b.k)}
+function vocabulary(){
+ const rows=vocabRows(),max=Math.max(...rows.map(r=>r.shared_exact_kmers_all_three||0)),w=v=>v<=0?0:Math.max(2,Math.log10(v+1)/Math.log10(max+1)*100);
+ $("content").innerHTML=`<div class=hero><div class=eyebrow>DNA vocabulary</div><h2>How long can an exact shared DNA “word” get before the common vocabulary almost disappears?</h2><p>A ${term("k-mer","k-mer")} is simply a DNA word exactly <i>k</i> letters long. The bars below show words shared by all three pilot domains.</p></div>
+ <div class=card><div class=question>Read the pattern before the numbers</div><p>Short words are extremely common. As the exact word length rises, the all-three shared set collapses rapidly. At k=16, 54 exact words remain; at k=18, none remain across all three pilot genomes.</p>${rows.map(r=>`<div class=vocabRow><b>k=${r.k}</b><div class=bartrack title="${comma(r.shared_exact_kmers_all_three||0)}"><div class=bar style="width:${w(r.shared_exact_kmers_all_three||0)}%"></div></div><span>${comma(r.shared_exact_kmers_all_three||0)}</span></div>`).join("")}</div>
+ <div class=learnBlock><div class=card><h3>Why this is only a calibration</h3><p>The result describes this frozen pilot dataset and this exact-match representation. It does not establish a universal biological word length.</p></div></div>
+ <div class=researchBlock><div class=card><h3>Pairwise counts</h3><table><tr><th>k</th><th>E. coli ↔ Pyrococcus</th><th>E. coli ↔ yeast</th><th>Pyrococcus ↔ yeast</th><th>All three</th></tr>${rows.map(r=>`<tr><td>${r.k}</td><td>${comma(r.shared_exact_kmers_ecoli_pyro||0)}</td><td>${comma(r.shared_exact_kmers_ecoli_yeast||0)}</td><td>${comma(r.shared_exact_kmers_pyro_yeast||0)}</td><td>${comma(r.shared_exact_kmers_all_three||0)}</td></tr>`).join("")}</table></div></div>`;
+ bindTerms();
+}
+function claims(){
+ $("content").innerHTML=`<div class=hero><div class=eyebrow>What we can claim</div><h2>The boundary is part of the result.</h2><p>Every released claim carries a line it is not allowed to cross.</p></div>${S.claims.map(c=>`<div class=finding><div class=badges>${badge(c.evidence_state,c.evidence_state==="FALSIFIED"?"bad":"good")}${badge(c.status)}</div><h3>${esc(c.claim_text)}</h3><div class=callout><b>Boundary:</b> ${esc(c.boundary_text||"—")}</div><div class=researchBlock><code>${esc(c.claim_id)}</code></div></div>`).join("")}`;
+}
+function glossary(){
+ $("content").innerHTML=`<div class=hero><div class=eyebrow>Glossary</div><h2>You should not need a genetics degree to navigate the evidence.</h2><p>These definitions explain how LIFE-CODE uses each term. Research mode still exposes the exact database language.</p></div><div class=glossarygrid>${Object.entries(GLOSSARY).map(([k,v])=>`<div class=term><h3>${esc(k)}</h3><p>${esc(v)}</p></div>`).join("")}</div>`;
+}
+function integrity(){
+ const checks=S.public_release_gates.checks||{};$("content").innerHTML=`<div class=hero><div class=eyebrow>Verify it</div><h2>Trust the evidence path, not the presentation.</h2><p>This page exposes the released source hashes and the firewall that keeps unreleased experiment outcomes out of the public layer.</p></div>
+ <div class=grid><div class=metric><div class=n>${S.public_release_gates.passed?"PASS":"FAIL"}</div><div class=l>public release gate</div></div><div class=metric><div class=n>${Object.values(checks).reduce((a,b)=>a+Number(b),0)}</div><div class=l>blocked-record count</div></div><div class=metric><div class=n>${S.counts.artifacts}</div><div class=l>source artifacts</div></div></div>
+ <div class=card><h3>Source integrity</h3>${keyValue([["Source database",S.source_database.filename],["Source database SHA-256",S.source_database.sha256],["Snapshot schema",S.snapshot_schema],["Generated UTC",S.generated_utc]])}</div>
+ <div class=card><h3>Public firewall</h3>${keyValue(Object.entries(checks))}<p>${esc(S.public_release_gates.rule)}</p></div>
+ <div class=card><h3>Known open reconciliation items</h3><ul><li>Exact Proof Case 0001 sequence strings and occurrence coordinates remain unpopulated in this public database pending archive-level recovery and verification.</li><li>The older Proof Case 0001 k=16 null summary and the later full vocabulary-ladder k=16 summary require source-level reconciliation.</li></ul></div>
+ <div class=downloads><a href="data/LIFE_CODE_PUBLIC_CODEBOOK_v0.9.json" download>Download public JSON</a><a href="downloads/LIFE_CODE_CODEBOOK_CONTINUATION_v0.8.sqlite" download>Download SQLite Codebook</a><a href="SCIENTIFIC_RELEASE_POLICY.md">Release policy</a></div>`;
+}
+function render(){if(view==="home")home();else if(view==="findings")findings();else if(view==="codebook")current?renderObject():objectLanding();else if(view==="experiments")experiments();else if(view==="vocabulary")vocabulary();else if(view==="claims")claims();else if(view==="glossary")glossary();else integrity();bindTerms()}
+$("exploreLens").onclick=()=>setLens("explore");$("learnLens").onclick=()=>setLens("learn");$("researchLens").onclick=()=>setLens("research");
+document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>setView(b.dataset.view));
+["search","type","state"].forEach(id=>$(id).addEventListener(id==="search"?"input":"change",renderList));
+initFilters();renderList();setLens(lens);$("explorerPane").hidden=true;$("footerVersion").textContent=`${S.snapshot_schema} · Interface ${window.LIFE_CODE_INTERFACE_VERSION}`;
