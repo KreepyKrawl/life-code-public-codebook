@@ -1,0 +1,82 @@
+{
+  "project": "LIFE-CODE",
+  "document": "Canonical Framework Lock",
+  "version": "0.2",
+  "date": "2026-09-03",
+  "reveal_barrier": "EXP-0002 partial outcomes MUST NOT enter framework claims before sealed validation and formal release.",
+  "pillars": {
+    "CODE": "what is built",
+    "HISTORY": "how it got here",
+    "POSSIBILITY": "what other biological states may be reachable",
+    "RESILIENCE": "where the system fails and how life has solved equivalent failures elsewhere"
+  },
+  "object_model": [
+    "Primitive",
+    "Block",
+    "Relation",
+    "Module",
+    "Stratum",
+    "History Edge",
+    "Semantic Annotation",
+    "Evidence Record",
+    "Phenotype",
+    "Possibility"
+  ],
+  "evidence_states": [
+    "OBSERVATION",
+    "EXPERIMENTAL RESULT",
+    "INTERPRETATION",
+    "SPECULATION",
+    "FALSIFIED"
+  ],
+  "visual_truth_states": [
+    "OBSERVED",
+    "RECONSTRUCTED",
+    "LATENT",
+    "INTERPOLATED",
+    "EXTRAPOLATED",
+    "COUNTERFACTUAL",
+    "UNSUPPORTED"
+  ],
+  "genome_history_rule": "Treat living genomes as a lossy, distributed, continuously rewritten evolutionary repository. Persistence does not prove present function; noncoding does not automatically mean junk.",
+  "systems_security_lens": [
+    "attack surface",
+    "dependency chain",
+    "redundancy",
+    "control/privilege boundary",
+    "integrity checking",
+    "rollback/recovery",
+    "legacy code",
+    "exploit",
+    "fault tolerance"
+  ],
+  "negative_results_are_canon": [
+    "flat exact dictionary failure",
+    "exact-gap grammar failure",
+    "ordered-window grammar failure"
+  ],
+  "local_first": {
+    "primary_workstation": {
+      "cpu": "AMD Ryzen 9 9950X3D",
+      "ram_gb": 64,
+      "gpu": "NVIDIA GeForce RTX 5080",
+      "vram_gb": 16,
+      "ssd_tb": 4
+    },
+    "rule": "Canonical code, evidence, hashes, graph, and deterministic analyses remain locally owned. Cloud AI is optional and replaceable.",
+    "already_demonstrated": [
+      "real LIFE-CODE/EXP-0002 genomic execution under WSL2",
+      "large Cactus sequence comparisons",
+      "hundreds of gigabytes of Arabidopsis genomic processing"
+    ]
+  },
+  "near_term_product": "Local LIFE-CODE Explorer: CODE/HISTORY/POSSIBILITY/RESILIENCE modes, Code Map, evidence labels, semantic reveal, lineage/history graph, morph viewport, provenance.",
+  "long_term_product": "Mechanistically constrained AI Morph/Possibility/Resilience Engine with explicit observed-vs-inferred truth states.",
+  "guardrails": [
+    "no EXP-0002 leakage",
+    "no AI render presented as observed biology",
+    "no persistence=function assumption",
+    "no correlation=causation",
+    "retain provenance and uncertainty"
+  ]
+}
