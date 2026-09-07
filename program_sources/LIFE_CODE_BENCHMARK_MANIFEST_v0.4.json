@@ -1,0 +1,118 @@
+{
+  "schema": "LIFE_CODE_BENCHMARK_MANIFEST_v0.4",
+  "status": "DESIGN_LOCK_CANDIDATE",
+  "date": "2026-09-03",
+  "global_rules": {
+    "exp0002_firewall": true,
+    "annotation_blind_discovery": true,
+    "semantic_overlay_only_after_structural_freeze": true,
+    "retrodiction_before_extrapolation": true,
+    "negative_results_are_first_class": true,
+    "visual_plausibility_is_not_biological_plausibility": true
+  },
+  "benchmarks": [
+    {
+      "benchmark_id": "BENCH-P01",
+      "name": "Heliconius Pattern Reachability",
+      "pillar": "POSSIBILITY",
+      "purpose": "Validate whether LIFE-CODE can recover and retrodict modular visible pattern states from sequence-derived structure before attempting novel phenotype extrapolation.",
+      "scientific_role": "METHOD_VALIDATION_NOT_NOVELTY_CLAIM",
+      "primary_sources": [
+        {
+          "title": "Genomic architecture and introgression shape a butterfly radiation",
+          "bioproject": "PRJNA532398",
+          "url": "https://www.ncbi.nlm.nih.gov/bioproject/PRJNA532398",
+          "note": "20 de novo genome assemblies across the Heliconius radiation."
+        },
+        {
+          "title": "Genome assembly of Heliconius erato and resequencing across the radiation",
+          "bioproject": "PRJNA324415",
+          "url": "https://www.ncbi.nlm.nih.gov/bioproject/PRJNA324415"
+        },
+        {
+          "title": "2026 Heliconius long-read assembly BioProject",
+          "bioproject": "PRJNA1405132",
+          "url": "https://www.ncbi.nlm.nih.gov/bioproject/1405132",
+          "note": "Candidate quality-upgrade source; do not freeze assemblies until metadata QA."
+        }
+      ],
+      "candidate_assemblies": [
+        {"taxon": "Heliconius melpomene melpomene", "accession": "GCA_013420985.1", "status": "CANDIDATE"},
+        {"taxon": "Heliconius cydno hermogenes", "accession": "GCA_001510915.1", "status": "CANDIDATE"},
+        {"taxon": "Heliconius numata", "accession": "GCA_016802525.1", "status": "CANDIDATE"},
+        {"taxon": "Heliconius erato demophoon", "accession": "GCA_056362945.2", "status": "CANDIDATE_2026"},
+        {"taxon": "Heliconius erato etylus", "accession": "GCA_056362835.1", "status": "CANDIDATE_2026"},
+        {"taxon": "Heliconius melpomene rosina", "accession": "GCA_056362825.1", "status": "CANDIDATE_2026"},
+        {"taxon": "Heliconius numata", "accession": "GCA_056362935.1", "status": "CANDIDATE_2026_ALTERNATE"}
+      ],
+      "phenotype_truth_model": {
+        "representation": "wing-mask layers plus palette/mechanism labels",
+        "initial_channels": ["black_pattern", "red_orange_pattern", "yellow_white_switch", "iridescence_or_structural_color"],
+        "known_semantic_ground_truth_after_reveal": ["WntA", "optix", "cortex", "aristaless1"],
+        "warning": "Known genes are held-out semantic ground truth; they must not drive discovery features."
+      },
+      "first_validation": "Leave-one-taxon-or-race-out phenotype retrodiction followed by actual phenotype reveal.",
+      "rendering": "Parametric wing mask first; photorealistic generative renderer only after mask-level prediction is auditable."
+    },
+    {
+      "benchmark_id": "BENCH-R01",
+      "name": "Sebastes Longevity Resilience",
+      "pillar": "RESILIENCE",
+      "purpose": "Test whether annotation-blind structural and history diffs across repeated lifespan transitions recover recurrent biological subsystems before semantic reveal.",
+      "scientific_role": "METHOD_VALIDATION_AND_HYPOTHESIS_GENERATION",
+      "primary_sources": [
+        {
+          "title": "Origins and evolution of extreme lifespan in Pacific Ocean rockfishes",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8923369/",
+          "dataset": "88 rockfish species / 102 individuals"
+        },
+        {
+          "title": "rockfishgenomeproject",
+          "url": "https://github.com/sudmantlab/rockfishgenomeproject",
+          "ena": "PRJEB42258",
+          "note": "Study code plus links to sequence data, scaffolds and annotations."
+        },
+        {
+          "title": "Convergent genomics of longevity in rockfishes highlights the genetics of human life span variation",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9833670/",
+          "dataset": "23 extreme rockfish species plus sea robin outgroup; eight independent trait shifts"
+        },
+        {
+          "title": "AnAge",
+          "url": "https://www.genomics.senescence.info/species/query.php",
+          "note": "Independent longevity metadata cross-check; current public site reports Build 15 (2023)."
+        }
+      ],
+      "extreme_panel_23": {
+        "long_lived": [
+          "Sebastes borealis", "Sebastes aleutianus", "Sebastes crameri", "Sebastes alutus",
+          "Sebastes ruberrimus", "Sebastes melanostomus", "Sebastes diploproa", "Sebastes pinniger",
+          "Sebastes maliger", "Sebastes melanops", "Sebastes rufus", "Sebastes babcocki", "Sebastes helvomaculatus"
+        ],
+        "short_lived": [
+          "Sebastes emphaeus", "Sebastes glaucus", "Sebastes semicinctus", "Sebastes rastrelliger",
+          "Sebastes auriculatus", "Sebastes jordani", "Sebastes hopkinsi", "Sebastes rubrivinctus",
+          "Sebastes umbrosus", "Sebastes chlorostictus"
+        ],
+        "outgroup": "Prionotus carolinus"
+      },
+      "analysis_strategy": {
+        "stage_1": "Build sequence-only whole-genome distance/tree and structural feature inventory across the panel.",
+        "stage_2": "Identify multiple independent close branch contrasts using the frozen tree and trait key.",
+        "stage_3": "Compute Biological Diff for each contrast before annotation reveal.",
+        "stage_4": "Intersect recurrent structural/rewiring deltas across independent contrasts.",
+        "stage_5": "Apply body-size, depth, phylogenetic and composition controls; preserve conflicting branches.",
+        "stage_6": "Reveal annotation and compare recovered subsystems to known longevity biology; do not equate overlap with causality."
+      }
+    }
+  ],
+  "prediction_maturity_ladder": [
+    {"level": "P0", "name": "DESCRIBE", "requirement": "Accurate structural mapping/provenance."},
+    {"level": "P1", "name": "TRANSFER", "requirement": "Held-out structural recurrence survives predefined tests/nulls."},
+    {"level": "P2", "name": "RETRODICT", "requirement": "Hidden observed phenotype/trait state is predicted before reveal."},
+    {"level": "P3", "name": "INTERPOLATE", "requirement": "Predict states between supported observed points with calibrated uncertainty."},
+    {"level": "P4", "name": "CROSS-CONTEXT TRANSFER", "requirement": "Mechanism/state mapping transfers to an independent lineage/context."},
+    {"level": "P5", "name": "EXTRAPOLATE", "requirement": "Propose unobserved but constraint-compatible states; must remain explicitly hypothetical until observed or tested."},
+    {"level": "P6", "name": "INTERVENTION", "requirement": "Predict effects of perturbation; requires independent experimental validation and cannot be inferred from visualization alone."}
+  ]
+}

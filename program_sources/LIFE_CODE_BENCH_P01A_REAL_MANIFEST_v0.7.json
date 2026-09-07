@@ -1,0 +1,113 @@
+{
+  "schema": "LIFE_CODE_REAL_BENCHMARK_MANIFEST_v0.7",
+  "created": "2026-09-03",
+  "benchmark_id": "BENCH-P01A",
+  "name": "Heliconius cydno alithea Forewing Color Blind Retrodiction",
+  "pillar": "POSSIBILITY",
+  "maturity_target": "P2_RETRODICT",
+  "truth_state_target": "RETRODICTED",
+  "purpose": "First real-data bridge benchmark for LIFE-CODE predictive infrastructure. Predict a deliberately hidden, binary forewing color phenotype (yellow vs white) for held-out H. cydno alithea males using genomic information while semantic annotation is locked.",
+  "scientific_boundary": {
+    "is_core_lifecode_discovery_experiment": false,
+    "role": "representation/prediction validation bridge",
+    "reason": "The published resource already contains genotype/variant and phenotype data. It is therefore ideal for testing blind prediction contracts, but any recovery of the known K-locus/aristaless biology is validation, not novelty.",
+    "exp0002_firewall": true
+  },
+  "published_cohort": {
+    "n_total": 113,
+    "yellow": 57,
+    "white": 56,
+    "phenotype": "male forewing color",
+    "species": "Heliconius cydno alithea"
+  },
+  "sources": [
+    {
+      "id": "PLOS_2025",
+      "title": "Genetic, developmental, and neural changes underlying the evolution of butterfly mate preference",
+      "publisher": "PLOS Biology",
+      "url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3002989",
+      "use": "Cohort definition and published phenotype/genomic context"
+    },
+    {
+      "id": "DRYAD_Z8W9GHXJZ",
+      "title": "Genetic, developmental and neural changes underlying evolving butterfly mate preference",
+      "publisher": "Dryad",
+      "doi": "10.5061/dryad.z8w9ghxjz",
+      "url": "https://datadryad.org/dataset/doi:10.5061/dryad.z8w9ghxjz",
+      "expected_files": [
+        "gwas.tar.gz",
+        "heliconius_cydno_alithea.yellow.fa.gz",
+        "MalePhenotypeData.20190306.txt (inside gwas archive)",
+        "genome-wide pruned variant callset / PLINK files (inside gwas archive)"
+      ],
+      "use": "Primary compact local benchmark package"
+    },
+    {
+      "id": "NCBI_PRJNA802836",
+      "title": "H. cydno alithea whole-genome resequencing",
+      "publisher": "NCBI",
+      "accession": "PRJNA802836",
+      "url": "https://www.ncbi.nlm.nih.gov/bioproject/PRJNA802836",
+      "use": "Optional raw-read escalation path for sequence-native replication"
+    },
+    {
+      "id": "ARISTALESS_2018",
+      "title": "Aristaless controls butterfly wing color variation used in mimicry and mate choice",
+      "publisher": "Current Biology / PMC",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6234856/",
+      "use": "POST-REVEAL semantic/mechanistic ground truth only"
+    }
+  ],
+  "frozen_split_contract": {
+    "strategy": "deterministic balanced label-stratified holdout",
+    "id_normalization": "strip whitespace; preserve case; UTF-8",
+    "ranking": "SHA256('BENCH-P01A|v0.7|' + normalized_subject_id)",
+    "holdout_per_class": 11,
+    "expected_train": {
+      "yellow": 46,
+      "white": 45,
+      "total": 91
+    },
+    "expected_holdout": {
+      "yellow": 11,
+      "white": 11,
+      "total": 22
+    },
+    "note": "Labels may be used by the orchestration layer only to create a balanced split. Held-out phenotype labels are then sealed and unavailable to inference until reveal."
+  },
+  "lanes": {
+    "A_bridge_variant_lane": {
+      "inputs": "published reference + pruned genome-wide variant data",
+      "goal": "prove freeze/render/score/retrodiction machinery on real biology",
+      "allowed_semantics": false,
+      "claim_limit": "benchmark validation only"
+    },
+    "B_sequence_native_lane": {
+      "inputs": "raw WGS or reconstructed per-subject sequence state",
+      "goal": "repeat benchmark using sequence-native LIFE-CODE structural features",
+      "allowed_semantics": false,
+      "claim_limit": "stronger representation validation"
+    },
+    "C_cross_taxon_morph_lane": {
+      "inputs": "multi-race/species genomes + spatial phenotype masks",
+      "goal": "graduate from binary color to spatial morphology retrodiction",
+      "allowed_semantics": false,
+      "claim_limit": "P2/P3 only until validated"
+    }
+  },
+  "reveal_ground_truth": {
+    "known_mechanism_summary": "White/yellow wing coloration maps to the K-locus region; later work identifies regulatory variation around aristaless1 as causal/mechanistically supported. This information is forbidden to the blind inference lane and is used only after freeze.",
+    "semantic_reveal_status": "LOCKED_UNTIL_POST_SCORE"
+  },
+  "success_gates": [
+    "All source files hashed before analysis.",
+    "Subject ID mapping resolved without phenotype leakage.",
+    "Train/holdout split generated deterministically and frozen.",
+    "Held-out truth stored separately; only its SHA-256 visible pre-reveal.",
+    "Prediction packet emitted for all 22 holdout subjects.",
+    "Model/config/input hashes frozen before reveal.",
+    "Primary score is balanced accuracy plus Brier/log-loss style calibration; not visual realism.",
+    "Permutation/null labels and phylogeny/population-structure baselines are evaluated.",
+    "Post-reveal semantic concordance is recorded as new evidence, never used to rewrite the frozen prediction."
+  ]
+}
