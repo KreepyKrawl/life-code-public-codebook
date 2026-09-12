@@ -1,0 +1,93 @@
+{
+  "result_id": "PANEL3_SEQUENCE_COMPLEXITY_CONFOUNDER_CHALLENGE_0001",
+  "status": "RETROACTIVE_EXPLORATORY",
+  "parent_prereg_release": "LIFE_CODE_CODEBOOK_v0.0.75",
+  "original_prospective_LC_PRED_0033_status": "STRONGLY_SUPPORTED_UNCHANGED",
+  "null_results": {
+    "entropy": {
+      "name": "GC_x_separation_x_entropy_bin",
+      "observed": 84,
+      "analytic_null_mean": 79.41069486069486,
+      "mc_null_mean": 79.42049,
+      "mc_null_sd": 4.262506089133481,
+      "q95": 87.0,
+      "q99": 90.0,
+      "mc_tail_ge": 0.16876831231687683,
+      "fixed_boundary_memberships": 155,
+      "movable_boundary_memberships": 205,
+      "boundary_memberships_total": 360,
+      "movability_fraction": 0.5694444444444444,
+      "seed": 7500751,
+      "status": "MIXED_WEAKENED_RETRO"
+    },
+    "run": {
+      "name": "GC_x_separation_x_max_run_bin",
+      "observed": 84,
+      "analytic_null_mean": 69.41550676598084,
+      "mc_null_mean": 69.41597,
+      "mc_null_sd": 4.661403110555877,
+      "q95": 77.0,
+      "q99": 81.0,
+      "mc_tail_ge": 0.0017299827001729983,
+      "fixed_boundary_memberships": 130,
+      "movable_boundary_memberships": 230,
+      "boundary_memberships_total": 360,
+      "movability_fraction": 0.6388888888888888,
+      "seed": 7500752,
+      "status": "STRONGLY_SUPPORTED_RETRO"
+    },
+    "combined": {
+      "name": "GC_x_separation_x_entropy_bin_x_max_run_bin",
+      "observed": 84,
+      "analytic_null_mean": 81.83841991341991,
+      "mc_null_mean": 81.82422,
+      "mc_null_sd": 3.6554208227781384,
+      "q95": 88.0,
+      "q99": 91.0,
+      "mc_tail_ge": 0.3181068189318107,
+      "fixed_boundary_memberships": 212,
+      "movable_boundary_memberships": 148,
+      "boundary_memberships_total": 360,
+      "movability_fraction": 0.4111111111111111,
+      "seed": 7500753,
+      "status": "BLOCKED_LOW_MOVABILITY"
+    }
+  },
+  "breadth_complexity_diagnostic": {
+    "all_1000": {
+      "mean_entropy": 1.515323875872536,
+      "median_entropy": 1.5566567074628228,
+      "entropy_bins": {
+        "E2": 371,
+        "E3": 452,
+        "E1": 157,
+        "E0": 20
+      },
+      "mean_max_run": 3.376,
+      "median_max_run": 3.0,
+      "run_bins": {
+        "R2": 165,
+        "R1": 591,
+        "R0": 244
+      }
+    },
+    "top25": {
+      "mean_entropy": 0.8440217635794364,
+      "median_entropy": 0.863120568566631,
+      "entropy_bins": {
+        "E0": 12,
+        "E1": 12,
+        "E2": 1
+      },
+      "mean_max_run": 4.52,
+      "median_max_run": 4,
+      "run_bins": {
+        "R2": 10,
+        "R1": 14,
+        "R0": 1
+      }
+    }
+  },
+  "historical_prediction_status_changes": 0,
+  "claim_boundary": "Tests simple fixed-base entropy and masked-pattern homopolymer-run confounding only; low-complexity biology/function remains UNKNOWN."
+}

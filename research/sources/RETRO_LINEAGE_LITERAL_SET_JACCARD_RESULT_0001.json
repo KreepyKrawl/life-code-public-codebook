@@ -1,0 +1,45 @@
+{
+  "result_id": "RETRO_LINEAGE_LITERAL_SET_JACCARD_0001",
+  "status": "NOT_LINEAGE_COHERENT_LITERAL_SET_RETRO",
+  "evidence_status": "RETROACTIVE_EXPLORATORY",
+  "parent_prereg_release": "LIFE_CODE_CODEBOOK_v0.0.58",
+  "literal_positive_contrasts": 1,
+  "literal_contrasts": {
+    "Bacteria": {
+      "near": 0.002838221381267739,
+      "far": 0.0018399264029438822,
+      "positive": true
+    },
+    "Archaea": {
+      "near": 0.000945179584120983,
+      "far": 0.0070859167404783,
+      "positive": false
+    },
+    "Eukaryota": {
+      "near": 0.0851948051948052,
+      "far": 0.09813917919959216,
+      "positive": false
+    }
+  },
+  "masked_secondary_status": "NOT_LINEAGE_COHERENT_MASKED_SET_RETRO",
+  "masked_positive_contrasts": 0,
+  "masked_contrasts": {
+    "Bacteria": {
+      "near": 0.019,
+      "far": 0.03199367088607595,
+      "positive": false
+    },
+    "Archaea": {
+      "near": 0.008,
+      "far": 0.075,
+      "positive": false
+    },
+    "Eukaryota": {
+      "near": 0.3618181818181818,
+      "far": 0.42321644498186217,
+      "positive": false
+    }
+  },
+  "historical_prediction_status_changes": 0,
+  "interpretation_boundary": "Established lineage is the independent map. Jaccard is representation similarity, not phylogenetic branch length."
+}

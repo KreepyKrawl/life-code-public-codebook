@@ -1,0 +1,54 @@
+{
+  "entry_id": "LC-ARCH-0012",
+  "entry_type": "OBS",
+  "status": "PROVISIONAL",
+  "evidence": [
+    {
+      "class": "I1",
+      "statement": "Established phylogenetic/taxonomic lineage is now the default external coordinate scaffold for locating representation transformations; LIFE-CODE will not reinvent the species tree.",
+      "source_refs": [
+        "RETRO_PARAMETER_SIGNAL_SENSITIVITY_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "The C. elegans-concentrated parameter clue is most efficiently bracketed by close C. briggsae followed by deeper ecdysozoan Drosophila rather than another arbitrary broad panel.",
+      "source_refs": [
+        "RETRO_PARAMETER_SIGNAL_SENSITIVITY_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "P1",
+      "statement": "LC-PRED-0043/0044/0045 freeze C. briggsae replication, C. elegans-to-C. briggsae transfer, and lineage-ordered transfer before new sequence acquisition.",
+      "source_refs": [
+        "CELEGANS_PARAMETER_CONTEXT_MODEL_v1_SCORES.csv"
+      ]
+    }
+  ],
+  "observations": {
+    "lineage_scaffold": "CANONICAL",
+    "cbriggsae": "FROZEN_NOT_ACQUIRED"
+  },
+  "semantics": {
+    "code_transformation": "UNKNOWN",
+    "phylogeny_role": "EXTERNAL_SCAFFOLD"
+  },
+  "relationships": [
+    "LC-ARCH-0011",
+    "LC-OBS-EVO-REP-0004",
+    "LC-HYP-EVO-CODE-0001"
+  ],
+  "predictions": [
+    "LC-PRED-0043",
+    "LC-PRED-0044",
+    "LC-PRED-0045"
+  ],
+  "unknowns": [
+    "Depth of the C. elegans parameter clue on the metazoan/ecdysozoan/nematode tree."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "RETRO_PARAMETER_SIGNAL_SENSITIVITY_RESULT_0001.json",
+    "CELEGANS_PARAMETER_CONTEXT_MODEL_v1_SCORES.csv"
+  ]
+}

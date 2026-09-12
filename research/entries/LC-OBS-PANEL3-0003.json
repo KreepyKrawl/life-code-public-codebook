@@ -1,0 +1,40 @@
+{
+  "entry_id": "LC-OBS-PANEL3-0003",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E2",
+      "statement": "The repaired independent regex oracle exactly matches the frozen C++ scanner on all 54 occurrences from the 32 preregistered token\u00d7genome cases.",
+      "source_refs": [
+        "PANEL3_PLUS_LINEAGE_INDEPENDENT_REGEX_CROSSCHECK_RESULT_0002.json"
+      ]
+    },
+    {
+      "class": "E2",
+      "statement": "The only prior mismatch was the frozen comma-to-semicolon CSV header serialization, repaired exactly as preregistered.",
+      "source_refs": [
+        "PANEL3_PLUS_LINEAGE_INDEPENDENT_REGEX_CROSSCHECK_RESULT_0002.json"
+      ]
+    }
+  ],
+  "observations": {
+    "scanner_crosscheck": "PASS",
+    "boundary": "NOT_RUN"
+  },
+  "semantics": {
+    "scanner_semantics": "VALIDATED"
+  },
+  "relationships": [
+    "LC-OBS-PANEL3-0002",
+    "LC-ARCH-0014"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Boundary-role results and prediction adjudication."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PANEL3_PLUS_LINEAGE_INDEPENDENT_REGEX_CROSSCHECK_RESULT_0002.json"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "entry_id": "LC-OBS-MITO-0001",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "The 35 frozen mitochondrial MOP occurrences decompose internally into {'intergenic': 26, 'rRNA': 2, 'protein_coding_CDS': 6, 'unresolved': 1} under the predeclared non-organellar mitochondrial classifier.",
+      "source_refs": [
+        "MITO_INTERNAL_RESULT_0001.json",
+        "MITO_INTERNAL_35_OCCURRENCES.csv"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "LC-PRED-0016 mitochondrial-intergenic ratio is 1.2196 with exact upper-tail 0.0710882; outcome MIXED_WEAKENED.",
+      "source_refs": [
+        "MITO_INTERNAL_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "The global organellar enrichment must be decomposed internally; mitochondria cannot be treated as one semantic class merely because the whole replicon was enriched.",
+      "source_refs": [
+        "MITO_INTERNAL_RESULT_0001.json",
+        "ARCHITECTURE_BACKGROUND_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "internal_counts": {
+      "intergenic": 26,
+      "rRNA": 2,
+      "protein_coding_CDS": 6,
+      "unresolved": 1
+    },
+    "LC-PRED-0016": "MIXED_WEAKENED"
+  },
+  "semantics": {
+    "validated_identity": "internal mitochondrial address-space decomposition",
+    "control_interface_identity": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-OBS-ARCH-0001"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Functional meaning of individual mitochondrial MOP occurrences.",
+    "Homology/system identity of corresponding bacterial/archaeal occurrences."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "MITO_INTERNAL_RESULT_0001.json",
+    "MITO_INTERNAL_35_OCCURRENCES.csv",
+    "ARCHITECTURE_DECOMPOSITION_VALIDATION_0001.json"
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "observed_total_primary_intergenic": 884,
+  "background": {
+    "ECOLI": {
+      "zone_counts": {
+        "GENE_BODY_NONPRIMARY": 348,
+        "OUTSIDE_GENE": 418374
+      },
+      "distance_bins": {
+        "0_25": 127824,
+        "26_50": 88175,
+        "51_100": 106947,
+        "101_250": 79835,
+        "251_500": 13046,
+        "501_1000": 2292,
+        "GT_1000": 255
+      },
+      "nearest_end": {
+        "5PRIME": 253331,
+        "3PRIME": 164125,
+        "TIE": 918,
+        "UNKNOWN": 0
+      },
+      "orientation": {
+        "TANDEM_FWD": 111662,
+        "CONVERGENT": 50806,
+        "TANDEM_REV": 116722,
+        "DIVERGENT": 139184
+      },
+      "p18_near_end": {
+        "5PRIME": 191719,
+        "3PRIME": 130498
+      }
+    },
+    "PYRO": {
+      "zone_counts": {
+        "GENE_BODY_NONPRIMARY": 0,
+        "OUTSIDE_GENE": 121337
+      },
+      "distance_bins": {
+        "0_25": 44392,
+        "26_50": 24287,
+        "51_100": 23876,
+        "101_250": 21813,
+        "251_500": 6732,
+        "501_1000": 237,
+        "GT_1000": 0
+      },
+      "nearest_end": {
+        "5PRIME": 75181,
+        "3PRIME": 45828,
+        "TIE": 328,
+        "UNKNOWN": 0
+      },
+      "orientation": {
+        "TANDEM_REV": 31299,
+        "DIVERGENT": 42499,
+        "TANDEM_FWD": 32210,
+        "CONVERGENT": 15329
+      },
+      "p18_near_end": {
+        "5PRIME": 59134,
+        "3PRIME": 33124
+      }
+    },
+    "YEAST": {
+      "zone_counts": {
+        "GENE_BODY_NONPRIMARY": 59809,
+        "OUTSIDE_GENE": 2830276
+      },
+      "distance_bins": {
+        "0_25": 309043,
+        "26_50": 287180,
+        "51_100": 516853,
+        "101_250": 873609,
+        "251_500": 472454,
+        "501_1000": 256671,
+        "GT_1000": 114466
+      },
+      "nearest_end": {
+        "5PRIME": 1692805,
+        "3PRIME": 1136075,
+        "TIE": 1396,
+        "UNKNOWN": 0
+      },
+      "orientation": {
+        "EDGE_OR_UNRESOLVED": 14456,
+        "DIVERGENT": 971183,
+        "CONVERGENT": 405778,
+        "TANDEM_REV": 691848,
+        "TANDEM_FWD": 747011
+      },
+      "p18_near_end": {
+        "5PRIME": 588377,
+        "3PRIME": 524538
+      }
+    }
+  },
+  "observed_by_genome": {
+    "ECOLI": {
+      "total_intergenic": 221,
+      "zone_counts": {
+        "OUTSIDE_GENE": 221
+      },
+      "distance_bins": {
+        "51_100": 66,
+        "0_25": 49,
+        "26_50": 48,
+        "501_1000": 1,
+        "101_250": 52,
+        "251_500": 5
+      },
+      "nearest_end": {
+        "5PRIME": 149,
+        "3PRIME": 72
+      },
+      "orientation": {
+        "TANDEM_FWD": 57,
+        "TANDEM_REV": 65,
+        "DIVERGENT": 84,
+        "CONVERGENT": 15
+      }
+    },
+    "PYRO": {
+      "total_intergenic": 120,
+      "zone_counts": {
+        "OUTSIDE_GENE": 120
+      },
+      "distance_bins": {
+        "0_25": 62,
+        "26_50": 19,
+        "101_250": 16,
+        "251_500": 4,
+        "51_100": 19
+      },
+      "nearest_end": {
+        "3PRIME": 60,
+        "5PRIME": 60
+      },
+      "orientation": {
+        "TANDEM_REV": 28,
+        "DIVERGENT": 35,
+        "TANDEM_FWD": 38,
+        "CONVERGENT": 19
+      }
+    },
+    "YEAST": {
+      "total_intergenic": 543,
+      "zone_counts": {
+        "OUTSIDE_GENE": 536,
+        "GENE_BODY_NONPRIMARY": 7
+      },
+      "distance_bins": {
+        "GT_1000": 20,
+        "0_25": 72,
+        "101_250": 160,
+        "251_500": 77,
+        "51_100": 110,
+        "26_50": 68,
+        "501_1000": 29
+      },
+      "nearest_end": {
+        "3PRIME": 244,
+        "5PRIME": 292
+      },
+      "orientation": {
+        "CONVERGENT": 112,
+        "DIVERGENT": 161,
+        "TANDEM_FWD": 124,
+        "TANDEM_REV": 138,
+        "EDGE_OR_UNRESOLVED": 1
+      }
+    }
+  },
+  "LC_PRED_0017": {
+    "observed_near_boundary": 513,
+    "eligible_outside_gene_by_genome": {
+      "ECOLI": 221,
+      "PYRO": 120,
+      "YEAST": 536
+    },
+    "background_near_probability_by_genome": {
+      "ECOLI": 0.7719074321062016,
+      "PYRO": 0.7627928826326676,
+      "YEAST": 0.3932747194973211
+    },
+    "expected": 472.9219380619548,
+    "ratio": 1.0847456180660302,
+    "mc_tail_ge": 0.0023498825058747065
+  },
+  "LC_PRED_0018": {
+    "observed_5prime": 269,
+    "eligible_near_nontie_by_genome": {
+      "ECOLI": 163,
+      "PYRO": 100,
+      "YEAST": 250
+    },
+    "background_5prime_probability_by_genome": {
+      "ECOLI": 0.594999643097664,
+      "PYRO": 0.6409633852890806,
+      "YEAST": 0.5286809864185494
+    },
+    "expected": 293.25152695846464,
+    "ratio": 0.9173012764503028,
+    "mc_tail_ge": 0.9866506674666267
+  },
+  "monte_carlo": {
+    "P17": {
+      "reps": 20000,
+      "seed": 170017
+    },
+    "P18": {
+      "reps": 20000,
+      "seed": 180018
+    }
+  },
+  "pre_execution_release": {
+    "release": "LIFE_CODE_CODEBOOK_v0.0.18",
+    "zip_sha256": "258f07b88c40b6be3971ba4a0eb66ecd34b13ce1ad6378c117dfb22b4d26c030"
+  },
+  "reference_algorithm_sha256": "c0ff7e669ef92476b1841c22b33ecfcca29c0ef9f1634ec65cbb246f9d5948c3",
+  "production_algorithm_sha256": "2cda6bc0e792590fe4b70e82f13188b2a16e34325442aac326960cbd43e5fa5a",
+  "production_equivalence_status": "PASS",
+  "prediction_outcomes": {
+    "LC-PRED-0017": "STRONGLY_SUPPORTED",
+    "LC-PRED-0018": "FALSIFIED"
+  }
+}

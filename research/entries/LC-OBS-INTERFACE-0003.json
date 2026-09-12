@@ -1,0 +1,99 @@
+{
+  "entry_id": "LC-OBS-INTERFACE-0003",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "Across the 97 shared boundary-token memberships, joint geometry score S_G=36.333334.",
+      "source_refs": [
+        "BOUNDARY_GEOMETRY_CONCORDANCE_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "Matched token-reassignment null mean=37.742907; observed is lower, so LC-PRED-0022 is FALSIFIED.",
+      "source_refs": [
+        "BOUNDARY_GEOMETRY_CONCORDANCE_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "The supported cross-genome signal currently resolves to broad boundary-role recurrence, not conserved neighboring component identity or conserved detailed distance/end/orientation geometry.",
+      "source_refs": [
+        "BOUNDARY_GEOMETRY_CONCORDANCE_RESULT_0001.json",
+        "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json",
+        "C3_SAME_SYSTEM_RESULT_0001.json",
+        "C3_PROTEIN_SEQUENCE_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "S_G_real": 36.333334147930145,
+    "pair_results": {
+      "EP": {
+        "overlap_count": 29,
+        "S_G": 11.000000238418579,
+        "mean_G": 0.3793103530489165,
+        "G1": 3,
+        "G2_3": 5,
+        "G1_3": 14,
+        "G0": 7
+      },
+      "EY": {
+        "overlap_count": 42,
+        "S_G": 20.000000417232513,
+        "mean_G": 0.47619048612458365,
+        "G1": 6,
+        "G2_3": 15,
+        "G1_3": 12,
+        "G0": 9
+      },
+      "PY": {
+        "overlap_count": 26,
+        "S_G": 5.333333492279053,
+        "mean_G": 0.20512821124150202,
+        "G1": 0,
+        "G2_3": 4,
+        "G1_3": 8,
+        "G0": 14
+      }
+    },
+    "secondary": {
+      "full_signature": 9,
+      "distance_concordant": 38,
+      "end_concordant": 44,
+      "orientation_concordant": 34
+    },
+    "null": {
+      "replicates": 100000,
+      "generator": "NumPy PCG64",
+      "seed": 270027,
+      "mean": 37.74290741568566,
+      "sd": 2.892466302069858,
+      "q95": 42.666664123535156,
+      "q99": 44.66666507720947,
+      "mc_tail_ge": 0.6802831971680283
+    },
+    "LC-PRED-0022": "FALSIFIED"
+  },
+  "semantics": {
+    "broad_boundary_role": "SUPPORTED_PREVIOUSLY",
+    "detailed_geometry_transfer": "NEGATIVE"
+  },
+  "relationships": [
+    "LC-OBS-INTERFACE-0002",
+    "LC-OBS-C3-0002"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Whether broad boundary-role recurrence replicates in the independent frozen diagnostic sample."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "BOUNDARY_GEOMETRY_CONCORDANCE_RESULT_0001.json",
+    "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json",
+    "C3_SAME_SYSTEM_RESULT_0001.json",
+    "C3_PROTEIN_SEQUENCE_RESULT_0001.json"
+  ]
+}

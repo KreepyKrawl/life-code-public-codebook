@@ -85,3 +85,5 @@ footer{border-top:1px solid var(--line);padding:18px 28px;color:var(--muted);fon
 
 /* Evidence tables retain every scientific field on narrow screens. */
 .table-scroll{max-width:100%;overflow-x:auto} .table-scroll table{min-width:600px} .hash{overflow-wrap:anywhere;word-break:break-all} .dna{white-space:nowrap;letter-spacing:.05em} .checks{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:.5rem}.checks dd{margin:0} details{margin:1rem 0} summary{cursor:pointer;padding:.5rem 0} #wordSearch,#auditSearch{display:block;width:100%;box-sizing:border-box;margin-top:.5rem} :focus-visible{outline:3px solid #75e5d3;outline-offset:3px} caption{text-align:left;padding:.5rem 0;color:var(--muted)}
+
+#researchSearch{display:block;width:100%;box-sizing:border-box;margin:.5rem 0 1rem}.statusinventory{display:flex;flex-wrap:wrap;gap:.5rem}.table-scroll table table{min-width:280px} #researchResults .finding{margin-top:1.5rem}

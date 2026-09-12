@@ -1,0 +1,37 @@
+{
+  "validation_id": "MOP16_14_INDEPENDENT_MASK_CROSSCHECK",
+  "method": "Independent NumPy implementation generated 16-mer words, projected fixed positions directly, used np.unique/intersect1d, and independently counted three selected masks on the full real genomes.",
+  "masks": [
+    {
+      "mask": [
+        6,
+        9
+      ],
+      "independent_global": 5076,
+      "counter_global": 5076,
+      "independent_target": 1,
+      "counter_target": 1
+    },
+    {
+      "mask": [
+        0,
+        1
+      ],
+      "independent_global": 5561,
+      "counter_global": 5561,
+      "independent_target": 0,
+      "counter_target": 0
+    },
+    {
+      "mask": [
+        14,
+        15
+      ],
+      "independent_global": 5561,
+      "counter_global": 5561,
+      "independent_target": 0,
+      "counter_target": 0
+    }
+  ],
+  "status": "PASS"
+}

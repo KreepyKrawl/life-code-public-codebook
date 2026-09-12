@@ -1,0 +1,50 @@
+{
+  "prediction_id": "LC-PRED-0020",
+  "status": "FALSIFIED",
+  "evidence_class": "P1",
+  "statement": "Boundary-role MOP identities will be associated with semantically same-system neighboring components across genomes more often than expected under the matched token-assignment null.",
+  "support_condition": "S_C3 above null mean and one-sided 100,000-replicate Monte Carlo tail <=0.05; strong support <=0.01.",
+  "weakening_condition": "S_C3 above null mean but tail >0.05.",
+  "falsification_condition": "S_C3 <= null mean.",
+  "contamination_boundary": "Frozen before candidate neighboring gene symbols, products, EC numbers, or C3 match counts were extracted or inspected.",
+  "source_refs": [
+    "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json",
+    "CROSS_GENOME_INTERFACE_ROLE_TOKENS.csv",
+    "INTERGENIC_884_GEOMETRY.csv",
+    "C3_GBFF_SEQUENCE_GATE_0001.json"
+  ],
+  "validation": {
+    "result": "FALSIFIED",
+    "source": "C3_SAME_SYSTEM_RESULT_0001.json",
+    "S_C3_real": 0,
+    "replicates": 100000,
+    "generator": "NumPy PCG64",
+    "seed": 230023,
+    "mean": 0.00612,
+    "sd": 0.07799067636583235,
+    "q95": 0.0,
+    "q99": 0.0,
+    "mc_tail_ge": 1.0,
+    "pair_results": {
+      "EP": {
+        "overlap_token_count": 29,
+        "C3_positive": 0
+      },
+      "EY": {
+        "overlap_token_count": 42,
+        "C3_positive": 0
+      },
+      "PY": {
+        "overlap_token_count": 26,
+        "C3_positive": 0
+      }
+    },
+    "extraction_coverage": {
+      "component_rows": 515,
+      "unique_token_genome_gene_components": 507,
+      "with_usable_semantic_fingerprint": 466,
+      "with_protein_id": 482,
+      "without_usable_semantic_fingerprint": 41
+    }
+  }
+}

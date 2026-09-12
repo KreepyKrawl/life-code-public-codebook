@@ -1,0 +1,113 @@
+{
+  "status": "STRONG_PARAMETER_ASSOCIATION_RETRO",
+  "primary_statistic": "sum Pearson 2xK association over frozen eligible token\u00d7genome strata",
+  "observed_S_param": 2509.1336780014353,
+  "null_mean": 2298.9309009495882,
+  "null_sd": 86.3531709181046,
+  "q95": 2444.2004135611346,
+  "q99": 2507.487878028294,
+  "mc_tail_ge": 0.00967990320096799,
+  "replicates": 100000,
+  "seed": 500040,
+  "eligible_token_genome_strata": 315,
+  "eligible_occurrences": 10051,
+  "eligible_boundary_occurrences": 968,
+  "unique_tokens": 250,
+  "genomes_represented": 6,
+  "weighted_parameter_entropy_all": 2.6158319605859597,
+  "weighted_parameter_entropy_boundary": 1.444076654786962,
+  "genome_diagnostics": {
+    "ECOLI": {
+      "eligible_strata": 1,
+      "eligible_occurrences": 5,
+      "eligible_boundary_occurrences": 4,
+      "observed_stat_contribution": 5.000000000000002
+    },
+    "PYRO": {
+      "eligible_strata": 0,
+      "eligible_occurrences": 0,
+      "eligible_boundary_occurrences": 0,
+      "observed_stat_contribution": 0
+    },
+    "YEAST": {
+      "eligible_strata": 26,
+      "eligible_occurrences": 282,
+      "eligible_boundary_occurrences": 102,
+      "observed_stat_contribution": 124.4115675752608
+    },
+    "BACILLUS": {
+      "eligible_strata": 0,
+      "eligible_occurrences": 0,
+      "eligible_boundary_occurrences": 0,
+      "observed_stat_contribution": 0
+    },
+    "SULFOLOBUS": {
+      "eligible_strata": 0,
+      "eligible_occurrences": 0,
+      "eligible_boundary_occurrences": 0,
+      "observed_stat_contribution": 0
+    },
+    "POMBE": {
+      "eligible_strata": 23,
+      "eligible_occurrences": 336,
+      "eligible_boundary_occurrences": 64,
+      "observed_stat_contribution": 112.59990378775038
+    },
+    "PSEUDOMONAS": {
+      "eligible_strata": 0,
+      "eligible_occurrences": 0,
+      "eligible_boundary_occurrences": 0,
+      "observed_stat_contribution": 0
+    },
+    "MYCOPLASMA": {
+      "eligible_strata": 0,
+      "eligible_occurrences": 0,
+      "eligible_boundary_occurrences": 0,
+      "observed_stat_contribution": 0
+    },
+    "METHANOCALDOCOCCUS": {
+      "eligible_strata": 2,
+      "eligible_occurrences": 10,
+      "eligible_boundary_occurrences": 4,
+      "observed_stat_contribution": 10.0
+    },
+    "HALOFERAX": {
+      "eligible_strata": 0,
+      "eligible_occurrences": 0,
+      "eligible_boundary_occurrences": 0,
+      "observed_stat_contribution": 0
+    },
+    "NEUROSPORA": {
+      "eligible_strata": 23,
+      "eligible_occurrences": 698,
+      "eligible_boundary_occurrences": 59,
+      "observed_stat_contribution": 107.09919956476054
+    },
+    "CELEGANS": {
+      "eligible_strata": 240,
+      "eligible_occurrences": 8720,
+      "eligible_boundary_occurrences": 735,
+      "observed_stat_contribution": 2150.023007073664
+    }
+  },
+  "domain_diagnostics": {
+    "Bacteria": {
+      "eligible_strata": 1,
+      "eligible_occurrences": 5,
+      "observed_stat_contribution": 5.000000000000002
+    },
+    "Archaea": {
+      "eligible_strata": 2,
+      "eligible_occurrences": 10,
+      "observed_stat_contribution": 10.0
+    },
+    "Eukarya": {
+      "eligible_strata": 312,
+      "eligible_occurrences": 10036,
+      "observed_stat_contribution": 2494.1336780014353
+    }
+  },
+  "boundary_reconstruction_gate": "PASS",
+  "historical_prediction_status_changes": 0,
+  "claim_boundary": "RETROACTIVE_EXPLORATORY association only; no argument/function/mechanism claim."
+}

@@ -1,0 +1,16 @@
+{
+  "prediction_id": "LC-PRED-0051",
+  "status": "FROZEN_UNTESTED",
+  "evidence_class": "P1",
+  "statement": "Fresh broad-boundary tokens will retain exact 16-nt implementations previously observed in same-domain development genomes more often than expected under the entropy-aware v3-baseline conditioned null.",
+  "primary_statistic": "T_literal20",
+  "null_seed": 810051,
+  "movability_gate": ">=50% of observed fresh boundary token\u00d7genome memberships movable",
+  "source_refs": [
+    "BOUNDARY_RESIDUAL_MODEL_v3_SCORES.csv"
+  ],
+  "support_condition": "If gate passes: observed>null mean and p<=.05; strong p<=.01.",
+  "weakening_condition": "If gate passes: observed>null mean and p>.05.",
+  "falsification_condition": "If gate passes: observed<=null mean.",
+  "contamination_boundary": "Frozen before acquisition of all six fresh validation genomes."
+}

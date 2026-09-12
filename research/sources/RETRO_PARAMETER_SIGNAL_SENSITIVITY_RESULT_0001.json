@@ -1,0 +1,92 @@
+{
+  "CELEGANS_only": {
+    "genomes": [
+      "CELEGANS"
+    ],
+    "eligible_strata": 240,
+    "eligible_occurrences": 8720,
+    "observed": 2150.023007073664,
+    "null_mean": 1926.0793641194498,
+    "null_sd": 81.21717364228984,
+    "q95": 2062.615815666337,
+    "q99": 2122.012048181496,
+    "mc_tail_ge": 0.004539954600453995,
+    "seed": 520051
+  },
+  "all_except_CELEGANS": {
+    "genomes": [
+      "ECOLI",
+      "METHANOCALDOCOCCUS",
+      "NEUROSPORA",
+      "POMBE",
+      "YEAST"
+    ],
+    "eligible_strata": 75,
+    "eligible_occurrences": 1331,
+    "observed": 359.1106709277717,
+    "null_mean": 372.5610763346903,
+    "null_sd": 28.62091529080124,
+    "q95": 421.56909022748005,
+    "q99": 444.38096265669805,
+    "mc_tail_ge": 0.6677133228667713,
+    "seed": 520052
+  },
+  "YEAST_only": {
+    "genomes": [
+      "YEAST"
+    ],
+    "eligible_strata": 26,
+    "eligible_occurrences": 282,
+    "observed": 124.4115675752608,
+    "null_mean": 122.48744079151822,
+    "null_sd": 9.399879138057903,
+    "q95": 138.995663343451,
+    "q99": 146.54679087879362,
+    "mc_tail_ge": 0.3942360576394236,
+    "seed": 520053
+  },
+  "POMBE_only": {
+    "genomes": [
+      "POMBE"
+    ],
+    "eligible_strata": 23,
+    "eligible_occurrences": 336,
+    "observed": 112.59990378775038,
+    "null_mean": 111.97325542054783,
+    "null_sd": 13.969503519737373,
+    "q95": 135.9777695593906,
+    "q99": 146.42770148915463,
+    "mc_tail_ge": 0.46620533794662056,
+    "seed": 520054
+  },
+  "NEUROSPORA_only": {
+    "genomes": [
+      "NEUROSPORA"
+    ],
+    "eligible_strata": 23,
+    "eligible_occurrences": 698,
+    "observed": 107.09919956476054,
+    "null_mean": 126.83420878262407,
+    "null_sd": 23.243580023205908,
+    "q95": 167.69955554564655,
+    "q99": 187.65175373149037,
+    "mc_tail_ge": 0.7971420285797142,
+    "seed": 520055
+  },
+  "non_animal_eukaryotes": {
+    "genomes": [
+      "NEUROSPORA",
+      "POMBE",
+      "YEAST"
+    ],
+    "eligible_strata": 72,
+    "eligible_occurrences": 1316,
+    "observed": 344.1106709277717,
+    "null_mean": 361.3379894901428,
+    "null_sd": 28.519233407008606,
+    "q95": 409.97326994537076,
+    "q99": 432.6649283657522,
+    "mc_tail_ge": 0.7175528244717553,
+    "seed": 520056
+  }
+}

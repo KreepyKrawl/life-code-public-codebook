@@ -1,0 +1,52 @@
+{
+  "result_id": "PANEL3_PLUS_LINEAGE_SEQUENCE_ONLY_SCAN_0001",
+  "status": "PASS_SEQUENCE_ONLY",
+  "scanner": "PANEL3_PLUS_LINEAGE_MOP_SCANNER_v1.cpp",
+  "occurrence_sha256": "10009d1c69063633fb549db9abc8f9011509f1d3b8e243836b8652196b7947b7",
+  "summary_sha256": "b6f54366aa39e9be8655d0d7bd5f2cf480769614ed9ba9b36dba864e185663c8",
+  "total_occurrences": 29405,
+  "species": {
+    "SALMONELLA": {
+      "recovered_tokens": 131,
+      "exact_occurrences": 146,
+      "maximum_occurrences_single_token": 5
+    },
+    "DEINOCOCCUS": {
+      "recovered_tokens": 11,
+      "exact_occurrences": 11,
+      "maximum_occurrences_single_token": 1
+    },
+    "THERMOCOCCUS": {
+      "recovered_tokens": 34,
+      "exact_occurrences": 36,
+      "maximum_occurrences_single_token": 2
+    },
+    "METHANOSARCINA": {
+      "recovered_tokens": 176,
+      "exact_occurrences": 269,
+      "maximum_occurrences_single_token": 17
+    },
+    "KLUYVEROMYCES": {
+      "recovered_tokens": 270,
+      "exact_occurrences": 484,
+      "maximum_occurrences_single_token": 37
+    },
+    "ARABIDOPSIS": {
+      "recovered_tokens": 817,
+      "exact_occurrences": 10178,
+      "maximum_occurrences_single_token": 978
+    },
+    "DROSOPHILA": {
+      "recovered_tokens": 750,
+      "exact_occurrences": 8527,
+      "maximum_occurrences_single_token": 1268
+    },
+    "CBRIGGSAE": {
+      "recovered_tokens": 742,
+      "exact_occurrences": 9754,
+      "maximum_occurrences_single_token": 538
+    }
+  },
+  "annotation_or_boundary_used": false,
+  "claim_boundary": "Sequence recovery only. No biological-context prediction is adjudicated in this release."
+}

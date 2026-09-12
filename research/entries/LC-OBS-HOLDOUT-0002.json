@@ -1,0 +1,74 @@
+{
+  "entry_id": "LC-OBS-HOLDOUT-0002",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "The 1,000 frozen primary MOP tokens yielded 1,206 occurrences in the three prospectively selected held-out genomes; recovered-token counts were Bacillus 142, Sulfolobus 75, Pombe 351.",
+      "source_refs": [
+        "HELDOUT_BOUNDARY_TRANSFER_RESULT_0001.json",
+        "HELDOUT_PRIMARY_1000_SUMMARY.csv"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "LC-PRED-0024 observed S_pair_H=7 versus null mean 2.96737, p=0.02656973; outcome SUPPORTED.",
+      "source_refs": [
+        "HELDOUT_BOUNDARY_TRANSFER_RESULT_0001.json",
+        "HELDOUT_TRANSFER_INDEPENDENT_VALIDATION_0001.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "LC-PRED-0025 observed T81=18 versus null mean 11.76756, p=0.02891971; outcome SUPPORTED.",
+      "source_refs": [
+        "HELDOUT_BOUNDARY_TRANSFER_RESULT_0001.json",
+        "HELDOUT_TRANSFER_INDEPENDENT_VALIDATION_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "The held-out results support predictive transfer of a broad MOP boundary/interface positional class while leaving C3 component identity and finer geometry unsupported.",
+      "source_refs": [
+        "HELDOUT_BOUNDARY_TRANSFER_RESULT_0001.json",
+        "C3_SAME_SYSTEM_RESULT_0001.json",
+        "C3_PROTEIN_SEQUENCE_RESULT_0001.json",
+        "BOUNDARY_GEOMETRY_CONCORDANCE_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "LC-PRED-0024": "SUPPORTED",
+    "LC-PRED-0025": "SUPPORTED",
+    "heldout_cross_genome_boundary_unique_tokens": 5,
+    "heldout_all_three_boundary_token_ids": [
+      27914144768
+    ],
+    "P81_unique_boundary_tokens_in_heldout": 15
+  },
+  "semantics": {
+    "validated_identity": "prospective independent-species C2 boundary-role transfer",
+    "compatibility_ceiling": "C2",
+    "C3_component_identity": "NOT_SUPPORTED_BY_PRIOR_TESTS"
+  },
+  "relationships": [
+    "LC-OBS-INTERFACE-0002",
+    "LC-OBS-REPL-0001",
+    "LC-OBS-C3-0001",
+    "LC-OBS-C3-0002",
+    "LC-OBS-INTERFACE-0003"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Mechanistic identity of the transferable boundary role.",
+    "Whether the signal generalizes beyond this held-out three-domain set.",
+    "Which representation features determine boundary-role transfer."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "HELDOUT_BOUNDARY_TRANSFER_RESULT_0001.json",
+    "HELDOUT_TRANSFER_INDEPENDENT_VALIDATION_0001.json",
+    "HELDOUT_TRANSFER_SECONDARY_DIAGNOSTICS_0001.json"
+  ]
+}

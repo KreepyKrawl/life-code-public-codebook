@@ -1,0 +1,41 @@
+{
+  "entry_id": "LC-OBS-PANEL3-0001",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "All eight frozen Panel-3/lineage NCBI packages passed exact accession, ZIP, FASTA/GFF/GBFF/sequence-report coordinate and length reconciliation before MOP scanning.",
+      "source_refs": [
+        "PANEL3_PLUS_LINEAGE_ASSEMBLY_COORDINATE_GATE_0003.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "Organellar records and topology are frozen before biological analysis.",
+      "source_refs": [
+        "PANEL3_PLUS_LINEAGE_ASSEMBLY_COORDINATE_GATE_0003.json"
+      ]
+    }
+  ],
+  "observations": {
+    "assembly_gate": "PASS",
+    "mop_scan": "NOT_RUN"
+  },
+  "semantics": {
+    "biological_result": "NONE"
+  },
+  "relationships": [
+    "LC-ARCH-0014",
+    "LC-ARCH-0013"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Sequence-only MOP recovery in the eight new genomes.",
+    "All boundary/prediction outcomes."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PANEL3_PLUS_LINEAGE_ASSEMBLY_COORDINATE_GATE_0003.json"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "entry_id": "LC-OBS-EVO-REP-0003",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "Within fixed token identity and genome, archived literal wildcard/implementation states show parameter\u00d7boundary association status STRONG_PARAMETER_ASSOCIATION_RETRO; observed S_param=2509.134, null mean=2298.931, p=0.00967990.",
+      "source_refs": [
+        "RETRO_WILDCARD_PARAMETER_SEMANTICS_RESULT_0001.json",
+        "ALL12_OCCURRENCE_BOUNDARY_RECONSTRUCTION_GATE_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Variation deliberately abstracted away by MOP identity may itself contain positional-context information; whether it transfers as biological parameter semantics is UNKNOWN.",
+      "source_refs": [
+        "RETRO_WILDCARD_PARAMETER_SEMANTICS_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "status": "STRONG_PARAMETER_ASSOCIATION_RETRO",
+    "eligible_strata": 315
+  },
+  "semantics": {
+    "validated_identity": "within-token implementation/context association if significant",
+    "argument_semantics": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-OBS-EVO-REP-0001",
+    "LC-HYP-EVO-CODE-0001",
+    "LC-ARCH-0009"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Cross-genome transfer of wildcard-value/context associations.",
+    "Mechanistic meaning of implementation variants."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "RETRO_WILDCARD_PARAMETER_SEMANTICS_RESULT_0001.json",
+    "ALL12_OCCURRENCE_BOUNDARY_RECONSTRUCTION_GATE_0001.json"
+  ]
+}

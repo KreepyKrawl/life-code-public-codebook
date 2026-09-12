@@ -1,0 +1,12 @@
+{
+  "validation_id": "ARCHITECTURE_DECOMPOSITION_VALIDATION_0001",
+  "status": "PASS",
+  "checks": {
+    "pre_execution_v0.0.18_lock_errors": 0,
+    "production_equivalence_status": "PASS",
+    "mitochondrial_occurrence_count": 35,
+    "mitochondrial_result_csv_partition_match": true,
+    "intergenic_occurrence_count": 884,
+    "intergenic_expected_count": 884
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "entry_id": "LC-OBS-MOP-0001",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "The preregistered MOP16-14-v1 real three-domain vocabulary contains 618,470 distinct shared token types.",
+      "source_refs": [
+        "MOP16_14_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "E0",
+      "statement": "Five exact-dinucleotide-preserving null triplets produce 421,985; 417,911; 421,935; 425,242; and 423,492 shared token types.",
+      "source_refs": [
+        "MOP16_14_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "Real exceeds the null maximum by 193,228 token types (1.4544x) and exceeds the null mean by 1.4652x.",
+      "source_refs": [
+        "MOP16_14_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "All 120 wildcard masks individually exceed the maximum of their five matched null counts; both adjacent-mask and separated-mask diagnostic families also show ~1.45x real/null-max separation.",
+      "source_refs": [
+        "MOP16_14_RESULT_0001.json",
+        "MOP16_14_PER_MASK_AUDIT.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "The variable-slot layer is not being driven by one favorable wildcard pattern: the enrichment is distributed across the entire predeclared mask family.",
+      "source_refs": [
+        "MOP16_14_PER_MASK_AUDIT.json"
+      ]
+    }
+  ],
+  "observations": {
+    "representation": "MOP16-14-v1",
+    "real_count": 618470,
+    "null_counts": [
+      421985,
+      417911,
+      421935,
+      425242,
+      423492
+    ],
+    "null_mean": 422113.0,
+    "null_max": 425242,
+    "all_120_masks_exceed_own_null_max": true,
+    "candidate_vocabulary_file": "REAL_SHARED_MOP16_14.ids.bin",
+    "candidate_vocabulary_sha256": "cf0b28a27d001e78f1a8b5022cef6282568785b8c005aceda1ddde1aba8d410c"
+  },
+  "semantics": {
+    "validated_identity": "global annotation-blind masked-token recurrence signal",
+    "biological_meaning_of_individual_tokens": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-OBS-REP-0002",
+    "LC-PRED-0011"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Biological composition of the frozen 618,470-token candidate set.",
+    "Independent cross-dataset replication."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "MOP16_14_RESULT_0001.json",
+    "MOP16_14_PER_MASK_AUDIT.json",
+    "MOP16_14_INDEPENDENT_MASK_CROSSCHECK.json",
+    "MOP16_14_NULL_GENERATOR_CROSSCHECK.json"
+  ]
+}

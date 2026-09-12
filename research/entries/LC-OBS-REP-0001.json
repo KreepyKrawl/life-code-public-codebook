@@ -1,0 +1,72 @@
+{
+  "entry_id": "LC-OBS-REP-0001",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "The complete all-three exact-16 vocabulary contains no token in the A2451-centered PTC neighborhood.",
+      "source_refs": [
+        "PRED0008_STAGE1_EXACT16_TEST.json"
+      ]
+    },
+    {
+      "class": "E0",
+      "statement": "The exact all-three k=14 computation reproduces the frozen global count of 5,561 but contains zero token overlapping the fixed A2451-centered 51-nt window.",
+      "source_refs": [
+        "PRED0010_EXACT14_TEST.json",
+        "PRED0010_K14_RESULT.txt"
+      ]
+    },
+    {
+      "class": "E0",
+      "statement": "The earlier frozen vocabulary ladder found the k=12 three-domain regime composition/null dominated, so simply lowering k further is not an evidence-clean rescue strategy.",
+      "source_refs": [
+        "VOCABULARY_LADDER_CALIBRATION_v0.1.8.md"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "The current exact-word codebook representation therefore captures some ancient reusable ribosomal primitives but does not capture every functionally ancient ribosomal site as an unchanged cross-domain exact string. Functional conservation and literal-string conservation must remain separate layers.",
+      "source_refs": [
+        "PRED0008_STAGE1_EXACT16_TEST.json",
+        "PRED0010_EXACT14_TEST.json",
+        "VOCABULARY_LADDER_CALIBRATION_v0.1.8.md"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Coder interpretation: a universally important API/function can persist while its literal implementation changes. The next clean decompiler layer should seek constrained variable positions or structural equivalence rather than progressively shortening exact words.",
+      "source_refs": [
+        "PRED0010_EXACT14_TEST.json"
+      ]
+    }
+  ],
+  "observations": {
+    "A2451_exact16_target_hit": false,
+    "A2451_exact14_target_hit": false,
+    "exact14_global_reproduction_count": 5561,
+    "lower_exact_k_boundary": "k=12 previously composition/null dominated"
+  },
+  "semantics": {
+    "validated_identity": "representation-boundary observation",
+    "biological_function_assignment": "NONE",
+    "coder_interpretation": "same conserved system function may survive implementation-level sequence divergence"
+  },
+  "relationships": [
+    "LC-PRED-0008",
+    "LC-PRED-0010",
+    "LC-FUNC-0003"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Whether a preregistered variable-slot motif recovers the A2451 neighborhood across the same three domains.",
+    "Whether a structure-aware vocabulary yields better deep transfer than exact words at this site."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PRED0008_STAGE1_EXACT16_TEST.json",
+    "PRED0010_EXACT14_TEST.json",
+    "VOCABULARY_LADDER_CALIBRATION_v0.1.8.md"
+  ]
+}

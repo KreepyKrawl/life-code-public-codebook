@@ -1,0 +1,72 @@
+{
+  "status": "ASSEMBLY_GATE_PASS_PRE_MOP_SCAN",
+  "base_dir": "sources",
+  "genomes": {
+    "BACILLUS": {
+      "fasta": "HELDOUT_BACILLUS_GCF_000009045.1_genomic.fna",
+      "gff": "HELDOUT_BACILLUS_GCF_000009045.1_genomic.gff"
+    },
+    "SULFOLOBUS": {
+      "fasta": "HELDOUT_SULFOLOBUS_GCF_000012285.1_genomic.fna",
+      "gff": "HELDOUT_SULFOLOBUS_GCF_000012285.1_genomic.gff"
+    },
+    "POMBE": {
+      "fasta": "HELDOUT_POMBE_GCF_000002945.2_genomic.fna",
+      "gff": "HELDOUT_POMBE_GCF_000002945.2_genomic.gff"
+    }
+  },
+  "record_maps": {
+    "BACILLUS": {
+      "NC_000964.3": "NC_000964.3"
+    },
+    "SULFOLOBUS": {
+      "NC_007181.1": "NC_007181.1"
+    },
+    "POMBE": {
+      "NC_003424.3": "NC_003424.3",
+      "NC_003423.3": "NC_003423.3",
+      "NC_003421.2": "NC_003421.2",
+      "NC_088682.1": "NC_088682.1"
+    }
+  },
+  "record_lengths": {
+    "BACILLUS": {
+      "NC_000964.3": 4215606
+    },
+    "SULFOLOBUS": {
+      "NC_007181.1": 2225959
+    },
+    "POMBE": {
+      "NC_003424.3": 5579133,
+      "NC_003423.3": 4539804,
+      "NC_003421.2": 2452883,
+      "NC_088682.1": 19433
+    }
+  },
+  "circular_records": {
+    "BACILLUS": {
+      "NC_000964.3": true
+    },
+    "SULFOLOBUS": {
+      "NC_007181.1": true
+    },
+    "POMBE": {
+      "NC_003424.3": false,
+      "NC_003423.3": false,
+      "NC_003421.2": false,
+      "NC_088682.1": true
+    }
+  },
+  "organellar_records": {
+    "BACILLUS": [],
+    "SULFOLOBUS": [],
+    "POMBE": [
+      "NC_088682.1"
+    ]
+  },
+  "summary_columns": {
+    "BACILLUS": "BACILLUS_occurrences",
+    "SULFOLOBUS": "SULFOLOBUS_occurrences",
+    "POMBE": "POMBE_occurrences"
+  }
+}

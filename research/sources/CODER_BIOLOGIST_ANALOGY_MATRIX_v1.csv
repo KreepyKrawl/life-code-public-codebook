@@ -1,0 +1,27 @@
+software_pattern,software_analogy,biological_parallel,lifecode_observable,candidate_representation
+Primitive remains literal,instruction preserved,sequence conservation,same role + same literal implementation across lineages,literal sequence survival
+Syntax expansion,IF -> IF/AND/OR,regulatory combinatorics,single token becomes insufficient; pair/context improves prediction,compound grammar
+Function overloading,"same symbol, context-dependent meaning",pleiotropy/context-dependent regulation,same token maps to different roles conditional on context,context interaction
+Wrapper/decorator,old primitive controlled by newer layer,regulatory rewiring,primitive remains but role depends on new flanking/context signal,conditional wrapper
+API/interface stability,"same contract, new implementation",developmental system drift / pathway rewiring,role conserved while local implementation diverges,role equivalence
+Polymorphism,"same interface, multiple implementations",degeneracy / alternative pathways,multiple sequence families satisfy same architectural role,OR-equivalence
+Refactoring,"same behavior, rewritten internals",compensatory evolution,system output conserved while lower-level sequence relationships change,implementation turnover
+Code duplication,copy then specialize,gene duplication,shared ancestry followed by partitioned or novel roles,duplication-divergence
+Library call,small invocation recruits large subsystem,cis/trans regulatory recruitment,short signal predicts use of larger conserved machinery,recruitment
+Dynamic linking,component assembled only in context,protein/RNA complex assembly,meaning appears only when partner/dependency present,contextual dependency
+Feature flag,code active only under state,conditional gene regulation,token role conditional on environmental/cellular state,state predicate
+Event-driven logic,response triggered by event,signal transduction,sequence/grammar couples to event-responsive machinery,event dependency
+State machine,meaning depends on prior/current state,cell-cycle/developmental state,same signal has different effect across states,stateful grammar
+Exception handling,detect/error/repair path,DNA repair/checkpoints,special grammar activated by fault condition,error-path semantics
+Namespace/scope,"same name, different scope",chromatin/compartment context,same motif differs by genomic/epigenetic compartment,scope-conditioned meaning
+Inheritance/interface fork,derived systems specialize,lineage-specific regulatory evolution,shared archetype but divergent descendant grammars,lineage fork
+Backward compatibility shim,new system accepts old interface,compensatory/bridging mechanisms,ancestral representation retained only through adapter context,compatibility bridge
+Deprecation,old code retained but no longer primary,pseudogenization/vestigial regulation,literal sequence persists without old predictive role,semantic decay
+Complete replacement,"same operation, unrelated implementation",non-orthologous gene displacement,role preserved with no literal ancestry detectable locally,implementation replacement
+Macro/metaprogramming,rules generate/modify other rules,regulatory cascades/chromatin programming,higher-order regulator changes interpretation of many lower-level sites,grammar-generating layer
+Distributed system,no single instruction owns behavior,gene regulatory networks,prediction requires network/context rather than one locus,distributed semantics
+Caching/memory,past state alters future behavior,epigenetic memory,same sequence has persistent state-dependent output,memory-conditioned semantics
+Schema migration,same information stored differently,genome rearrangement/domain shuffling,architectural role survives altered organization,representation migration
+Compiler/IR shift,"different surface syntax, shared intermediate role",sequence turnover with conserved regulatory output,literal mismatch but shared positional/dependency signature,abstraction-level equivalence
+Optimization/compression,shorter/simpler implementation,genome reduction/streamlining,fewer components preserve core role,architectural compression
+Redundant implementation,multiple paths same result,robustness/degeneracy,loss of one path does not abolish function,redundant OR-paths

@@ -1,0 +1,75 @@
+{
+  "prediction_id": "LC-PRED-0042",
+  "status": "SUPPORTED_TOPOLOGY_ROBUST",
+  "evidence_class": "P1",
+  "statement": "Panel-3 same-token boundary recurrence will remain robust across three pre-frozen coarser absolute wildcard-topology conditioned nulls.",
+  "primary_statistic": "S_pair_3_topology_robust",
+  "null_seed": null,
+  "contamination_boundary": "Frozen before the relevant Drosophila/Panel-3 sequence acquisition.",
+  "source_refs": [
+    "RETRO_PARAMETER_SIGNAL_SENSITIVITY_RESULT_0001.json",
+    "RETRO_COARSE_MASK_TOPOLOGY_CHALLENGE_RESULT_0001.json"
+  ],
+  "support_condition": "All 3 informative topology nulls p<=.05.",
+  "falsification_condition": "Any informative topology null has observed<=null mean; see prereg for mixed/blocked outcomes.",
+  "result_release": "LIFE_CODE_CODEBOOK_v0.0.72",
+  "result_source": "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001.json",
+  "result": {
+    "components": {
+      "GC_x_wildcard_i0": {
+        "movability_fraction": 0.8277777777777777,
+        "informative": true,
+        "observed": 84.0,
+        "mc_null_mean": 61.70796,
+        "mc_null_sd": 4.689348850149667,
+        "q95": 70.0,
+        "q99": 73.0,
+        "mc_tail_ge": 9.99990000099999e-06,
+        "status": "STRONGLY_SUPPORTED",
+        "analytic_null_mean": 61.689056580674226,
+        "seed": 5400421
+      },
+      "GC_x_wildcard_j0": {
+        "movability_fraction": 0.7972222222222223,
+        "informative": true,
+        "observed": 84.0,
+        "mc_null_mean": 63.42527,
+        "mc_null_sd": 4.623143457335063,
+        "q95": 71.0,
+        "q99": 75.0,
+        "mc_tail_ge": 9.99990000099999e-06,
+        "status": "STRONGLY_SUPPORTED",
+        "analytic_null_mean": 63.399009733361765,
+        "seed": 5400422
+      },
+      "GC_x_separation_x_coarse_center": {
+        "movability_fraction": 0.6888888888888889,
+        "informative": true,
+        "observed": 84.0,
+        "mc_null_mean": 66.129,
+        "mc_null_sd": 4.831316487252724,
+        "q95": 74.0,
+        "q99": 78.0,
+        "mc_tail_ge": 0.0003599964000359996,
+        "status": "STRONGLY_SUPPORTED",
+        "analytic_null_mean": 66.12795214045214,
+        "seed": 5400423
+      }
+    },
+    "informative_components": 3,
+    "supported_components": 3,
+    "status": "SUPPORTED_TOPOLOGY_ROBUST",
+    "exact_mask_diagnostic": {
+      "observed": 84.0,
+      "mc_null_mean": 74.58375,
+      "mc_null_sd": 3.2270057231898432,
+      "q95": 80.0,
+      "q99": 82.0,
+      "mc_tail_ge": 0.003759962400375996,
+      "status": "STRONGLY_SUPPORTED",
+      "analytic_null_mean": 74.58333333333333,
+      "movability_fraction": 0.32222222222222224,
+      "inferential_promotion_authorized": false
+    }
+  }
+}

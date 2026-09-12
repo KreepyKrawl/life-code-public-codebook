@@ -1,0 +1,16 @@
+{
+  "prediction_id": "LC-PRED-0050",
+  "status": "FROZEN_UNTESTED",
+  "evidence_class": "P1",
+  "statement": "Same-token broad-boundary recurrence among the six entirely fresh genomes will exceed an entropy-aware v3-baseline conditioned null.",
+  "primary_statistic": "S_pair_v3 = sum of pairwise fresh boundary-token intersections",
+  "null_seed": 810050,
+  "movability_gate": ">=50% of observed fresh boundary token\u00d7genome memberships movable",
+  "source_refs": [
+    "BOUNDARY_RESIDUAL_MODEL_v3_SCORES.csv"
+  ],
+  "support_condition": "If gate passes: observed>null mean and p<=.05; strong p<=.01.",
+  "weakening_condition": "If gate passes: observed>null mean and p>.05.",
+  "falsification_condition": "If gate passes: observed<=null mean.",
+  "contamination_boundary": "Frozen before acquisition of all six fresh validation genomes."
+}

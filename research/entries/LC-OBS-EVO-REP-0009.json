@@ -1,0 +1,54 @@
+{
+  "entry_id": "LC-OBS-EVO-REP-0009",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "Panel-3 S_pair=84 was rechallenged under pre-frozen entropy/run conditioned nulls; entropy status MIXED_WEAKENED_RETRO, run status STRONGLY_SUPPORTED_RETRO, combined status BLOCKED_LOW_MOVABILITY.",
+      "source_refs": [
+        "PANEL3_SEQUENCE_COMPLEXITY_CONFOUNDER_CHALLENGE_RESULT_0001.json",
+        "MOP_TOKEN_COMPLEXITY_FEATURES_v1.csv"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "The v0.0.74 top-25 breadth candidates have median fixed-base entropy 0.863 bits versus 1.557 across all 1,000 tokens.",
+      "source_refs": [
+        "PANEL3_SEQUENCE_COMPLEXITY_CONFOUNDER_CHALLENGE_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Low complexity is an observed representation feature, not grounds for discarding the tokens or asserting biological function.",
+      "source_refs": [
+        "PANEL3_SEQUENCE_COMPLEXITY_CONFOUNDER_CHALLENGE_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "complexity_nulls": {
+      "entropy": "MIXED_WEAKENED_RETRO",
+      "run": "STRONGLY_SUPPORTED_RETRO",
+      "combined": "BLOCKED_LOW_MOVABILITY"
+    }
+  },
+  "semantics": {
+    "low_complexity_function": "UNKNOWN",
+    "mechanism": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-OBS-EVO-REP-0007",
+    "LC-OBS-PANEL3-0004"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Why low-complexity MOP identities are disproportionately broad boundary candidates.",
+    "Whether semantic boundary roles differ between low- and higher-complexity token classes."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PANEL3_SEQUENCE_COMPLEXITY_CONFOUNDER_CHALLENGE_RESULT_0001.json",
+    "MOP_TOKEN_COMPLEXITY_FEATURES_v1.csv"
+  ]
+}

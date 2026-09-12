@@ -1,0 +1,26 @@
+{
+  "prediction_id": "LC-PRED-0013",
+  "status": "FALSIFIED",
+  "evidence_class": "P1",
+  "statement": "After matching to actual valid 16-nt genomic address space and observed per-genome MOP occurrence weights, FOUNDATION_RUNTIME (tRNA+rRNA+other_noncoding_RNA) will contain more MOP occurrences than expected.",
+  "support_condition": "observed/expected >1 and one-sided 20,000-replicate Monte Carlo tail <=0.05; strong support <=0.01.",
+  "weakening_condition": "observed/expected >1 but tail >0.05.",
+  "falsification_condition": "observed/expected <=1.",
+  "contamination_boundary": "Frozen after v0.0.14 descriptive classification and before any genome-wide valid-16nt background counts or enrichment ratios were calculated.",
+  "source_refs": [
+    "MOP_PRIMARY_CLASSIFICATION_0001.json"
+  ],
+  "validation": {
+    "result": "FALSIFIED",
+    "source": "ARCHITECTURE_BACKGROUND_RESULT_0001.json",
+    "contexts": [
+      "tRNA",
+      "rRNA",
+      "other_noncoding_RNA"
+    ],
+    "observed": 18,
+    "expected": 26.9115853869484,
+    "ratio": 0.6688569157553108,
+    "mc_tail_ge": 0.9724513774311284
+  }
+}

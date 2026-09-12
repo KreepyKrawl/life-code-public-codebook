@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "sample_indices": [
+    1,
+    257,
+    701,
+    1000
+  ],
+  "genomes": [
+    "SALMONELLA",
+    "DEINOCOCCUS",
+    "THERMOCOCCUS",
+    "METHANOSARCINA",
+    "KLUYVEROMYCES",
+    "ARABIDOPSIS",
+    "DROSOPHILA",
+    "CBRIGGSAE"
+  ],
+  "cases": 32,
+  "oracle_occurrences": 54,
+  "scanner_occurrences": 54,
+  "exact_tuple_equality": true,
+  "oracle_only": [],
+  "scanner_only": []
+}

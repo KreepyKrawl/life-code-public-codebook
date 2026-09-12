@@ -1,0 +1,47 @@
+{
+  "entry_id": "LC-OBS-PANEL2-0001",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "All six prospectively frozen Panel-2 NCBI packages match their frozen RefSeq accessions and have exact internal FASTA/GFF/sequence-report coordinate lengths.",
+      "source_refs": [
+        "PANEL2_ASSEMBLY_COORDINATE_GATE_0001.json",
+        "PANEL2_EXECUTION_MANIFEST_v1.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "The Panel-2 scanner passed exact occurrence-set equivalence to an independent regex oracle on a six-genome synthetic corpus before biological scanning.",
+      "source_refs": [
+        "PANEL2_MOP_SCANNER_SELFTEST_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "assembly_gate": "PASS",
+    "scanner_selftest": "PASS",
+    "panel2_mop_scan": "NOT_RUN"
+  },
+  "semantics": {
+    "validated_identity": "Panel-2 pre-execution assembly/scanner gate"
+  },
+  "relationships": [
+    "LC-OBS-HOLDOUT-0002",
+    "LC-ARCH-0007"
+  ],
+  "predictions": [
+    "LC-PRED-0026",
+    "LC-PRED-0027",
+    "LC-PRED-0028"
+  ],
+  "unknowns": [
+    "Panel-2 token recovery and prediction outcomes."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PANEL2_ASSEMBLY_COORDINATE_GATE_0001.json",
+    "PANEL2_MOP_SCANNER_SELFTEST_0001.json"
+  ]
+}

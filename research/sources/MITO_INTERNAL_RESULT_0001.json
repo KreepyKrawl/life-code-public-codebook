@@ -1,0 +1,374 @@
+{
+  "observed_chrM_occurrences": 35,
+  "unique_token_types_with_chrM_occurrence": 24,
+  "background_valid_chrM_16nt_windows": 85764,
+  "background_internal_counts": {
+    "intergenic": 52238,
+    "tRNA": 2184,
+    "unresolved": 4605,
+    "rRNA": 5395,
+    "protein_coding_CDS": 20134,
+    "overlap_multiple_features": 723,
+    "other_noncoding_RNA": 485
+  },
+  "observed_internal_counts": {
+    "intergenic": 26,
+    "rRNA": 2,
+    "protein_coding_CDS": 6,
+    "unresolved": 1
+  },
+  "individual_ratios": {
+    "rRNA": 0.9083966635773865,
+    "tRNA": 0.0,
+    "protein_coding_CDS": 0.7302274759113937,
+    "other_noncoding_RNA": 0.0,
+    "intergenic": 1.2196179026762126,
+    "repeat_or_mobile_element": null,
+    "overlap_multiple_features": 0.0,
+    "unresolved": 0.5321172638436482
+  },
+  "LC_PRED_0016": {
+    "context": "intergenic",
+    "observed": 26,
+    "expected": 21.318152138426377,
+    "ratio": 1.2196179026762128,
+    "exact_binomial_upper_tail": 0.07108824248712568
+  },
+  "cross_genome_token_contexts": {
+    "268644556": {
+      "mitochondrial_internal_contexts": [
+        "intergenic"
+      ],
+      "ECOLI_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "PYRO_primary_contexts": [
+        "intergenic"
+      ],
+      "YEAST_non_chrM_primary_contexts": [
+        "intergenic"
+      ]
+    },
+    "818138172": {
+      "mitochondrial_internal_contexts": [
+        "intergenic"
+      ],
+      "ECOLI_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "PYRO_primary_contexts": [
+        "intergenic"
+      ],
+      "YEAST_non_chrM_primary_contexts": [
+        "intergenic"
+      ]
+    },
+    "3488817792": {
+      "mitochondrial_internal_contexts": [
+        "protein_coding_CDS"
+      ],
+      "ECOLI_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "PYRO_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "YEAST_non_chrM_primary_contexts": [
+        "protein_coding_CDS"
+      ]
+    },
+    "4778344896": {
+      "mitochondrial_internal_contexts": [
+        "intergenic"
+      ],
+      "ECOLI_primary_contexts": [
+        "intergenic",
+        "protein_coding_CDS"
+      ],
+      "PYRO_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "YEAST_non_chrM_primary_contexts": [
+        "intergenic"
+      ]
+    },
+    "5368754368": {
+      "mitochondrial_internal_contexts": [
+        "protein_coding_CDS"
+      ],
+      "ECOLI_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "PYRO_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "YEAST_non_chrM_primary_contexts": [
+        "intergenic"
+      ]
+    },
+    "6186602739": {
+      "mitochondrial_internal_contexts": [
+        "intergenic"
+      ],
+      "ECOLI_primary_contexts": [
+        "intergenic"
+      ],
+      "PYRO_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "YEAST_non_chrM_primary_contexts": []
+    },
+    "7797211328": {
+      "mitochondrial_internal_contexts": [
+        "protein_coding_CDS"
+      ],
+      "ECOLI_primary_contexts": [
+        "intergenic"
+      ],
+      "PYRO_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "YEAST_non_chrM_primary_contexts": [
+        "intergenic",
+        "protein_coding_CDS",
+        "unresolved"
+      ]
+    },
+    "9462349823": {
+      "mitochondrial_internal_contexts": [
+        "unresolved"
+      ],
+      "ECOLI_primary_contexts": [
+        "intergenic"
+      ],
+      "PYRO_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "YEAST_non_chrM_primary_contexts": [
+        "intergenic",
+        "protein_coding_CDS",
+        "unresolved"
+      ]
+    },
+    "10485235703": {
+      "mitochondrial_internal_contexts": [
+        "intergenic"
+      ],
+      "ECOLI_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "PYRO_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "YEAST_non_chrM_primary_contexts": [
+        "protein_coding_CDS"
+      ]
+    },
+    "12062867699": {
+      "mitochondrial_internal_contexts": [
+        "intergenic"
+      ],
+      "ECOLI_primary_contexts": [
+        "intergenic"
+      ],
+      "PYRO_primary_contexts": [
+        "intergenic"
+      ],
+      "YEAST_non_chrM_primary_contexts": [
+        "intergenic"
+      ]
+    },
+    "12414107393": {
+      "mitochondrial_internal_contexts": [
+        "protein_coding_CDS"
+      ],
+      "ECOLI_primary_contexts": [
+        "intergenic"
+      ],
+      "PYRO_primary_contexts": [
+        "intergenic"
+      ],
+      "YEAST_non_chrM_primary_contexts": []
+    },
+    "15354299343": {
+      "mitochondrial_internal_contexts": [
+        "intergenic"
+      ],
+      "ECOLI_primary_contexts": [
+        "intergenic"
+      ],
+      "PYRO_primary_contexts": [
+        "intergenic"
+      ],
+      "YEAST_non_chrM_primary_contexts": []
+    },
+    "16914609136": {
+      "mitochondrial_internal_contexts": [
+        "protein_coding_CDS"
+      ],
+      "ECOLI_primary_contexts": [
+        "unresolved"
+      ],
+      "PYRO_primary_contexts": [
+        "intergenic"
+      ],
+      "YEAST_non_chrM_primary_contexts": [
+        "protein_coding_CDS"
+      ]
+    },
+    "17434804400": {
+      "mitochondrial_internal_contexts": [
+        "protein_coding_CDS"
+      ],
+      "ECOLI_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "PYRO_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "YEAST_non_chrM_primary_contexts": []
+    },
+    "19380880072": {
+      "mitochondrial_internal_contexts": [
+        "rRNA"
+      ],
+      "ECOLI_primary_contexts": [
+        "intergenic"
+      ],
+      "PYRO_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "YEAST_non_chrM_primary_contexts": []
+    },
+    "19906035507": {
+      "mitochondrial_internal_contexts": [
+        "intergenic"
+      ],
+      "ECOLI_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "PYRO_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "YEAST_non_chrM_primary_contexts": [
+        "intergenic",
+        "unresolved"
+      ]
+    },
+    "20682162944": {
+      "mitochondrial_internal_contexts": [
+        "intergenic"
+      ],
+      "ECOLI_primary_contexts": [
+        "intergenic"
+      ],
+      "PYRO_primary_contexts": [
+        "intergenic"
+      ],
+      "YEAST_non_chrM_primary_contexts": [
+        "protein_coding_CDS"
+      ]
+    },
+    "21458108431": {
+      "mitochondrial_internal_contexts": [
+        "intergenic"
+      ],
+      "ECOLI_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "PYRO_primary_contexts": [
+        "intergenic"
+      ],
+      "YEAST_non_chrM_primary_contexts": [
+        "intergenic"
+      ]
+    },
+    "22813622079": {
+      "mitochondrial_internal_contexts": [
+        "intergenic"
+      ],
+      "ECOLI_primary_contexts": [
+        "intergenic"
+      ],
+      "PYRO_primary_contexts": [
+        "intergenic"
+      ],
+      "YEAST_non_chrM_primary_contexts": [
+        "intergenic"
+      ]
+    },
+    "24410882240": {
+      "mitochondrial_internal_contexts": [
+        "intergenic"
+      ],
+      "ECOLI_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "PYRO_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "YEAST_non_chrM_primary_contexts": []
+    },
+    "24634173519": {
+      "mitochondrial_internal_contexts": [
+        "rRNA"
+      ],
+      "ECOLI_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "PYRO_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "YEAST_non_chrM_primary_contexts": []
+    },
+    "27113028860": {
+      "mitochondrial_internal_contexts": [
+        "intergenic"
+      ],
+      "ECOLI_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "PYRO_primary_contexts": [
+        "intergenic"
+      ],
+      "YEAST_non_chrM_primary_contexts": []
+    },
+    "28454155251": {
+      "mitochondrial_internal_contexts": [
+        "intergenic"
+      ],
+      "ECOLI_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "PYRO_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "YEAST_non_chrM_primary_contexts": [
+        "intergenic",
+        "protein_coding_CDS",
+        "unresolved"
+      ]
+    },
+    "29783555279": {
+      "mitochondrial_internal_contexts": [
+        "intergenic"
+      ],
+      "ECOLI_primary_contexts": [
+        "intergenic"
+      ],
+      "PYRO_primary_contexts": [
+        "protein_coding_CDS"
+      ],
+      "YEAST_non_chrM_primary_contexts": [
+        "intergenic",
+        "protein_coding_CDS"
+      ]
+    }
+  },
+  "pre_execution_release": {
+    "release": "LIFE_CODE_CODEBOOK_v0.0.18",
+    "zip_sha256": "258f07b88c40b6be3971ba4a0eb66ecd34b13ce1ad6378c117dfb22b4d26c030"
+  },
+  "algorithm_sha256": "de7d5e5801887095627a889130004f2fd3a3fe5421ca2eca0ab500b7d980469b",
+  "prediction_outcome": "LC-PRED-0016 MIXED_WEAKENED"
+}

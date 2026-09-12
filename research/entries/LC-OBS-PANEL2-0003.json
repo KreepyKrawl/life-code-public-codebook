@@ -1,0 +1,52 @@
+{
+  "entry_id": "LC-OBS-PANEL2-0003",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "After conditioning boundary-label randomization on fixed GC count and exact wildcard separation within every Panel-2 genome, same-token recurrence remains strongly above null: 59 vs analytic expectation 45.193, p=0.00018000.",
+      "source_refs": [
+        "PANEL2_COMPOSITION_CONDITIONED_RESULT_0001.json",
+        "PANEL2_CONDITIONED_NULL_VALIDATION_0001.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "Under the same stronger null, P81 is directionally above expectation but nonsignificant (p=0.1562) and model v1 is directionally above expectation but nonsignificant (p=0.0983).",
+      "source_refs": [
+        "PANEL2_COMPOSITION_CONDITIONED_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "The recurring token-identity boundary phenomenon is more robust than the current selected-token and graded prediction models; future models should remove simple composition/mask effects before claiming token-specific biological prediction.",
+      "source_refs": [
+        "PANEL2_COMPOSITION_CONDITIONED_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "LC-PRED-0029": "STRONGLY_SUPPORTED",
+    "LC-PRED-0030": "MIXED_WEAKENED",
+    "LC-PRED-0031": "MIXED_WEAKENED"
+  },
+  "semantics": {
+    "validated_identity": "composition/mask-conditioned challenge of C2 signal",
+    "mechanism": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-OBS-PANEL2-0002",
+    "LC-ARCH-0007"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Source of residual same-token recurrence after simple composition/mask conditioning.",
+    "Whether a composition-adjusted model predicts a fresh held-out panel."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PANEL2_COMPOSITION_CONDITIONED_RESULT_0001.json",
+    "PANEL2_CONDITIONED_NULL_VALIDATION_0001.json"
+  ]
+}

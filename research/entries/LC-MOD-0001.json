@@ -1,0 +1,93 @@
+{
+  "entry_id": "LC-MOD-0001",
+  "entry_type": "MOD",
+  "status": "SEMANTICALLY_VALIDATED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "Annotation-blind E. coli / S. cerevisiae scan found six multi-block high-complexity colinear clusters; the sole non-mitochondrial cluster contained two exact blocks, 25 bp and 17 bp, whose raw starts were 263 bp apart in both genomes.",
+      "source_refs": [
+        "PROOF_CASE_0002.md"
+      ]
+    },
+    {
+      "class": "E2",
+      "statement": "Post-freeze annotation mapped the E. coli coordinates to fbaA and the yeast coordinates to FBA1, both fructose-bisphosphate aldolase genes.",
+      "source_refs": [
+        "PROOF_CASE_0002.md"
+      ]
+    },
+    {
+      "class": "E2",
+      "statement": "After orienting both genes in coding direction, the discovered blocks land at the same coding starts: block C at 789 and block D at 534 (0-based) in both genes.",
+      "source_refs": [
+        "PROOF_CASE_0002.md"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "This is an annotation-blind recovery of reusable colinear metabolic architecture before gene/function labels were supplied.",
+      "source_refs": [
+        "PROOF_CASE_0002.md"
+      ]
+    }
+  ],
+  "observations": {
+    "shared_unique_16mers_in_initial_pair_scan": 19112,
+    "high_complexity_multiblock_colinear_clusters": 6,
+    "non_mitochondrial_clusters": 1,
+    "block_C_raw_sequence": "CAGTAGAACCGGAACCACCGTGGAA",
+    "block_C_length_bp": 25,
+    "block_D_raw_sequence": "TCTTCTTCACCACCGGT",
+    "block_D_length_bp": 17,
+    "raw_block_start_separation_bp": 263,
+    "coding_oriented_block_C": "TTCCACGGTGGTTCCGGTTCTACTG",
+    "coding_oriented_block_D": "ACCGGTGGTGAAGAAGA",
+    "coding_start_block_C_zero_based": 789,
+    "coding_start_block_D_zero_based": 534,
+    "gene_lengths_bp": {
+      "E_coli_fbaA": 1080,
+      "S_cerevisiae_FBA1": 1080
+    },
+    "whole_gene_positionwise_nucleotide_identity": "550/1080 = 50.9%",
+    "protein_identity_corresponding_positions": "139/359 = 38.7%"
+  },
+  "semantics": {
+    "validated_identity": "fructose-bisphosphate aldolase conserved module",
+    "E_coli_gene": "fbaA (b2925 / EG10282), class II",
+    "S_cerevisiae_gene": "FBA1 (YKL060C)",
+    "semantic_scope": "post-freeze annotation"
+  },
+  "relationships": [
+    {
+      "type": "colinear_same_coordinate_architecture",
+      "block_pair": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "type": "same_coding_positions_across_implementations",
+      "block_pair": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "type": "decomposed_into_v0.0.3",
+      "entries": [
+        "LC-PRIM-0004",
+        "LC-PRIM-0005",
+        "LC-GRAM-0002"
+      ]
+    }
+  ],
+  "predictions": [],
+  "unknowns": [
+    "This proof case does not establish that every function has one universal exact nucleotide implementation."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PROOF_CASE_0002.md"
+  ]
+}

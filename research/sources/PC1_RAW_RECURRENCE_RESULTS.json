@@ -1,0 +1,318 @@
+{
+  "experiment": "EXP-0001",
+  "run": "RUN-0001_THREE_DOMAIN_PILOT",
+  "stage": "raw_exact_recurrence",
+  "annotation_used": false,
+  "input_validation": {
+    "ECOLI": {
+      "file": "data/raw/U00096.3_Ecoli.fasta",
+      "file_sha256": "c41a4207c8916ba6138460d129ce5604cb307d40b7d56207878a9e731a418074",
+      "sequence_sha256": "e999dceccb76562d40e49a10d9e6d4cf1c05d184f4f80b92bb32d4a2420c11d0",
+      "bases": 4641652,
+      "records": 1
+    },
+    "PYRO": {
+      "file": "data/raw/GCF_000007305.1_ASM730v1_genomic.fna",
+      "file_sha256": "e9c87294756c7cfc15e61aa067c2169a8513ac755bce4a3d1f3eedf385cffa76",
+      "sequence_sha256": "34307cbb2b2f2fb8f64bc36c3581c4115347652ded46a343e1c68bb0cea9bdb2",
+      "bases": 1908256,
+      "records": 1
+    },
+    "YEAST": {
+      "file": "data/raw/S288C_sequence_iRibo.fsa",
+      "file_sha256": "6951436ee454a89ba0c5aa4b556a37d6e68bf261f484fd0f3d53fe81fdcd9e00",
+      "sequence_sha256": "f13de26e949cb32b9ea1a98a202b15f65369d198a0ddae447811500efc1ac7ce",
+      "bases": 12157105,
+      "records": 17
+    }
+  },
+  "kmer_summary": [
+    {
+      "k": 16,
+      "scope": "ECOLI",
+      "total_kmers": 4641637,
+      "unique_kmers": 4544543
+    },
+    {
+      "k": 16,
+      "scope": "PYRO",
+      "total_kmers": 1908241,
+      "unique_kmers": 1879960
+    },
+    {
+      "k": 16,
+      "scope": "YEAST",
+      "total_kmers": 12156850,
+      "unique_kmers": 11478600
+    },
+    {
+      "k": 16,
+      "scope": "ECOLI__PYRO",
+      "total_kmers": "",
+      "unique_kmers": 2462
+    },
+    {
+      "k": 16,
+      "scope": "ECOLI__YEAST",
+      "total_kmers": "",
+      "unique_kmers": 19112
+    },
+    {
+      "k": 16,
+      "scope": "PYRO__YEAST",
+      "total_kmers": "",
+      "unique_kmers": 16479
+    },
+    {
+      "k": 16,
+      "scope": "ECOLI__PYRO__YEAST",
+      "total_kmers": "",
+      "unique_kmers": 54
+    },
+    {
+      "k": 24,
+      "scope": "ECOLI",
+      "total_kmers": 4641629,
+      "unique_kmers": 4565593
+    },
+    {
+      "k": 24,
+      "scope": "PYRO",
+      "total_kmers": 1908233,
+      "unique_kmers": 1886345
+    },
+    {
+      "k": 24,
+      "scope": "YEAST",
+      "total_kmers": 12156714,
+      "unique_kmers": 11631258
+    },
+    {
+      "k": 24,
+      "scope": "ECOLI__PYRO",
+      "total_kmers": "",
+      "unique_kmers": 3
+    },
+    {
+      "k": 24,
+      "scope": "ECOLI__YEAST",
+      "total_kmers": "",
+      "unique_kmers": 8
+    },
+    {
+      "k": 24,
+      "scope": "PYRO__YEAST",
+      "total_kmers": "",
+      "unique_kmers": 4
+    },
+    {
+      "k": 24,
+      "scope": "ECOLI__PYRO__YEAST",
+      "total_kmers": "",
+      "unique_kmers": 0
+    },
+    {
+      "k": 32,
+      "scope": "ECOLI",
+      "total_kmers": 4641621,
+      "unique_kmers": 4571471
+    },
+    {
+      "k": 32,
+      "scope": "PYRO",
+      "total_kmers": 1908225,
+      "unique_kmers": 1889000
+    },
+    {
+      "k": 32,
+      "scope": "YEAST",
+      "total_kmers": 12156578,
+      "unique_kmers": 11664564
+    },
+    {
+      "k": 32,
+      "scope": "ECOLI__PYRO",
+      "total_kmers": "",
+      "unique_kmers": 0
+    },
+    {
+      "k": 32,
+      "scope": "ECOLI__YEAST",
+      "total_kmers": "",
+      "unique_kmers": 0
+    },
+    {
+      "k": 32,
+      "scope": "PYRO__YEAST",
+      "total_kmers": "",
+      "unique_kmers": 0
+    },
+    {
+      "k": 32,
+      "scope": "ECOLI__PYRO__YEAST",
+      "total_kmers": "",
+      "unique_kmers": 0
+    }
+  ],
+  "focus_cluster": {
+    "block_a": "CCGCCTGGGGAGTACGGCCGCAAGG",
+    "block_b": "TAAGGTAGCGAAATTCCTTGTCGG",
+    "core_0001": "GTAGCGAAATTCCTTG",
+    "occurrences": {
+      "ECOLI": {
+        "block_a": [
+          [
+            "ENA|U00096|U00096.3",
+            224648
+          ],
+          [
+            "ENA|U00096|U00096.3",
+            3942685
+          ],
+          [
+            "ENA|U00096|U00096.3",
+            4036408
+          ],
+          [
+            "ENA|U00096|U00096.3",
+            4167536
+          ],
+          [
+            "ENA|U00096|U00096.3",
+            4209024
+          ]
+        ],
+        "block_b": [
+          [
+            "ENA|U00096|U00096.3",
+            227683
+          ],
+          [
+            "ENA|U00096|U00096.3",
+            3945628
+          ],
+          [
+            "ENA|U00096|U00096.3",
+            4039444
+          ],
+          [
+            "ENA|U00096|U00096.3",
+            4170565
+          ],
+          [
+            "ENA|U00096|U00096.3",
+            4211967
+          ]
+        ],
+        "core": [
+          [
+            "ENA|U00096|U00096.3",
+            227687
+          ],
+          [
+            "ENA|U00096|U00096.3",
+            3945632
+          ],
+          [
+            "ENA|U00096|U00096.3",
+            4039448
+          ],
+          [
+            "ENA|U00096|U00096.3",
+            4170569
+          ],
+          [
+            "ENA|U00096|U00096.3",
+            4211971
+          ]
+        ]
+      },
+      "PYRO": {
+        "block_a": [
+          [
+            "NC_003413.1",
+            137766
+          ]
+        ],
+        "block_b": [
+          [
+            "NC_003413.1",
+            140735
+          ]
+        ],
+        "core": [
+          [
+            "NC_003413.1",
+            140739
+          ]
+        ]
+      },
+      "YEAST": {
+        "block_a": [],
+        "block_b": [],
+        "core": [
+          [
+            "chrM",
+            59837
+          ]
+        ]
+      }
+    },
+    "start_to_start_spacings": {
+      "ECOLI": [
+        3035,
+        2943,
+        3036,
+        3029,
+        2943
+      ],
+      "PYRO": [
+        2969
+      ]
+    },
+    "core_windows": {
+      "ECOLI": [
+        {
+          "record": "ENA|U00096|U00096.3",
+          "position": 227687,
+          "window": "AACGGTCCTAAGGTAGCGAAATTCCTTGTCGGGTAAGTTC"
+        },
+        {
+          "record": "ENA|U00096|U00096.3",
+          "position": 3945632,
+          "window": "AACGGTCCTAAGGTAGCGAAATTCCTTGTCGGGTAAGTTC"
+        },
+        {
+          "record": "ENA|U00096|U00096.3",
+          "position": 4039448,
+          "window": "AACGGTCCTAAGGTAGCGAAATTCCTTGTCGGGTAAGTTC"
+        },
+        {
+          "record": "ENA|U00096|U00096.3",
+          "position": 4170569,
+          "window": "AACGGTCCTAAGGTAGCGAAATTCCTTGTCGGGTAAGTTC"
+        },
+        {
+          "record": "ENA|U00096|U00096.3",
+          "position": 4211971,
+          "window": "AACGGTCCTAAGGTAGCGAAATTCCTTGTCGGGTAAGTTC"
+        }
+      ],
+      "PYRO": [
+        {
+          "record": "NC_003413.1",
+          "position": 140739,
+          "window": "AACCCTCTTAAGGTAGCGAAATTCCTTGTCGGTTAAATGC"
+        }
+      ],
+      "YEAST": [
+        {
+          "record": "chrM",
+          "position": 59837,
+          "window": "GAGGGTTATAATGTAGCGAAATTCCTTGGCCTATAATTGA"
+        }
+      ]
+    }
+  },
+  "note": "Pilot recurrence checkpoint; nulls and full preregistered corpus are separate checkpoints."
+}

@@ -1,0 +1,139 @@
+{
+  "entry_id": "LC-GRAM-0003",
+  "entry_type": "GRAM",
+  "status": "SEMANTICALLY_VALIDATED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "LC-PRIM-0003 is followed exactly 119 bp start-to-start by LC-PRIM-0006 in five distinct E. coli occurrences, and the same 119-bp relationship occurs at the single paired yeast mitochondrial coordinates 59,837\u219259,956 (0-based).",
+      "source_refs": [
+        "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "Both yeast tokens lie inside the post-freeze mitochondrial 21S_RRNA/Q0158 locus.",
+      "source_refs": [
+        "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv",
+        "PC1_ANNOTATION_PASS_0001.md"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "This is a second literal grammar rule inside the large-subunit-rRNA-associated code region: not only token identity but an exact local token-to-token offset persists across bacterial copies and a mitochondrial implementation.",
+      "source_refs": [
+        "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv",
+        "PC1_ANNOTATION_PASS_0001.md"
+      ]
+    },
+    {
+      "class": "E2",
+      "statement": "After the v0.0.4 freeze, the five E. coli LC-PRIM-0003\u2192119bp\u2192LC-PRIM-0006 pairs were assembly-matched to 23S rRNA genes rrlH, rrlC, rrlA, rrlB, and rrlE; the yeast pair was already localized inside mitochondrial 21S rRNA.",
+      "source_refs": [
+        "WEB_VALIDATION_0001.json",
+        "PC1_ANNOTATION_PASS_0001.md"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "The exact 119-bp grammar is now semantically validated as an internal large-subunit-rRNA architecture across five bacterial 23S copies and one mitochondrial 21S implementation.",
+      "source_refs": [
+        "WEB_VALIDATION_0001.json",
+        "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Functional mapping shows the 119-bp exact grammar links a Domain-IV intersubunit-interface token (LC-PRIM-0003) to a Domain-V/PTC-neighborhood token (LC-PRIM-0006). The mechanistic meaning of preserving exactly 119 bp remains UNKNOWN.",
+      "source_refs": [
+        "WEB_FUNCTIONAL_VALIDATION_0002.json"
+      ]
+    }
+  ],
+  "observations": {
+    "syntax": "LC-PRIM-0003 -> 119 bp start-to-start -> LC-PRIM-0006",
+    "pair_records": [
+      {
+        "cluster_id": "COL-0001",
+        "ECOLI_core_start0": 4039448,
+        "ECOLI_seq6_start0": 4039567,
+        "ECOLI_spacing_bp": 119,
+        "YEAST_core_start0": 59837,
+        "YEAST_seq6_start0": 59956,
+        "YEAST_spacing_bp": 119
+      },
+      {
+        "cluster_id": "COL-0003",
+        "ECOLI_core_start0": 4211971,
+        "ECOLI_seq6_start0": 4212090,
+        "ECOLI_spacing_bp": 119,
+        "YEAST_core_start0": 59837,
+        "YEAST_seq6_start0": 59956,
+        "YEAST_spacing_bp": 119
+      },
+      {
+        "cluster_id": "COL-0004",
+        "ECOLI_core_start0": 4170569,
+        "ECOLI_seq6_start0": 4170688,
+        "ECOLI_spacing_bp": 119,
+        "YEAST_core_start0": 59837,
+        "YEAST_seq6_start0": 59956,
+        "YEAST_spacing_bp": 119
+      },
+      {
+        "cluster_id": "COL-0005",
+        "ECOLI_core_start0": 3945632,
+        "ECOLI_seq6_start0": 3945751,
+        "ECOLI_spacing_bp": 119,
+        "YEAST_core_start0": 59837,
+        "YEAST_seq6_start0": 59956,
+        "YEAST_spacing_bp": 119
+      },
+      {
+        "cluster_id": "COL-0006",
+        "ECOLI_core_start0": 227687,
+        "ECOLI_seq6_start0": 227806,
+        "ECOLI_spacing_bp": 119,
+        "YEAST_core_start0": 59837,
+        "YEAST_seq6_start0": 59956,
+        "YEAST_spacing_bp": 119
+      }
+    ],
+    "distinct_ECOLI_starts": [
+      227687,
+      3945632,
+      4039448,
+      4170569,
+      4211971
+    ],
+    "YEAST_single_pair_start0": [
+      59837,
+      59956
+    ],
+    "spacing_bp": 119
+  },
+  "semantics": {
+    "yeast_context": "mitochondrial 21S_RRNA / Q0158",
+    "ECOLI_context": "23S rRNA copies rrlH/rrlC/rrlA/rrlB/rrlE",
+    "exact_mechanistic_meaning_of_119bp_spacing": "UNKNOWN",
+    "validated_identity": "exact internal large-subunit-rRNA token relationship",
+    "YEAST_context": "mitochondrial 21S_RRNA / Q0158"
+  },
+  "relationships": [
+    "LC-PRIM-0003",
+    "LC-PRIM-0006",
+    "LC-GRAM-0004"
+  ],
+  "predictions": [
+    "LC-PRED-0006"
+  ],
+  "unknowns": [
+    "Whether the exact 119-bp offset is mechanistically constrained, historical, or both.",
+    "Whether all five E. coli pairs lie within homologous 23S/large-subunit rRNA elements."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv",
+    "PC1_ANNOTATION_PASS_0001.md"
+  ]
+}

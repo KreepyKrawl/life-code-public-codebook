@@ -1,0 +1,84 @@
+{
+  "entry_id": "LC-OBS-C3-0001",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "Across the 97 frozen cross-genome boundary-token memberships, the exact semantic C3 gate returned 0 positive memberships.",
+      "source_refs": [
+        "C3_SAME_SYSTEM_RESULT_0001.json",
+        "C3_BOUNDARY_COMPONENTS_0001.csv"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "The matched token-assignment null mean was 0.00612; because observed S_C3=0 is not above null, LC-PRED-0020 is FALSIFIED.",
+      "source_refs": [
+        "C3_SAME_SYSTEM_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "The supported C2 boundary-role recurrence does not reduce to exact cross-domain equality of neighboring NCBI gene symbols, product names, or EC numbers under the frozen conservative gate.",
+      "source_refs": [
+        "C3_SAME_SYSTEM_RESULT_0001.json",
+        "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "S_C3_real": 0,
+    "pair_results": {
+      "EP": {
+        "overlap_token_count": 29,
+        "C3_positive": 0
+      },
+      "EY": {
+        "overlap_token_count": 42,
+        "C3_positive": 0
+      },
+      "PY": {
+        "overlap_token_count": 26,
+        "C3_positive": 0
+      }
+    },
+    "null": {
+      "replicates": 100000,
+      "generator": "NumPy PCG64",
+      "seed": 230023,
+      "mean": 0.00612,
+      "sd": 0.07799067636583235,
+      "q95": 0.0,
+      "q99": 0.0,
+      "mc_tail_ge": 1.0
+    },
+    "extraction_coverage": {
+      "component_rows": 515,
+      "unique_token_genome_gene_components": 507,
+      "with_usable_semantic_fingerprint": 466,
+      "with_protein_id": 482,
+      "without_usable_semantic_fingerprint": 41
+    },
+    "LC-PRED-0020": "FALSIFIED"
+  },
+  "semantics": {
+    "C3_exact_semantic_gate": "NEGATIVE",
+    "broader_homology": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-OBS-INTERFACE-0002",
+    "LC-ARCH-0003"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Whether neighboring proteins are homologous despite differing exact semantic labels.",
+    "Whether recurrent boundary tokens encode generic boundary grammar rather than component identity."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "C3_SAME_SYSTEM_RESULT_0001.json",
+    "C3_BOUNDARY_COMPONENTS_0001.csv",
+    "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json"
+  ]
+}

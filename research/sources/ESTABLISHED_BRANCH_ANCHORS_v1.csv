@@ -1,0 +1,5 @@
+branch,anchor,anchor_taxid,close_role,close_target,close_taxid,deepest_named_shared_lineage,farther_target,anchor_source,close_source
+Bacteria,ECOLI,511145,Salmonella close target,SALMONELLA,99287,Enterobacteriaceae,DEINOCOCCUS,https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=511145,https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=99287
+Archaea,PYRO,186497,Thermococcus close target,THERMOCOCCUS,69014,Thermococcaceae,METHANOSARCINA,https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=186497,https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=69014
+Eukaryota,YEAST,559292,Kluyveromyces close target,KLUYVEROMYCES,284590,Saccharomycetaceae,ARABIDOPSIS,https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=559292,https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=284590
+Animal bracket,CELEGANS,6239,Caenorhabditis close target,CBRIGGSAE,6238,Caenorhabditis,DROSOPHILA,https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=6239,https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=6238

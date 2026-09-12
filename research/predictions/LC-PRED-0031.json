@@ -1,0 +1,26 @@
+{
+  "prediction_id": "LC-PRED-0031",
+  "status": "MIXED_WEAKENED",
+  "evidence_class": "P1",
+  "statement": "The frozen continuous boundary-propensity model score remains above the same fixed-GC-count \u00d7 wildcard-separation conditioned null.",
+  "primary_statistic": "M_score",
+  "support_condition": "Observed above conditioned-null mean and one-sided 100,000-replicate Monte Carlo p<=0.05; strong support p<=0.01.",
+  "weakening_condition": "Observed above conditioned-null mean but p>0.05.",
+  "falsification_condition": "Observed <= conditioned-null mean.",
+  "contamination_boundary": "Frozen after the unconditioned Panel-2 result but before any composition-conditioned null was calculated.",
+  "source_refs": [
+    "PANEL2_BOUNDARY_PREDICTION_RESULT_0001.json",
+    "MOP_TOKEN_SIMPLE_FEATURES_v1.csv"
+  ],
+  "validation": {
+    "result": "MIXED_WEAKENED",
+    "source": "PANEL2_COMPOSITION_CONDITIONED_RESULT_0001.json",
+    "observed": 67.26955833155401,
+    "analytic_null_mean": 65.61864802190769,
+    "mc_null_mean": 65.61781067459368,
+    "mc_null_sd": 1.2745600203793805,
+    "q95": 67.71553847249784,
+    "q99": 68.5963308064722,
+    "mc_tail_ge": 0.0983190168098319
+  }
+}

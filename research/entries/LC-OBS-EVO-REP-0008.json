@@ -1,0 +1,40 @@
+{
+  "entry_id": "LC-OBS-EVO-REP-0008",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "The prospective pooled literal-retention result decomposes to 4/6 Panel-3 genomes with observed retained-literal boundary count above their own composition/mask-conditioned null means.",
+      "source_refs": [
+        "PANEL3_INTERFACE_LITERAL_RETENTION_DECOMPOSITION_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Per-genome p-values are retrospective diagnostics; LC-PRED-0037 remains the prospective evidential result.",
+      "source_refs": [
+        "PANEL3_INTERFACE_LITERAL_RETENTION_DECOMPOSITION_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "positive_direction_genomes": 4,
+    "genomes_total": 6
+  },
+  "semantics": {
+    "interface_literal_constraint": "SUPPORTED_POOLED; per-genome heterogeneity descriptive"
+  },
+  "relationships": [
+    "LC-OBS-EVO-REP-0007",
+    "LC-OBS-PANEL3-0004"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Whether the interface-literal constraint generalizes prospectively at individual lineage level."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PANEL3_INTERFACE_LITERAL_RETENTION_DECOMPOSITION_RESULT_0001.json"
+  ]
+}

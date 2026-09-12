@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "occurrences": 17799,
+  "genomes": {
+    "ECOLI": {
+      "calculated": 158,
+      "canonical": 158,
+      "exact_set_match": true
+    },
+    "PYRO": {
+      "calculated": 100,
+      "canonical": 100,
+      "exact_set_match": true
+    },
+    "YEAST": {
+      "calculated": 167,
+      "canonical": 167,
+      "exact_set_match": true
+    },
+    "BACILLUS": {
+      "calculated": 18,
+      "canonical": 18,
+      "exact_set_match": true
+    },
+    "SULFOLOBUS": {
+      "calculated": 16,
+      "canonical": 16,
+      "exact_set_match": true
+    },
+    "POMBE": {
+      "calculated": 49,
+      "canonical": 49,
+      "exact_set_match": true
+    },
+    "PSEUDOMONAS": {
+      "calculated": 4,
+      "canonical": 4,
+      "exact_set_match": true
+    },
+    "MYCOPLASMA": {
+      "calculated": 2,
+      "canonical": 2,
+      "exact_set_match": true
+    },
+    "METHANOCALDOCOCCUS": {
+      "calculated": 27,
+      "canonical": 27,
+      "exact_set_match": true
+    },
+    "HALOFERAX": {
+      "calculated": 2,
+      "canonical": 2,
+      "exact_set_match": true
+    },
+    "NEUROSPORA": {
+      "calculated": 51,
+      "canonical": 51,
+      "exact_set_match": true
+    },
+    "CELEGANS": {
+      "calculated": 279,
+      "canonical": 279,
+      "exact_set_match": true
+    }
+  }
+}

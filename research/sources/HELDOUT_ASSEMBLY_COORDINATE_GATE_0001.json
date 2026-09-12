@@ -1,0 +1,160 @@
+{
+  "gate_id": "HELDOUT_ASSEMBLY_COORDINATE_GATE_0001",
+  "parent_release": "LIFE_CODE_CODEBOOK_v0.0.33",
+  "parent_zip_sha256": "38735ae8003fe332928561c7899ebaef45db7116f7a6782d2ff4ee0642126a19",
+  "parent_lock_errors": 0,
+  "status": "PASS",
+  "mop_scan_status": "NOT_RUN",
+  "species": {
+    "BACILLUS": {
+      "uploaded_filename": "BACILLUS_GCF_000009045.1.zip",
+      "uploaded_zip_sha256": "6d73b97be1c178d2070364b8275500d410ae850390716d2fe90daf6ec3bbdac5",
+      "uploaded_zip_size_bytes": 5195358,
+      "assembly_accession": "GCF_000009045.1",
+      "assembly_name": "ASM904v1",
+      "organism_name": "Bacillus subtilis subsp. subtilis str. 168",
+      "record_count": 1,
+      "total_bp": 4215606,
+      "fasta_sha256": "59c09816fb55fb1a0b42d0715f627bb42018a19c6bf933c9cb37f6058ee4737e",
+      "gff_sha256": "3c877fd4660b532ecbce74c423c000a73751dc5a04104d0e84653c299720f542",
+      "gbff_sha256": "dec50c042eac02710a380ea72db40a1cb5ce6af17556a1668a674f06cfea16d0",
+      "all_fasta_records_present_in_sequence_report": true,
+      "all_gff_sequence_regions_exact": true,
+      "all_gbff_lengths_exact": true,
+      "record_checks": [
+        {
+          "fasta_record": "NC_000964.3",
+          "description": "NC_000964.3 Bacillus subtilis subsp. subtilis str. 168 complete genome",
+          "length_bp": 4215606,
+          "sequence_sha256": "71572ae0b98f44a6382b29e194e56c1f7d87477be8f53915fb06816f886b17b7",
+          "gff_seqid": "NC_000964.3",
+          "gff_sequence_region": [
+            1,
+            4215606
+          ],
+          "sequence_report_length": 4215606,
+          "assembly_unit": "Primary Assembly",
+          "assigned_molecule_location_type": "Chromosome",
+          "topology": "circular",
+          "organellar": false
+        }
+      ]
+    },
+    "SULFOLOBUS": {
+      "uploaded_filename": "SULFOLOBUS_GCF_000012285.1.zip",
+      "uploaded_zip_sha256": "8d1e16e3dea3b9c5ec402a242fc36707a2988836212bc154f9befc4e79429d97",
+      "uploaded_zip_size_bytes": 2503866,
+      "assembly_accession": "GCF_000012285.1",
+      "assembly_name": "ASM1228v1",
+      "organism_name": "Sulfolobus acidocaldarius DSM 639",
+      "record_count": 1,
+      "total_bp": 2225959,
+      "fasta_sha256": "4e56c2dc64bc5bc21c839d22cf0d84c603945d9b9d03c47a78dd7e8db08ee04d",
+      "gff_sha256": "69668b516b99ea0521dde3d8da55481005f7fee7149e36653382880e59c780b0",
+      "gbff_sha256": "cb0997707b9c46e0dd6e2390e83266341f0c324ee450b6ef24d073e2c7a270b7",
+      "all_fasta_records_present_in_sequence_report": true,
+      "all_gff_sequence_regions_exact": true,
+      "all_gbff_lengths_exact": true,
+      "record_checks": [
+        {
+          "fasta_record": "NC_007181.1",
+          "description": "NC_007181.1 Sulfolobus acidocaldarius DSM 639, complete sequence",
+          "length_bp": 2225959,
+          "sequence_sha256": "dc362687293c0dab3132cfefa972b2a976f5b30fbd2d8e770ceb1c0c226d4bae",
+          "gff_seqid": "NC_007181.1",
+          "gff_sequence_region": [
+            1,
+            2225959
+          ],
+          "sequence_report_length": 2225959,
+          "assembly_unit": "Primary Assembly",
+          "assigned_molecule_location_type": "Chromosome",
+          "topology": "circular",
+          "organellar": false
+        }
+      ]
+    },
+    "POMBE": {
+      "uploaded_filename": "POMBE_GCF_000002945.2.zip",
+      "uploaded_zip_sha256": "df5f09437c9d800355037cdd107229fe231021dcf6d6b2134002156e8d8f3ffe",
+      "uploaded_zip_size_bytes": 13624875,
+      "assembly_accession": "GCF_000002945.2",
+      "assembly_name": "ASM294v3",
+      "organism_name": "Schizosaccharomyces pombe",
+      "record_count": 4,
+      "total_bp": 12591253,
+      "fasta_sha256": "fc3a90996a09d653880aea616e235c878a3224eb678f9d5f099b9d4821b29762",
+      "gff_sha256": "97ef0f5f89be5ac1bd117b0cf65abcadaf142b51f8c49be23515633157f5851c",
+      "gbff_sha256": "b0dd1fdc007312b076b6177b7ce4b91801f78771cc066692ab6efd9c5d81998a",
+      "all_fasta_records_present_in_sequence_report": true,
+      "all_gff_sequence_regions_exact": true,
+      "all_gbff_lengths_exact": true,
+      "record_checks": [
+        {
+          "fasta_record": "NC_003424.3",
+          "description": "NC_003424.3 Schizosaccharomyces pombe strain 972h- genome assembly, chromosome: I",
+          "length_bp": 5579133,
+          "sequence_sha256": "cdfcd06ba9cce85838d0e22dfe0fa33dba5bc2e4e07d1974e8b29643a34f5572",
+          "gff_seqid": "NC_003424.3",
+          "gff_sequence_region": [
+            1,
+            5579133
+          ],
+          "sequence_report_length": 5579133,
+          "assembly_unit": "Primary Assembly",
+          "assigned_molecule_location_type": "Chromosome",
+          "topology": "linear",
+          "organellar": false
+        },
+        {
+          "fasta_record": "NC_003423.3",
+          "description": "NC_003423.3 Schizosaccharomyces pombe strain 972h- genome assembly, chromosome: II",
+          "length_bp": 4539804,
+          "sequence_sha256": "7bd7223dad8e20998c15825e2eb336b26915fafccd1dcb03274c12366ce8fb58",
+          "gff_seqid": "NC_003423.3",
+          "gff_sequence_region": [
+            1,
+            4539804
+          ],
+          "sequence_report_length": 4539804,
+          "assembly_unit": "Primary Assembly",
+          "assigned_molecule_location_type": "Chromosome",
+          "topology": "linear",
+          "organellar": false
+        },
+        {
+          "fasta_record": "NC_003421.2",
+          "description": "NC_003421.2 Schizosaccharomyces pombe strain 972h- genome assembly, chromosome: III",
+          "length_bp": 2452883,
+          "sequence_sha256": "82e0d0f3f9d8b71d75f8693f3a01849b85f8dc9bbaf57bdb08d35d082908aaf3",
+          "gff_seqid": "NC_003421.2",
+          "gff_sequence_region": [
+            1,
+            2452883
+          ],
+          "sequence_report_length": 2452883,
+          "assembly_unit": "Primary Assembly",
+          "assigned_molecule_location_type": "Chromosome",
+          "topology": "linear",
+          "organellar": false
+        },
+        {
+          "fasta_record": "NC_088682.1",
+          "description": "NC_088682.1 Schizosaccharomyces pombe isolate MT1 mitochondrion, complete genome",
+          "length_bp": 19433,
+          "sequence_sha256": "5c59bd16eaf93892ae525f82c606993d0b2a107d51ce0a345fecbbd9bad32910",
+          "gff_seqid": "NC_088682.1",
+          "gff_sequence_region": [
+            1,
+            19433
+          ],
+          "sequence_report_length": 19433,
+          "assembly_unit": "non-nuclear",
+          "assigned_molecule_location_type": "Mitochondrion",
+          "topology": "circular",
+          "organellar": true
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "entry_id": "LC-OBS-PANEL3-0002",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "The frozen primary 1,000-token scanner recovered 29405 exact occurrences across the eight gated genomes without annotation use.",
+      "source_refs": [
+        "PANEL3_PLUS_LINEAGE_SEQUENCE_ONLY_SCAN_RESULT_0001.json",
+        "PANEL3_PLUS_LINEAGE_PRIMARY_1000_SUMMARY.csv"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Recovery counts are sequence-only opportunity/representation observations and do not by themselves establish boundary role or evolutionary semantics.",
+      "source_refs": [
+        "PANEL3_PLUS_LINEAGE_SEQUENCE_ONLY_SCAN_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "sequence_scan": "PASS",
+    "boundary": "NOT_RUN",
+    "crosscheck": "FROZEN_NOT_RUN"
+  },
+  "semantics": {
+    "biological_context": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-OBS-PANEL3-0001",
+    "LC-ARCH-0013"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Independent scan crosscheck.",
+    "Boundary-role outcomes."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PANEL3_PLUS_LINEAGE_SEQUENCE_ONLY_SCAN_RESULT_0001.json",
+    "PANEL3_PLUS_LINEAGE_PRIMARY_1000_SUMMARY.csv"
+  ]
+}

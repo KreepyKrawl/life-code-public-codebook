@@ -1,0 +1,38 @@
+{
+  "entry_id": "LC-ARCH-0005",
+  "entry_type": "OBS",
+  "status": "PROVISIONAL",
+  "evidence": [
+    {
+      "class": "I1",
+      "statement": "After component-identity C3 tests failed, a distinct hypothesis is that recurrent MOP boundary tokens encode positional interface grammar rather than neighboring component identity.",
+      "source_refs": [
+        "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json",
+        "C3_SAME_SYSTEM_RESULT_0001.json",
+        "C3_PROTEIN_SEQUENCE_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "geometry_test": "FROZEN_UNRUN"
+  },
+  "semantics": {
+    "target": "C1/C2 boundary geometry recurrence"
+  },
+  "relationships": [
+    "LC-OBS-INTERFACE-0002",
+    "LC-OBS-C3-0002"
+  ],
+  "predictions": [
+    "LC-PRED-0022"
+  ],
+  "unknowns": [
+    "Whether same token identity preserves boundary geometry across genomes."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json",
+    "C3_SAME_SYSTEM_RESULT_0001.json",
+    "C3_PROTEIN_SEQUENCE_RESULT_0001.json"
+  ]
+}

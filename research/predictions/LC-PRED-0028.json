@@ -1,0 +1,26 @@
+{
+  "prediction_id": "LC-PRED-0028",
+  "status": "STRONGLY_SUPPORTED",
+  "evidence_class": "P1",
+  "statement": "The continuous token boundary-propensity scores trained only on the six previously known genomes will predict Panel-2 boundary occupancy above a recoverability-conditioned matched null.",
+  "primary_statistic": "M_score",
+  "support_condition": "Observed above matched-null mean and one-sided 100,000-replicate Monte Carlo p<=0.05; strong support p<=0.01.",
+  "weakening_condition": "Observed above null mean but p>0.05.",
+  "falsification_condition": "Observed <= matched-null mean.",
+  "null_seed": 380028,
+  "contamination_boundary": "Panel-2 species/accessions, token universe, boundary role, statistic, null, seed and threshold frozen before Panel-2 sequence acquisition or MOP scanning.",
+  "source_refs": [
+    "HELDOUT_BOUNDARY_TRANSFER_RESULT_0001.json",
+    "BOUNDARY_PROPENSITY_MODEL_v1_SCORES.csv"
+  ],
+  "validation": {
+    "result": "STRONGLY_SUPPORTED",
+    "source": "PANEL2_BOUNDARY_PREDICTION_RESULT_0001.json",
+    "independent_validation": "PANEL2_INDEPENDENT_STATISTIC_VALIDATION_0001.json",
+    "observed": 67.26955833155401,
+    "null_mean": 56.21053913620941,
+    "q95": 58.9187113851715,
+    "q99": 60.03285835293573,
+    "mc_tail_ge": 9.99990000099999e-06
+  }
+}

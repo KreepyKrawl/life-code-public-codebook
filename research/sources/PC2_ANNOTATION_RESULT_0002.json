@@ -1,0 +1,64 @@
+{
+  "status": "POST_FREEZE_ANNOTATION_RESULT",
+  "candidate_cluster_id": "COL-0002",
+  "genes": {
+    "ecoli": {
+      "gene": "fbaA",
+      "length_bp": 1080,
+      "protein_length_aa": 359,
+      "coding_sequence_sha256": "3cbb9e9c4b45042e6cec91d71b79fe71ba409a18e1d05055c82ee8bb2b699dcb"
+    },
+    "yeast": {
+      "gene": "FBA1",
+      "systematic_name": "YKL060C",
+      "length_bp": 1080,
+      "protein_length_aa": 359,
+      "coding_sequence_sha256": "5d358d016f54debf7d20ba62209c499b84a5d87a8b6e8e51ff662d1ba868a8ae"
+    }
+  },
+  "same_length_coding_regions": true,
+  "positionwise_nucleotide_identity": {
+    "identical_bases": 550,
+    "aligned_positions": 1080,
+    "fraction": 0.5092592592592593
+  },
+  "positionwise_protein_identity": {
+    "identical_amino_acids": 139,
+    "aligned_positions": 359,
+    "fraction": 0.3871866295264624
+  },
+  "gene_coordinate_diagonal": {
+    "yeast_low_start0_minus_ecoli_low_start0": -2743757,
+    "frozen_cluster_diagonal": -2743757,
+    "equal": true
+  },
+  "blocks": [
+    {
+      "genomic_sequence_direct": "CAGTAGAACCGGAACCACCGTGGAA",
+      "length_bp": 25,
+      "ecoli_genomic_start0": 3070430,
+      "yeast_genomic_start0": 326673,
+      "ecoli_coding_start0": 789,
+      "yeast_coding_start0": 789,
+      "same_coding_offset": true,
+      "coding_start_is_codon_boundary": true,
+      "coding_orientation_sequence": "TTCCACGGTGGTTCCGGTTCTACTG",
+      "complete_codons_encoded": 8,
+      "peptide_from_complete_codons": "FHGGSGST"
+    },
+    {
+      "genomic_sequence_direct": "TCTTCTTCACCACCGGT",
+      "length_bp": 17,
+      "ecoli_genomic_start0": 3070693,
+      "yeast_genomic_start0": 326936,
+      "ecoli_coding_start0": 534,
+      "yeast_coding_start0": 534,
+      "same_coding_offset": true,
+      "coding_start_is_codon_boundary": true,
+      "coding_orientation_sequence": "ACCGGTGGTGAAGAAGA",
+      "complete_codons_encoded": 5,
+      "peptide_from_complete_codons": "TGGEE"
+    }
+  ],
+  "interpretation_boundary": "These measurements validate the blind cluster as a known homologous enzyme-family module. They do not establish novelty of FBA homology or prove that all biological functions have a single sequence implementation."
+}

@@ -1,0 +1,25 @@
+{
+  "prediction_id": "LC-PRED-0025",
+  "status": "SUPPORTED",
+  "evidence_class": "P1",
+  "statement": "The immutable 81 primary-sample token identities that occupied the broad boundary role in at least two original discovery genomes will predict boundary-role occupancy in the held-out species above a recoverability-conditioned random-boundary-label null.",
+  "support_condition": "Observed T81 above null mean and one-sided 100,000-replicate Monte Carlo tail <=0.05; strong support <=0.01.",
+  "weakening_condition": "Observed above null mean but tail >0.05.",
+  "falsification_condition": "Observed <= null mean.",
+  "contamination_boundary": "The P81 identity list and held-out species/assemblies are frozen before held-out sequence download/scan.",
+  "source_refs": [
+    "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json",
+    "PRIMARY_CROSS_GENOME_BOUNDARY_TOKEN_IDS_81.txt"
+  ],
+  "validation": {
+    "result": "SUPPORTED",
+    "source": "HELDOUT_BOUNDARY_TRANSFER_RESULT_0001.json",
+    "independent_validation": "HELDOUT_TRANSFER_INDEPENDENT_VALIDATION_0001.json",
+    "observed": 18,
+    "null_mean": 11.76756,
+    "null_sd": 2.9330686399059944,
+    "q95": 17.0,
+    "q99": 19.0,
+    "mc_tail_ge": 0.02891971080289197
+  }
+}

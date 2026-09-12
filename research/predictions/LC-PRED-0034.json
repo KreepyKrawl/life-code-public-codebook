@@ -1,0 +1,29 @@
+{
+  "prediction_id": "LC-PRED-0034",
+  "status": "STRONGLY_SUPPORTED",
+  "evidence_class": "P1",
+  "statement": "Identical MOP token identities will recur in the broad boundary role across the deliberately FAR Deinococcus/Methanosarcina/Arabidopsis trio above the same composition-conditioned null.",
+  "primary_statistic": "S_far",
+  "null_seed": 460034,
+  "support_condition": "Observed above frozen null mean and one-sided 100,000-replicate Monte Carlo p<=0.05; strong support p<=0.01.",
+  "weakening_condition": "Observed above null mean but p>0.05.",
+  "falsification_condition": "Observed <= null mean.",
+  "special_gate": "LC-PRED-0035 only: >=50% boundary-membership movability or BLOCKED_LOW_MOVABILITY.",
+  "contamination_boundary": "Species/accessions, representation, role, conditioning, statistic, threshold and seed frozen before Panel-3 sequence acquisition.",
+  "source_refs": [
+    "BOUNDARY_RESIDUAL_MODEL_v2_SCORES.csv",
+    "PRIMARY1000_LOCAL_GRAMMAR_SUPPORT_GATE_0001.json"
+  ],
+  "result_release": "LIFE_CODE_CODEBOOK_v0.0.72",
+  "result_source": "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001.json",
+  "result": {
+    "observed": 22.0,
+    "mc_null_mean": 15.96849,
+    "mc_null_sd": 2.301663989356396,
+    "q95": 20.0,
+    "q99": 21.0,
+    "mc_tail_ge": 0.008369916300836992,
+    "status": "STRONGLY_SUPPORTED",
+    "analytic_null_mean": 15.975044019279952
+  }
+}

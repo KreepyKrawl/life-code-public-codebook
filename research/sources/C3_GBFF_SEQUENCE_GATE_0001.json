@@ -1,0 +1,30 @@
+{
+  "gate_id": "C3_GBFF_SEQUENCE_GATE_0001",
+  "status": "PASS",
+  "packages": {
+    "ECOLI": {
+      "gbff_file": "ECOLI_GCF_000005845.2_genomic.gbff",
+      "gbff_sha256": "555efa31643e12bc53f3e4d87f4b94dd270d2d0464e239a7833700f1b58360e4",
+      "frozen_record_count": 1,
+      "gbff_record_count": 1,
+      "exact_sequence_matches": 1,
+      "all_records_exact": true
+    },
+    "PYRO": {
+      "gbff_file": "PYRO_GCF_000007305.1_genomic.gbff",
+      "gbff_sha256": "6db6d2c6fe67eaf63cc714b6f566346107407703d45264357d72b393adfa3ca3",
+      "frozen_record_count": 1,
+      "gbff_record_count": 1,
+      "exact_sequence_matches": 1,
+      "all_records_exact": true
+    },
+    "YEAST": {
+      "gbff_file": "YEAST_GCF_000146045.2_genomic.gbff",
+      "gbff_sha256": "af0b5e31355850331081fa0bcb034d311db67c7e19e9e0c5f3837eb056e75f11",
+      "frozen_record_count": 17,
+      "gbff_record_count": 17,
+      "exact_sequence_matches": 17,
+      "all_records_exact": true
+    }
+  }
+}

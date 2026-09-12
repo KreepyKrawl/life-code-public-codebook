@@ -1,0 +1,16 @@
+{
+  "prediction_id": "LC-PRED-0004",
+  "status": "FROZEN_UNTESTED",
+  "evidence_class": "P1",
+  "generated_from": [
+    "LC-PRIM-0002",
+    "LC-PRIM-0003",
+    "LC-GRAM-0001"
+  ],
+  "statement": "Across additional genomes not used to create Proof Case 0001, the shorter nested LC-PRIM-0003 core should have a broader phylogenetic distribution than its 24-bp parent LC-PRIM-0002, while retaining enrichment in large-subunit-rRNA-associated contexts.",
+  "test": "Search additional predeclared bacterial, archaeal, and organellar genomes for exact direct/reverse-complement occurrences of LC-PRIM-0002 and LC-PRIM-0003, then annotate only after occurrence counts are frozen.",
+  "support_condition": "LC-PRIM-0003 occurs in a strict superset or materially broader taxonomic set than LC-PRIM-0002 and post-freeze annotations remain enriched for large-subunit-rRNA contexts.",
+  "weakening_condition": "Distribution breadth is similar or the core expands broadly but loses rRNA-context enrichment.",
+  "falsification_condition": "The parent LC-PRIM-0002 is as broad or broader than LC-PRIM-0003 across independent genomes, or LC-PRIM-0003 is predominantly unrelated to large-subunit-rRNA contexts.",
+  "contamination_boundary": "Prospective codebook prediction; no additional-genome results were inspected before freeze."
+}

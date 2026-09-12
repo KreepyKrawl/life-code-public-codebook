@@ -1,0 +1,23 @@
+{
+  "prediction_id": "LC-PRED-0007",
+  "status": "SUPPORTED",
+  "evidence_class": "P1",
+  "generated_from": [
+    "LC-PRIM-0007",
+    "LC-GRAM-0004"
+  ],
+  "statement": "In the exact frozen E. coli assembly, the LC-PRIM-0007 occurrence at start0 4,038,078 will map inside the same rrn operon as the paired LC-PRIM-0003/0006 architecture, even if it lies in a different subfeature or spacer.",
+  "test": "Use assembly-matched U00096.3 feature annotation at the exact frozen coordinate and compare operon membership to the paired core/17-bp token.",
+  "support_condition": "The coordinate lies within the same annotated rrn operon / precursor-rRNA transcriptional unit as the paired tokens.",
+  "weakening_condition": "The coordinate is immediately adjacent to the operon but outside the formal annotation boundary.",
+  "falsification_condition": "The coordinate belongs to an unrelated locus with no rrn-operon relationship.",
+  "contamination_boundary": "Frozen before assembly-matched annotation lookup.",
+  "validation": {
+    "validation_id": "WEB_VALIDATION_0001",
+    "result": "SUPPORTED",
+    "frozen_prediction_statement_unchanged": true,
+    "frozen_test_unchanged": true,
+    "original_statement_sha256": "08c89086152a07b62d8083d39d7da1de92c16825c39e0c1b8fe05bf628550eea",
+    "original_test_sha256": "f9ed5ac15f4488795cef9d653d131b8dc0eddf75ed6a564c045816d7fbc4368e"
+  }
+}

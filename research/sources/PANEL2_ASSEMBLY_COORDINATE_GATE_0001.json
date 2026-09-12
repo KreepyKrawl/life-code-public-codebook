@@ -1,0 +1,644 @@
+{
+  "gate_id": "PANEL2_ASSEMBLY_COORDINATE_GATE_0001",
+  "parent_release": "LIFE_CODE_CODEBOOK_v0.0.38",
+  "parent_zip_sha256": "10b966315e0e56221d0b94108823111242938612b37aeb3e45b2c1c6060ba881",
+  "parent_lock_errors": 0,
+  "status": "PASS",
+  "panel2_mop_scan_status": "NOT_RUN",
+  "species": {
+    "PSEUDOMONAS": {
+      "uploaded_filename": "PSEUDOMONAS_GCF_000006765.1.zip",
+      "uploaded_zip_sha256": "3232bf1e5a711dae9077d26282bd75559a99d300b5d22e273c28b6a49454a728",
+      "uploaded_zip_size_bytes": 6504111,
+      "assembly_accession": "GCF_000006765.1",
+      "assembly_name": "ASM676v1",
+      "organism_name": "Pseudomonas aeruginosa PAO1",
+      "record_count": 1,
+      "total_bp": 6264404,
+      "fasta_sha256": "3e9335fb76772d324537b0c4c8cc7935e8b467b2acb0fae0c6e6dbeb2f227117",
+      "gff_sha256": "0f27a3422dd6d0515df30dc45331100da49fc6d6bf2bc4d61230c907f9cba54b",
+      "gbff_sha256": "a745f10b2ec129bf81d855af17c13e9d1a7864ddb664fc88b773b06ba5d2d9d9",
+      "all_record_lengths_exact": true,
+      "all_gff_sequence_regions_exact": true,
+      "record_checks": [
+        {
+          "record": "NC_002516.2",
+          "length_bp": 6264404,
+          "sequence_sha256": "f969830bbe6aa58beccd852ae6e129a9489a92557ad082283f639b6e8539a340",
+          "gff_sequence_region": [
+            1,
+            6264404
+          ],
+          "sequence_report_length": 6264404,
+          "topology": "circular",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        }
+      ]
+    },
+    "MYCOPLASMA": {
+      "uploaded_filename": "MYCOPLASMA_GCF_000027325.1.zip",
+      "uploaded_zip_sha256": "01bc5e336db9897e526e53e599f9e298b349f165a59b50f073938667383af938",
+      "uploaded_zip_size_bytes": 647885,
+      "assembly_accession": "GCF_000027325.1",
+      "assembly_name": "ASM2732v1",
+      "organism_name": "Mycoplasmoides genitalium G37",
+      "record_count": 1,
+      "total_bp": 580076,
+      "fasta_sha256": "f392aff8c52ea376e68fbc3b1e9f3c2601c264d7dc4ac0186e2e0e05e82ab098",
+      "gff_sha256": "332b945d89ed6280c375eef0badef3062d72a6e0f300352d85976e59ca5b45ea",
+      "gbff_sha256": "9f77e43e8b5a755a1d7eefaab7e3f48f0d751088ce7f478fe453da4c411a062b",
+      "all_record_lengths_exact": true,
+      "all_gff_sequence_regions_exact": true,
+      "record_checks": [
+        {
+          "record": "NC_000908.2",
+          "length_bp": 580076,
+          "sequence_sha256": "50d2c89b829cf0c98518b0c3565f82ac4866d9310f8726bea8223ac3c1841a81",
+          "gff_sequence_region": [
+            1,
+            580076
+          ],
+          "sequence_report_length": 580076,
+          "topology": "circular",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        }
+      ]
+    },
+    "METHANOCALDOCOCCUS": {
+      "uploaded_filename": "METHANOCALDOCOCCUS_GCF_000091665.1.zip",
+      "uploaded_zip_sha256": "da787e3511c7a94b2e2245d2c216c80d6716c9e90b2d36f1233ffa35a503eef9",
+      "uploaded_zip_size_bytes": 1974494,
+      "assembly_accession": "GCF_000091665.1",
+      "assembly_name": "ASM9166v1",
+      "organism_name": "Methanocaldococcus jannaschii DSM 2661",
+      "record_count": 3,
+      "total_bp": 1739927,
+      "fasta_sha256": "2ac386abeef2289458994aecc07ef7a69a6bbc28a8e940b5ec71f5da18ba80a7",
+      "gff_sha256": "f2cce6dc8ea14389bbe0765a5aaa5695f06b3a85b7f3c82c25130e1a36befe99",
+      "gbff_sha256": "9919e5f97b9b2ee108e9cafcb0b779f1706a5bb1cc552e8c61791420c15583d0",
+      "all_record_lengths_exact": true,
+      "all_gff_sequence_regions_exact": true,
+      "record_checks": [
+        {
+          "record": "NC_000909.1",
+          "length_bp": 1664970,
+          "sequence_sha256": "5835a292dfd47875f81fb65dbca52f3f9bc336f1d72409389ff6b764c8ca91dc",
+          "gff_sequence_region": [
+            1,
+            1664970
+          ],
+          "sequence_report_length": 1664970,
+          "topology": "circular",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_001732.1",
+          "length_bp": 58407,
+          "sequence_sha256": "40c28548ee9fee42869052be9c6e216cfc512fcd8edee8c67a0768f2bf1e62c5",
+          "gff_sequence_region": [
+            1,
+            58407
+          ],
+          "sequence_report_length": 58407,
+          "topology": "circular",
+          "assigned_molecule_location_type": "Plasmid",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_001733.1",
+          "length_bp": 16550,
+          "sequence_sha256": "61b43217735cf95b4da3e1e6a138d6dc6754211f5914c003d89970767d9dfe8c",
+          "gff_sequence_region": [
+            1,
+            16550
+          ],
+          "sequence_report_length": 16550,
+          "topology": "circular",
+          "assigned_molecule_location_type": "Plasmid",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        }
+      ]
+    },
+    "HALOFERAX": {
+      "uploaded_filename": "HALOFERAX_GCF_000025685.1.zip",
+      "uploaded_zip_sha256": "d387e11042383ae61c5b978d6252fd9da00f1e24f125d34e9ced710c30784420",
+      "uploaded_zip_size_bytes": 4382098,
+      "assembly_accession": "GCF_000025685.1",
+      "assembly_name": "ASM2568v1",
+      "organism_name": "Haloferax volcanii DS2",
+      "record_count": 5,
+      "total_bp": 4012900,
+      "fasta_sha256": "73f70148b086f5489901b47ef67d128577c0dff879243c196a99fdf68f12f01c",
+      "gff_sha256": "1ab9dfc9b44076338e1ad1fc0fc00c0c8031c9bc3dd4f594b2cc3020866ea62c",
+      "gbff_sha256": "6b9fc79afbbebfcdd460cf39a307782095a6052e9aeb2579531da3975fbf8904",
+      "all_record_lengths_exact": true,
+      "all_gff_sequence_regions_exact": true,
+      "record_checks": [
+        {
+          "record": "NC_013967.1",
+          "length_bp": 2847757,
+          "sequence_sha256": "84e8c81d9bde972954b8af36dcebcd3a51e9ba08ec1eee4845a5899ed0335fa1",
+          "gff_sequence_region": [
+            1,
+            2847757
+          ],
+          "sequence_report_length": 2847757,
+          "topology": "circular",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_013968.1",
+          "length_bp": 85092,
+          "sequence_sha256": "4781f33d59788b1bc13f93122a82c965b6ddc528cebf3a68ca6450d3fa42fa73",
+          "gff_sequence_region": [
+            1,
+            85092
+          ],
+          "sequence_report_length": 85092,
+          "topology": "circular",
+          "assigned_molecule_location_type": "Plasmid",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_013965.1",
+          "length_bp": 6359,
+          "sequence_sha256": "40a159cbe11b4f55639a2ad657046af5be83611fa9caecf3a1eb50d3adeffdb2",
+          "gff_sequence_region": [
+            1,
+            6359
+          ],
+          "sequence_report_length": 6359,
+          "topology": "circular",
+          "assigned_molecule_location_type": "Plasmid",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_013964.1",
+          "length_bp": 437906,
+          "sequence_sha256": "776dc687d73a5080bcd35dba33ed38d1587161ac737dbc2f1081d6bf0dad75c7",
+          "gff_sequence_region": [
+            1,
+            437906
+          ],
+          "sequence_report_length": 437906,
+          "topology": "circular",
+          "assigned_molecule_location_type": "Plasmid",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_013966.1",
+          "length_bp": 635786,
+          "sequence_sha256": "80ee643d852965554bbf52d19e1af89637208a62ef98660268ccaf6ac21ffc6a",
+          "gff_sequence_region": [
+            1,
+            635786
+          ],
+          "sequence_report_length": 635786,
+          "topology": "circular",
+          "assigned_molecule_location_type": "Plasmid",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        }
+      ]
+    },
+    "NEUROSPORA": {
+      "uploaded_filename": "NEUROSPORA_GCF_000182925.2.zip",
+      "uploaded_zip_sha256": "f4a8cd35f0755cb8899060e9b94b8a20c634f85c45a2e04fdcae7725ef60e22d",
+      "uploaded_zip_size_bytes": 36874552,
+      "assembly_accession": "GCF_000182925.2",
+      "assembly_name": "NC12",
+      "organism_name": "Neurospora crassa OR74A",
+      "record_count": 21,
+      "total_bp": 41102378,
+      "fasta_sha256": "8176a4ac98fe05dffa4fa92df030ce0f15af23fbc382c8d8176ffedd3012d847",
+      "gff_sha256": "3abe34dedf9fbb4e3c8258d3a9055241ba6a981c46dcf2c809460eaf32dc5dbf",
+      "gbff_sha256": "8687c7ec21e04c5d39003f228eed9b9538d8320ae4924bf88be58930fc289690",
+      "all_record_lengths_exact": true,
+      "all_gff_sequence_regions_exact": true,
+      "record_checks": [
+        {
+          "record": "NC_026501.1",
+          "length_bp": 9798893,
+          "sequence_sha256": "71a25f4e18058d44219340f1232a5cf321bd1795cf3fc80a7aa6b06aaca37d56",
+          "gff_sequence_region": [
+            1,
+            9798893
+          ],
+          "sequence_report_length": 9798893,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Linkage Group",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_026502.1",
+          "length_bp": 4478683,
+          "sequence_sha256": "d900536fd8578a39fd68e50b709ff7280c284c58068ba3a946397e5b30b98b42",
+          "gff_sequence_region": [
+            1,
+            4478683
+          ],
+          "sequence_report_length": 4478683,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Linkage Group",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_026503.1",
+          "length_bp": 5274802,
+          "sequence_sha256": "4bc889205fe1a2624944f6261e5bbc11cc1e90b4ec8b3df08c16705408a8784c",
+          "gff_sequence_region": [
+            1,
+            5274802
+          ],
+          "sequence_report_length": 5274802,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Linkage Group",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_026504.1",
+          "length_bp": 6000761,
+          "sequence_sha256": "97b6a73a701f8595000812a275db30de93bf28b99873fcabe9de221b34fcc53e",
+          "gff_sequence_region": [
+            1,
+            6000761
+          ],
+          "sequence_report_length": 6000761,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Linkage Group",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_026505.1",
+          "length_bp": 6436246,
+          "sequence_sha256": "8c4a13a4701a1a44ac30bf45708223cd22940eca6b150e9a8bce59b7c150e95a",
+          "gff_sequence_region": [
+            1,
+            6436246
+          ],
+          "sequence_report_length": 6436246,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Linkage Group",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_026506.1",
+          "length_bp": 4218384,
+          "sequence_sha256": "b3b549756d9e8c910a44885f769c5e04c15c9792efed82570d89026d0bc24a98",
+          "gff_sequence_region": [
+            1,
+            4218384
+          ],
+          "sequence_report_length": 4218384,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Linkage Group",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_026507.1",
+          "length_bp": 4255303,
+          "sequence_sha256": "13bff07212dbafe92082207175c98cf25063596abee27128945b24fb6e97e810",
+          "gff_sequence_region": [
+            1,
+            4255303
+          ],
+          "sequence_report_length": 4255303,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Linkage Group",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NW_011929459.1",
+          "length_bp": 192308,
+          "sequence_sha256": "73e9cba108b0b1c9edc4214a5e510faf6364db0c10f84b0f0f76bebb41dd83dc",
+          "gff_sequence_region": [
+            1,
+            192308
+          ],
+          "sequence_report_length": 192308,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NW_011929460.1",
+          "length_bp": 142473,
+          "sequence_sha256": "3e2742c8603b717bcc562f0c0f78d363a3340db8b9271ea5a4a3cbff1ba13b52",
+          "gff_sequence_region": [
+            1,
+            142473
+          ],
+          "sequence_report_length": 142473,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NW_011929461.1",
+          "length_bp": 125404,
+          "sequence_sha256": "4eb5757d0eb7bf9ad487a121b1bafdeac480a89f30e91b8c9a282fcc31915b3d",
+          "gff_sequence_region": [
+            1,
+            125404
+          ],
+          "sequence_report_length": 125404,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NW_011929462.1",
+          "length_bp": 31696,
+          "sequence_sha256": "057493c45ff759448863e815f1fde08e7f738841d07117f8e9c39cfcda24d359",
+          "gff_sequence_region": [
+            1,
+            31696
+          ],
+          "sequence_report_length": 31696,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NW_011929463.1",
+          "length_bp": 19714,
+          "sequence_sha256": "1e7c663b53bef6ce3149b469c1473cb5ce7b6beadfb1cda02fb8247683fb27eb",
+          "gff_sequence_region": [
+            1,
+            19714
+          ],
+          "sequence_report_length": 19714,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NW_011929464.1",
+          "length_bp": 13515,
+          "sequence_sha256": "442c170853f04e4d1513f6ddb0adf0fde99ceeb9baed91c2f162cfc73b4cae1c",
+          "gff_sequence_region": [
+            1,
+            13515
+          ],
+          "sequence_report_length": 13515,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NW_011929465.1",
+          "length_bp": 11565,
+          "sequence_sha256": "9e15b9596d3f1f6b26c936bf9b469bfb592d10caba32aed4fe65b5836cb6515f",
+          "gff_sequence_region": [
+            1,
+            11565
+          ],
+          "sequence_report_length": 11565,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NW_011929466.1",
+          "length_bp": 9397,
+          "sequence_sha256": "3383ab3a8b3ecb10d2cd4d8aa840862f5e0329a3afb34026e6c6d2ceb3be386b",
+          "gff_sequence_region": [
+            1,
+            9397
+          ],
+          "sequence_report_length": 9397,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NW_011929467.1",
+          "length_bp": 8983,
+          "sequence_sha256": "e1a4640257f8dbeaa628fec663923986c3021d6c24326fd09eae124b82047cf1",
+          "gff_sequence_region": [
+            1,
+            8983
+          ],
+          "sequence_report_length": 8983,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NW_011929468.1",
+          "length_bp": 6701,
+          "sequence_sha256": "9651cc52624cd8c76cc59e30dd31b8355c7a40d6b962a28b47e6efa6dbae8d05",
+          "gff_sequence_region": [
+            1,
+            6701
+          ],
+          "sequence_report_length": 6701,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NW_011929469.1",
+          "length_bp": 6309,
+          "sequence_sha256": "c05281e1a31df6c5d049e18b94c25635956700af2472ba0f3c49e9c6a84c788e",
+          "gff_sequence_region": [
+            1,
+            6309
+          ],
+          "sequence_report_length": 6309,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NW_011929470.1",
+          "length_bp": 4755,
+          "sequence_sha256": "1f2599d1b2c997f6381f63cf03aa4ee8dda54d7927525c4ef8c025d5e4edf2ce",
+          "gff_sequence_region": [
+            1,
+            4755
+          ],
+          "sequence_report_length": 4755,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NW_011929471.1",
+          "length_bp": 1646,
+          "sequence_sha256": "75182359359b016a3764dd19bb6f78ef3d3113c2345d90f30497d72475336f06",
+          "gff_sequence_region": [
+            1,
+            1646
+          ],
+          "sequence_report_length": 1646,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_026614.1",
+          "length_bp": 64840,
+          "sequence_sha256": "302811c27a2e725bab8f3c6f19abd02d95c6643a97b976ffd6f66631da0bdcbe",
+          "gff_sequence_region": [
+            1,
+            64840
+          ],
+          "sequence_report_length": 64840,
+          "topology": "circular",
+          "assigned_molecule_location_type": "Mitochondrion",
+          "assembly_unit": "non-nuclear",
+          "organellar": true
+        }
+      ]
+    },
+    "CELEGANS": {
+      "uploaded_filename": "CELEGANS_GCF_000002985.6.zip",
+      "uploaded_zip_sha256": "d6391dc42f4ea38cb1bd187e2bcf19aee858200ba88ad87e890383e915bcc66a",
+      "uploaded_zip_size_bytes": 95413328,
+      "assembly_accession": "GCF_000002985.6",
+      "assembly_name": "WBcel235",
+      "organism_name": "Caenorhabditis elegans",
+      "record_count": 7,
+      "total_bp": 100286401,
+      "fasta_sha256": "739d1fb774ef9f5a2de12fd16de3e559201d00d69502b7013d820584d9369220",
+      "gff_sha256": "b6296b398ce09b944696d7519d5013886e3ee2172760a6a6849774afc116334d",
+      "gbff_sha256": "8232b780b112da992bb8e46a92da33bf58e43264837232f077955f1e212cb66a",
+      "all_record_lengths_exact": true,
+      "all_gff_sequence_regions_exact": true,
+      "record_checks": [
+        {
+          "record": "NC_003279.8",
+          "length_bp": 15072434,
+          "sequence_sha256": "1302e0e58ec0ea857a23a3e2296a601473a14e0c32049632244000d7219e774d",
+          "gff_sequence_region": [
+            1,
+            15072434
+          ],
+          "sequence_report_length": 15072434,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_003280.10",
+          "length_bp": 15279421,
+          "sequence_sha256": "f0c916f3b17f2bfcc3d3736d0aed51ad08180ca161b969d923e0ddd95c5eb9ac",
+          "gff_sequence_region": [
+            1,
+            15279421
+          ],
+          "sequence_report_length": 15279421,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_003281.10",
+          "length_bp": 13783801,
+          "sequence_sha256": "37e8c6696bc3bc8729faabe790f54e19177154b8cb3adcdee9dfd9e154c1a942",
+          "gff_sequence_region": [
+            1,
+            13783801
+          ],
+          "sequence_report_length": 13783801,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_003282.8",
+          "length_bp": 17493829,
+          "sequence_sha256": "97e152fb13ed5416197f3c06b770abbcf99d3bb5fb58daefb53ae6a5f2a3c3d9",
+          "gff_sequence_region": [
+            1,
+            17493829
+          ],
+          "sequence_report_length": 17493829,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_003283.11",
+          "length_bp": 20924180,
+          "sequence_sha256": "efab4bdd926f57b7a3eea2418698efc9e23b583a1b615e84ab08ea68122cafde",
+          "gff_sequence_region": [
+            1,
+            20924180
+          ],
+          "sequence_report_length": 20924180,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_003284.9",
+          "length_bp": 17718942,
+          "sequence_sha256": "ce8760b8aa4c301bbebec571834a2c982a1bb7a150e116a21d6f0a52d61588fc",
+          "gff_sequence_region": [
+            1,
+            17718942
+          ],
+          "sequence_report_length": 17718942,
+          "topology": "linear",
+          "assigned_molecule_location_type": "Chromosome",
+          "assembly_unit": "Primary Assembly",
+          "organellar": false
+        },
+        {
+          "record": "NC_001328.1",
+          "length_bp": 13794,
+          "sequence_sha256": "3cbb1d2f1925ee7eacae394dd7fa867c225bcf3cb4701b3dd07ecad7b904446e",
+          "gff_sequence_region": [
+            1,
+            13794
+          ],
+          "sequence_report_length": 13794,
+          "topology": "circular",
+          "assigned_molecule_location_type": "Mitochondrion",
+          "assembly_unit": "non-nuclear",
+          "organellar": true
+        }
+      ]
+    }
+  }
+}

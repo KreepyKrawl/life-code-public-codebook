@@ -1,0 +1,28 @@
+{
+  "prediction_id": "LC-PRED-0037",
+  "status": "STRONGLY_SUPPORTED",
+  "evidence_class": "P1",
+  "statement": "Panel-3 broad boundary-role tokens will retain exact 16-nt implementations previously seen in same-domain training genomes more often than composition/mask-matched recovered tokens.",
+  "primary_statistic": "T_boundary_literal",
+  "null_seed": 490037,
+  "support_condition": "Observed above frozen null mean and one-sided 100,000-replicate Monte Carlo p<=0.05; strong support p<=0.01.",
+  "weakening_condition": "Observed above null mean but p>0.05.",
+  "falsification_condition": "Observed <= null mean.",
+  "contamination_boundary": "Generated from v0.0.48 retrospective data but frozen before Panel-3 sequence acquisition.",
+  "source_refs": [
+    "RETRO_IMPLEMENTATION_DEPTH_RESULT_0001.json",
+    "RETRO_IMPLEMENTATION_DEPTH_PAIRWISE_12GENOMES.csv"
+  ],
+  "result_release": "LIFE_CODE_CODEBOOK_v0.0.72",
+  "result_source": "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001.json",
+  "result": {
+    "observed": 288.0,
+    "mc_null_mean": 264.61031,
+    "mc_null_sd": 5.266977473266807,
+    "q95": 273.0,
+    "q99": 277.0,
+    "mc_tail_ge": 9.99990000099999e-06,
+    "status": "STRONGLY_SUPPORTED",
+    "analytic_null_mean": 264.628483227661
+  }
+}

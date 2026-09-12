@@ -1,0 +1,22 @@
+{
+  "validation_id": "ARCHITECTURE_BACKGROUND_VALIDATION_0001",
+  "status": "PASS",
+  "checks": {
+    "ECOLI": {
+      "valid_total": 4641637,
+      "sum_primary_contexts": 4641637,
+      "partition_exact": true
+    },
+    "PYRO": {
+      "valid_total": 1908241,
+      "sum_primary_contexts": 1908241,
+      "partition_exact": true
+    },
+    "YEAST": {
+      "valid_total": 12156850,
+      "sum_primary_contexts": 12156850,
+      "partition_exact": true
+    },
+    "expected_count_recalculation": "PASS"
+  }
+}

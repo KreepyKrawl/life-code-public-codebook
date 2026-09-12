@@ -1,0 +1,138 @@
+{
+  "entry_id": "LC-PRIM-0006",
+  "entry_type": "PRIM",
+  "status": "SEMANTICALLY_VALIDATED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "The 17-bp exact sequence GCAAGACGGAAAGACCC appears in five qualifying E. coli\u2194yeast-mitochondrial same-diagonal clusters in the frozen all-pair scan; the yeast coordinate is the same chrM start0 59,956 in each cluster, paired to five distinct E. coli starts.",
+      "source_refs": [
+        "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv",
+        "ALL_PAIR_DISCOVERY_FREEZE.md"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "The frozen yeast chrM start0 59,956 corresponds to 1-based 59,957, which lies inside the independently recorded post-freeze S. cerevisiae mitochondrial 21S_RRNA/Q0158 locus 58,009\u201362,447.",
+      "source_refs": [
+        "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv",
+        "PC1_ANNOTATION_PASS_0001.md"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "The yeast-side occurrence is therefore part of the same large-subunit-rRNA neighborhood already validated in Proof Case 0001; the E. coli semantic identity of the five matching occurrences is deliberately left UNKNOWN pending assembly-matched annotation validation.",
+      "source_refs": [
+        "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv",
+        "PC1_ANNOTATION_PASS_0001.md"
+      ]
+    },
+    {
+      "class": "E2",
+      "statement": "Post-freeze assembly-matched validation confirms all five E. coli occurrences fall inside annotated 23S rRNA genes rrlH, rrlC, rrlA, rrlB, and rrlE.",
+      "source_refs": [
+        "WEB_VALIDATION_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "LC-PRIM-0006 is therefore a validated exact large-subunit-rRNA-associated primitive shared between multiple bacterial 23S rRNA copies and yeast mitochondrial 21S rRNA.",
+      "source_refs": [
+        "WEB_VALIDATION_0001.json",
+        "PC1_ANNOTATION_PASS_0001.md",
+        "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "LC-PRIM-0006 contains the published E. coli 23S sequence ACGGAAAGACCC corresponding to positions 2054-2065, fixing the full primitive at positions 2049-2065.",
+      "source_refs": [
+        "WEB_FUNCTIONAL_VALIDATION_0002.json"
+      ]
+    },
+    {
+      "class": "E2",
+      "statement": "The primitive overlaps the Domain V catalytic/antibiotic-recognition neighborhood, includes A2058 and G2061, and substantially overlaps the sequence-specific TLR13 recognition element reported at 2054-2068.",
+      "source_refs": [
+        "WEB_FUNCTIONAL_VALIDATION_0002.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Coder alias: LSU_PTC_GATE \u2014 a deeply conserved token positioned at the transition into the peptidyl-transferase catalytic neighborhood and also used as an antibiotic/innate-immune recognition surface.",
+      "source_refs": [
+        "WEB_FUNCTIONAL_VALIDATION_0002.json"
+      ]
+    }
+  ],
+  "observations": {
+    "sequence_direct": "GCAAGACGGAAAGACCC",
+    "length_bp": 17,
+    "qualifying_cluster_pairs": [
+      {
+        "cluster_id": "COL-0001",
+        "ECOLI_start0": 4039567,
+        "YEAST_chrM_start0": 59956
+      },
+      {
+        "cluster_id": "COL-0003",
+        "ECOLI_start0": 4212090,
+        "YEAST_chrM_start0": 59956
+      },
+      {
+        "cluster_id": "COL-0004",
+        "ECOLI_start0": 4170688,
+        "YEAST_chrM_start0": 59956
+      },
+      {
+        "cluster_id": "COL-0005",
+        "ECOLI_start0": 3945751,
+        "YEAST_chrM_start0": 59956
+      },
+      {
+        "cluster_id": "COL-0006",
+        "ECOLI_start0": 227806,
+        "YEAST_chrM_start0": 59956
+      }
+    ],
+    "yeast_chrM_start0": 59956,
+    "yeast_chrM_start1": 59957,
+    "yeast_inside_21S_RRNA_locus": true,
+    "E_coli_23S_reference_positions_1based": [
+      2049,
+      2065
+    ]
+  },
+  "semantics": {
+    "yeast_validated_context": "mitochondrial 21S_RRNA / Q0158",
+    "ECOLI_context": "UNKNOWN",
+    "full_cross-species_mechanistic_function": "UNKNOWN",
+    "ECOLI_validated_context": "23S rRNA genes rrlH/rrlC/rrlA/rrlB/rrlE",
+    "cross_species_validated_context": "large-subunit rRNA (bacterial 23S; yeast mitochondrial 21S)",
+    "functional_region": "23S rRNA Domain V / peptidyl-transferase-center neighborhood",
+    "contains_positions": [
+      "A2058",
+      "G2061"
+    ],
+    "overlaps_TLR13_ISR23": true,
+    "coder_alias": "LSU_PTC_GATE"
+  },
+  "relationships": [
+    "LC-GRAM-0003",
+    "LC-GRAM-0004",
+    "LC-PRIM-0003"
+  ],
+  "predictions": [
+    "LC-PRED-0006"
+  ],
+  "unknowns": [
+    "Assembly-matched annotation of the five E. coli occurrences.",
+    "Mechanistic role of the exact 17-bp sequence."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv",
+    "ALL_PAIR_DISCOVERY_FREEZE.md",
+    "PC1_ANNOTATION_PASS_0001.md"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "validation_id": "WEB_FUNCTIONAL_VALIDATION_0002",
+  "access_date": "2026-08-29",
+  "scope": "Post-freeze semantic/function validation of already discovered rRNA primitives.",
+  "numbering_anchor": {
+    "LC-PRIM-0006_sequence": "GCAAGACGGAAAGACCC",
+    "published_Ecoli_23S_segment": {
+      "positions": "2054-2068",
+      "rna_sequence": "ACGGAAAGACCCCGU",
+      "source": "Oldenburg/Zhang et al., Sequence specific detection of bacterial 23S ribosomal RNA by TLR13, eLife 2012, DOI 10.7554/eLife.00102"
+    },
+    "derivation": "LC-PRIM-0006 contains ACGGAAAGACCC as bases 6-17. Aligning that exact 12-nt substring to published 23S positions 2054-2065 places LC-PRIM-0006 at E. coli 23S positions 2049-2065. Frozen start-to-start spacings then place LC-PRIM-0003 at 1930-1945 and LC-PRIM-0007 at 560-583. LC-PRIM-0002 begins four bases before LC-PRIM-0003, placing it at 1926-1949, independently agreeing with its published name Uni23S1926F.",
+    "evidence_class": "E1 deterministic positional mapping using a published sequence anchor plus previously frozen exact spacings"
+  },
+  "functional_claims": {
+    "LC-PRIM-0007": [
+      {
+        "claim": "Positions 560-583 straddle the structure-based Domain I / Domain 0 boundary; Domain 0 includes 562-586 and is described as the central highly conserved core that provides structural integrity to 23S rRNA.",
+        "sources": [
+          "Petrov et al. 2013, Nucleic Acids Research 41:7522-7535, DOI 10.1093/nar/gkt513"
+        ]
+      }
+    ],
+    "LC-PRIM-0003": [
+      {
+        "claim": "Positions 1930-1945 lie in the highly conserved Domain IV region at the large/small subunit interface near the peptidyl-transferase center.",
+        "sources": [
+          "Everett & Dahlberg 1995, J Mol Biol, PMID 7784204",
+          "Everett et al. / Chlamydiales 23S intron study, PMCID PMC93955"
+        ]
+      },
+      {
+        "claim": "The primitive includes U1940. U1940A was experimentally reported to produce 50S subunits defective in subunit-subunit association while retaining peptidyl-transferase activity.",
+        "sources": [
+          "Everett & Dahlberg 1995, PMID 7784204"
+        ]
+      }
+    ],
+    "LC-PRIM-0006": [
+      {
+        "claim": "The primitive spans positions 2049-2065 and contains positions A2058 and G2061 in the 23S rRNA catalytic/antibiotic-recognition neighborhood.",
+        "sources": [
+          "Oldenburg/Zhang et al. 2012, eLife 1:e00102, DOI 10.7554/eLife.00102"
+        ]
+      },
+      {
+        "claim": "The published 2054-2068 sequence is a sequence-specific TLR13 ligand; the paper places it in Domain V at the catalytic center, identifies G2061 as an invariant catalytic-region residue, and notes that A2058 modification is associated with macrolide resistance.",
+        "sources": [
+          "Oldenburg/Zhang et al. 2012, eLife 1:e00102"
+        ]
+      }
+    ]
+  },
+  "interpretation_boundary": "The literature establishes structural/mechanistic context for these positions. Coder-style aliases below are I1 abstractions and are not claimed as literal biochemical opcode names."
+}

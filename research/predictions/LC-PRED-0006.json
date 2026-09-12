@@ -1,0 +1,24 @@
+{
+  "prediction_id": "LC-PRED-0006",
+  "status": "SUPPORTED",
+  "evidence_class": "P1",
+  "generated_from": [
+    "LC-PRIM-0003",
+    "LC-PRIM-0006",
+    "LC-GRAM-0003"
+  ],
+  "statement": "In the exact frozen E. coli assembly used by the pilot, the five LC-PRIM-0006 occurrences paired 119 bp downstream of LC-PRIM-0003 will annotate within the same 23S/large-subunit-rRNA elements or directly corresponding rrn-operon regions as the already validated LC-PRIM-0002/0003 occurrences.",
+  "test": "Use assembly-matched U00096.3 feature annotation for the exact frozen 0-based coordinates. Do not remap to a different assembly without recording the mapping.",
+  "support_condition": "All or nearly all five E. coli LC-PRIM-0006 occurrences fall inside the same 23S rRNA features / homologous rrn-operon regions as their paired LC-PRIM-0003 occurrences.",
+  "weakening_condition": "They lie in the same rrn operons but outside annotated 23S features.",
+  "falsification_condition": "Multiple paired LC-PRIM-0006 occurrences map outside the corresponding rrn-operon/large-subunit-rRNA contexts.",
+  "contamination_boundary": "Frozen before assembly-matched E. coli annotation lookup. Existing Proof Case annotation validated LC-PRIM-0003/parent context but did not annotate LC-PRIM-0006.",
+  "validation": {
+    "validation_id": "WEB_VALIDATION_0001",
+    "result": "SUPPORTED",
+    "frozen_prediction_statement_unchanged": true,
+    "frozen_test_unchanged": true,
+    "original_statement_sha256": "1383127f445f033963a0502c42e5ee15f940658ed260419daf91b19d16d7573d",
+    "original_test_sha256": "31f88ce1c2ab7847d756f28f0cd9130e0a8a4abcf7ba73b1139133f65c653b25"
+  }
+}

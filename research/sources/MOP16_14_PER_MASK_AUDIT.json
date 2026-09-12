@@ -1,0 +1,8 @@
+{
+  "mask_count": 120,
+  "real_exceeds_all_five_nulls_mask_count": 120,
+  "real_fails_to_exceed_all_five_nulls_mask_count": 0,
+  "minimum_real_to_null_max_ratio": 1.3486878838637633,
+  "maximum_real_to_null_max_ratio": 1.5184040460803596,
+  "all_masks_individually_exceed_null_max": true
+}

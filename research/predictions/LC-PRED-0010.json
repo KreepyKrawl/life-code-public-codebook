@@ -1,0 +1,24 @@
+{
+  "prediction_id": "LC-PRED-0010",
+  "status": "MIXED",
+  "evidence_class": "P1",
+  "generated_from": [
+    "LC-PRED-0008",
+    "PRED0008_STAGE1_EXACT16_TEST.json",
+    "VOCABULARY_LADDER_CALIBRATION_v0.1.8.md"
+  ],
+  "statement": "The A2451-centered peptidyl-transferase active-site neighborhood will contain at least one exact 14-mer shared by all three original frozen pilot genomes, even though no all-three exact 16-mer from the frozen list maps there.",
+  "test": "Using the exact original frozen ECOLI, PYRO, and YEAST input sequences, compute unique direct-orientation 14-mer sets independently and intersect them. The global all-three count must reproduce the previously frozen value 5,561 before target inspection. Then test whether any intersected 14-mer overlaps the fixed 51-nt E. coli 23S window centered on A2451: positions 2426-2476 inclusive. Do not widen the window or shorten k after viewing results.",
+  "support_condition": "The global all-three 14-mer count reproduces 5,561 and at least one exact intersected 14-mer overlaps positions 2426-2476.",
+  "weakening_condition": "The 5,561 count reproduces but no exact all-three 14-mer overlaps the fixed target window.",
+  "falsification_condition": "The frozen 14-mer count cannot be reproduced from the canonical inputs, invalidating this follow-up test as implemented.",
+  "contamination_boundary": "Frozen before computing the complete three-domain 14-mer intersection or inspecting any 14-mer in positions 2426-2476. The 51-nt window and k=14 are fixed here and cannot be altered retroactively.",
+  "validation": {
+    "result": "WEAKENED_NO_EXACT14_TARGET_TOKEN",
+    "global_count_reproduced": true,
+    "observed_global_count": 5561,
+    "target_hits": 0,
+    "source": "PRED0010_EXACT14_TEST.json",
+    "original_prediction_text_unchanged": true
+  }
+}

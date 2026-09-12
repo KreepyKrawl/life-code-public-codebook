@@ -1,0 +1,30 @@
+{
+  "status": "BLOCKED_LOW_MOVABILITY",
+  "primary": {
+    "observed": 59,
+    "analytic_null_mean": 53.31666666666667,
+    "mc_null_mean": 53.31223,
+    "mc_null_sd": 2.310165021616421,
+    "q95": 57.0,
+    "q99": 59.0,
+    "mc_tail_ge": 0.013719862801371985,
+    "boundary_memberships_total": 365,
+    "fixed_boundary_memberships": 225,
+    "movable_boundary_memberships": 140,
+    "movability_fraction": 0.3835616438356164
+  },
+  "secondary": {
+    "observed": 59,
+    "analytic_null_mean": 58.5,
+    "mc_null_mean": 58.49698,
+    "mc_null_sd": 0.4999908795168168,
+    "q95": 59.0,
+    "q99": 59.0,
+    "mc_tail_ge": 0.4969850301496985,
+    "boundary_memberships_total": 365,
+    "fixed_boundary_memberships": 360,
+    "movable_boundary_memberships": 5,
+    "movability_fraction": 0.0136986301369863
+  },
+  "historical_prediction_status_changes": 0
+}

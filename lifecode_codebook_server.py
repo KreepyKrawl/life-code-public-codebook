@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Local read-only Core v0.10 site and API; standard library only."""
+"""Local read-only Core v0.11 site and API; standard library only."""
 import json,pathlib,urllib.parse
 from http.server import SimpleHTTPRequestHandler,HTTPServer
 from lifecode_codebook import connect,object_payload,DEFAULT_DB,rows
@@ -21,5 +21,5 @@ class H(SimpleHTTPRequestHandler):
    b=json.dumps(data,indent=2).encode();self.send_response(status);self.send_header('Content-Type','application/json; charset=utf-8');self.send_header('Content-Length',str(len(b)));self.end_headers();self.wfile.write(b)
   finally:c.close()
 if __name__=='__main__':
- print('LIFE-CODE Core v0.10: http://127.0.0.1:8765/')
+ print('LIFE-CODE Core v0.11: http://127.0.0.1:8765/')
  HTTPServer(('127.0.0.1',8765),H).serve_forever()

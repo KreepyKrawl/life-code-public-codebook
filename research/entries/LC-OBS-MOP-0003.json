@@ -1,0 +1,81 @@
+{
+  "entry_id": "LC-OBS-MOP-0003",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E2",
+      "statement": "All 3,664 pre-frozen primary-sample MOP occurrences were classified against exact assembly-matched NCBI/SGD annotations using the classifier frozen in v0.0.13.",
+      "source_refs": [
+        "MOP_PRIMARY_CLASSIFICATION_0001.json",
+        "MOP_PRIMARY_1000_CLASSIFIED_OCCURRENCES.csv",
+        "MOP_ANNOTATION_GATE_VERIFICATION.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "567/1000 sampled token types have at least one identical broad primary annotation class represented in all three genomes; this is coarse context concordance, not homology.",
+      "source_refs": [
+        "MOP_PRIMARY_CLASSIFICATION_0001.json",
+        "MOP_PRIMARY_1000_TOKEN_CONTEXT_SUMMARY.csv"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "The supported variable-slot vocabulary is distributed across multiple biological context classes rather than being semantically promoted from a hand-selected locus; detailed functional identity of individual MOP tokens remains unresolved.",
+      "source_refs": [
+        "MOP_PRIMARY_CLASSIFICATION_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "classification_complete": true,
+    "sample_tokens": 1000,
+    "occurrences": 3664,
+    "occurrence_primary_context_counts": {
+      "rRNA": 8,
+      "tRNA": 2,
+      "protein_coding_CDS": 2628,
+      "other_noncoding_RNA": 8,
+      "intergenic": 884,
+      "repeat_or_mobile_element": 7,
+      "organellar": 35,
+      "overlap_multiple_features": 23,
+      "unresolved": 69
+    },
+    "token_context_presence_counts": {
+      "rRNA": 5,
+      "tRNA": 2,
+      "protein_coding_CDS": 978,
+      "other_noncoding_RNA": 11,
+      "intergenic": 472,
+      "repeat_or_mobile_element": 14,
+      "organellar": 24,
+      "overlap_multiple_features": 10,
+      "unresolved": 62
+    },
+    "coarse_context_concordant_tokens": 567,
+    "true_homologous_same_system_fraction": "UNKNOWN"
+  },
+  "semantics": {
+    "validated_identity": "unbiased descriptive biological-context classification of frozen MOP primary sample"
+  },
+  "relationships": [
+    "LC-OBS-MOP-0001",
+    "LC-OBS-MOP-0002",
+    "LC-OBS-ANN-0001"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "True homologous/same-system fraction.",
+    "Context enrichment relative to genome-wide background.",
+    "Functional significance of individual sampled tokens."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "MOP_PRIMARY_CLASSIFICATION_0001.json",
+    "MOP_PRIMARY_1000_CLASSIFIED_OCCURRENCES.csv",
+    "MOP_PRIMARY_1000_TOKEN_CONTEXT_SUMMARY.csv",
+    "MOP_ANNOTATION_GATE_VERIFICATION.json"
+  ]
+}

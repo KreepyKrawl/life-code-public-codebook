@@ -1,0 +1,99 @@
+{
+  "entry_id": "LC-PRIM-0002",
+  "entry_type": "PRIM",
+  "status": "SEMANTICALLY_VALIDATED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "A 24-bp exact block TAAGGTAGCGAAATTCCTTGTCGG occurs five times in the frozen E. coli genome and once in the frozen Pyrococcus genome; no full-block yeast occurrence was reported.",
+      "source_refs": [
+        "PC1_RAW_RECURRENCE_RESULTS.json",
+        "PC1_MAXIMAL_BLOCKS_GE24.csv"
+      ]
+    },
+    {
+      "class": "E2",
+      "statement": "Post-freeze annotation identifies this exact 24-base sequence as Uni23S1926F, a published primer sequence used to amplify bacterial 23S rRNA.",
+      "source_refs": [
+        "PC1_ANNOTATION_PASS_0001.md"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Treat this as a 23S-rRNA-associated conserved primitive; the primer match validates sequence identity/location but is not itself a claim that the genomic segment's natural role is 'primer'.",
+      "source_refs": [
+        "PC1_ANNOTATION_PASS_0001.md"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "LC-PRIM-0002 begins four bases before LC-PRIM-0003, mapping it to E. coli 23S positions 1926-1949; this independently agrees with its published Uni23S1926F designation.",
+      "source_refs": [
+        "WEB_FUNCTIONAL_VALIDATION_0002.json",
+        "PC1_ANNOTATION_PASS_0001.md"
+      ]
+    }
+  ],
+  "observations": {
+    "sequence_direct": "TAAGGTAGCGAAATTCCTTGTCGG",
+    "length_bp": 24,
+    "occurrences": {
+      "ECOLI": [
+        [
+          "ENA|U00096|U00096.3",
+          227683
+        ],
+        [
+          "ENA|U00096|U00096.3",
+          3945628
+        ],
+        [
+          "ENA|U00096|U00096.3",
+          4039444
+        ],
+        [
+          "ENA|U00096|U00096.3",
+          4170565
+        ],
+        [
+          "ENA|U00096|U00096.3",
+          4211967
+        ]
+      ],
+      "PYRO": [
+        [
+          "NC_003413.1",
+          140735
+        ]
+      ],
+      "YEAST": []
+    },
+    "contains_primitive": {
+      "entry_id": "LC-PRIM-0003",
+      "offset0": 4,
+      "length_bp": 16
+    },
+    "E_coli_23S_reference_positions_1based": [
+      1926,
+      1949
+    ]
+  },
+  "semantics": {
+    "validated_identity": "23S-rRNA-associated sequence region",
+    "exact_natural_function_of_full_24bp": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-GRAM-0001",
+    "LC-PRIM-0003"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Specific molecular contribution of the full 24-bp exact sequence beyond its validated 23S-rRNA association."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PC1_RAW_RECURRENCE_RESULTS.json",
+    "PC1_MAXIMAL_BLOCKS_GE24.csv",
+    "PC1_ANNOTATION_PASS_0001.md"
+  ]
+}

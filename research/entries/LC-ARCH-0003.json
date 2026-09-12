@@ -1,0 +1,43 @@
+{
+  "entry_id": "LC-ARCH-0003",
+  "entry_type": "OBS",
+  "status": "PROVISIONAL",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "The C2->C3 gate is defined so token identity, boundary geometry, and biological component semantics remain separate evidence layers.",
+      "source_refs": [
+        "C3_GBFF_SEQUENCE_GATE_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Blueprint C3 promotion should be earned by independently annotated same-system component correspondence, not by visual or masked-sequence fit alone.",
+      "source_refs": [
+        "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "C3_protocol": "64_C3_SAME_SYSTEM_PREREG_v1.md",
+    "execution_status": "FROZEN_UNRUN"
+  },
+  "semantics": {
+    "compatibility_target": "C3 same-system semantic compatibility"
+  },
+  "relationships": [
+    "LC-ARCH-0002",
+    "LC-OBS-INTERFACE-0002"
+  ],
+  "predictions": [
+    "LC-PRED-0020"
+  ],
+  "unknowns": [
+    "Whether shared boundary-role MOP identities attach to same-system components above matched chance."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json",
+    "C3_GBFF_SEQUENCE_GATE_0001.json"
+  ]
+}

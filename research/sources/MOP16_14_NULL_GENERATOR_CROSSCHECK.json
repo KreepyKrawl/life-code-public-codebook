@@ -1,0 +1,27 @@
+{
+  "validation_id": "MOP16_14_NULL_GENERATOR_CROSSCHECK",
+  "method": "Canonical v0.1.33 exp0001_streaming exact k=14 recurrence on the generated binary real/null inputs.",
+  "counts": {
+    "real": 5561,
+    "null1": 3787,
+    "null2": 3798,
+    "null3": 3676,
+    "null4": 3744,
+    "null5": 3708
+  },
+  "frozen_calibration_check": {
+    "real_expected": 5561,
+    "dinucleotide_null_expected_range": [
+      3676,
+      3798
+    ],
+    "dinucleotide_null_expected_mean": 3742.6,
+    "observed_range": [
+      3676,
+      3798
+    ],
+    "observed_mean": 3742.6,
+    "status": "PASS"
+  },
+  "meaning": "This independently verifies that the null-generation seed schedule and canonical dinucleotide shuffle used for MOP testing reproduce the previously frozen exact-k14 calibration."
+}

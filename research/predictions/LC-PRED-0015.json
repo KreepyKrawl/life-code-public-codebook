@@ -1,0 +1,21 @@
+{
+  "prediction_id": "LC-PRED-0015",
+  "status": "SUPPORTED",
+  "evidence_class": "P1",
+  "statement": "The architecture signal will not be reducible to coding abundance: at least one of FOUNDATION_RUNTIME or INTEGRATION_STACK will have a larger observed/expected ratio than HOST_EXECUTABLE (protein_coding_CDS).",
+  "support_condition": "max(R_foundation,R_integration) > R_CDS.",
+  "weakening_condition": "N/A.",
+  "falsification_condition": "both architecture-layer ratios <= R_CDS.",
+  "contamination_boundary": "Frozen after v0.0.14 descriptive classification and before any genome-wide valid-16nt background counts or enrichment ratios were calculated.",
+  "source_refs": [
+    "MOP_PRIMARY_CLASSIFICATION_0001.json"
+  ],
+  "validation": {
+    "result": "SUPPORTED",
+    "source": "ARCHITECTURE_BACKGROUND_RESULT_0001.json",
+    "foundation_ratio": 0.6688569157553108,
+    "integration_ratio": 1.1186457182556047,
+    "host_executable_ratio": 0.8812357930792135,
+    "condition_met": true
+  }
+}

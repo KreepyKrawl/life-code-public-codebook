@@ -1,0 +1,36 @@
+sample_index,token_id_uint64,mask_id,wildcard_i0,wildcard_j0,genome,record,start0,start1,end1,implementation_seq,wildcard_i_base,wildcard_j_base,frozen_record_key,annotation_seqid,primary_context,flag_rRNA,flag_tRNA,flag_protein_coding_CDS,flag_other_noncoding_RNA,flag_repeat_or_mobile_element,flag_organellar,crosses_feature_boundary,annotation_feature_types,annotation_genes,annotation_locus_tags,annotation_products,annotation_feature_ids,annotation_feature_count,mito_internal_context
+879,28454155251,105,10,11,YEAST,chrM,683,684,699,TATTTATTTTATTTTT,A,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+661,21458108431,79,6,11,YEAST,chrM,1823,1824,1839,TTAAAATATAATAATT,T,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+840,27113028860,101,9,12,YEAST,chrM,2832,2833,2848,ATTTATTTTTTATAAA,T,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+325,10485235703,39,2,13,YEAST,chrM,4484,4485,4500,TCTTTTTTTTCTTTAA,T,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+879,28454155251,105,10,11,YEAST,chrM,5431,5432,5447,TATTTATTTTTTTTTT,T,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+607,19380880072,72,5,13,YEAST,chrM,7298,7299,7314,AGATGAAATAATAATA,A,A,chrM,NC_001224.1,organellar,1,0,0,0,0,1,0,exon|gene|rRNA,15S_RRNA,Q0020,15S ribosomal RNA,exon-Q0020-1|gene-Q0020|rna-Q0020,3,rRNA
+765,24634173519,91,7,15,YEAST,chrM,7633,7634,7649,TTACAGGCGTTACATT,C,T,chrM,NC_001224.1,organellar,1,0,0,0,0,1,0,exon|gene|rRNA,15S_RRNA,Q0020,15S ribosomal RNA,exon-Q0020-1|gene-Q0020|rna-Q0020,3,rRNA
+706,22813622079,84,7,8,YEAST,chrM,8718,8719,8734,TTTATTTATAATATTT,A,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+647,20682162944,77,6,9,YEAST,chrM,10061,10062,10077,AAAATAAATAAAATAA,A,A,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+706,22813622079,84,7,8,YEAST,chrM,10918,10919,10934,TTTATTTTTAATATTT,T,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+706,22813622079,84,7,8,YEAST,chrM,10931,10932,10947,TTTATTTTTAATATTT,T,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+33,818138172,3,0,4,YEAST,chrM,11660,11661,11676,TATTAAATATTAATAA,T,A,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+14,268644556,1,0,2,YEAST,chrM,13148,13149,13164,TAATATAATATAAAAA,T,A,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+536,17434804400,64,4,15,YEAST,chrM,13844,13845,13860,AATGCAAAAGATATTG,C,G,chrM,NC_001224.1,organellar,0,0,1,0,0,1,0,CDS|exon|gene|mRNA,AI1|AI2|AI3|AI4|AI5_ALPHA|COX1,Q0045|Q0050|Q0055|Q0060|Q0065|Q0070,cytochrome c oxidase subunit 1|intron-encoded DNA endonuclease aI3|intron-encoded DNA endonuclease aI4|intron-encoded DNA endonuclease aI5 alpha|intron-encoded reverse transcriptase aI1|intron-encoded reverse transcriptase aI2,cds-NP_009305.1|cds-NP_009306.1|cds-NP_009307.2|cds-NP_009308.2|cds-NP_009309.1|cds-NP_009310.1|exon-Q0045-1|exon-Q0050-1|exon-Q0055-1|exon-Q0060-1|exon-Q0065-1|exon-Q0070-1|gene-Q0045|gene-Q0050|gene-Q0055|gene-Q0060|gene-Q0065|gene-Q0070|rna-Q0045|rna-Q0050|rna-Q0055|rna-Q0060|rna-Q0065|rna-Q0070,24,protein_coding_CDS
+180,5368754368,20,1,7,YEAST,chrM,21912,21913,21928,AAAATAAATGAAAAAA,A,A,chrM,NC_001224.1,organellar,0,0,1,0,0,1,0,CDS|exon|gene|mRNA,AI4|AI5_ALPHA|COX1,Q0045|Q0065|Q0070,intron-encoded DNA endonuclease aI4,cds-NP_009307.2|exon-Q0065-4|gene-Q0045|gene-Q0065|gene-Q0070|rna-Q0045|rna-Q0065|rna-Q0070,8,protein_coding_CDS
+119,3488817792,12,0,13,YEAST,chrM,24897,24898,24913,CAAAGGAGATATTATT,C,A,chrM,NC_001224.1,organellar,0,0,1,0,0,1,1,CDS|exon|gene|mRNA,AI5_BETA|COX1,Q0045|Q0075,intron-encoded DNA endonuclease aI5 beta,cds-NP_009311.2|exon-Q0075-2|gene-Q0045|gene-Q0075|rna-Q0045|rna-Q0075,6,protein_coding_CDS
+930,29783555279,110,11,12,YEAST,chrM,32110,32111,32126,TTATATTTATTTTATT,T,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+202,6186602739,23,1,10,YEAST,chrM,34383,34384,34399,TAATTAACAAGAATAA,A,G,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+164,4778344896,17,1,4,YEAST,chrM,34912,34913,34928,ATAATTCAATTTATAT,T,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+386,12414107393,46,3,8,YEAST,chrM,38177,38178,38193,CAATATTTAAAATTTA,T,A,chrM,NC_001224.1,organellar,0,0,1,0,0,1,0,CDS|exon|gene|mRNA,BI2|BI3|BI4|COB,Q0105|Q0110|Q0115|Q0120,cytochrome b mRNA maturase bI2,cds-NP_009318.1|exon-Q0110-2|gene-Q0105|gene-Q0110|gene-Q0115|gene-Q0120|rna-Q0105|rna-Q0110|rna-Q0115|rna-Q0120,10,protein_coding_CDS
+840,27113028860,101,9,12,YEAST,chrM,42598,42599,42614,ATTTATTTTATATAAA,A,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,gene|mRNA,COB,Q0105,,gene-Q0105|rna-Q0105,2,intergenic
+296,9462349823,35,2,9,YEAST,chrM,45968,45969,45984,TTATTTTTTTTTTTTA,A,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,origin_of_replication,,,,id-NC_001224.1:45227..47927,1,unresolved
+518,16914609136,63,4,14,YEAST,chrM,48923,48924,48939,AATTTTATCAATAATA,T,T,chrM,NC_001224.1,organellar,0,0,1,0,0,1,0,CDS|exon|gene|mRNA,VAR1,Q0140,mitochondrial 37S ribosomal protein VAR1,cds-NP_009320.1|exon-Q0140-1|gene-Q0140|rna-Q0140,4,protein_coding_CDS
+237,7797211328,29,2,3,YEAST,chrM,49035,49036,49051,AATAATAAAAAAATAA,T,A,chrM,NC_001224.1,organellar,0,0,1,0,0,1,0,CDS|exon|gene|mRNA,VAR1,Q0140,mitochondrial 37S ribosomal protein VAR1,cds-NP_009320.1|exon-Q0140-1|gene-Q0140|rna-Q0140,4,protein_coding_CDS
+647,20682162944,77,6,9,YEAST,chrM,50665,50666,50681,AAAATAAATAAAATAA,A,A,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+758,24410882240,90,7,14,YEAST,chrM,50924,50925,50940,AAATAAAGGAAAATTT,G,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+475,15354299343,57,4,8,YEAST,chrM,53194,53195,53210,TTATTTAATAAATATA,T,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+620,19906035507,74,5,15,YEAST,chrM,53551,53552,53567,TATATATTTCTTCGAT,A,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+475,15354299343,57,4,8,YEAST,chrM,63833,63834,63849,TTATATAATAAATATA,A,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+475,15354299343,57,4,8,YEAST,chrM,63988,63989,64004,TTATATAAAAAATATA,A,A,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+33,818138172,3,0,4,YEAST,chrM,67712,67713,67728,TATTTAATATTAATAA,T,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+647,20682162944,77,6,9,YEAST,chrM,71368,71369,71384,AAAATATATAAAATAA,T,A,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+377,12062867699,44,3,6,YEAST,chrM,83101,83102,83117,TATATATAATAAAATT,A,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+475,15354299343,57,4,8,YEAST,chrM,83133,83134,83149,TTATATAATAAATATA,A,T,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic
+14,268644556,1,0,2,YEAST,chrM,83225,83226,83241,AAATATAATATAAAAA,A,A,chrM,NC_001224.1,organellar,0,0,0,0,0,1,0,,,,,,0,intergenic

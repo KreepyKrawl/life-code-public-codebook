@@ -1,0 +1,38 @@
+{
+  "prediction_id": "LC-PRED-0048",
+  "status": "MIXED",
+  "evidence_class": "P1",
+  "statement": "Within each frozen bacterial, archaeal and eukaryotic branch, the farther target will have a larger fraction of recovered MOP identities with no exact literal implementation shared with the anchor than the established close target.",
+  "primary_statistic": "three anchor-specific masked-only fraction directional contrasts",
+  "support_condition": "3/3 far>close = SUPPORTED_DIRECTIONAL; 2/3 = MIXED.",
+  "falsification_condition": "0/3 or 1/3 far>close = FALSIFIED_DIRECTIONAL.",
+  "p_value_claim_authorized": false,
+  "source_refs": [
+    "ESTABLISHED_BRANCH_ANCHORS_v1.csv",
+    "RETRO_IMPLEMENTATION_DEPTH_RESULT_0001.json"
+  ],
+  "contamination_boundary": "Frozen before Panel-3, Drosophila or C. briggsae sequence acquisition.",
+  "result_release": "LIFE_CODE_CODEBOOK_v0.0.72",
+  "result_source": "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001.json",
+  "result": {
+    "contrasts": {
+      "Bacteria": {
+        "close": 0.5343511450381679,
+        "far": 1.0,
+        "pass": true
+      },
+      "Archaea": {
+        "close": 0.8529411764705882,
+        "far": 0.8806818181818182,
+        "pass": true
+      },
+      "Eukaryota": {
+        "close": 0.7666666666666667,
+        "far": 0.5789473684210527,
+        "pass": false
+      }
+    },
+    "positive_contrasts": 2,
+    "status": "MIXED"
+  }
+}

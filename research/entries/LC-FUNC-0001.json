@@ -1,0 +1,45 @@
+{
+  "entry_id": "LC-FUNC-0001",
+  "entry_type": "FUNC",
+  "status": "SEMANTICALLY_VALIDATED",
+  "evidence": [
+    {
+      "class": "E2",
+      "statement": "The linked LC-PRIM-0007 interval overlaps the highly conserved central structural core (Domain 0) of 23S rRNA.",
+      "source_refs": [
+        "WEB_FUNCTIONAL_VALIDATION_0002.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Codebook abstraction: CORE_SCAFFOLD \u2014 sequence architecture contributing to the structural core from which other LSU domains are organized.",
+      "source_refs": [
+        "WEB_FUNCTIONAL_VALIDATION_0002.json"
+      ]
+    }
+  ],
+  "observations": {
+    "linked_primitives": [
+      "LC-PRIM-0007"
+    ],
+    "reference_region": "23S positions 560-583"
+  },
+  "semantics": {
+    "validated_role": "large-subunit rRNA central structural-core region",
+    "coder_function_alias": "CORE_SCAFFOLD"
+  },
+  "relationships": [
+    "LC-PRIM-0007",
+    "LC-GRAM-0004"
+  ],
+  "predictions": [
+    "LC-PRED-0009"
+  ],
+  "unknowns": [
+    "Exact contribution of every nucleotide in LC-PRIM-0007 to folding/assembly."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "WEB_FUNCTIONAL_VALIDATION_0002.json"
+  ]
+}

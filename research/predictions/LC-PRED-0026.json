@@ -1,0 +1,26 @@
+{
+  "prediction_id": "LC-PRED-0026",
+  "status": "STRONGLY_SUPPORTED",
+  "evidence_class": "P1",
+  "statement": "Across the six prospectively selected Panel-2 genomes, identical primary-sample MOP identities will recur in the frozen broad boundary role above a recoverability-conditioned matched null.",
+  "primary_statistic": "S_pair_6",
+  "support_condition": "Observed above matched-null mean and one-sided 100,000-replicate Monte Carlo p<=0.05; strong support p<=0.01.",
+  "weakening_condition": "Observed above null mean but p>0.05.",
+  "falsification_condition": "Observed <= matched-null mean.",
+  "null_seed": 380026,
+  "contamination_boundary": "Panel-2 species/accessions, token universe, boundary role, statistic, null, seed and threshold frozen before Panel-2 sequence acquisition or MOP scanning.",
+  "source_refs": [
+    "HELDOUT_BOUNDARY_TRANSFER_RESULT_0001.json",
+    "BOUNDARY_PROPENSITY_MODEL_v1_SCORES.csv"
+  ],
+  "validation": {
+    "result": "STRONGLY_SUPPORTED",
+    "source": "PANEL2_BOUNDARY_PREDICTION_RESULT_0001.json",
+    "independent_validation": "PANEL2_INDEPENDENT_STATISTIC_VALIDATION_0001.json",
+    "observed": 59,
+    "null_mean": 30.40401,
+    "q95": 38.0,
+    "q99": 41.0,
+    "mc_tail_ge": 9.99990000099999e-06
+  }
+}

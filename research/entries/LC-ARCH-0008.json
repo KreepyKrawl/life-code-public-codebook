@@ -1,0 +1,59 @@
+{
+  "entry_id": "LC-ARCH-0008",
+  "entry_type": "OBS",
+  "status": "PROVISIONAL",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "A composition-adjusted residual C2 score is frozen for all 1,000 primary tokens using only the 12 already-observed genomes.",
+      "source_refs": [
+        "BOUNDARY_RESIDUAL_MODEL_v2_SCORES.csv",
+        "BOUNDARY_RESIDUAL_MODEL_v2_LOO_DIAGNOSTIC.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "The sparse primary 1,000-token occurrence corpus is insufficient to train a defensible repeated <=100-bp cross-genome X+Y conditional grammar model under the frozen support gate.",
+      "source_refs": [
+        "PRIMARY1000_LOCAL_GRAMMAR_SUPPORT_GATE_0001.json"
+      ]
+    },
+    {
+      "class": "P1",
+      "statement": "Panel 3 prospectively tests composition-adjusted C2 prediction, deep-lineage recurrence, and local-composition robustness.",
+      "source_refs": [
+        "BOUNDARY_RESIDUAL_MODEL_v2_SCORES.csv"
+      ]
+    }
+  ],
+  "observations": {
+    "model_v2": "FROZEN",
+    "grammar_model": "DATA_INSUFFICIENT",
+    "panel3": "FROZEN_PRE_ACQUISITION"
+  },
+  "semantics": {
+    "validated_identity": "next-generation C2 prediction architecture",
+    "code_evolution_transformations": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-ARCH-0007",
+    "LC-HYP-EVO-CODE-0001",
+    "LC-OBS-PANEL2-0003"
+  ],
+  "predictions": [
+    "LC-PRED-0032",
+    "LC-PRED-0033",
+    "LC-PRED-0034",
+    "LC-PRED-0035"
+  ],
+  "unknowns": [
+    "Panel-3 prediction outcomes.",
+    "Whether literal-vs-masked transfer differs systematically by design distance.",
+    "Whether denser vocabulary enables conditional grammar recovery."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "BOUNDARY_RESIDUAL_MODEL_v2_SCORES.csv",
+    "PRIMARY1000_LOCAL_GRAMMAR_SUPPORT_GATE_0001.json"
+  ]
+}

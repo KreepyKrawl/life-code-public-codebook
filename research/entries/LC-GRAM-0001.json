@@ -1,0 +1,72 @@
+{
+  "entry_id": "LC-GRAM-0001",
+  "entry_type": "GRAM",
+  "status": "SEMANTICALLY_VALIDATED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "LC-PRIM-0001 and LC-PRIM-0002 occur in the order A then B with start-to-start spacings 3035, 2943, 3036, 3029, and 2943 bp in five E. coli neighborhoods and 2969 bp in Pyrococcus; the six spacings occupy a 93-bp range.",
+      "source_refs": [
+        "PC1_RAW_RECURRENCE_RESULTS.json"
+      ]
+    },
+    {
+      "class": "E0",
+      "statement": "A 5,000,000-randomization spatial null reported zero randomizations placing B within 10 kb downstream of all five E. coli A copies.",
+      "source_refs": [
+        "PROOF_CASE_0001.md"
+      ]
+    },
+    {
+      "class": "E2",
+      "statement": "Post-freeze annotation identifies the paired regions with the ancient 16S/23S ribosomal-RNA organizational system.",
+      "source_refs": [
+        "PC1_ANNOTATION_PASS_0001.md",
+        "PROOF_CASE_0001.md"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "This is the first literal LIFE-CODE grammar rule: two validated sequence primitives participate in a recurrent ordered neighborhood with constrained spacing, so sequence relationship carries information beyond either primitive alone.",
+      "source_refs": [
+        "PC1_RAW_RECURRENCE_RESULTS.json",
+        "PC1_ANNOTATION_PASS_0001.md"
+      ]
+    }
+  ],
+  "observations": {
+    "syntax": "LC-PRIM-0001 -> approximately 3 kb start-to-start -> LC-PRIM-0002",
+    "exact_start_to_start_spacings_bp": [
+      3035,
+      2943,
+      3036,
+      3029,
+      2943,
+      2969
+    ],
+    "range_bp": 93,
+    "organism_instances": {
+      "ECOLI": 5,
+      "PYRO": 1
+    }
+  },
+  "semantics": {
+    "validated_identity": "16S/23S large-ribosomal-RNA organizational relationship",
+    "exact_mechanistic_meaning_of_spacing_variation": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-PRIM-0001",
+    "LC-PRIM-0002",
+    "LC-PRIM-0003"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Which portions of the spacing constraint are mechanistically required versus historically conserved."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PC1_RAW_RECURRENCE_RESULTS.json",
+    "PC1_ANNOTATION_PASS_0001.md",
+    "PROOF_CASE_0001.md"
+  ]
+}

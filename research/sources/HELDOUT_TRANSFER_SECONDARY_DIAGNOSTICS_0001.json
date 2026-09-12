@@ -1,0 +1,213 @@
+{
+  "heldout_assembly_totals": {
+    "BACILLUS": {
+      "records": 1,
+      "bp": 4215606
+    },
+    "SULFOLOBUS": {
+      "records": 1,
+      "bp": 2225959
+    },
+    "POMBE": {
+      "records": 4,
+      "bp": 12591253
+    }
+  },
+  "recovery_rates": {
+    "BACILLUS": 0.142,
+    "SULFOLOBUS": 0.075,
+    "POMBE": 0.351
+  },
+  "P81_recovered_counts": {
+    "BACILLUS": 22,
+    "SULFOLOBUS": 12,
+    "POMBE": 46
+  },
+  "P81_recovery_rates": {
+    "BACILLUS": 0.2716049382716049,
+    "SULFOLOBUS": 0.14814814814814814,
+    "POMBE": 0.5679012345679012
+  },
+  "occurrence_multiplicity": {
+    "BACILLUS": {
+      "recovered_tokens": 142,
+      "occurrences": 174,
+      "single_occurrence_tokens": 117,
+      "multiple_occurrence_tokens": 25,
+      "max_occurrences_per_token": 4,
+      "mean_occurrences_per_recovered_token": 1.2253521126760563
+    },
+    "SULFOLOBUS": {
+      "recovered_tokens": 75,
+      "occurrences": 88,
+      "single_occurrence_tokens": 65,
+      "multiple_occurrence_tokens": 10,
+      "max_occurrences_per_token": 3,
+      "mean_occurrences_per_recovered_token": 1.1733333333333333
+    },
+    "POMBE": {
+      "recovered_tokens": 351,
+      "occurrences": 944,
+      "single_occurrence_tokens": 186,
+      "multiple_occurrence_tokens": 165,
+      "max_occurrences_per_token": 139,
+      "mean_occurrences_per_recovered_token": 2.6894586894586894
+    }
+  },
+  "primary_context_counts": {
+    "BACILLUS": {
+      "protein_coding_CDS": 149,
+      "intergenic": 23,
+      "unresolved": 2
+    },
+    "SULFOLOBUS": {
+      "intergenic": 24,
+      "protein_coding_CDS": 64
+    },
+    "POMBE": {
+      "intergenic": 403,
+      "unresolved": 278,
+      "protein_coding_CDS": 259,
+      "rRNA": 1,
+      "other_noncoding_RNA": 2,
+      "organellar": 1
+    }
+  },
+  "boundary_role_token_counts": {
+    "BACILLUS": 18,
+    "SULFOLOBUS": 16,
+    "POMBE": 49
+  },
+  "pair_overlaps": {
+    "BACILLUS_SULFOLOBUS": 1,
+    "BACILLUS_POMBE": 3,
+    "SULFOLOBUS_POMBE": 3
+  },
+  "all_three_boundary_token_ids": [
+    27914144768
+  ],
+  "cross_genome_boundary_token_ids": [
+    7797211328,
+    22813622079,
+    23890870283,
+    27914144768,
+    29783555279
+  ],
+  "P81_boundary_hit_counts": {
+    "BACILLUS": 3,
+    "SULFOLOBUS": 3,
+    "POMBE": 12
+  },
+  "P81_unique_boundary_token_ids": [
+    1613887484,
+    3674390528,
+    7725649919,
+    7797211328,
+    8824849455,
+    9462349823,
+    18253468668,
+    21474835455,
+    21743263807,
+    22813622079,
+    23072014351,
+    23219945470,
+    26273112062,
+    26642022335,
+    29783555279
+  ],
+  "boundary_mask_counts": {
+    "BACILLUS": {
+      "13": 1,
+      "103": 1,
+      "29": 1,
+      "86": 1,
+      "67": 2,
+      "83": 1,
+      "46": 1,
+      "37": 1,
+      "89": 1,
+      "68": 1,
+      "84": 1,
+      "79": 1,
+      "81": 1,
+      "104": 1,
+      "109": 1,
+      "28": 1,
+      "54": 1
+    },
+    "SULFOLOBUS": {
+      "51": 1,
+      "103": 1,
+      "111": 1,
+      "106": 1,
+      "107": 1,
+      "17": 1,
+      "65": 1,
+      "49": 1,
+      "102": 1,
+      "110": 1,
+      "117": 1,
+      "33": 1,
+      "93": 1,
+      "44": 1,
+      "86": 1,
+      "84": 1
+    },
+    "POMBE": {
+      "44": 2,
+      "93": 1,
+      "77": 1,
+      "18": 1,
+      "41": 1,
+      "24": 1,
+      "66": 1,
+      "53": 1,
+      "103": 1,
+      "52": 1,
+      "39": 1,
+      "10": 2,
+      "89": 1,
+      "79": 2,
+      "31": 1,
+      "85": 1,
+      "74": 1,
+      "49": 1,
+      "6": 2,
+      "32": 1,
+      "99": 2,
+      "68": 1,
+      "3": 1,
+      "22": 1,
+      "98": 1,
+      "51": 1,
+      "62": 1,
+      "69": 1,
+      "84": 1,
+      "115": 1,
+      "80": 1,
+      "29": 1,
+      "87": 1,
+      "1": 1,
+      "67": 1,
+      "110": 1,
+      "117": 1,
+      "59": 1,
+      "105": 1,
+      "100": 1,
+      "35": 1,
+      "42": 1,
+      "97": 1,
+      "28": 1
+    }
+  },
+  "original_all_three_8_boundary_hits_in_heldout": {
+    "BACILLUS": [],
+    "SULFOLOBUS": [
+      22813622079
+    ],
+    "POMBE": [
+      22813622079
+    ]
+  },
+  "original_all_three_8_total_boundary_genome_hits": 2
+}

@@ -1,0 +1,34 @@
+{
+  "prediction_id": "LC-PRED-0040",
+  "status": "FALSIFIED",
+  "evidence_class": "P1",
+  "statement": "Parameter-context scores learned only from C. elegans will predict which literal implementations occupy the broad boundary role in fresh Drosophila above a within-token permutation null.",
+  "primary_statistic": "M_param_transfer_DROSOPHILA",
+  "null_seed": 540040,
+  "contamination_boundary": "Frozen before the relevant Drosophila/Panel-3 sequence acquisition.",
+  "source_refs": [
+    "RETRO_PARAMETER_SIGNAL_SENSITIVITY_RESULT_0001.json",
+    "RETRO_COARSE_MASK_TOPOLOGY_CHALLENGE_RESULT_0001.json"
+  ],
+  "movability_gate": ">=50% of boundary occurrences in mixed boundary/non-boundary token strata",
+  "support_condition": "Observed above null mean, p<=.05; strong p<=.01.",
+  "weakening_condition": "Observed above null mean, p>.05.",
+  "falsification_condition": "Observed <= null mean.",
+  "result_release": "LIFE_CODE_CODEBOOK_v0.0.72",
+  "result_source": "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001.json",
+  "result": {
+    "genome": "DROSOPHILA",
+    "total_boundary_occurrences": 133,
+    "mixed_boundary_occurrences": 130,
+    "movability_fraction": 0.9774436090225563,
+    "movability_gate_pass": true,
+    "observed": 0.11749278184600001,
+    "null_mean": 0.3914764439039314,
+    "null_sd": 0.5053372209222388,
+    "q95": 1.2469494780741999,
+    "q99": 1.614553058066869,
+    "mc_tail_ge": 0.6981630183698163,
+    "status": "FALSIFIED",
+    "seed": 540040
+  }
+}

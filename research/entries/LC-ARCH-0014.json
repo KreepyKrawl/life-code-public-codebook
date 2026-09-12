@@ -1,0 +1,42 @@
+{
+  "entry_id": "LC-ARCH-0014",
+  "entry_type": "OBS",
+  "status": "PROVISIONAL",
+  "evidence": [
+    {
+      "class": "E2",
+      "statement": "The frozen generic Panel-3/lineage scanner exactly reproduces the full six-genome Panel-2 occurrence and summary tables before new sequence acquisition.",
+      "source_refs": [
+        "PANEL3_PLUS_LINEAGE_SCANNER_SEMANTIC_GATE_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "All sequence-acquisition, coordinate-gate and scan engineering rules are frozen before the eight new genomes are observed.",
+      "source_refs": [
+        "PANEL3_PLUS_LINEAGE_SCANNER_SEMANTIC_GATE_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "scanner_gate": "PASS",
+    "new_sequence_acquired": false
+  },
+  "semantics": {
+    "biological_result": "NONE",
+    "execution_readiness": "FROZEN"
+  },
+  "relationships": [
+    "LC-ARCH-0013",
+    "LC-ARCH-0012"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Eight-genome assembly gate outcomes.",
+    "New-genome MOP and boundary results."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PANEL3_PLUS_LINEAGE_SCANNER_SEMANTIC_GATE_0001.json"
+  ]
+}

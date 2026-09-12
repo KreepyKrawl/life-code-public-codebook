@@ -1,0 +1,16 @@
+{
+  "prediction_id": "LC-PRED-0049",
+  "status": "FROZEN_UNTESTED",
+  "evidence_class": "P1",
+  "statement": "The v0.0.80-frozen entropy-adjusted model-v3 token scores will prospectively predict broad C2 boundary-role membership in six entirely fresh genomes above a fixed-GC \u00d7 wildcard-separation \u00d7 entropy-bin conditioned null.",
+  "primary_statistic": "M_v3 = sum frozen score_v3(t) over fresh boundary-role token memberships",
+  "null_seed": 810049,
+  "movability_gate": ">=50% of observed fresh boundary token\u00d7genome memberships movable",
+  "source_refs": [
+    "BOUNDARY_RESIDUAL_MODEL_v3_SCORES.csv"
+  ],
+  "support_condition": "If gate passes: observed>null mean and p<=.05; strong p<=.01.",
+  "weakening_condition": "If gate passes: observed>null mean and p>.05.",
+  "falsification_condition": "If gate passes: observed<=null mean.",
+  "contamination_boundary": "Frozen before acquisition of all six fresh validation genomes."
+}

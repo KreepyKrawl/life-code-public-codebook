@@ -1,0 +1,42 @@
+{
+  "entry_id": "LC-OBS-ANN-0001",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "Uploaded NCBI annotation packages correspond exactly to the frozen LIFE-CODE genome sequences: ECOLI 1/1, PYRO 1/1, YEAST 17/17 complete FASTA records match by normalized sequence SHA-256.",
+      "source_refs": [
+        "MOP_ANNOTATION_GATE_VERIFICATION.json",
+        "MOP_ANNOTATION_RECORD_MAP.csv"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "Because every frozen sequence record has an exact full-record match in its annotation package, the frozen occurrence coordinates can be transferred by record identity without coordinate lift-over.",
+      "source_refs": [
+        "MOP_ANNOTATION_GATE_VERIFICATION.json",
+        "MOP_ANNOTATION_RECORD_MAP.csv"
+      ]
+    }
+  ],
+  "observations": {
+    "annotation_gate": "PASS",
+    "classification_execution": "NOT_RUN_IN_v0.0.13"
+  },
+  "semantics": {
+    "validated_identity": "assembly/coordinate compatibility gate"
+  },
+  "relationships": [
+    "LC-OBS-MOP-0002"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Biological context distribution of the 1,000-token sample until classifier execution."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "MOP_ANNOTATION_GATE_VERIFICATION.json",
+    "MOP_ANNOTATION_RECORD_MAP.csv"
+  ]
+}

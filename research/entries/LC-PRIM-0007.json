@@ -1,0 +1,109 @@
+{
+  "entry_id": "LC-PRIM-0007",
+  "entry_type": "PRIM",
+  "status": "SEMANTICALLY_VALIDATED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "The 24-bp exact sequence GTACCTTTTGTATAATGGGTCAGC forms the first token of frozen cluster COL-0001, pairing E. coli start0 4,038,078 with yeast mitochondrial start0 58,467.",
+      "source_refs": [
+        "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "The yeast chrM start0 58,467 corresponds to 1-based 58,468, inside the independently recorded mitochondrial 21S_RRNA/Q0158 locus 58,009\u201362,447.",
+      "source_refs": [
+        "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv",
+        "PC1_ANNOTATION_PASS_0001.md"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "This is an unresolved exact bacterial\u2194mitochondrial primitive whose yeast-side context is known but whose E. coli context and exact mechanistic role remain UNKNOWN.",
+      "source_refs": [
+        "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv",
+        "PC1_ANNOTATION_PASS_0001.md"
+      ]
+    },
+    {
+      "class": "E2",
+      "statement": "Post-freeze assembly-matched validation confirms the E. coli occurrence at start0 4,038,078 lies inside rrlA 23S rRNA.",
+      "source_refs": [
+        "WEB_VALIDATION_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "LC-PRIM-0007 is therefore a validated exact large-subunit-rRNA-associated primitive shared between E. coli 23S rRNA and yeast mitochondrial 21S rRNA.",
+      "source_refs": [
+        "WEB_VALIDATION_0001.json",
+        "PC1_ANNOTATION_PASS_0001.md",
+        "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "Published-sequence anchoring plus the previously frozen 1,370-bp spacing maps LC-PRIM-0007 to E. coli 23S rRNA positions 560-583.",
+      "source_refs": [
+        "WEB_FUNCTIONAL_VALIDATION_0002.json"
+      ]
+    },
+    {
+      "class": "E2",
+      "statement": "This interval straddles the structure-based Domain I/Domain 0 boundary; Domain 0 begins at 562 and is a highly conserved central structural core of the large-subunit rRNA.",
+      "source_refs": [
+        "WEB_FUNCTIONAL_VALIDATION_0002.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Coder alias: LSU_CORE_SCAFFOLD_EDGE \u2014 a conserved literal token spanning entry into the central LSU structural core.",
+      "source_refs": [
+        "WEB_FUNCTIONAL_VALIDATION_0002.json"
+      ]
+    }
+  ],
+  "observations": {
+    "sequence_direct": "GTACCTTTTGTATAATGGGTCAGC",
+    "length_bp": 24,
+    "qualifying_cluster_pairs": [
+      {
+        "cluster_id": "COL-0001",
+        "ECOLI_start0": 4038078,
+        "YEAST_chrM_start0": 58467
+      }
+    ],
+    "yeast_chrM_start0": 58467,
+    "yeast_chrM_start1": 58468,
+    "yeast_inside_21S_RRNA_locus": true,
+    "E_coli_23S_reference_positions_1based": [
+      560,
+      583
+    ]
+  },
+  "semantics": {
+    "yeast_validated_context": "mitochondrial 21S_RRNA / Q0158",
+    "ECOLI_context": "UNKNOWN",
+    "full_cross-species_mechanistic_function": "UNKNOWN",
+    "ECOLI_validated_context": "rrlA 23S rRNA",
+    "cross_species_validated_context": "large-subunit rRNA (E. coli 23S; yeast mitochondrial 21S)",
+    "functional_region": "23S rRNA central-core boundary (Domain I -> Domain 0)",
+    "coder_alias": "LSU_CORE_SCAFFOLD_EDGE"
+  },
+  "relationships": [
+    "LC-GRAM-0004"
+  ],
+  "predictions": [
+    "LC-PRED-0007"
+  ],
+  "unknowns": [
+    "Assembly-matched annotation of the E. coli occurrence.",
+    "Mechanistic role of the exact 24-bp sequence."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv",
+    "PC1_ANNOTATION_PASS_0001.md"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "prediction_id": "LC-PRED-0011",
+  "status": "SUPPORTED",
+  "evidence_class": "P1",
+  "generated_from": [
+    "LC-OBS-REP-0001",
+    "VOCABULARY_LADDER_CALIBRATION_v0.1.8.md",
+    "21_MASKED_OPCODE_PREREG_v1.md"
+  ],
+  "statement": "The annotation-blind MOP16-14-v1 representation will retain non-random three-domain signal: the number of distinct real masked token types shared by ECOLI, PYRO, and YEAST will exceed every one of five exact-dinucleotide-preserving null triplets generated under the frozen seed schedule.",
+  "test": "Execute exactly the global test in 21_MASKED_OPCODE_PREREG_v1.md using all 120 masks. No A2451 target result may be interpreted unless this global gate passes.",
+  "support_condition": "real_all_three_MOP_count > max(five dinucleotide-null all-three MOP counts)",
+  "weakening_condition": "Real exceeds the null mean but not the maximum; record as MIXED and do not treat the representation as globally validated.",
+  "falsification_condition": "real_all_three_MOP_count <= dinucleotide-null mean or otherwise fails to exceed the null distribution as specified.",
+  "contamination_boundary": "Frozen before any real-genome MOP16-14 token generation, global count, null count, or target lookup.",
+  "validation": {
+    "result": "SUPPORTED",
+    "real": 618470,
+    "null_counts": [
+      421985,
+      417911,
+      421935,
+      425242,
+      423492
+    ],
+    "null_max": 425242,
+    "source": "MOP16_14_RESULT_0001.json",
+    "original_prediction_text_unchanged": true
+  }
+}

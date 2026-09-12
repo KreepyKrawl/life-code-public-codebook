@@ -1,0 +1,2707 @@
+{
+  "S_G_real": 36.333334147930145,
+  "pair_results": {
+    "EP": {
+      "overlap_count": 29,
+      "S_G": 11.000000238418579,
+      "mean_G": 0.3793103530489165,
+      "G1": 3,
+      "G2_3": 5,
+      "G1_3": 14,
+      "G0": 7
+    },
+    "EY": {
+      "overlap_count": 42,
+      "S_G": 20.000000417232513,
+      "mean_G": 0.47619048612458365,
+      "G1": 6,
+      "G2_3": 15,
+      "G1_3": 12,
+      "G0": 9
+    },
+    "PY": {
+      "overlap_count": 26,
+      "S_G": 5.333333492279053,
+      "mean_G": 0.20512821124150202,
+      "G1": 0,
+      "G2_3": 4,
+      "G1_3": 8,
+      "G0": 14
+    }
+  },
+  "observed_memberships": [
+    {
+      "pair": "EP",
+      "token_id_uint64": 666892255,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 1547502540,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 1613887484,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 1844443103,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 1880093692,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_FWD"
+        ],
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ],
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 4027367391,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 4629385211,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 6501171464,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": false,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 7725649919,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 9328132160,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 9390735343,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 12414107393,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 13186093054,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 14478941567,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 14496432130,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 15354299343,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 15571419328,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 21757951455,
+      "G": 1.0,
+      "full_signature": true,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 22598874111,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 22813622079,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 23086444031,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 23219945470,
+      "G": 1.0,
+      "full_signature": true,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 23370629118,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 24143458293,
+      "G": 1.0,
+      "full_signature": true,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 26642022335,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 27808170035,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 28453646335,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 29256835070,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 29930520063,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 1844443103,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 3227548671,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ],
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 3237999103,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "CONVERGENT"
+        ],
+        [
+          "26_50",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 3674390528,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 6493307092,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 7780388863,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ],
+        [
+          "51_100",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 7797211328,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": false,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "CONVERGENT"
+        ],
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_REV"
+        ],
+        [
+          "51_100",
+          "3PRIME",
+          "CONVERGENT"
+        ],
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 8320843583,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 9127735412,
+      "G": 1.0,
+      "full_signature": true,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 9328132160,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "TANDEM_REV"
+        ],
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 9462349823,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "CONVERGENT"
+        ],
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ],
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ],
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_REV"
+        ],
+        [
+          "26_50",
+          "3PRIME",
+          "CONVERGENT"
+        ],
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_FWD"
+        ],
+        [
+          "26_50",
+          "5PRIME",
+          "TANDEM_FWD"
+        ],
+        [
+          "26_50",
+          "5PRIME",
+          "TANDEM_REV"
+        ],
+        [
+          "51_100",
+          "3PRIME",
+          "CONVERGENT"
+        ],
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_REV"
+        ],
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ],
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_FWD"
+        ],
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 9661577213,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ],
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_REV"
+        ],
+        [
+          "26_50",
+          "3PRIME",
+          "CONVERGENT"
+        ],
+        [
+          "51_100",
+          "3PRIME",
+          "CONVERGENT"
+        ],
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 11541687712,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 12300896288,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 13186093054,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 14496432130,
+      "G": 1.0,
+      "full_signature": true,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_FWD"
+        ],
+        [
+          "26_50",
+          "3PRIME",
+          "CONVERGENT"
+        ],
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 14692856752,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": false,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 15048117132,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 15503393804,
+      "G": 1.0,
+      "full_signature": true,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 15571419328,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "CONVERGENT"
+        ],
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 18187350269,
+      "G": 1.0,
+      "full_signature": true,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 18253468668,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": false,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 19597688819,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 20065601532,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 20132888625,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 21474835455,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_REV"
+        ],
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_REV"
+        ],
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ],
+        [
+          "51_100",
+          "3PRIME",
+          "CONVERGENT"
+        ],
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_REV"
+        ],
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ],
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 21743263807,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 22813622079,
+      "G": 1.0,
+      "full_signature": true,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 23072014351,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 23354147010,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 24972840951,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ],
+        [
+          "26_50",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 25858932931,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 26273112062,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 27115244848,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 27661435552,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 28201648967,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 29256835070,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 29783555279,
+      "G": 1.0,
+      "full_signature": true,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 29930520063,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 31184617471,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 31273288200,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 31944859645,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "CONVERGENT"
+        ],
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 571276302,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 1844443103,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 2149679872,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 5821825056,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 8443084784,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 8824849455,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 9062856700,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 9328132160,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "TANDEM_REV"
+        ],
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 10922688764,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 11274993680,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": false,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 12062867699,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 13186093054,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 14496432130,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": true,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_FWD"
+        ],
+        [
+          "26_50",
+          "3PRIME",
+          "CONVERGENT"
+        ],
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 15571419328,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "CONVERGENT"
+        ],
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 18052334300,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 21810331135,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 22813622079,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 23454794508,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": true,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 26238516687,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 27684241359,
+      "G": 0.6666666865348816,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": false,
+      "orientation_concordant": true,
+      "A_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 28185854915,
+      "G": 0.3333333432674408,
+      "full_signature": false,
+      "distance_concordant": true,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 28592603144,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 28663090239,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 28664131592,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 29256835070,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 29930520063,
+      "G": 0.0,
+      "full_signature": false,
+      "distance_concordant": false,
+      "end_concordant": false,
+      "orientation_concordant": false,
+      "A_signatures": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "B_signatures": [
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    }
+  ],
+  "secondary_concordance_counts": {
+    "full_signature": 9,
+    "distance_concordant": 38,
+    "end_concordant": 44,
+    "orientation_concordant": 34
+  },
+  "all_three_tokens": [
+    1844443103,
+    9328132160,
+    13186093054,
+    14496432130,
+    15571419328,
+    22813622079,
+    29256835070,
+    29930520063
+  ],
+  "all_three_signatures": {
+    "1844443103": {
+      "ECOLI": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "PYRO": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "YEAST": [
+        [
+          "51_100",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    "9328132160": {
+      "ECOLI": [
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "PYRO": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ],
+      "YEAST": [
+        [
+          "26_50",
+          "5PRIME",
+          "TANDEM_REV"
+        ],
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    "13186093054": {
+      "ECOLI": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "PYRO": [
+        [
+          "0_25",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ],
+      "YEAST": [
+        [
+          "26_50",
+          "3PRIME",
+          "CONVERGENT"
+        ]
+      ]
+    },
+    "14496432130": {
+      "ECOLI": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "PYRO": [
+        [
+          "26_50",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "YEAST": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_FWD"
+        ],
+        [
+          "26_50",
+          "3PRIME",
+          "CONVERGENT"
+        ],
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    "15571419328": {
+      "ECOLI": [
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "PYRO": [
+        [
+          "0_25",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "YEAST": [
+        [
+          "26_50",
+          "3PRIME",
+          "CONVERGENT"
+        ],
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    },
+    "22813622079": {
+      "ECOLI": [
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "PYRO": [
+        [
+          "0_25",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "YEAST": [
+        [
+          "51_100",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ]
+    },
+    "29256835070": {
+      "ECOLI": [
+        [
+          "26_50",
+          "5PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "PYRO": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "YEAST": [
+        [
+          "26_50",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ]
+    },
+    "29930520063": {
+      "ECOLI": [
+        [
+          "51_100",
+          "5PRIME",
+          "DIVERGENT"
+        ]
+      ],
+      "PYRO": [
+        [
+          "0_25",
+          "3PRIME",
+          "TANDEM_FWD"
+        ]
+      ],
+      "YEAST": [
+        [
+          "51_100",
+          "5PRIME",
+          "TANDEM_REV"
+        ]
+      ]
+    }
+  },
+  "role_set_sizes": {
+    "ECOLI": 158,
+    "PYRO": 100,
+    "YEAST": 167
+  },
+  "null": {
+    "replicates": 100000,
+    "generator": "NumPy PCG64",
+    "seed": 270027,
+    "mean": 37.74290741568566,
+    "sd": 2.892466302069858,
+    "q95": 42.666664123535156,
+    "q99": 44.66666507720947,
+    "mc_tail_ge": 0.6802831971680283
+  },
+  "pre_execution_release": {
+    "release": "LIFE_CODE_CODEBOOK_v0.0.27",
+    "zip_sha256": "bf1c10fc15899b75202e84992cbee7bd5ec8bf2cfabf70d3bd47e51c83c94abe"
+  },
+  "prediction_outcome": "LC-PRED-0022 FALSIFIED"
+}

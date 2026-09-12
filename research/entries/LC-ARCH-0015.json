@@ -1,0 +1,46 @@
+{
+  "entry_id": "LC-ARCH-0015",
+  "entry_type": "OBS",
+  "status": "PROVISIONAL",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "Entropy-adjusted model-v3 scores were deterministically calculated from all 20 observed genomes; LOO development direction is positive in 12/20 genomes.",
+      "source_refs": [
+        "BOUNDARY_RESIDUAL_MODEL_v3_RESULT_0001.json",
+        "BOUNDARY_RESIDUAL_MODEL_v3_LOO_DIAGNOSTIC.json",
+        "BOUNDARY_RESIDUAL_MODEL_v3_SCORES.csv"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Model-v3 is development-only and requires entirely fresh genomes for inferential validation.",
+      "source_refs": [
+        "BOUNDARY_RESIDUAL_MODEL_v3_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "training_genomes": 20,
+    "positive_loo": 12
+  },
+  "semantics": {
+    "model_role": "entropy-adjusted C2 predictor",
+    "mechanism": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-OBS-EVO-REP-0010",
+    "LC-ARCH-0013"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Prospective v3 transfer to fresh genomes.",
+    "Semantic identity of high-v3-score tokens."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "BOUNDARY_RESIDUAL_MODEL_v3_RESULT_0001.json",
+    "BOUNDARY_RESIDUAL_MODEL_v3_LOO_DIAGNOSTIC.json",
+    "BOUNDARY_RESIDUAL_MODEL_v3_SCORES.csv"
+  ]
+}

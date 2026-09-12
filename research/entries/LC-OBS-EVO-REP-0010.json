@@ -1,0 +1,43 @@
+{
+  "entry_id": "LC-OBS-EVO-REP-0010",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "Entropy-confounder propagation produced E32=STRONGLY_SUPPORTED_RETRO, E34=MIXED_WEAKENED_RETRO, E37=SUPPORTED_RETRO under pre-frozen GC\u00d7separation\u00d7entropy strata.",
+      "source_refs": [
+        "PANEL3_ENTROPY_CONFOUNDER_PROPAGATION_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Original prospective results remain valid under their frozen nulls, but entropy-independent wording is limited to findings surviving this later challenge.",
+      "source_refs": [
+        "PANEL3_ENTROPY_CONFOUNDER_PROPAGATION_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "E32": "STRONGLY_SUPPORTED_RETRO",
+    "E34": "MIXED_WEAKENED_RETRO",
+    "E37": "SUPPORTED_RETRO"
+  },
+  "semantics": {
+    "low_complexity_mediation": "TESTED_RETROSPECTIVELY",
+    "mechanism": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-OBS-EVO-REP-0009",
+    "LC-OBS-PANEL3-0004"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Whether a higher-complexity interface subclass carries independent recurrence.",
+    "Biological meaning of low-complexity boundary-associated sequences."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PANEL3_ENTROPY_CONFOUNDER_PROPAGATION_RESULT_0001.json"
+  ]
+}

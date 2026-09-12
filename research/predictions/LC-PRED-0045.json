@@ -1,0 +1,24 @@
+{
+  "prediction_id": "LC-PRED-0045",
+  "status": "FALSIFIED_DIRECTIONAL",
+  "evidence_class": "P1",
+  "statement": "The C. elegans-trained parameter-context model will show stronger standardized transfer to the phylogenetically closer C. briggsae than to Drosophila.",
+  "primary_statistic": "Z_transfer_CBRIGGSAE > Z_transfer_DROSOPHILA",
+  "support_condition": "Both informative and directional ordering holds.",
+  "falsification_condition": "Both informative and directional ordering fails.",
+  "blocked_condition": "Either component transfer test is blocked.",
+  "p_value_claim_authorized": false,
+  "source_refs": [
+    "CELEGANS_PARAMETER_CONTEXT_MODEL_v1_SCORES.csv",
+    "RETRO_PARAMETER_SIGNAL_SENSITIVITY_RESULT_0001.json"
+  ],
+  "contamination_boundary": "Frozen before C. briggsae sequence acquisition and before Drosophila sequence acquisition.",
+  "result_release": "LIFE_CODE_CODEBOOK_v0.0.72",
+  "result_source": "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001.json",
+  "result": {
+    "Z_transfer_CBRIGGSAE": -0.6618409669551174,
+    "Z_transfer_DROSOPHILA": -0.5421798567655715,
+    "ordering_holds": false,
+    "status": "FALSIFIED_DIRECTIONAL"
+  }
+}

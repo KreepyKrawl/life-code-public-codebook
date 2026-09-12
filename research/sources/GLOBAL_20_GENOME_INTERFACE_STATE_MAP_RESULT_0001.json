@@ -1,0 +1,21 @@
+{
+  "result_id": "GLOBAL_20_GENOME_INTERFACE_STATE_MAP_0001",
+  "status": "RETROACTIVE_EXPLORATORY",
+  "parent_prereg_release": "LIFE_CODE_CODEBOOK_v0.0.73",
+  "headline": {
+    "sampled_extant_tips": 20,
+    "tokens_total": 1000,
+    "boundary_ge2": 381,
+    "boundary_ge3": 237,
+    "boundary_ge4": 146,
+    "boundary_ge5": 85,
+    "boundary_all_three_domains": 54,
+    "maximum_boundary_genome_breadth": 11,
+    "bacteria_extant_tip_discontinuity_tokens": 996,
+    "archaea_extant_tip_discontinuity_tokens": 996,
+    "eukaryota_extant_tip_discontinuity_tokens": 890,
+    "animal_extant_tip_discontinuity_tokens": 665
+  },
+  "top25_source": "GLOBAL_20_GENOME_INTERFACE_TOP25_v1.json",
+  "claim_boundary": "Extant-tip state map only. Discontinuous sampled states do not identify or reconstruct missing ancestral intermediates."
+}

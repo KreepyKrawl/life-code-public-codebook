@@ -1,0 +1,27 @@
+{
+  "prediction_id": "LC-PRED-0008",
+  "status": "MIXED",
+  "evidence_class": "P1",
+  "generated_from": [
+    "LC-FUNC-0003",
+    "WEB_FUNCTIONAL_VALIDATION_0002.json"
+  ],
+  "statement": "Because LIFE-CODE independently recovered an exact primitive at one side of the ribosomal peptide-bond-forming machinery, the existing frozen three-domain raw-sequence corpus should contain another reusable primitive or nested primitive associated with the universally conserved A2451-centered peptidyl-transferase active-site neighborhood, even though that neighborhood was not used to create the original blind discovery.",
+  "test": "Before any biological annotation, recover the complete list of frozen three-domain shared exact primitives from the original pilot artifacts and determine whether any occurrence maps, only after freezing, to the A2451/PTC neighborhood. If the exact 16-mer floor is too strict, use a separately versioned follow-up with a predeclared shorter/variable-length rule rather than changing this test retroactively.",
+  "support_condition": "At least one already-frozen three-domain primitive or an independently preregistered nested primitive maps post-freeze to the A2451-centered PTC neighborhood.",
+  "weakening_condition": "No exact 16-mer exists there but a separately preregistered shorter/structural primitive transfers across the domains.",
+  "falsification_condition": "Repeated appropriately powered searches across independent genomes show the A2451/PTC neighborhood is not recoverable as reusable sequence/structural vocabulary under the codebook representation while less constrained regions are.",
+  "contamination_boundary": "Semantic dependency prediction frozen before inspecting the full original 54 shared-16-mer identities or performing any targeted sequence search around A2451.",
+  "validation_stage_1": {
+    "result": "EXACT_16MER_BRANCH_NEGATIVE",
+    "evidence_source": "PRED0008_STAGE1_EXACT16_TEST.json",
+    "original_prediction_unchanged": true,
+    "remaining_preregistered_path": "shorter/variable-length follow-up must be separately frozen before execution"
+  },
+  "validation_stage_2": {
+    "result": "EXACT_14MER_FOLLOWUP_NEGATIVE",
+    "source": "PRED0010_EXACT14_TEST.json",
+    "summary": "The exact-14 follow-up reproduced the frozen 5,561 global vocabulary count but found zero target-window hits.",
+    "remaining_hypothesis_space": "Variable-slot/structural-equivalence representations remain untested; no further k lowering is authorized by this result."
+  }
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "pattern_id": "MP-001",
+    "source_result": "LC-PRED-0011",
+    "old_box": "exact/literal recurrence",
+    "newly_visible_level": "masked/degenerate identity",
+    "observation": "MOP16-14-v1 carries cross-domain signal beyond exact literal identity.",
+    "next_test": "Panel-3 literal-vs-masked decomposition / LC-PRED-0036 and 0038",
+    "status": "ACTIVE"
+  },
+  {
+    "pattern_id": "MP-002",
+    "source_result": "LC-PRED-0013 + LC-PRED-0017",
+    "old_box": "foundation/runtime annotation buckets",
+    "newly_visible_level": "broad positional interface",
+    "observation": "Foundation enrichment failed while boundary proximity became strongly supported.",
+    "next_test": "Continue mechanism decomposition only after composition/phylogeny controls.",
+    "status": "ACTIVE"
+  },
+  {
+    "pattern_id": "MP-003",
+    "source_result": "LC-PRED-0018",
+    "old_box": "5-prime/promoter-like specificity",
+    "newly_visible_level": "multi-subtype or non-promoter boundary grammar",
+    "observation": "Broad boundary enrichment survives while 5-prime specificity fails.",
+    "next_test": "Future denser grammar can test initiation/termination/other interface subtypes prospectively.",
+    "status": "OPEN"
+  },
+  {
+    "pattern_id": "MP-004",
+    "source_result": "LC-PRED-0020/0021",
+    "old_box": "same token means same neighboring component/protein",
+    "newly_visible_level": "interface/role equivalence with divergent implementation",
+    "observation": "Direct C3 component identity is falsified.",
+    "next_test": "Role-equivalence/implementation-replacement requires a different prospectively frozen representation.",
+    "status": "OPEN"
+  },
+  {
+    "pattern_id": "MP-005",
+    "source_result": "LC-PRED-0022",
+    "old_box": "same detailed boundary geometry",
+    "newly_visible_level": "context-conditioned/rewired grammar",
+    "observation": "Fine geometry is not preserved by same token.",
+    "next_test": "Do not repeat geometry; test higher-order context only with denser data.",
+    "status": "OPEN"
+  },
+  {
+    "pattern_id": "MP-006",
+    "source_result": "LC-PRED-0029/0030/0031",
+    "old_box": "selected token/model score treated as identity-specific",
+    "newly_visible_level": "identity residual after representation-feature baseline",
+    "observation": "Broad recurrence survives GC\u00d7mask conditioning; P81/model-v1 do not.",
+    "next_test": "LC-PRED-0032 residual model v2.",
+    "status": "ACTIVE"
+  },
+  {
+    "pattern_id": "MP-007",
+    "source_result": "RETRO_IMPLEMENTATION_DEPTH_0001",
+    "old_box": "shared token implicitly treated as possibly literal conservation",
+    "newly_visible_level": "literal implementation -> masked identity -> C2 role stack",
+    "observation": "75.36% of shared token-pair memberships are masked-only; 240 recurrent boundary pair-memberships are masked-only.",
+    "next_test": "LC-PRED-0036/0037/0038 on fresh Panel 3.",
+    "status": "ACTIVE"
+  },
+  {
+    "pattern_id": "MP-008",
+    "source_result": "PRIMARY1000_LOCAL_GRAMMAR_SUPPORT_GATE_0001",
+    "old_box": "1,000-token sample assumed sufficient for grammar discovery",
+    "newly_visible_level": "denser vocabulary required",
+    "observation": "Current X+Y context support is too sparse for reliable conditional grammar.",
+    "next_test": "Prospectively freeze a denser token universe/sample; do not relax pair thresholds post hoc.",
+    "status": "BLOCKED_DATA_DENSITY"
+  },
+  {
+    "pattern_id": "MP-009",
+    "source_result": "Proof Case 0002",
+    "old_box": "same broad operation expected to share exact implementation across all domains",
+    "newly_visible_level": "lineage-specific implementation of equivalent biochemical operation",
+    "observation": "Exact FBA module occurs in bacterial/eukaryotic class-II implementation while the sampled archaeon uses a different known implementation.",
+    "next_test": "Future role-equivalence tests must be annotation-blind first and prospectively frozen.",
+    "status": "HYPOTHESIS_GENERATOR"
+  },
+  {
+    "pattern_id": "MP-010",
+    "source_result": "all failures",
+    "old_box": "negative result treated only as dead end",
+    "newly_visible_level": "negative constrains a representation layer and exposes adjacent layers",
+    "observation": "C3/geometry/5-prime/foundation failures each narrow which code abstraction can plausibly carry the signal.",
+    "next_test": "Every future failure enters continuous propagation rather than being discarded.",
+    "status": "CANONICAL_RULE"
+  }
+]

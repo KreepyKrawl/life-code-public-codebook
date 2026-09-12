@@ -1,0 +1,41 @@
+{
+  "entry_id": "LC-OBS-PANEL3-0004",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "The frozen, Panel-2-validated boundary annotator classified all eight new genomes in the broad OUTSIDE_GENE <=100-bp C2 role.",
+      "source_refs": [
+        "PANEL3_PLUS_LINEAGE_BOUNDARY_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "Boundary-token counts are 26,2,3,32,55,242 for the original six Panel-3 genomes and 74,269 for Drosophila/C. briggsae respectively.",
+      "source_refs": [
+        "PANEL3_PLUS_LINEAGE_BOUNDARY_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "boundary_reveal": "PASS",
+    "prediction_adjudication": "NOT_RUN"
+  },
+  "semantics": {
+    "ceiling": "C2",
+    "mechanism": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-OBS-PANEL3-0003",
+    "LC-ARCH-0013"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "All frozen prediction outcomes."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PANEL3_PLUS_LINEAGE_BOUNDARY_RESULT_0001.json"
+  ]
+}

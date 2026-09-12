@@ -1,0 +1,117 @@
+{
+  "validation_id": "PANEL2_INDEPENDENT_STATISTIC_VALIDATION_0001",
+  "status": "PASS",
+  "pre_result_release": "LIFE_CODE_CODEBOOK_v0.0.40",
+  "pre_result_zip_sha256": "0779b974c5fd400214fe9c2e410e8d70fab658b599118bc3d5dca7ae82bb91cc",
+  "reconstructed_recovered_counts": {
+    "PSEUDOMONAS": 19,
+    "MYCOPLASMA": 45,
+    "METHANOCALDOCOCCUS": 151,
+    "HALOFERAX": 8,
+    "NEUROSPORA": 398,
+    "CELEGANS": 779
+  },
+  "reconstructed_boundary_counts": {
+    "PSEUDOMONAS": 4,
+    "MYCOPLASMA": 2,
+    "METHANOCALDOCOCCUS": 27,
+    "HALOFERAX": 2,
+    "NEUROSPORA": 51,
+    "CELEGANS": 279
+  },
+  "pair_details": {
+    "PSEUDOMONAS__MYCOPLASMA": {
+      "recovered_overlap": 0,
+      "boundary_overlap": 0,
+      "analytic_expected_overlap": 0.0
+    },
+    "PSEUDOMONAS__METHANOCALDOCOCCUS": {
+      "recovered_overlap": 1,
+      "boundary_overlap": 0,
+      "analytic_expected_overlap": 0.037643778319972114
+    },
+    "PSEUDOMONAS__HALOFERAX": {
+      "recovered_overlap": 0,
+      "boundary_overlap": 0,
+      "analytic_expected_overlap": 0.0
+    },
+    "PSEUDOMONAS__NEUROSPORA": {
+      "recovered_overlap": 6,
+      "boundary_overlap": 0,
+      "analytic_expected_overlap": 0.16186194128537423
+    },
+    "PSEUDOMONAS__CELEGANS": {
+      "recovered_overlap": 13,
+      "boundary_overlap": 2,
+      "analytic_expected_overlap": 0.9802040402675493
+    },
+    "MYCOPLASMA__METHANOCALDOCOCCUS": {
+      "recovered_overlap": 24,
+      "boundary_overlap": 1,
+      "analytic_expected_overlap": 0.19072847682119204
+    },
+    "MYCOPLASMA__HALOFERAX": {
+      "recovered_overlap": 1,
+      "boundary_overlap": 0,
+      "analytic_expected_overlap": 0.011111111111111112
+    },
+    "MYCOPLASMA__NEUROSPORA": {
+      "recovered_overlap": 24,
+      "boundary_overlap": 1,
+      "analytic_expected_overlap": 0.13668341708542714
+    },
+    "MYCOPLASMA__CELEGANS": {
+      "recovered_overlap": 44,
+      "boundary_overlap": 2,
+      "analytic_expected_overlap": 0.700385109114249
+    },
+    "METHANOCALDOCOCCUS__HALOFERAX": {
+      "recovered_overlap": 1,
+      "boundary_overlap": 0,
+      "analytic_expected_overlap": 0.04470198675496689
+    },
+    "METHANOCALDOCOCCUS__NEUROSPORA": {
+      "recovered_overlap": 87,
+      "boundary_overlap": 3,
+      "analytic_expected_overlap": 1.9933941229325436
+    },
+    "METHANOCALDOCOCCUS__CELEGANS": {
+      "recovered_overlap": 147,
+      "boundary_overlap": 19,
+      "analytic_expected_overlap": 9.413928538030587
+    },
+    "HALOFERAX__NEUROSPORA": {
+      "recovered_overlap": 4,
+      "boundary_overlap": 0,
+      "analytic_expected_overlap": 0.12814070351758794
+    },
+    "HALOFERAX__CELEGANS": {
+      "recovered_overlap": 6,
+      "boundary_overlap": 1,
+      "analytic_expected_overlap": 0.5372272143774068
+    },
+    "NEUROSPORA__CELEGANS": {
+      "recovered_overlap": 350,
+      "boundary_overlap": 30,
+      "analytic_expected_overlap": 16.062823746460158
+    }
+  },
+  "LC_PRED_0026": {
+    "observed": 59,
+    "analytic_null_expectation": 30.398834186078126,
+    "mc_null_mean": 30.40401,
+    "outcome": "STRONGLY_SUPPORTED"
+  },
+  "LC_PRED_0027": {
+    "observed": 62,
+    "analytic_null_expectation": 38.939012148079975,
+    "mc_null_mean": 38.91469,
+    "outcome": "STRONGLY_SUPPORTED"
+  },
+  "LC_PRED_0028": {
+    "observed": 67.26955833155401,
+    "analytic_null_expectation": 56.214003538703025,
+    "mc_null_mean": 56.21053913620941,
+    "outcome": "STRONGLY_SUPPORTED"
+  }
+}

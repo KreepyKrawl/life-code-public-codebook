@@ -1,0 +1,162 @@
+{
+  "entry_id": "LC-OBS-ARCH-0001",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "Genome-matched address-space normalization classified every valid 16-nt window in the exact frozen ECOLI, PYRO and YEAST genomes using the previously frozen primary-context rules.",
+      "source_refs": [
+        "ARCHITECTURE_BACKGROUND_RESULT_0001.json",
+        "ARCHITECTURE_BACKGROUND_VALIDATION_0001.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "FOUNDATION_RUNTIME ratio=0.6689, Monte Carlo tail=0.972451; prediction outcome FALSIFIED.",
+      "source_refs": [
+        "ARCHITECTURE_BACKGROUND_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "INTEGRATION_STACK ratio=1.1186, Monte Carlo tail=0.253587; prediction outcome MIXED_WEAKENED.",
+      "source_refs": [
+        "ARCHITECTURE_BACKGROUND_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "HOST_EXECUTABLE/CDS ratio=0.8812; LC-PRED-0015 outcome SUPPORTED.",
+      "source_refs": [
+        "ARCHITECTURE_BACKGROUND_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "individual_context_results": {
+      "rRNA": {
+        "observed": 8,
+        "expected": 11.457380139870725,
+        "ratio": 0.6982399032184216,
+        "mc_tail_ge": 0.8826058697065147
+      },
+      "tRNA": {
+        "observed": 2,
+        "expected": 7.454782193174638,
+        "ratio": 0.26828416286006807,
+        "mc_tail_ge": 0.9948002599870006
+      },
+      "protein_coding_CDS": {
+        "observed": 2628,
+        "expected": 2982.1757362093113,
+        "ratio": 0.8812357930792135,
+        "mc_tail_ge": 1.0
+      },
+      "other_noncoding_RNA": {
+        "observed": 8,
+        "expected": 7.999423053903037,
+        "ratio": 1.0000721234635392,
+        "mc_tail_ge": 0.5421228938553072
+      },
+      "intergenic": {
+        "observed": 884,
+        "expected": 529.1715771170255,
+        "ratio": 1.670535679214125,
+        "mc_tail_ge": 4.999750012499375e-05
+      },
+      "repeat_or_mobile_element": {
+        "observed": 7,
+        "expected": 26.695135143050575,
+        "ratio": 0.2622200622881012,
+        "mc_tail_ge": 1.0
+      },
+      "organellar": {
+        "observed": 35,
+        "expected": 10.850264007534847,
+        "ratio": 3.22572796161408,
+        "mc_tail_ge": 4.999750012499375e-05
+      },
+      "overlap_multiple_features": {
+        "observed": 23,
+        "expected": 44.18161390824226,
+        "ratio": 0.520578538569621,
+        "mc_tail_ge": 0.999750012499375
+      },
+      "unresolved": {
+        "observed": 69,
+        "expected": 44.01408822788712,
+        "ratio": 1.5676798674721137,
+        "mc_tail_ge": 0.00024998750062496874
+      }
+    },
+    "composite_results": {
+      "FOUNDATION_RUNTIME": {
+        "contexts": [
+          "tRNA",
+          "rRNA",
+          "other_noncoding_RNA"
+        ],
+        "observed": 18,
+        "expected": 26.9115853869484,
+        "ratio": 0.6688569157553108,
+        "mc_tail_ge": 0.9724513774311284
+      },
+      "INTEGRATION_STACK": {
+        "contexts": [
+          "repeat_or_mobile_element",
+          "organellar"
+        ],
+        "observed": 42,
+        "expected": 37.545399150585425,
+        "ratio": 1.1186457182556047,
+        "mc_tail_ge": 0.2535873206339683
+      },
+      "HOST_EXECUTABLE": {
+        "contexts": [
+          "protein_coding_CDS"
+        ],
+        "observed": 2628,
+        "expected": 2982.1757362093113,
+        "ratio": 0.8812357930792135,
+        "mc_tail_ge": 1.0
+      },
+      "UNASSIGNED_ADDRESS_SPACE": {
+        "contexts": [
+          "intergenic",
+          "unresolved",
+          "overlap_multiple_features"
+        ],
+        "observed": 976,
+        "expected": 617.367279253155,
+        "ratio": 1.580906589640922,
+        "mc_tail_ge": 4.999750012499375e-05
+      }
+    },
+    "prediction_outcomes": {
+      "LC-PRED-0013": "FALSIFIED",
+      "LC-PRED-0014": "MIXED_WEAKENED",
+      "LC-PRED-0015": "SUPPORTED"
+    }
+  },
+  "semantics": {
+    "validated_identity": "address-space-normalized architecture-layer calibration",
+    "chronological_order_claim": "NONE",
+    "OS_identity_claim": "NONE"
+  },
+  "relationships": [
+    "LC-ARCH-0001",
+    "LC-OBS-MOP-0003"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Whether these density effects replicate in held-out genomes.",
+    "Whether architecture layers prefer distinct representation classes.",
+    "Whether cross-genome MOPs preserve homologous/system roles."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "ARCHITECTURE_BACKGROUND_RESULT_0001.json",
+    "ARCHITECTURE_BACKGROUND_VALIDATION_0001.json"
+  ]
+}

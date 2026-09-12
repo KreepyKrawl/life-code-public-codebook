@@ -1,0 +1,33 @@
+{
+  "prediction_id": "LC-PRED-0018",
+  "status": "FALSIFIED",
+  "evidence_class": "P1",
+  "statement": "Among OUTSIDE_GENE primary-intergenic MOP occurrences within 100 bp of a gene boundary and with a non-tied nearest end, the fraction nearest a 5-prime gene boundary will exceed the genome-matched intergenic background fraction.",
+  "support_condition": "observed/expected >1 and one-sided 20,000-replicate Monte Carlo tail <=0.05; strong support <=0.01.",
+  "weakening_condition": "observed/expected >1 but tail >0.05.",
+  "falsification_condition": "observed/expected <=1.",
+  "contamination_boundary": "Frozen before any observed intergenic boundary orientation/end-side result was calculated.",
+  "source_refs": [
+    "ARCHITECTURE_BACKGROUND_RESULT_0001.json",
+    "MOP_PRIMARY_1000_CLASSIFIED_OCCURRENCES.csv"
+  ],
+  "validation": {
+    "result": "FALSIFIED",
+    "original_prediction_text_unchanged": true,
+    "source": "INTERGENIC_BOUNDARY_RESULT_0001.json",
+    "observed_5prime": 269,
+    "eligible_near_nontie_by_genome": {
+      "ECOLI": 163,
+      "PYRO": 100,
+      "YEAST": 250
+    },
+    "background_5prime_probability_by_genome": {
+      "ECOLI": 0.594999643097664,
+      "PYRO": 0.6409633852890806,
+      "YEAST": 0.5286809864185494
+    },
+    "expected": 293.25152695846464,
+    "ratio": 0.9173012764503028,
+    "mc_tail_ge": 0.9866506674666267
+  }
+}

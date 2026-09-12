@@ -1,0 +1,17 @@
+{
+  "validation_id": "PANEL2_CONDITIONED_NULL_VALIDATION_0001",
+  "status": "PASS",
+  "primary": {
+    "S_pair_6_analytic": 45.1933958006826,
+    "S_pair_6_mc": 45.19492,
+    "T81_6_analytic": 57.29198694527721,
+    "T81_6_mc": 57.29374,
+    "M_score_analytic": 65.61864802190769,
+    "M_score_mc": 65.61781067459368
+  },
+  "primary_boundary_memberships_movable": 317,
+  "primary_boundary_memberships_total": 365,
+  "secondary_boundary_memberships_movable": 49,
+  "secondary_boundary_memberships_total": 365,
+  "interpretation": "Primary conditioned null retains substantial randomization freedom; stringent secondary exact-base-composition strata immobilize most boundary memberships and are therefore low-information diagnostics."
+}

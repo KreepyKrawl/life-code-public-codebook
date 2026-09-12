@@ -1,10 +1,12 @@
 # LIFE-CODE Public Codebook
 
-**Codebook Core v0.10 · Interface v0.10.0**
+**Codebook Core v0.11 · Interface v0.11.0**
 
 [Open the live Codebook](https://kreepykrawl.github.io/life-code-public-codebook/).
 
-The recovered calibration evidence is now part of the database and website:
+The Research journey now publishes **66 historical entries, 47 predictions, 260 evidence statements, and 202 research links**, with 92 original source downloads. The prediction ledger preserves successes, failures, mixed results, and untested predictions exactly as recorded. Seven archive records remain withheld. See `docs/RELEASE_v0.11.md`.
+
+The recovered calibration evidence remains part of the database and website:
 
 - Three PC0001 literals and 19 focused locations checked against the original hash-verified genome files.
 - All 54 shared exact 16-base vocabulary sequences, with occurrence counts independently checked in all three pilot genomes. Low-complexity sequences are retained.
@@ -21,7 +23,7 @@ Python 3.10+; no external dependencies:
 ```sh
 python lifecode_codebook_server.py
 python lifecode_codebook.py show PC1-BLOCK-A24
-python tools/release_v010.py downloads/LIFE_CODE_CODEBOOK_CORE_v0.10.sqlite
+python tools/test_research_v011.py
 python tools/test_release_v010.py
 ```
 
@@ -37,4 +39,4 @@ python tools/build_core_v010.py --parent LIFE_CODE_CODEBOOK_CONTINUATION_v0.8.sq
 
 The builder refuses to overwrite an existing output. It checks the parent, archive, three reviewed source files, genome hashes, focused substrings, independent block table, and all vocabulary occurrence counts. It does not ingest primary EXP-0002 outputs. Earlier releases remain available unchanged.
 
-Current release hashes are in `SHA256SUMS-v0.10.txt`. See `docs/RELEASE_v0.10.md` for the scope and remaining work, and `SCIENTIFIC_RELEASE_POLICY.md` for disclosure rules.
+Current research release hashes are in `SHA256SUMS-v0.11.txt`; calibration hashes remain in `SHA256SUMS-v0.10.txt`. See `docs/RELEASE_v0.10.md` for the scope and remaining work, and `SCIENTIFIC_RELEASE_POLICY.md` for disclosure rules.

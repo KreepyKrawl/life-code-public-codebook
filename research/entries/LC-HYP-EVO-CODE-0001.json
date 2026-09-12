@@ -1,0 +1,46 @@
+{
+  "entry_id": "LC-HYP-EVO-CODE-0001",
+  "entry_type": "HYP",
+  "status": "PROVISIONAL",
+  "evidence": [
+    {
+      "class": "H1",
+      "statement": "Biological coding representations may themselves evolve through conditionalization, grammar expansion, duplication/divergence, abstraction, distributed semantics, compatibility bridges, or implementation replacement.",
+      "source_refs": [
+        "CODER_BIOLOGIST_ANALOGY_MATRIX_v1.csv"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "LIFE-CODE must distinguish literal conservation from architectural/role equivalence and must not interpret missing literal sequence as proof of missing biological operation.",
+      "source_refs": [
+        "CODER_BIOLOGIST_ANALOGY_MATRIX_v1.csv"
+      ]
+    }
+  ],
+  "observations": {
+    "workflow_lock": "CANONICAL",
+    "mandatory_future_checklist": true
+  },
+  "semantics": {
+    "validated_identity": "hypothesis/search framework only",
+    "mechanistic_truth": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-ARCH-0002",
+    "LC-ARCH-0007"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Which evolutionary code transformations, if any, are empirically detectable in LIFE-CODE data.",
+    "Whether representation depth systematically changes with phylogenetic distance.",
+    "Whether architectural-role equivalence can be recovered prospectively after literal implementation replacement."
+  ],
+  "falsification_conditions": [
+    "Prospective tests fail to find representation/grammar equivalence beyond standard literal or composition-driven conservation.",
+    "Purported evolutionary transformations disappear under matched phylogenetic/compositional controls."
+  ],
+  "source_refs": [
+    "CODER_BIOLOGIST_ANALOGY_MATRIX_v1.csv"
+  ]
+}

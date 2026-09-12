@@ -1,0 +1,24 @@
+{
+  "prediction_id": "LC-PRED-0016",
+  "status": "MIXED_WEAKENED",
+  "evidence_class": "P1",
+  "statement": "Within the exact yeast mitochondrial record, the 35 already-observed mitochondrial MOP occurrences will be overrepresented in internally classified mitochondrial intergenic address space relative to all valid chrM 16-nt windows.",
+  "support_condition": "observed/expected >1 and exact binomial upper tail <=0.05; strong support <=0.01.",
+  "weakening_condition": "observed/expected >1 but tail >0.05.",
+  "falsification_condition": "observed/expected <=1.",
+  "contamination_boundary": "Frozen before removing the organellar override from any of the 35 observed chrM MOP occurrences or calculating the chrM internal background.",
+  "source_refs": [
+    "ARCHITECTURE_BACKGROUND_RESULT_0001.json",
+    "MOP_PRIMARY_1000_CLASSIFIED_OCCURRENCES.csv"
+  ],
+  "validation": {
+    "result": "MIXED_WEAKENED",
+    "original_prediction_text_unchanged": true,
+    "source": "MITO_INTERNAL_RESULT_0001.json",
+    "context": "intergenic",
+    "observed": 26,
+    "expected": 21.318152138426377,
+    "ratio": 1.2196179026762128,
+    "exact_binomial_upper_tail": 0.07108824248712568
+  }
+}

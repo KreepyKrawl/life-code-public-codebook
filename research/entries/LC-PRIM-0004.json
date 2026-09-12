@@ -1,0 +1,75 @@
+{
+  "entry_id": "LC-PRIM-0004",
+  "entry_type": "PRIM",
+  "status": "SEMANTICALLY_VALIDATED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "The frozen blind CANDIDATE-0002 contains a 25-bp direct-orientation block CAGTAGAACCGGAACCACCGTGGAA at E. coli start0 3,070,430 and yeast start0 326,673.",
+      "source_refs": [
+        "PC2_DISCOVERY_FREEZE.md"
+      ]
+    },
+    {
+      "class": "E2",
+      "statement": "Post-freeze annotation places this block at coding start0 789 in both fbaA and FBA1; it begins on a codon boundary in both implementations.",
+      "source_refs": [
+        "PC2_ANNOTATION_RESULT_0002.json"
+      ]
+    },
+    {
+      "class": "E2",
+      "statement": "In coding orientation the block is TTCCACGGTGGTTCCGGTTCTACTG; its first 24 bases encode eight complete codons, FHGGSGST.",
+      "source_refs": [
+        "PC2_ANNOTATION_RESULT_0002.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "This is a literal conserved coding primitive inside two class-II fructose-bisphosphate aldolase implementations.",
+      "source_refs": [
+        "PC2_ANNOTATION_INPUT_0002.json",
+        "PC2_ANNOTATION_RESULT_0002.json"
+      ]
+    }
+  ],
+  "observations": {
+    "sequence_genomic_direct": "CAGTAGAACCGGAACCACCGTGGAA",
+    "sequence_coding_orientation": "TTCCACGGTGGTTCCGGTTCTACTG",
+    "length_bp": 25,
+    "genomic_start0": {
+      "ECOLI": 3070430,
+      "YEAST": 326673
+    },
+    "coding_start0": {
+      "ECOLI": 789,
+      "YEAST": 789
+    },
+    "same_coding_offset": true,
+    "codon_boundary": true,
+    "complete_codons_encoded": 8,
+    "peptide_from_complete_codons": "FHGGSGST"
+  },
+  "semantics": {
+    "validated_identity": "coding fragment within homologous class-II fructose-bisphosphate aldolase genes",
+    "genes": {
+      "ECOLI": "fbaA",
+      "YEAST": "FBA1"
+    },
+    "specific_residue_level_mechanistic_role": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-GRAM-0002",
+    "LC-PRIM-0005"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Whether the exact FHGGSGST-preserving nucleotide sequence is constrained primarily by protein function, RNA-level constraints, historical inheritance, or a combination."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PC2_DISCOVERY_FREEZE.md",
+    "PC2_ANNOTATION_INPUT_0002.json",
+    "PC2_ANNOTATION_RESULT_0002.json"
+  ]
+}

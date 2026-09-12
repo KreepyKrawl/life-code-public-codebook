@@ -1,0 +1,25 @@
+{
+  "prediction_id": "LC-PRED-0024",
+  "status": "SUPPORTED",
+  "evidence_class": "P1",
+  "statement": "In the prospectively selected held-out bacterium, archaeon, and eukaryote, identical primary-sample MOP token identities will recur in the broad OUTSIDE_GENE <=100-bp boundary role above a null that fixes per-genome token recoverability and boundary-role marginal counts.",
+  "support_condition": "Observed S_pair_H above null mean and one-sided 100,000-replicate Monte Carlo tail <=0.05; strong support <=0.01.",
+  "weakening_condition": "Observed above null mean but tail >0.05.",
+  "falsification_condition": "Observed <= null mean.",
+  "contamination_boundary": "Species, assemblies, token universe, boundary definition, statistic, null, seed and thresholds frozen before held-out genome sequence download/scan.",
+  "source_refs": [
+    "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json",
+    "PRIMARY_CROSS_GENOME_BOUNDARY_TOKEN_IDS_81.txt"
+  ],
+  "validation": {
+    "result": "SUPPORTED",
+    "source": "HELDOUT_BOUNDARY_TRANSFER_RESULT_0001.json",
+    "independent_validation": "HELDOUT_TRANSFER_INDEPENDENT_VALIDATION_0001.json",
+    "observed": 7,
+    "null_mean": 2.96737,
+    "null_sd": 1.6461789948544476,
+    "q95": 6.0,
+    "q99": 7.0,
+    "mc_tail_ge": 0.026569734302656974
+  }
+}

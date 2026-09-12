@@ -1,0 +1,33 @@
+{
+  "prediction_id": "LC-PRED-0044",
+  "status": "FALSIFIED",
+  "evidence_class": "P1",
+  "statement": "Parameter-context scores trained only on C. elegans will predict broad boundary-context occurrence in fresh C. briggsae above a within-token permutation null.",
+  "primary_statistic": "M_param_transfer_CBRIGGSAE",
+  "null_seed": 550044,
+  "movability_gate": ">=50% of boundary occurrences in mixed boundary/non-boundary token strata",
+  "support_condition": "Observed>null mean with p<=.05; strong p<=.01.",
+  "weakening_condition": "Observed>null mean with p>.05.",
+  "falsification_condition": "Observed<=null mean.",
+  "source_refs": [
+    "CELEGANS_PARAMETER_CONTEXT_MODEL_v1_SCORES.csv"
+  ],
+  "contamination_boundary": "Frozen before C. briggsae sequence acquisition and before Drosophila sequence acquisition.",
+  "result_release": "LIFE_CODE_CODEBOOK_v0.0.72",
+  "result_source": "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001.json",
+  "result": {
+    "genome": "CBRIGGSAE",
+    "total_boundary_occurrences": 647,
+    "mixed_boundary_occurrences": 635,
+    "movability_fraction": 0.98145285935085,
+    "movability_gate_pass": true,
+    "observed": -0.6853903918799998,
+    "null_mean": 0.015142785792972213,
+    "null_sd": 1.0584614924879356,
+    "q95": 1.7780754804123984,
+    "q99": 2.5276052300245455,
+    "mc_tail_ge": 0.7442325576744232,
+    "status": "FALSIFIED",
+    "seed": 550044
+  }
+}

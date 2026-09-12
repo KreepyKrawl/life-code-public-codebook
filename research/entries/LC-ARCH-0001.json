@@ -1,0 +1,89 @@
+{
+  "entry_id": "LC-ARCH-0001",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "The v0.0.14 unbiased sample contains MOP tokens in tRNA, rRNA, other ncRNA, repeat/mobile, mitochondrial, CDS and intergenic contexts.",
+      "source_refs": [
+        "MOP_PRIMARY_CLASSIFICATION_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "LIFE-CODE should preserve a layered architecture-specification lens in addition to a flat symbol dictionary: decoder/interface, execution core, firmware/control, mobile code, integrated subsystem, executable code and distributed runtime relationships may require different sequence representations.",
+      "source_refs": [
+        "MOP_PRIMARY_CLASSIFICATION_0001.json",
+        "MOP16_14_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "H1",
+      "statement": "An OS-like biological layer, if useful, should emerge from relationships and compatibility interfaces among components rather than being assigned to one annotation class.",
+      "source_refs": [
+        "MOP_PRIMARY_CLASSIFICATION_0001.json"
+      ]
+    },
+    {
+      "class": "E0",
+      "statement": "FOUNDATION_RUNTIME contains 18 sampled MOP occurrences against a genome-matched valid-16nt expectation of 26.912.",
+      "source_refs": [
+        "ARCHITECTURE_BACKGROUND_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "E0",
+      "statement": "INTEGRATION_STACK contains 42 sampled MOP occurrences against expectation 37.545.",
+      "source_refs": [
+        "ARCHITECTURE_BACKGROUND_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "Normalized ratios are FOUNDATION_RUNTIME 0.6689x, INTEGRATION_STACK 1.1186x, and HOST_EXECUTABLE 0.8812x.",
+      "source_refs": [
+        "ARCHITECTURE_BACKGROUND_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Architecture-layer interpretation must follow the frozen prediction outcomes rather than the raw 2/5/11/14/24 count ordering; individual component diagnostics may differ sharply within a composite.",
+      "source_refs": [
+        "ARCHITECTURE_BACKGROUND_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "architecture_frame": "43_CELLULAR_ARCHITECTURE_SPECIFICATION_FRAME_v0.1.md",
+    "background_test": "COMPLETE",
+    "prediction_outcomes": {
+      "LC-PRED-0013": "FALSIFIED",
+      "LC-PRED-0014": "MIXED_WEAKENED",
+      "LC-PRED-0015": "SUPPORTED"
+    }
+  },
+  "semantics": {
+    "validated_identity": "canonical systems/reverse-engineering frame",
+    "literal_computer_equivalence": false
+  },
+  "relationships": [
+    "LC-OBS-MOP-0001",
+    "LC-OBS-MOP-0003"
+  ],
+  "predictions": [
+    "LC-PRED-0013",
+    "LC-PRED-0014",
+    "LC-PRED-0015"
+  ],
+  "unknowns": [
+    "Architecture-layer enrichment after address-space normalization.",
+    "Layer-specific representation transfer.",
+    "Conserved system-role identity of cross-genome MOP tokens."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "MOP_PRIMARY_CLASSIFICATION_0001.json",
+    "MOP16_14_RESULT_0001.json"
+  ]
+}

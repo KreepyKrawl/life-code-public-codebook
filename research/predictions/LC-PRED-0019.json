@@ -1,0 +1,25 @@
+{
+  "prediction_id": "LC-PRED-0019",
+  "status": "STRONGLY_SUPPORTED",
+  "evidence_class": "P1",
+  "statement": "The same MOP token identity will recur in the <=100-bp OUTSIDE_GENE boundary role across genome pairs more often than expected after preserving the exact marginal number of boundary-role token types in ECOLI, PYRO and YEAST.",
+  "support_condition": "one-sided 100,000-replicate Monte Carlo tail for S_pair <=0.05; strong support <=0.01.",
+  "weakening_condition": "S_pair above null mean but tail >0.05.",
+  "falsification_condition": "S_pair <= null mean.",
+  "contamination_boundary": "Frozen before token-level cross-genome boundary-role overlap counts were calculated.",
+  "source_refs": [
+    "INTERGENIC_BOUNDARY_RESULT_0001.json",
+    "INTERGENIC_884_GEOMETRY.csv",
+    "MOP_PRIMARY_1000_TOKEN_CONTEXT_SUMMARY.csv"
+  ],
+  "validation": {
+    "result": "STRONGLY_SUPPORTED",
+    "source": "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json",
+    "S_pair_real": 97,
+    "null_mean": 58.8979,
+    "null_sd": 6.58553485168007,
+    "null_q95": 70.0,
+    "null_q99": 75.0,
+    "mc_tail_ge": 9.99990000099999e-06
+  }
+}

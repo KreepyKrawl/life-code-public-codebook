@@ -1,0 +1,50 @@
+{
+  "entry_id": "LC-OBS-EVO-REP-0006",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "Opportunity-normalized literal vocabulary Jaccard followed 1/3 frozen established-lineage directional contrasts (NOT_LINEAGE_COHERENT_LITERAL_SET_RETRO).",
+      "source_refs": [
+        "RETRO_LINEAGE_LITERAL_SET_JACCARD_RESULT_0001.json",
+        "RETRO_LINEAGE_LITERAL_SET_JACCARD_PAIRWISE_12GENOMES.csv"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "Masked-token set Jaccard followed 0/3 corresponding lineage contrasts (NOT_LINEAGE_COHERENT_MASKED_SET_RETRO) as a secondary diagnostic.",
+      "source_refs": [
+        "RETRO_LINEAGE_LITERAL_SET_JACCARD_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "No global LIFE-CODE evolutionary-distance metric is needed; branch-local representation transitions should be located on the established lineage map.",
+      "source_refs": [
+        "RETRO_LINEAGE_LITERAL_SET_JACCARD_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "literal_positive": 1,
+    "masked_positive": 0
+  },
+  "semantics": {
+    "phylogeny": "EXTERNAL_SCAFFOLD",
+    "global_distance_model": "NOT_REQUIRED"
+  },
+  "relationships": [
+    "LC-ARCH-0012",
+    "LC-OBS-EVO-REP-0005"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Prospective branch-local representation transition behavior."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "RETRO_LINEAGE_LITERAL_SET_JACCARD_RESULT_0001.json",
+    "RETRO_LINEAGE_LITERAL_SET_JACCARD_PAIRWISE_12GENOMES.csv"
+  ]
+}

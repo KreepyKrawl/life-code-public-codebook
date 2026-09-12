@@ -1,0 +1,416 @@
+{
+  "classification_id": "MOP_PRIMARY_CLASSIFICATION_0001",
+  "pre_execution_release": "LIFE_CODE_CODEBOOK_v0.0.13",
+  "pre_execution_zip_sha256": "6204a5936d17019ab076a8eadbe4eff5e6fc65523ed0917a3fabae0f279a2c30",
+  "classifier_sha256": "dbe387f13af5b0ca4968ac98dc0b543e7d53d6295ca3b34a19c5949492622318",
+  "classified_occurrence_file": "MOP_PRIMARY_1000_CLASSIFIED_OCCURRENCES.csv",
+  "classified_occurrence_sha256": "0e2af09455fbb9168ca02f7357c896e06cb2938bb590245dbce3175f74061372",
+  "sample": {
+    "token_types": 1000,
+    "occurrences": 3664,
+    "all_tokens_recovered_in_all_three_genomes": true
+  },
+  "occurrence_weighted_primary_context": {
+    "counts": {
+      "rRNA": 8,
+      "tRNA": 2,
+      "protein_coding_CDS": 2628,
+      "other_noncoding_RNA": 8,
+      "intergenic": 884,
+      "repeat_or_mobile_element": 7,
+      "organellar": 35,
+      "overlap_multiple_features": 23,
+      "unresolved": 69
+    },
+    "fractions": {
+      "rRNA": 0.002183406113537118,
+      "tRNA": 0.0005458515283842794,
+      "protein_coding_CDS": 0.7172489082969432,
+      "other_noncoding_RNA": 0.002183406113537118,
+      "intergenic": 0.24126637554585154,
+      "repeat_or_mobile_element": 0.001910480349344978,
+      "organellar": 0.00955240174672489,
+      "overlap_multiple_features": 0.006277292576419214,
+      "unresolved": 0.01883187772925764
+    },
+    "per_genome_counts": {
+      "ECOLI": {
+        "rRNA": 8,
+        "tRNA": 0,
+        "protein_coding_CDS": 777,
+        "other_noncoding_RNA": 2,
+        "intergenic": 221,
+        "repeat_or_mobile_element": 1,
+        "organellar": 0,
+        "overlap_multiple_features": 15,
+        "unresolved": 41
+      },
+      "PYRO": {
+        "rRNA": 0,
+        "tRNA": 0,
+        "protein_coding_CDS": 935,
+        "other_noncoding_RNA": 2,
+        "intergenic": 120,
+        "repeat_or_mobile_element": 4,
+        "organellar": 0,
+        "overlap_multiple_features": 0,
+        "unresolved": 0
+      },
+      "YEAST": {
+        "rRNA": 0,
+        "tRNA": 2,
+        "protein_coding_CDS": 916,
+        "other_noncoding_RNA": 4,
+        "intergenic": 543,
+        "repeat_or_mobile_element": 2,
+        "organellar": 35,
+        "overlap_multiple_features": 8,
+        "unresolved": 28
+      }
+    }
+  },
+  "token_type_context_presence": {
+    "counts": {
+      "rRNA": 5,
+      "tRNA": 2,
+      "protein_coding_CDS": 978,
+      "other_noncoding_RNA": 11,
+      "intergenic": 472,
+      "repeat_or_mobile_element": 14,
+      "organellar": 24,
+      "overlap_multiple_features": 10,
+      "unresolved": 62
+    },
+    "fractions": {
+      "rRNA": 0.005,
+      "tRNA": 0.002,
+      "protein_coding_CDS": 0.978,
+      "other_noncoding_RNA": 0.011,
+      "intergenic": 0.472,
+      "repeat_or_mobile_element": 0.014,
+      "organellar": 0.024,
+      "overlap_multiple_features": 0.01,
+      "unresolved": 0.062
+    },
+    "tokens_with_multiple_primary_contexts": 502,
+    "multiple_primary_context_fraction": 0.502
+  },
+  "coarse_context_concordance": {
+    "definition": "At least one identical broad primary annotation class is present among a token's occurrences in each of ECOLI, PYRO, and YEAST.",
+    "tokens_with_common_primary_class_across_all_three": 567,
+    "fraction": 0.567,
+    "tokens_without_common_primary_class": 433,
+    "common_class_counts": {
+      "protein_coding_CDS": 538,
+      "intergenic": 29
+    },
+    "broad_flag_common_class_tokens": 576,
+    "critical_boundary": "This is NOT a claim of orthology, homology, or same-system identity. True homologous/same-system classification remains UNKNOWN without a separately frozen semantic/orthology pass."
+  },
+  "single_occurrence_each_genome_subset": {
+    "token_count": 709,
+    "top_primary_context_triplets": [
+      {
+        "ECOLI": "protein_coding_CDS",
+        "PYRO": "protein_coding_CDS",
+        "YEAST": "protein_coding_CDS",
+        "count": 394
+      },
+      {
+        "ECOLI": "protein_coding_CDS",
+        "PYRO": "protein_coding_CDS",
+        "YEAST": "intergenic",
+        "count": 97
+      },
+      {
+        "ECOLI": "intergenic",
+        "PYRO": "protein_coding_CDS",
+        "YEAST": "protein_coding_CDS",
+        "count": 61
+      },
+      {
+        "ECOLI": "intergenic",
+        "PYRO": "protein_coding_CDS",
+        "YEAST": "intergenic",
+        "count": 49
+      },
+      {
+        "ECOLI": "protein_coding_CDS",
+        "PYRO": "intergenic",
+        "YEAST": "protein_coding_CDS",
+        "count": 19
+      },
+      {
+        "ECOLI": "unresolved",
+        "PYRO": "protein_coding_CDS",
+        "YEAST": "protein_coding_CDS",
+        "count": 17
+      },
+      {
+        "ECOLI": "intergenic",
+        "PYRO": "intergenic",
+        "YEAST": "intergenic",
+        "count": 15
+      },
+      {
+        "ECOLI": "protein_coding_CDS",
+        "PYRO": "intergenic",
+        "YEAST": "intergenic",
+        "count": 15
+      },
+      {
+        "ECOLI": "intergenic",
+        "PYRO": "intergenic",
+        "YEAST": "protein_coding_CDS",
+        "count": 9
+      },
+      {
+        "ECOLI": "unresolved",
+        "PYRO": "protein_coding_CDS",
+        "YEAST": "intergenic",
+        "count": 7
+      },
+      {
+        "ECOLI": "protein_coding_CDS",
+        "PYRO": "protein_coding_CDS",
+        "YEAST": "organellar",
+        "count": 3
+      },
+      {
+        "ECOLI": "protein_coding_CDS",
+        "PYRO": "protein_coding_CDS",
+        "YEAST": "unresolved",
+        "count": 2
+      },
+      {
+        "ECOLI": "intergenic",
+        "PYRO": "protein_coding_CDS",
+        "YEAST": "organellar",
+        "count": 2
+      },
+      {
+        "ECOLI": "protein_coding_CDS",
+        "PYRO": "protein_coding_CDS",
+        "YEAST": "tRNA",
+        "count": 2
+      },
+      {
+        "ECOLI": "protein_coding_CDS",
+        "PYRO": "protein_coding_CDS",
+        "YEAST": "overlap_multiple_features",
+        "count": 2
+      },
+      {
+        "ECOLI": "protein_coding_CDS",
+        "PYRO": "intergenic",
+        "YEAST": "unresolved",
+        "count": 2
+      },
+      {
+        "ECOLI": "protein_coding_CDS",
+        "PYRO": "protein_coding_CDS",
+        "YEAST": "other_noncoding_RNA",
+        "count": 2
+      },
+      {
+        "ECOLI": "protein_coding_CDS",
+        "PYRO": "repeat_or_mobile_element",
+        "YEAST": "intergenic",
+        "count": 1
+      },
+      {
+        "ECOLI": "protein_coding_CDS",
+        "PYRO": "other_noncoding_RNA",
+        "YEAST": "protein_coding_CDS",
+        "count": 1
+      },
+      {
+        "ECOLI": "intergenic",
+        "PYRO": "protein_coding_CDS",
+        "YEAST": "overlap_multiple_features",
+        "count": 1
+      }
+    ]
+  },
+  "mask_distribution": {
+    "per_mask_token_counts": {
+      "0": 13,
+      "1": 6,
+      "2": 9,
+      "3": 11,
+      "4": 6,
+      "5": 6,
+      "6": 12,
+      "7": 10,
+      "8": 19,
+      "9": 6,
+      "10": 10,
+      "11": 5,
+      "12": 6,
+      "13": 8,
+      "14": 9,
+      "15": 9,
+      "16": 9,
+      "17": 12,
+      "18": 9,
+      "19": 4,
+      "20": 5,
+      "21": 7,
+      "22": 10,
+      "23": 6,
+      "24": 7,
+      "25": 7,
+      "26": 4,
+      "27": 4,
+      "28": 7,
+      "29": 10,
+      "30": 8,
+      "31": 9,
+      "32": 10,
+      "33": 10,
+      "34": 10,
+      "35": 10,
+      "36": 7,
+      "37": 4,
+      "38": 10,
+      "39": 7,
+      "40": 7,
+      "41": 11,
+      "42": 12,
+      "43": 6,
+      "44": 12,
+      "45": 4,
+      "46": 9,
+      "47": 8,
+      "48": 13,
+      "49": 11,
+      "50": 6,
+      "51": 11,
+      "52": 7,
+      "53": 5,
+      "54": 9,
+      "55": 2,
+      "56": 8,
+      "57": 12,
+      "58": 8,
+      "59": 8,
+      "60": 7,
+      "61": 3,
+      "62": 7,
+      "63": 9,
+      "64": 11,
+      "65": 8,
+      "66": 13,
+      "67": 14,
+      "68": 7,
+      "69": 9,
+      "70": 8,
+      "71": 7,
+      "72": 9,
+      "73": 6,
+      "74": 8,
+      "75": 14,
+      "76": 5,
+      "77": 7,
+      "78": 5,
+      "79": 6,
+      "80": 5,
+      "81": 8,
+      "82": 10,
+      "83": 11,
+      "84": 10,
+      "85": 7,
+      "86": 14,
+      "87": 9,
+      "88": 2,
+      "89": 9,
+      "90": 10,
+      "91": 9,
+      "92": 6,
+      "93": 11,
+      "94": 11,
+      "95": 6,
+      "96": 8,
+      "97": 8,
+      "98": 5,
+      "99": 9,
+      "100": 8,
+      "101": 10,
+      "102": 5,
+      "103": 8,
+      "104": 8,
+      "105": 9,
+      "106": 14,
+      "107": 9,
+      "108": 13,
+      "109": 7,
+      "110": 8,
+      "111": 7,
+      "112": 8,
+      "113": 7,
+      "114": 3,
+      "115": 5,
+      "116": 13,
+      "117": 9,
+      "118": 8,
+      "119": 10
+    },
+    "wildcard_position_appearance_counts": {
+      "0": 136,
+      "1": 113,
+      "2": 128,
+      "3": 132,
+      "4": 127,
+      "5": 128,
+      "6": 113,
+      "7": 136,
+      "8": 132,
+      "9": 130,
+      "10": 140,
+      "11": 120,
+      "12": 104,
+      "13": 110,
+      "14": 122,
+      "15": 129
+    }
+  },
+  "wildcard_variability": {
+    "tokens_with_at_least_one_identical_full_16mer_implementation_shared_by_all_three": 6,
+    "tokens_without_any_identical_full_16mer_implementation_shared_by_all_three": 994,
+    "variable_only_fraction": 0.994,
+    "distinct_full_16mer_implementations_per_token_histogram": {
+      "1": 4,
+      "2": 150,
+      "3": 661,
+      "4": 135,
+      "5": 30,
+      "6": 9,
+      "7": 5,
+      "9": 4,
+      "11": 1,
+      "12": 1
+    },
+    "distinct_wildcard_base_pairs_per_token_histogram": {
+      "1": 4,
+      "2": 150,
+      "3": 661,
+      "4": 135,
+      "5": 30,
+      "6": 9,
+      "7": 5,
+      "9": 4,
+      "11": 1,
+      "12": 1
+    }
+  },
+  "diagnostics_not_promoted": {
+    "CDS_synonymous_nonsynonymous": "NOT DETERMINED. Requires homologous coding-context/phase alignment; broad GFF overlap alone is insufficient.",
+    "rRNA_structural_domain": "NOT DETERMINED. Requires independently validated structural-domain coordinate maps.",
+    "true_homologous_same_system_fraction": "UNKNOWN. Broad annotation-class concordance is reported separately and must not be substituted for homology."
+  },
+  "annotation_sources": {
+    "ECOLI": "GCF_000005845.2 NCBI RefSeq",
+    "PYRO": "GCF_000007305.1 NCBI RefSeq",
+    "YEAST": "GCF_000146045.2 / SGD R64-5-1 via NCBI"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "entry_id": "LC-ARCH-0011",
+  "entry_type": "OBS",
+  "status": "PROVISIONAL",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "Retrospective parameter association is significant in C. elegans but not in the aggregate excluding C. elegans; fresh validation must therefore target a separate animal rather than claim universality.",
+      "source_refs": [
+        "RETRO_PARAMETER_SIGNAL_SENSITIVITY_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "P1",
+      "statement": "A C. elegans-trained parameter-context model and independent Drosophila validation tests are frozen before GCF_000001215.4 acquisition.",
+      "source_refs": [
+        "CELEGANS_PARAMETER_CONTEXT_MODEL_v1_SCORES.csv",
+        "RETRO_PARAMETER_SIGNAL_SENSITIVITY_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "P1",
+      "statement": "Arabidopsis and Panel-3 topology addenda are frozen to distinguish animal-specific parameterization from broader eukaryotic architecture and to propagate absolute-slot controls prospectively.",
+      "source_refs": [
+        "RETRO_COARSE_MASK_TOPOLOGY_CHALLENGE_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "drosophila": "FROZEN_NOT_ACQUIRED",
+    "panel3": "FROZEN_NOT_ACQUIRED"
+  },
+  "semantics": {
+    "parameter_semantics": "UNKNOWN",
+    "animal_specificity": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-OBS-EVO-REP-0004",
+    "LC-ARCH-0010"
+  ],
+  "predictions": [
+    "LC-PRED-0039",
+    "LC-PRED-0040",
+    "LC-PRED-0041",
+    "LC-PRED-0042"
+  ],
+  "unknowns": [
+    "Drosophila replication.",
+    "C. elegans-to-Drosophila parameter transfer.",
+    "Arabidopsis comparison."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "CELEGANS_PARAMETER_CONTEXT_MODEL_v1_SCORES.csv",
+    "RETRO_PARAMETER_SIGNAL_SENSITIVITY_RESULT_0001.json"
+  ]
+}

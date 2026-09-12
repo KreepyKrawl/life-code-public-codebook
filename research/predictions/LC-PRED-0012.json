@@ -1,0 +1,32 @@
+{
+  "prediction_id": "LC-PRED-0012",
+  "status": "MIXED",
+  "evidence_class": "P1",
+  "generated_from": [
+    "LC-PRED-0008",
+    "LC-PRED-0010",
+    "LC-PRED-0011",
+    "21_MASKED_OPCODE_PREREG_v1.md"
+  ],
+  "statement": "Conditional on MOP16-14-v1 passing its global dinucleotide-null gate, the fixed A2451-centered 23S window (positions 2426-2476) will contain at least one masked token shared with both original PYRO and YEAST genomes, and the real target-shared-token count will exceed every matched dinucleotide-null target count.",
+  "test": "Use the fixed target test exactly as defined in 21_MASKED_OPCODE_PREREG_v1.md after global counts are frozen. Do not alter mask family, window, orientation, span, or weight.",
+  "support_condition": "Global MOP gate PASS AND real_target_count > max(five null target counts) AND real_target_count > 0.",
+  "weakening_condition": "Global gate passes but target count is nonzero without exceeding every null target count.",
+  "falsification_condition": "Global gate passes and real target count is zero, or is no greater than the null target distribution.",
+  "contamination_boundary": "Frozen before any MOP16-14 token is generated from biological input or the target window is inspected under this representation.",
+  "validation": {
+    "result": "WEAKENED_NONZERO_BUT_NOT_ABOVE_NULL_MAX",
+    "global_gate": "PASS",
+    "real_target_count": 1,
+    "null_target_counts": [
+      19,
+      15,
+      0,
+      0,
+      3
+    ],
+    "null_target_max": 19,
+    "source": "MOP16_14_RESULT_0001.json",
+    "original_prediction_text_unchanged": true
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "result_id": "RETRO_IMPLEMENTATION_DEPTH_0001",
+  "status": "RETROACTIVE_EXPLORATORY",
+  "parent_prereg_release": "LIFE_CODE_CODEBOOK_v0.0.47",
+  "parent_zip_sha256": "f6639f0b599d689f5d1450446952af5c4e41f246a9abe48521403cdeea2e0fda",
+  "genomes": [
+    "ECOLI",
+    "BACILLUS",
+    "PSEUDOMONAS",
+    "MYCOPLASMA",
+    "PYRO",
+    "SULFOLOBUS",
+    "METHANOCALDOCOCCUS",
+    "HALOFERAX",
+    "YEAST",
+    "POMBE",
+    "NEUROSPORA",
+    "CELEGANS"
+  ],
+  "total_exact_occurrences": 17799,
+  "pairwise_all": {
+    "genome_pairs": 66,
+    "shared_masked_token_pair_memberships": 10836,
+    "shared_literal_token_pair_memberships": 2670,
+    "masked_only_token_pair_memberships": 8166,
+    "literal_retention_fraction": 0.24640088593576967,
+    "shared_boundary_token_pair_memberships": 579,
+    "shared_boundary_literal_pair_memberships": 339,
+    "shared_boundary_masked_only_pair_memberships": 240,
+    "boundary_literal_retention_fraction": 0.5854922279792746
+  },
+  "pairwise_same_domain": {
+    "genome_pairs": 18,
+    "shared_masked_token_pair_memberships": 2885,
+    "shared_literal_token_pair_memberships": 1030,
+    "masked_only_token_pair_memberships": 1855,
+    "literal_retention_fraction": 0.35701906412478335,
+    "shared_boundary_token_pair_memberships": 206,
+    "shared_boundary_literal_pair_memberships": 160,
+    "shared_boundary_masked_only_pair_memberships": 46,
+    "boundary_literal_retention_fraction": 0.7766990291262136
+  },
+  "pairwise_cross_domain": {
+    "genome_pairs": 48,
+    "shared_masked_token_pair_memberships": 7951,
+    "shared_literal_token_pair_memberships": 1640,
+    "masked_only_token_pair_memberships": 6311,
+    "literal_retention_fraction": 0.20626336309898127,
+    "shared_boundary_token_pair_memberships": 373,
+    "shared_boundary_literal_pair_memberships": 179,
+    "shared_boundary_masked_only_pair_memberships": 194,
+    "boundary_literal_retention_fraction": 0.47989276139410186
+  },
+  "recurrent_boundary_token_identities": 219,
+  "recurrent_boundary_tokens_with_at_least_one_masked_only_pair": 138,
+  "recurrent_boundary_tokens_with_all_boundary_pairs_literal_shared": 81,
+  "boundary_pair_memberships_total": 579,
+  "boundary_pair_memberships_masked_only": 240,
+  "boundary_pair_memberships_literal_shared": 339,
+  "claim_boundary": "Descriptive retrospective result only; cannot establish evolutionary transformation or replace prior prediction outcomes."
+}

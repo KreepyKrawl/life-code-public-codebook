@@ -1,0 +1,69 @@
+{
+  "entry_id": "LC-GRAM-0002",
+  "entry_type": "GRAM",
+  "status": "SEMANTICALLY_VALIDATED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "In raw genomic orientation, LC-PRIM-0004 and LC-PRIM-0005 start exactly 263 bp apart in both E. coli and yeast and share the same cross-genome coordinate diagonal.",
+      "source_refs": [
+        "PC2_DISCOVERY_FREEZE.md"
+      ]
+    },
+    {
+      "class": "E2",
+      "statement": "After reverse-strand coding orientation is applied, the two blocks occupy identical coding starts in both genes: LC-PRIM-0005 at 534 and LC-PRIM-0004 at 789.",
+      "source_refs": [
+        "PC2_ANNOTATION_RESULT_0002.json"
+      ]
+    },
+    {
+      "class": "E2",
+      "statement": "Both 1,080-bp coding regions are homologous fructose-bisphosphate aldolase genes, while whole-gene positionwise nucleotide identity is only 50.9%.",
+      "source_refs": [
+        "PC2_ANNOTATION_RESULT_0002.json",
+        "PC2_ANNOTATION_INPUT_0002.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "This is a validated multi-token coding grammar: separated exact primitives retain the same relative coding architecture across divergent implementations even though most nucleotide positions differ.",
+      "source_refs": [
+        "PC2_DISCOVERY_FREEZE.md",
+        "PC2_ANNOTATION_RESULT_0002.json"
+      ]
+    }
+  ],
+  "observations": {
+    "raw_discovery_syntax": "LC-PRIM-0004 -> 263 bp start-to-start -> LC-PRIM-0005 (direct genomic orientation)",
+    "raw_start_separation_bp": 263,
+    "same_cross_genome_diagonal": true,
+    "coding_orientation_positions": {
+      "LC-PRIM-0005_start0": 534,
+      "LC-PRIM-0004_start0": 789,
+      "coding_start_separation_bp": 255
+    },
+    "gene_length_bp": 1080,
+    "whole_gene_positionwise_nucleotide_identity_fraction": 0.5092592592592593,
+    "whole_protein_positionwise_identity_fraction": 0.3871866295264624
+  },
+  "semantics": {
+    "validated_identity": "colinear exact-fragment architecture within homologous class-II fructose-bisphosphate aldolase genes",
+    "exact_dependency_between_the_two_fragments": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-PRIM-0004",
+    "LC-PRIM-0005",
+    "LC-MOD-0001"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Whether the two exact fragments are functionally coupled or independently constrained within the same enzyme architecture."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PC2_DISCOVERY_FREEZE.md",
+    "PC2_ANNOTATION_INPUT_0002.json",
+    "PC2_ANNOTATION_RESULT_0002.json"
+  ]
+}

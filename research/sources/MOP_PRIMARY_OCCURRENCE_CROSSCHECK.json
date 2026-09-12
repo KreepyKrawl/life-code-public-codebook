@@ -1,0 +1,9 @@
+{
+  "validation_id": "MOP_PRIMARY_OCCURRENCE_CROSSCHECK",
+  "method": "Independent Python regex-pattern recovery on deterministic sample indices 1,17,103,257,499,701,889,1000 across all three FASTAs; record-name punctuation normalized only for comparison.",
+  "tested_token_count": 8,
+  "tested_genome_token_pairs": 24,
+  "count_and_coordinate_matches": 24,
+  "status": "PASS",
+  "note": "C++ scanner replaces commas in FASTA record names with semicolons for CSV safety; coordinates and implementation sequences matched independently."
+}

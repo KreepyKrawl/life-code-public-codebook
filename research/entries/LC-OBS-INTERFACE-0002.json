@@ -1,0 +1,59 @@
+{
+  "entry_id": "LC-OBS-INTERFACE-0002",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "Across the frozen 1,000-token universe, the pairwise cross-genome boundary-role overlap statistic S_pair=97 versus independent-marginal null mean 58.898; Monte Carlo tail 9.9999e-06; LC-PRED-0019 outcome STRONGLY_SUPPORTED.",
+      "source_refs": [
+        "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json",
+        "CROSS_GENOME_INTERFACE_ROLE_TOKENS.csv"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "The result constrains whether MOP identity carries a reusable broad interface-context role across genomes; even when positive this remains C2 context recurrence, not C3 same-system identity.",
+      "source_refs": [
+        "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "boundary_role_token_counts": {
+      "ECOLI": 158,
+      "PYRO": 100,
+      "YEAST": 167
+    },
+    "pairwise_overlap_counts": {
+      "ECOLI_PYRO": 29,
+      "ECOLI_YEAST": 42,
+      "PYRO_YEAST": 26
+    },
+    "all_three_overlap_count": 8,
+    "S_pair_real": 97,
+    "null_mean": 58.8979,
+    "mc_tail_ge": 9.99990000099999e-06,
+    "LC-PRED-0019": "STRONGLY_SUPPORTED"
+  },
+  "semantics": {
+    "compatibility_tier": "C2",
+    "C3_homology": "UNKNOWN",
+    "C4_mechanism": "UNKNOWN",
+    "C5_substitutability": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-OBS-INTERFACE-0001",
+    "LC-ARCH-0002"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Whether recurrent boundary-role tokens belong to homologous systems.",
+    "Whether the same relationship transfers prospectively to held-out organisms."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json",
+    "CROSS_GENOME_INTERFACE_ROLE_TOKENS.csv"
+  ]
+}

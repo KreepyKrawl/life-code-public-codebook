@@ -1,0 +1,85 @@
+{
+  "entry_id": "LC-OBS-INTERFACE-0001",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "The 884 frozen primary-intergenic MOP occurrences decompose into {'OUTSIDE_GENE': 877, 'GENE_BODY_NONPRIMARY': 7} relative to annotated gene intervals.",
+      "source_refs": [
+        "INTERGENIC_BOUNDARY_RESULT_0001.json",
+        "INTERGENIC_884_GEOMETRY.csv"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "LC-PRED-0017 boundary-proximity ratio is 1.0847, tail 0.00234988; outcome STRONGLY_SUPPORTED.",
+      "source_refs": [
+        "INTERGENIC_BOUNDARY_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "LC-PRED-0018 5-prime-side ratio is 0.9173, tail 0.986651; outcome FALSIFIED.",
+      "source_refs": [
+        "INTERGENIC_BOUNDARY_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "The enriched intergenic MOP layer can now be constrained by observed boundary geometry, but positional concentration must not be equated with regulatory function without separate semantic validation.",
+      "source_refs": [
+        "INTERGENIC_BOUNDARY_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "zone_counts": {
+      "OUTSIDE_GENE": 877,
+      "GENE_BODY_NONPRIMARY": 7
+    },
+    "distance_bins": {
+      "51_100": 195,
+      "0_25": 183,
+      "26_50": 135,
+      "501_1000": 30,
+      "101_250": 228,
+      "251_500": 86,
+      "GT_1000": 20
+    },
+    "nearest_end_counts": {
+      "5PRIME": 501,
+      "3PRIME": 376
+    },
+    "orientation_counts": {
+      "TANDEM_FWD": 219,
+      "TANDEM_REV": 231,
+      "DIVERGENT": 280,
+      "CONVERGENT": 146,
+      "EDGE_OR_UNRESOLVED": 1
+    },
+    "LC-PRED-0017": "STRONGLY_SUPPORTED",
+    "LC-PRED-0018": "FALSIFIED"
+  },
+  "semantics": {
+    "validated_identity": "gene-boundary geometry of the unbiased enriched intergenic MOP sample",
+    "regulatory_identity": "UNKNOWN",
+    "OS_identity": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-OBS-ARCH-0001",
+    "LC-ARCH-0001"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Regulatory/function annotation of boundary-proximal MOPs.",
+    "Whether boundary geometry transfers to held-out genomes.",
+    "Whether specific boundary tokens mediate conserved component interfaces."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "INTERGENIC_BOUNDARY_RESULT_0001.json",
+    "INTERGENIC_884_GEOMETRY.csv",
+    "ARCHITECTURE_DECOMPOSITION_VALIDATION_0001.json"
+  ]
+}

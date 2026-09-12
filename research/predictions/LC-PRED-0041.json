@@ -1,0 +1,32 @@
+{
+  "prediction_id": "LC-PRED-0041",
+  "status": "NOT_SUPPORTED",
+  "evidence_class": "P1",
+  "statement": "Arabidopsis will show within-token wildcard/literal-implementation state association with broad boundary context using the same frozen analysis definition.",
+  "primary_statistic": "S_param_ARABIDOPSIS",
+  "null_seed": 540041,
+  "contamination_boundary": "Frozen before the relevant Drosophila/Panel-3 sequence acquisition.",
+  "source_refs": [
+    "RETRO_PARAMETER_SIGNAL_SENSITIVITY_RESULT_0001.json",
+    "RETRO_COARSE_MASK_TOPOLOGY_CHALLENGE_RESULT_0001.json"
+  ],
+  "information_gate": ">=25 eligible token strata and >=200 eligible occurrences",
+  "support_condition": "If gate passes: p<=.01 strong; p<=.05 supported.",
+  "falsification_condition": "If gate passes and p>.05: NOT_SUPPORTED; otherwise BLOCKED_LOW_INFORMATION.",
+  "result_release": "LIFE_CODE_CODEBOOK_v0.0.72",
+  "result_source": "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001.json",
+  "result": {
+    "genome": "ARABIDOPSIS",
+    "eligible_token_strata": 226,
+    "eligible_occurrences": 7470,
+    "information_gate_pass": true,
+    "observed": 1898.3966107574963,
+    "null_mean": 1798.5304654048514,
+    "null_sd": 79.22677153352598,
+    "q95": 1931.9209276880115,
+    "q99": 1992.8988522363188,
+    "mc_tail_ge": 0.10503894961050389,
+    "status": "NOT_SUPPORTED",
+    "seed": 540041
+  }
+}

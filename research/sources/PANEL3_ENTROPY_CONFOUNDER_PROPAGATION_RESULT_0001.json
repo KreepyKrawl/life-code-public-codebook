@@ -1,0 +1,49 @@
+{
+  "result_id": "PANEL3_ENTROPY_CONFOUNDER_PROPAGATION_RESULT_0001",
+  "status": "RETROACTIVE_EXPLORATORY",
+  "parent_prereg_release": "LIFE_CODE_CODEBOOK_v0.0.77",
+  "tests": {
+    "E32": {
+      "observed": 6.974132773865,
+      "analytic_null_mean": 3.9781948187784835,
+      "mc_null_mean": 3.9818254083950246,
+      "mc_null_sd": 1.0566757541479488,
+      "q95": 5.71180995164225,
+      "q99": 6.452527247139047,
+      "mc_tail_ge": 0.0023799762002379974,
+      "movability_fraction": 0.5694444444444444,
+      "status": "STRONGLY_SUPPORTED_RETRO",
+      "seed": 770032
+    },
+    "E34": {
+      "observed": 22.0,
+      "analytic_null_mean": 20.993977591036415,
+      "mc_null_mean": 20.99218,
+      "mc_null_sd": 2.1423629122069867,
+      "q95": 25.0,
+      "q99": 26.0,
+      "mc_tail_ge": 0.4018459815401846,
+      "movability_fraction": 0.5905797101449275,
+      "status": "MIXED_WEAKENED_RETRO",
+      "seed": 770034
+    },
+    "E37": {
+      "observed": 288.0,
+      "analytic_null_mean": 280.91065699006873,
+      "mc_null_mean": 280.9139,
+      "mc_null_sd": 3.979541027555816,
+      "q95": 287.0,
+      "q99": 290.0,
+      "mc_tail_ge": 0.04770952290477095,
+      "movability_fraction": 0.5694444444444444,
+      "status": "SUPPORTED_RETRO",
+      "seed": 770037
+    }
+  },
+  "prospective_statuses": {
+    "LC-PRED-0032": "STRONGLY_SUPPORTED_UNCHANGED",
+    "LC-PRED-0034": "STRONGLY_SUPPORTED_UNCHANGED",
+    "LC-PRED-0037": "STRONGLY_SUPPORTED_UNCHANGED"
+  },
+  "historical_prediction_status_changes": 0
+}

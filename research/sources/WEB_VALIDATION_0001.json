@@ -1,0 +1,106 @@
+{
+  "validation_id": "WEB_VALIDATION_0001",
+  "performed_after_frozen_release": {
+    "release": "LIFE_CODE_CODEBOOK_v0.0.4",
+    "zip_sha256": "897609257af364d15c55f922a4e487c9797902f7581cff4407a87236b9a43af8"
+  },
+  "assembly_identity": {
+    "pilot_genbank": "U00096.3",
+    "ncbi_identical_refseq": "NC_000913.3",
+    "evidence": "NCBI U00096.3 'Identical RefSeq' link resolves to NC_000913.3.",
+    "sources": [
+      "https://www.ncbi.nlm.nih.gov/nuccore/U00096.3",
+      "https://www.ncbi.nlm.nih.gov/nuccore/556503834"
+    ]
+  },
+  "predictions_tested": {
+    "LC-PRED-0006": {
+      "original_status": "FROZEN_UNTESTED",
+      "result": "SUPPORTED",
+      "coordinate_basis": "pilot starts are 0-based; annotation ranges are 1-based inclusive",
+      "tests": [
+        {
+          "token_start0": 227806,
+          "token_start1": 227807,
+          "feature": "rrlH",
+          "feature_range_1based": [
+            225759,
+            228662
+          ],
+          "inside": true
+        },
+        {
+          "token_start0": 3945751,
+          "token_start1": 3945752,
+          "feature": "rrlC",
+          "feature_range_1based": [
+            3943704,
+            3946607
+          ],
+          "inside": true
+        },
+        {
+          "token_start0": 4039567,
+          "token_start1": 4039568,
+          "feature": "rrlA",
+          "feature_range_1based": [
+            4037519,
+            4040423
+          ],
+          "inside": true
+        },
+        {
+          "token_start0": 4170688,
+          "token_start1": 4170689,
+          "feature": "rrlB",
+          "feature_range_1based": [
+            4168641,
+            4171544
+          ],
+          "inside": true
+        },
+        {
+          "token_start0": 4212090,
+          "token_start1": 4212091,
+          "feature": "rrlE",
+          "feature_range_1based": [
+            4210043,
+            4212946
+          ],
+          "inside": true
+        }
+      ],
+      "summary": "5/5 predicted LC-PRIM-0006 E. coli occurrences fall inside annotated 23S rRNA genes.",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10392735/",
+        "https://www.ncbi.nlm.nih.gov/gene/948341",
+        "https://www.ncbi.nlm.nih.gov/gene/948473",
+        "https://www.ncbi.nlm.nih.gov/datasets/gene/948268/"
+      ]
+    },
+    "LC-PRED-0007": {
+      "original_status": "FROZEN_UNTESTED",
+      "result": "SUPPORTED",
+      "coordinate_basis": "pilot start is 0-based; annotation range is 1-based inclusive",
+      "tests": [
+        {
+          "token_start0": 4038078,
+          "token_start1": 4038079,
+          "feature": "rrlA",
+          "feature_range_1based": [
+            4037519,
+            4040423
+          ],
+          "inside": true
+        }
+      ],
+      "summary": "The predicted LC-PRIM-0007 E. coli occurrence falls inside annotated rrlA 23S rRNA.",
+      "sources": [
+        "https://www.ncbi.nlm.nih.gov/gene/948341",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10392735/"
+      ]
+    }
+  },
+  "independence_boundary": "LC-PRED-0006 and LC-PRED-0007 arise from the same rRNA-associated calibration region and must not be counted as two independent biological discoveries. They are a prospective validation of codebook context inference.",
+  "access_date": "2026-08-29"
+}

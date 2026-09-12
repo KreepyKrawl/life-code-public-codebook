@@ -1,0 +1,23 @@
+{
+  "gate_id": "PANEL3_PLUS_LINEAGE_SCANNER_SEMANTIC_GATE_0001",
+  "status": "PASS",
+  "scanner": "PANEL3_PLUS_LINEAGE_MOP_SCANNER_v1.cpp",
+  "scanner_sha256": "73e03ff9066ea4c1608538f315e2ccdf5cbb9cb017aafc4f4161103856f43386",
+  "compiler": "g++ -O3 -std=c++17",
+  "replay_corpus": "frozen six-genome Panel 2",
+  "panel2_genome_order": [
+    "PSEUDOMONAS",
+    "MYCOPLASMA",
+    "METHANOCALDOCOCCUS",
+    "HALOFERAX",
+    "NEUROSPORA",
+    "CELEGANS"
+  ],
+  "occurrence_rows_exact_equal": true,
+  "summary_rows_exact_equal": true,
+  "occurrence_bytes_exact_equal": true,
+  "summary_bytes_exact_equal": true,
+  "replay_stdout": "",
+  "replay_stderr": "PSEUDOMONAS records=1\nMYCOPLASMA records=1\nMETHANOCALDOCOCCUS records=3\nHALOFERAX records=5\nNEUROSPORA records=21\nCELEGANS records=7\nTOKENS=1000 TOTAL_OCCURRENCES=12929\n",
+  "claim": "Scanner semantics/serialization reproduce the entire frozen Panel-2 scan before any Panel-3 or lineage-validation sequence acquisition."
+}

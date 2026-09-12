@@ -1,0 +1,122 @@
+{
+  "entry_id": "LC-OBS-MOP-0002",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "All 1,000 token IDs selected in the pre-annotation primary sample were recovered at least once in each of the original ECOLI, PYRO, and YEAST genomes.",
+      "source_refs": [
+        "MOP_PRIMARY_1000_OCCURRENCE_SUMMARY.csv",
+        "MOP_PRIMARY_OCCURRENCE_CROSSCHECK.json"
+      ]
+    },
+    {
+      "class": "E0",
+      "statement": "The 1,000-token sample produced 3,664 total occurrences: 1,065 in E. coli, 1,061 in Pyrococcus, and 1,538 in yeast.",
+      "source_refs": [
+        "MOP_PRIMARY_1000_SEQUENCE_ONLY_STATS.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "Only 6 of 1,000 sampled token types have any identical full 16-base implementation shared by all three genomes; 994/1,000 (99.4%) require variation in the two wildcard positions across the three-domain implementations.",
+      "source_refs": [
+        "MOP_PRIMARY_1000_OCCURRENCES.csv",
+        "MOP_PRIMARY_1000_SEQUENCE_ONLY_STATS.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "The positive MOP layer is therefore not primarily a redundant re-expression of the sparse all-three exact-16 vocabulary: in the unbiased sample, variable positions are required for cross-domain token identity in 99.4% of token types.",
+      "source_refs": [
+        "MOP_PRIMARY_1000_SEQUENCE_ONLY_STATS.json",
+        "TRIPLE_SHARED_16MERS_COMPLETE.csv"
+      ]
+    }
+  ],
+  "observations": {
+    "sample_size": 1000,
+    "tokens_recovered_in_all_three_genomes": 1000,
+    "total_occurrences": 3664,
+    "per_genome": {
+      "ECOLI": {
+        "total_occurrences": 1065,
+        "tokens_with_exactly_one_occurrence": 950,
+        "tokens_with_multiple_occurrences": 50,
+        "maximum_occurrences_for_one_token": 8,
+        "mean_occurrences_per_token": 1.065,
+        "median_occurrences_per_token": 1.0
+      },
+      "PYRO": {
+        "total_occurrences": 1061,
+        "tokens_with_exactly_one_occurrence": 944,
+        "tokens_with_multiple_occurrences": 56,
+        "maximum_occurrences_for_one_token": 3,
+        "mean_occurrences_per_token": 1.061,
+        "median_occurrences_per_token": 1.0
+      },
+      "YEAST": {
+        "total_occurrences": 1538,
+        "tokens_with_exactly_one_occurrence": 776,
+        "tokens_with_multiple_occurrences": 224,
+        "maximum_occurrences_for_one_token": 71,
+        "mean_occurrences_per_token": 1.538,
+        "median_occurrences_per_token": 1.0
+      }
+    },
+    "implementation_variability": {
+      "tokens_with_at_least_one_identical_full_16mer_implementation_shared_by_all_three": 6,
+      "tokens_without_any_identical_full_16mer_implementation_shared_by_all_three": 994,
+      "variable_only_fraction": 0.994,
+      "distinct_full_16mer_implementations_per_token_histogram": {
+        "1": 4,
+        "2": 150,
+        "3": 661,
+        "4": 135,
+        "5": 30,
+        "6": 9,
+        "7": 5,
+        "9": 4,
+        "11": 1,
+        "12": 1
+      },
+      "distinct_wildcard_base_pairs_per_token_histogram": {
+        "1": 4,
+        "2": 150,
+        "3": 661,
+        "4": 135,
+        "5": 30,
+        "6": 9,
+        "7": 5,
+        "9": 4,
+        "11": 1,
+        "12": 1
+      }
+    },
+    "annotation_used": false
+  },
+  "semantics": {
+    "validated_identity": "sequence-only unbiased MOP sample occurrence/implementation characterization",
+    "biological_context_classification": "NOT_RUN"
+  },
+  "relationships": [
+    "LC-OBS-MOP-0001",
+    "LC-UNK-MOP-0001",
+    "LC-OBS-REP-0002"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Biological annotation classes of the frozen occurrences.",
+    "Homologous/same-system context fraction.",
+    "Functional significance of individual sampled tokens."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "MOP_PRIMARY_1000_OCCURRENCES.csv",
+    "MOP_PRIMARY_1000_OCCURRENCE_SUMMARY.csv",
+    "MOP_PRIMARY_1000_SEQUENCE_ONLY_STATS.json",
+    "MOP_PRIMARY_OCCURRENCE_CROSSCHECK.json",
+    "TRIPLE_SHARED_16MERS_COMPLETE.csv"
+  ]
+}

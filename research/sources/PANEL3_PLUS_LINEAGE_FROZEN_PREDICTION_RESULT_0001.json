@@ -1,0 +1,290 @@
+{
+  "result_id": "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001",
+  "status": "COMPLETE",
+  "parent_release": "LIFE_CODE_CODEBOOK_v0.0.71",
+  "execution_mode": "three runtime stages frozen in v0.0.71; no statistical/biological change",
+  "replicates": 100000,
+  "prediction_results": {
+    "LC-PRED-0032": {
+      "observed": 6.974132773865,
+      "mc_null_mean": 1.6651817833451752,
+      "mc_null_sd": 1.3130374999199326,
+      "q95": 3.82459194445915,
+      "q99": 4.749301355368898,
+      "mc_tail_ge": 3.999960000399996e-05,
+      "status": "STRONGLY_SUPPORTED",
+      "analytic_null_mean": 1.6669605036336859
+    },
+    "LC-PRED-0033": {
+      "observed": 84.0,
+      "mc_null_mean": 62.9335,
+      "mc_null_sd": 4.914582154161226,
+      "q95": 71.0,
+      "q99": 75.0,
+      "mc_tail_ge": 8.99991000089999e-05,
+      "status": "STRONGLY_SUPPORTED",
+      "analytic_null_mean": 62.910978739594604
+    },
+    "LC-PRED-0034": {
+      "observed": 22.0,
+      "mc_null_mean": 15.96849,
+      "mc_null_sd": 2.301663989356396,
+      "q95": 20.0,
+      "q99": 21.0,
+      "mc_tail_ge": 0.008369916300836992,
+      "status": "STRONGLY_SUPPORTED",
+      "analytic_null_mean": 15.975044019279952
+    },
+    "LC-PRED-0035": {
+      "observed": 84.0,
+      "mc_null_mean": 63.05401,
+      "mc_null_sd": 4.914070911159097,
+      "q95": 71.0,
+      "q99": 75.0,
+      "mc_tail_ge": 5.999940000599994e-05,
+      "status": "STRONGLY_SUPPORTED",
+      "analytic_null_mean": 63.07895565672319,
+      "movability_fraction": 0.7472222222222222,
+      "fixed_boundary_memberships": 91,
+      "boundary_memberships_total": 360
+    },
+    "LC-PRED-0036": {
+      "observed": 20.0,
+      "mc_null_mean": 24.67807,
+      "mc_null_sd": 3.951380907366436,
+      "q95": 31.0,
+      "q99": 34.0,
+      "mc_tail_ge": 0.9086209137908621,
+      "status": "FALSIFIED",
+      "analytic_null_mean": 24.682504802638306
+    },
+    "LC-PRED-0037": {
+      "observed": 288.0,
+      "mc_null_mean": 264.61031,
+      "mc_null_sd": 5.266977473266807,
+      "q95": 273.0,
+      "q99": 277.0,
+      "mc_tail_ge": 9.99990000099999e-06,
+      "status": "STRONGLY_SUPPORTED",
+      "analytic_null_mean": 264.628483227661
+    },
+    "LC-PRED-0038": {
+      "Q": {
+        "SALMONELLA": 0.5038167938931297,
+        "DEINOCOCCUS": 0.09090909090909091,
+        "THERMOCOCCUS": 0.17647058823529413,
+        "METHANOSARCINA": 0.1534090909090909,
+        "KLUYVEROMYCES": 0.6185185185185185,
+        "ARABIDOPSIS": 0.7037943696450428
+      },
+      "contrasts": {
+        "SALMONELLA>DEINOCOCCUS": true,
+        "THERMOCOCCUS>METHANOSARCINA": true,
+        "KLUYVEROMYCES>ARABIDOPSIS": false
+      },
+      "positive_contrasts": 2,
+      "status": "MIXED"
+    },
+    "LC-PRED-0039": {
+      "genome": "DROSOPHILA",
+      "eligible_token_strata": 69,
+      "eligible_occurrences": 4543,
+      "information_gate_pass": true,
+      "observed": 624.0971276576502,
+      "null_mean": 596.5601939586766,
+      "null_sd": 69.72433306815644,
+      "q95": 718.8472943315667,
+      "q99": 778.2342991276901,
+      "mc_tail_ge": 0.32607673923260766,
+      "status": "NOT_SUPPORTED",
+      "seed": 540039
+    },
+    "LC-PRED-0041": {
+      "genome": "ARABIDOPSIS",
+      "eligible_token_strata": 226,
+      "eligible_occurrences": 7470,
+      "information_gate_pass": true,
+      "observed": 1898.3966107574963,
+      "null_mean": 1798.5304654048514,
+      "null_sd": 79.22677153352598,
+      "q95": 1931.9209276880115,
+      "q99": 1992.8988522363188,
+      "mc_tail_ge": 0.10503894961050389,
+      "status": "NOT_SUPPORTED",
+      "seed": 540041
+    },
+    "LC-PRED-0043": {
+      "genome": "CBRIGGSAE",
+      "eligible_token_strata": 234,
+      "eligible_occurrences": 7468,
+      "information_gate_pass": true,
+      "observed": 1902.9935159005197,
+      "null_mean": 1806.1059116311042,
+      "null_sd": 81.2386805605667,
+      "q95": 1943.1128950417133,
+      "q99": 2002.911351075858,
+      "mc_tail_ge": 0.11793882061179388,
+      "status": "NOT_SUPPORTED",
+      "seed": 550043
+    },
+    "LC-PRED-0040": {
+      "genome": "DROSOPHILA",
+      "total_boundary_occurrences": 133,
+      "mixed_boundary_occurrences": 130,
+      "movability_fraction": 0.9774436090225563,
+      "movability_gate_pass": true,
+      "observed": 0.11749278184600001,
+      "null_mean": 0.3914764439039314,
+      "null_sd": 0.5053372209222388,
+      "q95": 1.2469494780741999,
+      "q99": 1.614553058066869,
+      "mc_tail_ge": 0.6981630183698163,
+      "status": "FALSIFIED",
+      "seed": 540040
+    },
+    "LC-PRED-0044": {
+      "genome": "CBRIGGSAE",
+      "total_boundary_occurrences": 647,
+      "mixed_boundary_occurrences": 635,
+      "movability_fraction": 0.98145285935085,
+      "movability_gate_pass": true,
+      "observed": -0.6853903918799998,
+      "null_mean": 0.015142785792972213,
+      "null_sd": 1.0584614924879356,
+      "q95": 1.7780754804123984,
+      "q99": 2.5276052300245455,
+      "mc_tail_ge": 0.7442325576744232,
+      "status": "FALSIFIED",
+      "seed": 550044
+    },
+    "LC-PRED-0045": {
+      "Z_transfer_CBRIGGSAE": -0.6618409669551174,
+      "Z_transfer_DROSOPHILA": -0.5421798567655715,
+      "ordering_holds": false,
+      "status": "FALSIFIED_DIRECTIONAL"
+    },
+    "LC-PRED-0042": {
+      "components": {
+        "GC_x_wildcard_i0": {
+          "movability_fraction": 0.8277777777777777,
+          "informative": true,
+          "observed": 84.0,
+          "mc_null_mean": 61.70796,
+          "mc_null_sd": 4.689348850149667,
+          "q95": 70.0,
+          "q99": 73.0,
+          "mc_tail_ge": 9.99990000099999e-06,
+          "status": "STRONGLY_SUPPORTED",
+          "analytic_null_mean": 61.689056580674226,
+          "seed": 5400421
+        },
+        "GC_x_wildcard_j0": {
+          "movability_fraction": 0.7972222222222223,
+          "informative": true,
+          "observed": 84.0,
+          "mc_null_mean": 63.42527,
+          "mc_null_sd": 4.623143457335063,
+          "q95": 71.0,
+          "q99": 75.0,
+          "mc_tail_ge": 9.99990000099999e-06,
+          "status": "STRONGLY_SUPPORTED",
+          "analytic_null_mean": 63.399009733361765,
+          "seed": 5400422
+        },
+        "GC_x_separation_x_coarse_center": {
+          "movability_fraction": 0.6888888888888889,
+          "informative": true,
+          "observed": 84.0,
+          "mc_null_mean": 66.129,
+          "mc_null_sd": 4.831316487252724,
+          "q95": 74.0,
+          "q99": 78.0,
+          "mc_tail_ge": 0.0003599964000359996,
+          "status": "STRONGLY_SUPPORTED",
+          "analytic_null_mean": 66.12795214045214,
+          "seed": 5400423
+        }
+      },
+      "informative_components": 3,
+      "supported_components": 3,
+      "status": "SUPPORTED_TOPOLOGY_ROBUST",
+      "exact_mask_diagnostic": {
+        "observed": 84.0,
+        "mc_null_mean": 74.58375,
+        "mc_null_sd": 3.2270057231898432,
+        "q95": 80.0,
+        "q99": 82.0,
+        "mc_tail_ge": 0.003759962400375996,
+        "status": "STRONGLY_SUPPORTED",
+        "analytic_null_mean": 74.58333333333333,
+        "movability_fraction": 0.32222222222222224,
+        "inferential_promotion_authorized": false
+      }
+    },
+    "LC-PRED-0046": {
+      "contrasts": {
+        "Bacteria": {
+          "close": 0.055456171735241505,
+          "far": 0.0,
+          "pass": true
+        },
+        "Archaea": {
+          "close": 0.0046210720887245845,
+          "far": 0.01675977653631285,
+          "pass": false
+        },
+        "Eukaryota": {
+          "close": 0.051533742331288344,
+          "far": 0.10826517434352131,
+          "pass": false
+        }
+      },
+      "positive_contrasts": 1,
+      "status": "FALSIFIED_DIRECTIONAL"
+    },
+    "LC-PRED-0047": {
+      "contrasts": {
+        "Bacteria": {
+          "close": 0.131,
+          "far": 0.011,
+          "pass": true
+        },
+        "Archaea": {
+          "close": 0.034,
+          "far": 0.176,
+          "pass": false
+        },
+        "Eukaryota": {
+          "close": 0.27,
+          "far": 0.817,
+          "pass": false
+        }
+      },
+      "positive_contrasts": 1,
+      "status": "FALSIFIED_DIRECTIONAL"
+    },
+    "LC-PRED-0048": {
+      "contrasts": {
+        "Bacteria": {
+          "close": 0.5343511450381679,
+          "far": 1.0,
+          "pass": true
+        },
+        "Archaea": {
+          "close": 0.8529411764705882,
+          "far": 0.8806818181818182,
+          "pass": true
+        },
+        "Eukaryota": {
+          "close": 0.7666666666666667,
+          "far": 0.5789473684210527,
+          "pass": false
+        }
+      },
+      "positive_contrasts": 2,
+      "status": "MIXED"
+    }
+  },
+  "historical_prediction_status_changes": "prospective predictions only; earlier historical outcomes unchanged",
+  "claim_boundary": "Outcomes adjudicate only their preregistered representation/statistic. C2 ceiling remains where applicable; mechanism unknown."
+}

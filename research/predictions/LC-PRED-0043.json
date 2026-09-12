@@ -1,0 +1,31 @@
+{
+  "prediction_id": "LC-PRED-0043",
+  "status": "NOT_SUPPORTED",
+  "evidence_class": "P1",
+  "statement": "Fresh C. briggsae will independently show within-token wildcard/literal-implementation state association with broad boundary context under the frozen occurrence-level test.",
+  "primary_statistic": "S_param_CBRIGGSAE",
+  "null_seed": 550043,
+  "information_gate": ">=25 eligible token strata and >=200 eligible occurrences",
+  "support_condition": "If gate passes: p<=.01 strong; p<=.05 supported.",
+  "falsification_condition": "If gate passes and p>.05: NOT_SUPPORTED.",
+  "source_refs": [
+    "RETRO_PARAMETER_SIGNAL_SENSITIVITY_RESULT_0001.json"
+  ],
+  "contamination_boundary": "Frozen before C. briggsae sequence acquisition and before Drosophila sequence acquisition.",
+  "result_release": "LIFE_CODE_CODEBOOK_v0.0.72",
+  "result_source": "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001.json",
+  "result": {
+    "genome": "CBRIGGSAE",
+    "eligible_token_strata": 234,
+    "eligible_occurrences": 7468,
+    "information_gate_pass": true,
+    "observed": 1902.9935159005197,
+    "null_mean": 1806.1059116311042,
+    "null_sd": 81.2386805605667,
+    "q95": 1943.1128950417133,
+    "q99": 2002.911351075858,
+    "mc_tail_ge": 0.11793882061179388,
+    "status": "NOT_SUPPORTED",
+    "seed": 550043
+  }
+}

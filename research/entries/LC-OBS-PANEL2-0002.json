@@ -1,0 +1,71 @@
+{
+  "entry_id": "LC-OBS-PANEL2-0002",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "The frozen primary 1,000-token sample produced 12,929 exact occurrences across the six prospectively selected Panel-2 genomes.",
+      "source_refs": [
+        "PANEL2_PRIMARY_1000_OCCURRENCES.csv",
+        "PANEL2_PRIMARY_1000_SUMMARY.csv"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "LC-PRED-0026 observed S_pair_6=59 versus null mean 30.40401, p=0.00001000; STRONGLY_SUPPORTED.",
+      "source_refs": [
+        "PANEL2_BOUNDARY_PREDICTION_RESULT_0001.json",
+        "PANEL2_INDEPENDENT_STATISTIC_VALIDATION_0001.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "LC-PRED-0027 observed T81_6=62 versus null mean 38.91469, p=0.00001000; STRONGLY_SUPPORTED.",
+      "source_refs": [
+        "PANEL2_BOUNDARY_PREDICTION_RESULT_0001.json",
+        "PANEL2_INDEPENDENT_STATISTIC_VALIDATION_0001.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "LC-PRED-0028 frozen model score=67.269558 versus null mean 56.210539, p=0.00001000; STRONGLY_SUPPORTED.",
+      "source_refs": [
+        "PANEL2_BOUNDARY_PREDICTION_RESULT_0001.json",
+        "PANEL2_INDEPENDENT_STATISTIC_VALIDATION_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Token identity now carries prospectively validated graded information about the broad C2 boundary role across an additional six-species panel; mechanism remains unknown.",
+      "source_refs": [
+        "PANEL2_BOUNDARY_PREDICTION_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "LC-PRED-0026": "STRONGLY_SUPPORTED",
+    "LC-PRED-0027": "STRONGLY_SUPPORTED",
+    "LC-PRED-0028": "STRONGLY_SUPPORTED",
+    "boundary_tokens_at_least_2_species": 50
+  },
+  "semantics": {
+    "validated_identity": "second-panel prospective C2 boundary transfer and graded prediction",
+    "compatibility_ceiling": "C2"
+  },
+  "relationships": [
+    "LC-OBS-HOLDOUT-0002",
+    "LC-ARCH-0007"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Whether simple token composition/mask geometry explains the predictive association.",
+    "Molecular mechanism of the boundary role.",
+    "Generalization to still broader taxa."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PANEL2_BOUNDARY_PREDICTION_RESULT_0001.json",
+    "PANEL2_SECONDARY_DIAGNOSTICS_0001.json"
+  ]
+}

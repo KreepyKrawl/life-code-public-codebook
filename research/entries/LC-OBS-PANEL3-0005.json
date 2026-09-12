@@ -1,0 +1,76 @@
+{
+  "entry_id": "LC-OBS-PANEL3-0005",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "P1",
+      "statement": "Fresh six-genome Panel 3 strongly supports composition-adjusted model-v2 transfer and same-token broad C2 boundary recurrence, including far-lineage, local-GC and topology-conditioned tests.",
+      "source_refs": [
+        "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "P1",
+      "statement": "Boundary-role tokens preferentially retain prior same-domain exact 16-nt implementations, whereas the prospectively frozen masked-only boundary recurrence is falsified.",
+      "source_refs": [
+        "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "P1",
+      "statement": "The C. elegans wildcard-parameter clue fails independent Drosophila, Arabidopsis and C. briggsae replication/transfer tests and is not promoted as general parameter syntax.",
+      "source_refs": [
+        "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "P1",
+      "statement": "Branch-local raw literal/masked MOP continuity fails as a universal close-to-far lineage rule; masked-only reworking is mixed across domains.",
+      "source_refs": [
+        "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "prediction_suite": "COMPLETE",
+    "predictions_adjudicated": 17
+  },
+  "semantics": {
+    "strongest_current_level": "C2 broad boundary/interface representation",
+    "mechanism": "UNKNOWN",
+    "general_parameter_syntax": "NOT_SUPPORTED"
+  },
+  "relationships": [
+    "LC-OBS-PANEL3-0004",
+    "LC-ARCH-0013",
+    "LC-OBS-EVO-REP-0001"
+  ],
+  "predictions": [
+    "LC-PRED-0032",
+    "LC-PRED-0033",
+    "LC-PRED-0034",
+    "LC-PRED-0035",
+    "LC-PRED-0036",
+    "LC-PRED-0037",
+    "LC-PRED-0038",
+    "LC-PRED-0039",
+    "LC-PRED-0040",
+    "LC-PRED-0041",
+    "LC-PRED-0042",
+    "LC-PRED-0043",
+    "LC-PRED-0044",
+    "LC-PRED-0045",
+    "LC-PRED-0046",
+    "LC-PRED-0047",
+    "LC-PRED-0048"
+  ],
+  "unknowns": [
+    "Which representation layer carries evolutionary reworking outside the literal-constrained boundary class.",
+    "Why raw MOP recovery does not follow lineage depth in Archaea/Eukaryota."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001.json"
+  ]
+}

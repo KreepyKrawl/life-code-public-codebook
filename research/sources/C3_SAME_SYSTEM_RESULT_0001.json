@@ -1,0 +1,823 @@
+{
+  "S_C3_real": 0,
+  "pair_results": {
+    "EP": {
+      "overlap_token_count": 29,
+      "C3_positive": 0
+    },
+    "EY": {
+      "overlap_token_count": 42,
+      "C3_positive": 0
+    },
+    "PY": {
+      "overlap_token_count": 26,
+      "C3_positive": 0
+    }
+  },
+  "membership_details": [
+    {
+      "pair": "EP",
+      "token_id_uint64": 666892255,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 1547502540,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 1613887484,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 1844443103,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 1880093692,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 4,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 4027367391,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 4629385211,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 6501171464,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 7725649919,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 9328132160,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 9390735343,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 12414107393,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 13186093054,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 14478941567,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 14496432130,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 15354299343,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 15571419328,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 21757951455,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 22598874111,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 2
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 22813622079,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 23086444031,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 23219945470,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 23370629118,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 24143458293,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 2
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 26642022335,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 27808170035,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 28453646335,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 29256835070,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EP",
+      "token_id_uint64": 29930520063,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 1844443103,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 3227548671,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 2,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 3237999103,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 2
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 3674390528,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 6493307092,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 7780388863,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 2
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 7797211328,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 5
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 8320843583,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 9127735412,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 9328132160,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 2
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 9462349823,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 29
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 9661577213,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 7
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 11541687712,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 12300896288,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 13186093054,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 14496432130,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 3
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 14692856752,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 15048117132,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 15503393804,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 15571419328,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 2
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 18187350269,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 18253468668,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 19597688819,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 20065601532,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 20132888625,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 21474835455,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 7
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 21743263807,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 22813622079,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 23072014351,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 23354147010,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 24972840951,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 3
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 25858932931,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 26273112062,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 27115244848,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 27661435552,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 28201648967,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 29256835070,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 29783555279,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 29930520063,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 31184617471,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 31273288200,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "EY",
+      "token_id_uint64": 31944859645,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 2,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 571276302,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 1844443103,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 2149679872,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 5821825056,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 8443084784,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 8824849455,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 9062856700,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 9328132160,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 2
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 10922688764,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 11274993680,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 12062867699,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 13186093054,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 14496432130,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 3
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 15571419328,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 2
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 18052334300,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 21810331135,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 22813622079,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 23454794508,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 26238516687,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 27684241359,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 28185854915,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 28592603144,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 28663090239,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 28664131592,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 29256835070,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    },
+    {
+      "pair": "PY",
+      "token_id_uint64": 29930520063,
+      "C3_positive": false,
+      "matches": [],
+      "A_component_count": 1,
+      "B_component_count": 1
+    }
+  ],
+  "null": {
+    "replicates": 100000,
+    "generator": "NumPy PCG64",
+    "seed": 230023,
+    "mean": 0.00612,
+    "sd": 0.07799067636583235,
+    "q95": 0.0,
+    "q99": 0.0,
+    "mc_tail_ge": 1.0
+  },
+  "role_set_sizes": {
+    "ECOLI": 158,
+    "PYRO": 100,
+    "YEAST": 167
+  },
+  "qualifying_boundary_occurrences": 513,
+  "pre_execution_release": {
+    "release": "LIFE_CODE_CODEBOOK_v0.0.23",
+    "zip_sha256": "d72f5fcbd898c8920d297fb276d5b0df76f2cadded7ac972e7eb679d49ed2c42"
+  },
+  "prediction_outcome": "LC-PRED-0020 FALSIFIED",
+  "extraction_coverage": {
+    "component_rows": 515,
+    "unique_token_genome_gene_components": 507,
+    "with_usable_semantic_fingerprint": 466,
+    "with_protein_id": 482,
+    "without_usable_semantic_fingerprint": 41
+  }
+}

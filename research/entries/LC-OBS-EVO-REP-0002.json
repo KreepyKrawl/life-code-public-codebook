@@ -1,0 +1,39 @@
+{
+  "entry_id": "LC-OBS-EVO-REP-0002",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "Retrospective fixed-GC\u00d7exact-mask challenge status BLOCKED_LOW_MOVABILITY; S_pair=59 vs null mean 53.312, p=0.01371986, movability 38.4%.",
+      "source_refs": [
+        "RETRO_EXACT_MASK_TOPOLOGY_CHALLENGE_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Absolute wildcard-slot topology was explicitly tested as a previously missed representation confounder; prior prospective outcomes remain unchanged.",
+      "source_refs": [
+        "RETRO_EXACT_MASK_TOPOLOGY_CHALLENGE_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "status": "BLOCKED_LOW_MOVABILITY"
+  },
+  "semantics": {
+    "mechanism": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-OBS-PANEL2-0003",
+    "LC-ARCH-0009"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Prospective exact-mask-conditioned recurrence in fresh genomes."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "RETRO_EXACT_MASK_TOPOLOGY_CHALLENGE_RESULT_0001.json"
+  ]
+}

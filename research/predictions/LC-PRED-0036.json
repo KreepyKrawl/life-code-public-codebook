@@ -1,0 +1,28 @@
+{
+  "prediction_id": "LC-PRED-0036",
+  "status": "FALSIFIED",
+  "evidence_class": "P1",
+  "statement": "Identical Panel-3 MOP token identities will recur in the broad boundary role above the composition-conditioned null even when the paired genomes share no identical full 16-nt implementation for that token.",
+  "primary_statistic": "S_masked_only",
+  "null_seed": 490036,
+  "support_condition": "Observed above frozen null mean and one-sided 100,000-replicate Monte Carlo p<=0.05; strong support p<=0.01.",
+  "weakening_condition": "Observed above null mean but p>0.05.",
+  "falsification_condition": "Observed <= null mean.",
+  "contamination_boundary": "Generated from v0.0.48 retrospective data but frozen before Panel-3 sequence acquisition.",
+  "source_refs": [
+    "RETRO_IMPLEMENTATION_DEPTH_RESULT_0001.json",
+    "RETRO_IMPLEMENTATION_DEPTH_PAIRWISE_12GENOMES.csv"
+  ],
+  "result_release": "LIFE_CODE_CODEBOOK_v0.0.72",
+  "result_source": "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001.json",
+  "result": {
+    "observed": 20.0,
+    "mc_null_mean": 24.67807,
+    "mc_null_sd": 3.951380907366436,
+    "q95": 31.0,
+    "q99": 34.0,
+    "mc_tail_ge": 0.9086209137908621,
+    "status": "FALSIFIED",
+    "analytic_null_mean": 24.682504802638306
+  }
+}

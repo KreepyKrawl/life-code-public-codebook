@@ -1,0 +1,95 @@
+{
+  "entry_id": "LC-OBS-REP-0002",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "Frozen exact-word calibration establishes a usable cross-domain signal boundary at k=14-16 and a composition-dominated regime at k=12.",
+      "source_refs": [
+        "VOCABULARY_LADDER_CALIBRATION_v0.1.8.md"
+      ]
+    },
+    {
+      "class": "E0",
+      "statement": "The A2451-centered missing-code search produced zero all-three exact target tokens at both k=16 and separately preregistered k=14.",
+      "source_refs": [
+        "PRED0008_STAGE1_EXACT16_TEST.json",
+        "PRED0010_EXACT14_TEST.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "MOP16-14-v1 is a prospective decompiler representation that keeps the 14-base specificity floor while permitting two variable positions in a 16-base span; its biological usefulness is UNKNOWN until the frozen global/null test is executed.",
+      "source_refs": [
+        "VOCABULARY_LADDER_CALIBRATION_v0.1.8.md",
+        "PRED0010_EXACT14_TEST.json"
+      ]
+    },
+    {
+      "class": "E0",
+      "statement": "MOP16-14-v1 produced 618,470 distinct three-domain shared token types versus five exact-dinucleotide-preserving null counts 421,985; 417,911; 421,935; 425,242; and 423,492.",
+      "source_refs": [
+        "MOP16_14_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "The real global count is 1.4652x the null mean and 1.4544x the maximum null count; all 120 individual masks separately exceed their own five-null maximum.",
+      "source_refs": [
+        "MOP16_14_RESULT_0001.json",
+        "MOP16_14_PER_MASK_AUDIT.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Allowing two variable positions while preserving 14 exact positions in a fixed 16-nt span recovers a broad cross-domain recurrence layer that remains strongly separated from composition-preserving nulls.",
+      "source_refs": [
+        "MOP16_14_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "representation_id": "MOP16-14-v1",
+    "execution_status": "COMPLETE",
+    "span_nt": 16,
+    "fixed_nt": 14,
+    "wildcard_nt": 2,
+    "all_masks_predeclared": 120,
+    "synthetic_selftest": "PASS",
+    "global_gate": "PASS",
+    "real_shared_token_count": 618470,
+    "dinucleotide_null_counts": [
+      421985,
+      417911,
+      421935,
+      425242,
+      423492
+    ]
+  },
+  "semantics": {
+    "validated_identity": "annotation-blind representation with positive global null separation",
+    "coder_alias": "MASKED_OPCODE_PRIMITIVE",
+    "coder_alias_evidence_class": "I1"
+  },
+  "relationships": [
+    "LC-OBS-REP-0001",
+    "LC-PRED-0011",
+    "LC-PRED-0012"
+  ],
+  "predictions": [
+    "LC-PRED-0011",
+    "LC-PRED-0012"
+  ],
+  "unknowns": [
+    "Which subsets of the 618,470 masked token types map to coherent biological structures after candidate freeze.",
+    "How MOP transfer behaves across independent organism sets and evolutionary depths.",
+    "Whether more expressive variable-slot representations improve held-out description without losing null separation."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "VOCABULARY_LADDER_CALIBRATION_v0.1.8.md",
+    "PRED0008_STAGE1_EXACT16_TEST.json",
+    "PRED0010_EXACT14_TEST.json"
+  ]
+}

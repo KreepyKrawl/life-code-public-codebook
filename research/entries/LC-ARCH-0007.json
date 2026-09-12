@@ -1,0 +1,61 @@
+{
+  "entry_id": "LC-ARCH-0007",
+  "entry_type": "OBS",
+  "status": "PROVISIONAL",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "A deterministic continuous C2 boundary-propensity score has been computed for all 1,000 primary MOP tokens using only six already-observed genomes and frozen before Panel-2 sequence acquisition.",
+      "source_refs": [
+        "BOUNDARY_PROPENSITY_MODEL_v1_SCORES.csv"
+      ]
+    },
+    {
+      "class": "P1",
+      "statement": "The frozen scores will be tested prospectively on six independently selected Panel-2 genomes under LC-PRED-0028.",
+      "source_refs": [
+        "BOUNDARY_PROPENSITY_MODEL_v1_SCORES.csv"
+      ]
+    }
+  ],
+  "observations": {
+    "model": "BOUNDARY_PROPENSITY_MODEL_v1",
+    "training_species": [
+      "ECOLI",
+      "PYRO",
+      "YEAST",
+      "BACILLUS",
+      "SULFOLOBUS",
+      "POMBE"
+    ],
+    "training_global_boundary_rate": 0.14237668161434977,
+    "panel2_species": [
+      "PSEUDOMONAS",
+      "MYCOPLASMA",
+      "METHANOCALDOCOCCUS",
+      "HALOFERAX",
+      "NEUROSPORA",
+      "CELEGANS"
+    ]
+  },
+  "semantics": {
+    "validated_identity": "prospective C2 token-level prediction model",
+    "mechanistic_identity": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-ARCH-0002",
+    "LC-OBS-HOLDOUT-0002"
+  ],
+  "predictions": [
+    "LC-PRED-0028"
+  ],
+  "unknowns": [
+    "Whether continuous token propensity predicts a second independent species panel.",
+    "Whether a future mechanistic model can improve upon identity-only C2 prediction."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "BOUNDARY_PROPENSITY_MODEL_v1_SCORES.csv",
+    "HELDOUT_BOUNDARY_TRANSFER_RESULT_0001.json"
+  ]
+}

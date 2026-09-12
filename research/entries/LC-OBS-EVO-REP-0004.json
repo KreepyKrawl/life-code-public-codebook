@@ -1,0 +1,61 @@
+{
+  "entry_id": "LC-OBS-EVO-REP-0004",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "C. elegans-only parameter sensitivity p=0.004540; all-except-C. elegans p=0.667713; non-animal eukaryote aggregate p=0.717553.",
+      "source_refs": [
+        "RETRO_PARAMETER_SIGNAL_SENSITIVITY_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "Coarse absolute wildcard-position challenges were executed with independent movability checks; exact-mask topology remains unresolved because its prior exact stratification was under-movable.",
+      "source_refs": [
+        "RETRO_COARSE_MASK_TOPOLOGY_CHALLENGE_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Generality of the implementation-parameter association must be judged from the subset sensitivity and fresh Panel-3 replication, not the aggregate p-value alone.",
+      "source_refs": [
+        "RETRO_PARAMETER_SIGNAL_SENSITIVITY_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "parameter_sensitivity": {
+      "CELEGANS_only": "SIGNIFICANT",
+      "all_except_CELEGANS": "NOT_SIGNIFICANT",
+      "YEAST_only": "NOT_SIGNIFICANT",
+      "POMBE_only": "NOT_SIGNIFICANT",
+      "NEUROSPORA_only": "NOT_SIGNIFICANT",
+      "non_animal_eukaryotes": "NOT_SIGNIFICANT"
+    },
+    "coarse_topology": {
+      "GC_x_wildcard_i0": "STRONGLY_SUPPORTED_RETRO",
+      "GC_x_wildcard_j0": "STRONGLY_SUPPORTED_RETRO",
+      "GC_x_separation_x_coarse_center": "STRONGLY_SUPPORTED_RETRO"
+    }
+  },
+  "semantics": {
+    "parameter_semantics": "UNKNOWN",
+    "exact_mask_confounder": "UNRESOLVED"
+  },
+  "relationships": [
+    "LC-OBS-EVO-REP-0003",
+    "LC-ARCH-0009"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Fresh cross-genome parameter association.",
+    "Exact mask-topology confounding under a sufficiently movable future design."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "RETRO_PARAMETER_SIGNAL_SENSITIVITY_RESULT_0001.json",
+    "RETRO_COARSE_MASK_TOPOLOGY_CHALLENGE_RESULT_0001.json"
+  ]
+}

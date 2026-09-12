@@ -1,0 +1,133 @@
+{
+  "primary": {
+    "conditioning_field": "primary_stratum",
+    "S_pair_6": {
+      "observed": 59,
+      "analytic_null_mean": 45.1933958006826,
+      "mc_null_mean": 45.19492,
+      "mc_null_sd": 3.650682976321006,
+      "q95": 51.0,
+      "q99": 54.0,
+      "mc_tail_ge": 0.0001799982000179998
+    },
+    "T81_6": {
+      "observed": 62,
+      "analytic_null_mean": 57.29198694527721,
+      "mc_null_mean": 57.29374,
+      "mc_null_sd": 4.158518583870944,
+      "q95": 64.0,
+      "q99": 67.0,
+      "mc_tail_ge": 0.15623843761562384
+    },
+    "M_score": {
+      "observed": 67.26955833155401,
+      "analytic_null_mean": 65.61864802190769,
+      "mc_null_mean": 65.61781067459368,
+      "mc_null_sd": 1.2745600203793805,
+      "q95": 67.71553847249784,
+      "q99": 68.5963308064722,
+      "mc_tail_ge": 0.0983190168098319
+    },
+    "strata": {
+      "PSEUDOMONAS": 16,
+      "MYCOPLASMA": 32,
+      "METHANOCALDOCOCCUS": 67,
+      "HALOFERAX": 8,
+      "NEUROSPORA": 101,
+      "CELEGANS": 104
+    },
+    "boundary_strata": {
+      "PSEUDOMONAS": 4,
+      "MYCOPLASMA": 2,
+      "METHANOCALDOCOCCUS": 18,
+      "HALOFERAX": 2,
+      "NEUROSPORA": 45,
+      "CELEGANS": 76
+    },
+    "fixed_boundary_tokens": {
+      "PSEUDOMONAS": 3,
+      "MYCOPLASMA": 2,
+      "METHANOCALDOCOCCUS": 5,
+      "HALOFERAX": 2,
+      "NEUROSPORA": 7,
+      "CELEGANS": 29
+    }
+  },
+  "secondary": {
+    "conditioning_field": "secondary_stratum",
+    "S_pair_6": {
+      "observed": 59,
+      "analytic_null_mean": 58.833333333333336,
+      "mc_null_mean": 58.83205,
+      "mc_null_sd": 0.6867043013553941,
+      "q95": 60.0,
+      "q99": 60.0,
+      "mc_tail_ge": 0.6661433385666143
+    },
+    "T81_6": {
+      "observed": 62,
+      "analytic_null_mean": 61.166666666666664,
+      "mc_null_mean": 61.16548,
+      "mc_null_sd": 1.4768941633035184,
+      "q95": 64.0,
+      "q99": 65.0,
+      "mc_tail_ge": 0.4081859181408186
+    },
+    "M_score": {
+      "observed": 67.26955833155401,
+      "analytic_null_mean": 67.16422684295634,
+      "mc_null_mean": 67.16453685529407,
+      "mc_null_sd": 0.36480317741212415,
+      "q95": 67.76558118015699,
+      "q99": 68.00722675991389,
+      "mc_tail_ge": 0.3875461245387546
+    },
+    "strata": {
+      "PSEUDOMONAS": 19,
+      "MYCOPLASMA": 45,
+      "METHANOCALDOCOCCUS": 143,
+      "HALOFERAX": 8,
+      "NEUROSPORA": 361,
+      "CELEGANS": 665
+    },
+    "boundary_strata": {
+      "PSEUDOMONAS": 4,
+      "MYCOPLASMA": 2,
+      "METHANOCALDOCOCCUS": 26,
+      "HALOFERAX": 2,
+      "NEUROSPORA": 51,
+      "CELEGANS": 260
+    },
+    "fixed_boundary_tokens": {
+      "PSEUDOMONAS": 4,
+      "MYCOPLASMA": 2,
+      "METHANOCALDOCOCCUS": 24,
+      "HALOFERAX": 2,
+      "NEUROSPORA": 48,
+      "CELEGANS": 236
+    }
+  },
+  "replicates": 100000,
+  "generator": "NumPy PCG64",
+  "seeds": {
+    "primary": 420029,
+    "secondary": 420129
+  },
+  "prediction_outcomes": {
+    "LC-PRED-0029": "STRONGLY_SUPPORTED",
+    "LC-PRED-0030": "MIXED_WEAKENED",
+    "LC-PRED-0031": "MIXED_WEAKENED"
+  },
+  "pre_result_release": {
+    "release": "LIFE_CODE_CODEBOOK_v0.0.43",
+    "zip_sha256": "5b03c0bb18042d33f20d430c9c5496524ee972a2631f70979e92e7435feb19d5"
+  },
+  "production_algorithm_sha256": "200eddcb6b510fbfec47728552821ecba3fb38793f3e36a5a6bf300560b2eeda",
+  "movability_summary": {
+    "total_boundary_token_genome_memberships": 365,
+    "primary_fixed_by_stratum": 48,
+    "primary_movable": 317,
+    "secondary_fixed_by_stratum": 316,
+    "secondary_movable": 49
+  }
+}

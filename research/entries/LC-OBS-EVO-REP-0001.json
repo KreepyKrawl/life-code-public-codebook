@@ -1,0 +1,53 @@
+{
+  "entry_id": "LC-OBS-EVO-REP-0001",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "Across 66 archived genome pairs, 8166/10836 shared MOP token-pair memberships have no shared literal 16-nt implementation.",
+      "source_refs": [
+        "RETRO_IMPLEMENTATION_DEPTH_RESULT_0001.json",
+        "RETRO_IMPLEMENTATION_DEPTH_PAIRWISE_12GENOMES.csv"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "Among broad boundary-role shared token-pair memberships, 240/579 recur at the masked-token level without a shared literal 16-mer implementation.",
+      "source_refs": [
+        "RETRO_IMPLEMENTATION_DEPTH_RESULT_0001.json",
+        "RETRO_IMPLEMENTATION_DEPTH_TOKEN_12GENOMES.csv"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "The archived data contain a measurable representation stack in which masked identity often persists beyond literal implementation identity; whether this reflects conserved biological semantics requires prospective validation.",
+      "source_refs": [
+        "RETRO_IMPLEMENTATION_DEPTH_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "status": "RETROACTIVE_EXPLORATORY",
+    "historical_status_changes": 0
+  },
+  "semantics": {
+    "validated_identity": "literal-vs-masked implementation-depth decomposition",
+    "evolutionary_mechanism": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-HYP-EVO-CODE-0001",
+    "LC-OBS-PANEL2-0003",
+    "LC-ARCH-0009"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Prospective near-vs-far literal-retention behavior.",
+    "Whether masked-only boundary recurrence corresponds to conserved molecular role."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "RETRO_IMPLEMENTATION_DEPTH_RESULT_0001.json",
+    "RETRO_IMPLEMENTATION_DEPTH_PAIRWISE_12GENOMES.csv"
+  ]
+}

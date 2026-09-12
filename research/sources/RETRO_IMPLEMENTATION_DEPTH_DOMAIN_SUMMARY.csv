@@ -1,0 +1,7 @@
+domain_pair,genome_pairs,shared_masked_token_memberships,literal_retention_fraction,shared_boundary_token_memberships,boundary_literal_retention_fraction
+Bacteria__Bacteria,6,219,0.1050228310502283,6,0.16666666666666666
+Bacteria__Archaea,16,1532,0.08681462140992167,57,0.15789473684210525
+Bacteria__Eukarya,16,3160,0.2208860759493671,156,0.4551282051282051
+Archaea__Archaea,6,257,0.15953307392996108,11,0.36363636363636365
+Archaea__Eukarya,16,3259,0.24823565510892912,160,0.61875
+Eukarya__Eukarya,6,2409,0.40099626400996263,189,0.8201058201058201

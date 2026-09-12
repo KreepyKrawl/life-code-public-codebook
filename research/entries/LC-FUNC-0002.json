@@ -1,0 +1,44 @@
+{
+  "entry_id": "LC-FUNC-0002",
+  "entry_type": "FUNC",
+  "status": "SEMANTICALLY_VALIDATED",
+  "evidence": [
+    {
+      "class": "E2",
+      "statement": "The linked LC-PRIM-0003 interval belongs to a conserved Domain IV region involved in 50S/30S subunit association; U1940 within the primitive has direct mutational evidence for this role.",
+      "source_refs": [
+        "WEB_FUNCTIONAL_VALIDATION_0002.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Codebook abstraction: SUBUNIT_DOCK \u2014 a conserved interface token participating in joining/stabilizing the two ribosomal subunits.",
+      "source_refs": [
+        "WEB_FUNCTIONAL_VALIDATION_0002.json"
+      ]
+    }
+  ],
+  "observations": {
+    "linked_primitives": [
+      "LC-PRIM-0003"
+    ],
+    "reference_region": "23S positions 1930-1945"
+  },
+  "semantics": {
+    "validated_role": "large/small ribosomal subunit-interface region",
+    "coder_function_alias": "SUBUNIT_DOCK"
+  },
+  "relationships": [
+    "LC-PRIM-0003",
+    "LC-GRAM-0003",
+    "LC-GRAM-0004"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Whether the full exact 16-mer acts as one indivisible functional unit."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "WEB_FUNCTIONAL_VALIDATION_0002.json"
+  ]
+}

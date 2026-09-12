@@ -1,0 +1,34 @@
+{
+  "validation_id": "HELDOUT_TRANSFER_INDEPENDENT_VALIDATION_0001",
+  "status": "PASS",
+  "pre_result_release": "LIFE_CODE_CODEBOOK_v0.0.36",
+  "pre_result_zip_sha256": "cdfe229e7aaefc9d79984652a2f735763dc09d33cac98e83319de789314949b0",
+  "reconstructed_recovered_token_counts": {
+    "BACILLUS": 142,
+    "SULFOLOBUS": 75,
+    "POMBE": 351
+  },
+  "reconstructed_boundary_token_counts": {
+    "BACILLUS": 18,
+    "SULFOLOBUS": 16,
+    "POMBE": 49
+  },
+  "reconstructed_pair_overlaps": {
+    "BACILLUS_SULFOLOBUS": 1,
+    "BACILLUS_POMBE": 3,
+    "SULFOLOBUS_POMBE": 3
+  },
+  "reconstructed_S_pair_H": 7,
+  "analytic_null_expectation_S_pair_H": 2.96970640557495,
+  "analyzer_mc_null_mean_S_pair_H": 2.96737,
+  "analyzer_mc_tail_LC_PRED_0024": 0.026569734302656974,
+  "reconstructed_T81": 18,
+  "analytic_null_expectation_T81": 11.770384816018618,
+  "analyzer_mc_null_mean_T81": 11.76756,
+  "analyzer_mc_tail_LC_PRED_0025": 0.02891971080289197,
+  "independent_set_reconstruction_matches_analyzer": true,
+  "prediction_outcomes": {
+    "LC-PRED-0024": "SUPPORTED",
+    "LC-PRED-0025": "SUPPORTED"
+  }
+}

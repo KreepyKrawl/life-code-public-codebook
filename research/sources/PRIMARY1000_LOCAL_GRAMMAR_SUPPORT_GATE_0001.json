@@ -1,0 +1,13 @@
+{
+  "gate_id": "PRIMARY1000_LOCAL_GRAMMAR_SUPPORT_GATE_0001",
+  "status": "DATA_INSUFFICIENT_NOT_FALSIFIED",
+  "known_genomes": 12,
+  "window_rule": "different token ID, non-overlapping occurrence, gap 0..100 bp, directed focal->partner",
+  "directed_pair_contexts_observed": 630,
+  "maximum_occurrence_support_for_any_directed_pair": 5,
+  "pairs_seen_in_at_least_2_genomes": 6,
+  "minimum_training_rule_considered": "at least 5 focal-context occurrences spanning at least 2 genomes",
+  "pairs_meeting_minimum_training_rule": 0,
+  "decision": "Do not train an X+Y conditionalization model from the sparse 1,000-token sample. Preserve grammar-evolution hypothesis and acquire denser representation evidence later.",
+  "claim_boundary": "This does not falsify compound grammar; it blocks a reliable model at this sample density."
+}

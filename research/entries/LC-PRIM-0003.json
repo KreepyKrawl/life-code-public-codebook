@@ -1,0 +1,127 @@
+{
+  "entry_id": "LC-PRIM-0003",
+  "entry_type": "PRIM",
+  "status": "SEMANTICALLY_VALIDATED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "The 16-bp exact core GTAGCGAAATTCCTTG occurs five times in E. coli, once in Pyrococcus, and once in the S. cerevisiae mitochondrial chromosome in the frozen raw recurrence output.",
+      "source_refs": [
+        "PC1_RAW_RECURRENCE_RESULTS.json"
+      ]
+    },
+    {
+      "class": "E0",
+      "statement": "In E. coli and Pyrococcus the 16-bp core is nested at offset 4 inside LC-PRIM-0002.",
+      "source_refs": [
+        "PC1_RAW_RECURRENCE_RESULTS.json"
+      ]
+    },
+    {
+      "class": "E2",
+      "statement": "Post-freeze annotation places the yeast mitochondrial occurrence at chrM position 59,837 (0-based) within the mitochondrial 21S large-subunit rRNA locus.",
+      "source_refs": [
+        "PC1_ANNOTATION_PASS_0001.md"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "This is a validated cross-domain/deep-lineage large-subunit-rRNA-associated primitive and an observed example of a shorter primitive persisting where the longer parent block does not.",
+      "source_refs": [
+        "PC1_RAW_RECURRENCE_RESULTS.json",
+        "PC1_ANNOTATION_PASS_0001.md"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "Published-sequence anchoring plus the frozen 119-bp spacing maps LC-PRIM-0003 to E. coli 23S rRNA positions 1930-1945.",
+      "source_refs": [
+        "WEB_FUNCTIONAL_VALIDATION_0002.json"
+      ]
+    },
+    {
+      "class": "E2",
+      "statement": "This interval lies in the conserved Domain IV subunit-interface region near the peptidyl-transferase center and includes U1940; experimental U1940A mutation disrupts 50S/30S subunit association.",
+      "source_refs": [
+        "WEB_FUNCTIONAL_VALIDATION_0002.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Coder alias: LSU_SUBUNIT_INTERFACE \u2014 a conserved token in machinery used to maintain large/small ribosomal subunit association.",
+      "source_refs": [
+        "WEB_FUNCTIONAL_VALIDATION_0002.json"
+      ]
+    }
+  ],
+  "observations": {
+    "sequence_direct": "GTAGCGAAATTCCTTG",
+    "length_bp": 16,
+    "occurrences": {
+      "ECOLI": [
+        [
+          "ENA|U00096|U00096.3",
+          227687
+        ],
+        [
+          "ENA|U00096|U00096.3",
+          3945632
+        ],
+        [
+          "ENA|U00096|U00096.3",
+          4039448
+        ],
+        [
+          "ENA|U00096|U00096.3",
+          4170569
+        ],
+        [
+          "ENA|U00096|U00096.3",
+          4211971
+        ]
+      ],
+      "PYRO": [
+        [
+          "NC_003413.1",
+          140739
+        ]
+      ],
+      "YEAST": [
+        [
+          "chrM",
+          59837
+        ]
+      ]
+    },
+    "nested_in": {
+      "entry_id": "LC-PRIM-0002",
+      "offset0": 4,
+      "in_ECOLI_and_PYRO": true
+    },
+    "yeast_context_window": "GAGGGTTATAATGTAGCGAAATTCCTTGGCCTATAATTGA",
+    "E_coli_23S_reference_positions_1based": [
+      1930,
+      1945
+    ]
+  },
+  "semantics": {
+    "validated_identity": "large-subunit-rRNA-associated conserved core",
+    "yeast_validated_locus": "mitochondrial 21S_RRNA / Q0158",
+    "functional_region": "23S rRNA Domain IV intersubunit-interface region",
+    "contains_functionally_tested_position": "U1940",
+    "coder_alias": "LSU_SUBUNIT_INTERFACE"
+  },
+  "relationships": [
+    "LC-PRIM-0002",
+    "LC-GRAM-0001"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Whether this exact 16-bp core has one conserved mechanistic role across all three observed implementations."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PC1_RAW_RECURRENCE_RESULTS.json",
+    "PC1_ANNOTATION_PASS_0001.md"
+  ]
+}

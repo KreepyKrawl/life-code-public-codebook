@@ -1,0 +1,32 @@
+{
+  "prediction_id": "LC-PRED-0039",
+  "status": "NOT_SUPPORTED",
+  "evidence_class": "P1",
+  "statement": "Drosophila will independently show within-token wildcard/literal-implementation state association with broad boundary context using the frozen C. elegans-era analysis definition.",
+  "primary_statistic": "S_param_DROSOPHILA",
+  "null_seed": 540039,
+  "contamination_boundary": "Frozen before the relevant Drosophila/Panel-3 sequence acquisition.",
+  "source_refs": [
+    "RETRO_PARAMETER_SIGNAL_SENSITIVITY_RESULT_0001.json",
+    "RETRO_COARSE_MASK_TOPOLOGY_CHALLENGE_RESULT_0001.json"
+  ],
+  "information_gate": ">=25 eligible token strata and >=200 eligible occurrences",
+  "support_condition": "If gate passes: p<=.01 strong; p<=.05 supported.",
+  "falsification_condition": "If gate passes and p>.05: NOT_SUPPORTED; otherwise BLOCKED_LOW_INFORMATION.",
+  "result_release": "LIFE_CODE_CODEBOOK_v0.0.72",
+  "result_source": "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001.json",
+  "result": {
+    "genome": "DROSOPHILA",
+    "eligible_token_strata": 69,
+    "eligible_occurrences": 4543,
+    "information_gate_pass": true,
+    "observed": 624.0971276576502,
+    "null_mean": 596.5601939586766,
+    "null_sd": 69.72433306815644,
+    "q95": 718.8472943315667,
+    "q99": 778.2342991276901,
+    "mc_tail_ge": 0.32607673923260766,
+    "status": "NOT_SUPPORTED",
+    "seed": 540039
+  }
+}

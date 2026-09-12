@@ -1,0 +1,106 @@
+{
+  "entry_id": "LC-GRAM-0004",
+  "entry_type": "GRAM",
+  "status": "SEMANTICALLY_VALIDATED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "Frozen cluster COL-0001 contains a three-token same-diagonal architecture shared by E. coli and yeast mitochondrial DNA: LC-PRIM-0007, then LC-PRIM-0003 exactly 1,370 bp later, then LC-PRIM-0006 exactly 119 bp later.",
+      "source_refs": [
+        "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "All three yeast token starts fall inside the recorded mitochondrial 21S_RRNA/Q0158 locus.",
+      "source_refs": [
+        "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv",
+        "PC1_ANNOTATION_PASS_0001.md"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "COL-0001 is therefore a literal three-symbol bacterial\u2194mitochondrial grammar candidate with one side semantically localized to mitochondrial large-subunit rRNA; the E. coli side is intentionally not promoted until assembly-matched annotation is checked.",
+      "source_refs": [
+        "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv",
+        "PC1_ANNOTATION_PASS_0001.md"
+      ]
+    },
+    {
+      "class": "E2",
+      "statement": "Post-freeze validation confirms the E. coli three-token COL-0001 coordinates all lie within rrlA 23S rRNA; the corresponding yeast coordinates all lie within mitochondrial 21S rRNA.",
+      "source_refs": [
+        "WEB_VALIDATION_0001.json",
+        "PC1_ANNOTATION_PASS_0001.md"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "LC-GRAM-0004 is therefore a validated three-token colinear large-subunit-rRNA architecture shared between bacterial 23S rRNA and mitochondrial 21S rRNA.",
+      "source_refs": [
+        "WEB_VALIDATION_0001.json",
+        "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Functional mapping shows the three-token grammar traverses a central-core boundary token (LC-PRIM-0007), an intersubunit-interface token (LC-PRIM-0003), and a PTC-neighborhood token (LC-PRIM-0006). This is a systems-level structural mapping; it does not prove the three tokens are one biochemical instruction.",
+      "source_refs": [
+        "WEB_FUNCTIONAL_VALIDATION_0002.json"
+      ]
+    }
+  ],
+  "observations": {
+    "syntax": "LC-PRIM-0007 -> 1370 bp -> LC-PRIM-0003 -> 119 bp -> LC-PRIM-0006",
+    "records": [
+      {
+        "cluster_id": "COL-0001",
+        "ECOLI_starts0": [
+          4038078,
+          4039448,
+          4039567
+        ],
+        "YEAST_starts0": [
+          58467,
+          59837,
+          59956
+        ],
+        "ECOLI_spacings_bp": [
+          1370,
+          119
+        ],
+        "YEAST_spacings_bp": [
+          1370,
+          119
+        ]
+      }
+    ],
+    "start_to_start_total_first_to_third_bp": 1489
+  },
+  "semantics": {
+    "yeast_context": "mitochondrial 21S_RRNA / Q0158",
+    "ECOLI_context": "rrlA 23S rRNA",
+    "full_grammar_function": "UNKNOWN",
+    "validated_identity": "three-token colinear large-subunit-rRNA architecture",
+    "YEAST_context": "mitochondrial 21S_RRNA / Q0158"
+  },
+  "relationships": [
+    "LC-PRIM-0007",
+    "LC-PRIM-0003",
+    "LC-PRIM-0006",
+    "LC-GRAM-0003"
+  ],
+  "predictions": [
+    "LC-PRED-0006",
+    "LC-PRED-0007"
+  ],
+  "unknowns": [
+    "E. coli feature identities at 4,038,078 / 4,039,448 / 4,039,567 in the exact frozen assembly.",
+    "Mechanistic meaning of the three-token arrangement."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PC2_COLINEAR_EXACT_CLUSTERS_ECOLI_YEAST.csv",
+    "PC1_ANNOTATION_PASS_0001.md"
+  ]
+}

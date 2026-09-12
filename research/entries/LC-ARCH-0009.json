@@ -1,0 +1,42 @@
+{
+  "entry_id": "LC-ARCH-0009",
+  "entry_type": "OBS",
+  "status": "PROVISIONAL",
+  "evidence": [
+    {
+      "class": "I1",
+      "statement": "LIFE-CODE now uses non-destructive backward/forward discovery propagation: new evidence triggers archived-data reanalysis without changing frozen historical outcomes.",
+      "source_refs": [
+        "RETROACTIVE_PREDICTION_REINTERPRETATION_MATRIX_v1.csv"
+      ]
+    },
+    {
+      "class": "H1",
+      "statement": "Multiple untested representation levels may preserve biological equivalence after literal sequence or previously tested grammar fails.",
+      "source_refs": [
+        "RETROACTIVE_PREDICTION_REINTERPRETATION_MATRIX_v1.csv"
+      ]
+    }
+  ],
+  "observations": {
+    "predictions_retroactively_indexed": 35,
+    "historical_statuses_changed": 0,
+    "representation_lattice_dimensions": 15
+  },
+  "semantics": {
+    "validated_identity": "search/workflow architecture",
+    "biological_truth": "UNCHANGED"
+  },
+  "relationships": [
+    "LC-HYP-EVO-CODE-0001",
+    "LC-ARCH-0008"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Which newly indexed representation levels will survive fresh prospective tests."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "RETROACTIVE_PREDICTION_REINTERPRETATION_MATRIX_v1.csv"
+  ]
+}

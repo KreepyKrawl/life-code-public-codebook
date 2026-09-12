@@ -1,0 +1,32 @@
+{
+  "prediction_id": "LC-PRED-0035",
+  "status": "STRONGLY_SUPPORTED",
+  "evidence_class": "P1",
+  "statement": "If the preregistered >=50% movability gate passes, Panel-3 same-token boundary recurrence will remain above a null additionally conditioned on coarse sequence-only local genomic GC context.",
+  "primary_statistic": "S_pair_3_localGC",
+  "null_seed": 460035,
+  "support_condition": "Observed above frozen null mean and one-sided 100,000-replicate Monte Carlo p<=0.05; strong support p<=0.01.",
+  "weakening_condition": "Observed above null mean but p>0.05.",
+  "falsification_condition": "Observed <= null mean.",
+  "special_gate": "LC-PRED-0035 only: >=50% boundary-membership movability or BLOCKED_LOW_MOVABILITY.",
+  "contamination_boundary": "Species/accessions, representation, role, conditioning, statistic, threshold and seed frozen before Panel-3 sequence acquisition.",
+  "source_refs": [
+    "BOUNDARY_RESIDUAL_MODEL_v2_SCORES.csv",
+    "PRIMARY1000_LOCAL_GRAMMAR_SUPPORT_GATE_0001.json"
+  ],
+  "result_release": "LIFE_CODE_CODEBOOK_v0.0.72",
+  "result_source": "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001.json",
+  "result": {
+    "observed": 84.0,
+    "mc_null_mean": 63.05401,
+    "mc_null_sd": 4.914070911159097,
+    "q95": 71.0,
+    "q99": 75.0,
+    "mc_tail_ge": 5.999940000599994e-05,
+    "status": "STRONGLY_SUPPORTED",
+    "analytic_null_mean": 63.07895565672319,
+    "movability_fraction": 0.7472222222222222,
+    "fixed_boundary_memberships": 91,
+    "boundary_memberships_total": 360
+  }
+}

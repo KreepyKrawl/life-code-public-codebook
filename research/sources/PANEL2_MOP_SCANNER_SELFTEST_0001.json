@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "scope": "SYNTHETIC_INDEPENDENT_REGEX_ORACLE",
+  "sample_tokens": 40,
+  "synthetic_genomes": 6,
+  "cpp_occurrences": 35,
+  "oracle_occurrences": 35,
+  "exact_occurrence_set_match": true,
+  "summary_rows": 40,
+  "scanner_sha256": "73e03ff9066ea4c1608538f315e2ccdf5cbb9cb017aafc4f4161103856f43386"
+}

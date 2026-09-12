@@ -1,0 +1,36 @@
+{
+  "test_id": "LC_PRED_0008_STAGE1_EXACT16",
+  "prediction": "LC-PRED-0008",
+  "source_release": "LIFE_CODE_CODEBOOK_v0.0.6",
+  "canonical_source": "LIFE_CODE_EXECUTION_KIT_v0.1.33",
+  "triple_shared_16mer_count": 54,
+  "ecoli_source": {
+    "file_name": "U00096.3_Ecoli.fasta",
+    "file_sha256": "c41a4207c8916ba6138460d129ce5604cb307d40b7d56207878a9e731a418074",
+    "sequence_sha256": "e999dceccb76562d40e49a10d9e6d4cf1c05d184f4f80b92bb32d4a2420c11d0"
+  },
+  "rrlA_reference": {
+    "genome_range_1based": [
+      4037519,
+      4040423
+    ],
+    "length_bp": 2905,
+    "extracted_sequence_sha256": "cfac140b617d7ec34a4693b074911b2e1e3ac6216b0b932c48622702e011021b"
+  },
+  "all_frozen_16mer_matches_anywhere_in_rrlA": [
+    {
+      "sequence": "GTAGCGAAATTCCTTG",
+      "direct_rrlA_start1": [
+        1931
+      ],
+      "reverse_complement_rrlA_start1": []
+    }
+  ],
+  "count_frozen_16mers_mapping_anywhere_in_rrlA": 1,
+  "A2451_centered_stage1_result": {
+    "exact_16mer_found_in_A2451_neighborhood": false,
+    "supporting_matches_within_plusminus_100_nt": [],
+    "note": "Only one of the 54 frozen three-domain 16-mers maps anywhere in rrlA; it is LC-PRIM-0003 at position 1931 (1-based start), far from A2451."
+  },
+  "interpretation": "The exact-16-mer branch of LC-PRED-0008 is negative. The original prediction explicitly allowed a separately preregistered shorter/variable-length follow-up rather than retroactive threshold changes."
+}

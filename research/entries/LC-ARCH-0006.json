@@ -1,0 +1,42 @@
+{
+  "entry_id": "LC-ARCH-0006",
+  "entry_type": "OBS",
+  "status": "PROVISIONAL",
+  "evidence": [
+    {
+      "class": "I1",
+      "statement": "After bounding the primary-sample interface signal at the broad boundary-role level, the next evidentiary priority is non-overlapping token replication rather than further primary-sample decomposition.",
+      "source_refs": [
+        "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json",
+        "C3_SAME_SYSTEM_RESULT_0001.json",
+        "C3_PROTEIN_SEQUENCE_RESULT_0001.json",
+        "BOUNDARY_GEOMETRY_CONCORDANCE_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "diagnostic_replication": "FROZEN_UNRUN",
+    "diagnostic_primary_overlap": "UNKNOWN_PRE_EXECUTION"
+  },
+  "semantics": {
+    "target": "independent token-identity replication within same three genomes"
+  },
+  "relationships": [
+    "LC-OBS-INTERFACE-0003",
+    "LC-OBS-INTERFACE-0002"
+  ],
+  "predictions": [
+    "LC-PRED-0023"
+  ],
+  "unknowns": [
+    "Retained non-overlap diagnostic N.",
+    "Whether broad boundary recurrence replicates."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json",
+    "C3_SAME_SYSTEM_RESULT_0001.json",
+    "C3_PROTEIN_SEQUENCE_RESULT_0001.json",
+    "BOUNDARY_GEOMETRY_CONCORDANCE_RESULT_0001.json"
+  ]
+}

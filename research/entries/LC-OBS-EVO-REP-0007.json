@@ -1,0 +1,54 @@
+{
+  "entry_id": "LC-OBS-EVO-REP-0007",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "Across 20 sampled extant genomes, 381 of 1,000 frozen MOP identities occupy the broad boundary role in at least two genomes, and 54 do so across all three domains.",
+      "source_refs": [
+        "GLOBAL_20_GENOME_INTERFACE_STATE_MAP_RESULT_0001.json",
+        "GLOBAL_20_GENOME_INTERFACE_STATE_MAP_v1.csv"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "The broadest sampled boundary token occupies that role in 11 of 20 genomes.",
+      "source_refs": [
+        "GLOBAL_20_GENOME_INTERFACE_STATE_MAP_RESULT_0001.json",
+        "GLOBAL_20_GENOME_INTERFACE_TOP25_v1.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Non-uniform states across frozen extant-tip brackets are traceability observations only; missing historical intermediate implementations remain UNKNOWN.",
+      "source_refs": [
+        "GLOBAL_20_GENOME_INTERFACE_STATE_MAP_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "sampled_tips": 20,
+    "boundary_ge2": 381,
+    "boundary_three_domains": 54
+  },
+  "semantics": {
+    "ancestral_intermediate_states": "UNKNOWN",
+    "mechanism": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-OBS-PANEL3-0004",
+    "LC-ARCH-0012",
+    "LC-OBS-EVO-REP-0006"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Semantic/system identity of the broadest interface candidates.",
+    "Historical intermediate representations across discontinuous extant-tip states."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "GLOBAL_20_GENOME_INTERFACE_STATE_MAP_RESULT_0001.json",
+    "GLOBAL_20_GENOME_INTERFACE_STATE_MAP_v1.csv"
+  ]
+}

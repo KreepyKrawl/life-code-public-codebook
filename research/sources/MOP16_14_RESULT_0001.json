@@ -1,0 +1,112 @@
+{
+  "result_id": "MOP16_14_RESULT_0001",
+  "representation": "MOP16-14-v1",
+  "pre_execution_release": {
+    "release": "LIFE_CODE_CODEBOOK_v0.0.9",
+    "zip_sha256": "e0064566817246fb7473d0a3ca7298bb4f7853d81c26b9236b274db5ee3ad84d"
+  },
+  "execution_provenance": {
+    "real_result_sha256": "957df01e124615b7e817000a51d81fd0598eedef648cb1e0018a712f5e15a608",
+    "null_result_sha256": [
+      "55bc480d8556ec30a3c154da955e303ba5debe6da8b9f14bde6f9c2a554bf985",
+      "24286713dbeb3e283e94b4ae24c92a81f44327475fbf577adcffa9765a0c5341",
+      "d9ab6b4b3a92fca8badfbe4b2fc0b76e0b3a149d7d06b6896091e14305312874",
+      "2d027734314d6f4026931d73d7a03ec8e7a6e54fa559b24b25b7f00324f0258f",
+      "87c29e46ceabc21448a887bb33ccab157161b2877208bc71a1cc6f937b9479ae"
+    ],
+    "candidate_vocabulary_sha256": "cf0b28a27d001e78f1a8b5022cef6282568785b8c005aceda1ddde1aba8d410c",
+    "candidate_vocabulary_count": 618470,
+    "candidate_id_encoding": "uint64 little-endian: (mask_id << 28) | projected_14base_key; mask_id lexicographic over all (i,j), 0<=i<j<16"
+  },
+  "global_test": {
+    "real_distinct_shared_tokens": 618470,
+    "dinucleotide_null_counts": [
+      421985,
+      417911,
+      421935,
+      425242,
+      423492
+    ],
+    "null_mean": 422113.0,
+    "null_range": [
+      417911,
+      425242
+    ],
+    "real_over_null_mean_ratio": 1.4651763864178549,
+    "real_over_null_max_ratio": 1.4543953795721025,
+    "absolute_margin_over_null_max": 193228,
+    "gate": "PASS",
+    "prediction": "LC-PRED-0011",
+    "prediction_result": "SUPPORTED"
+  },
+  "diagnostics": {
+    "adjacent_two_wildcards": {
+      "real": 79477,
+      "null_counts": [
+        54567,
+        54025,
+        54136,
+        54381,
+        54222
+      ],
+      "real_over_null_max_ratio": 1.4565030146425495
+    },
+    "separated_two_wildcards": {
+      "real": 538993,
+      "null_counts": [
+        367418,
+        363886,
+        367799,
+        370861,
+        369270
+      ],
+      "real_over_null_max_ratio": 1.4533558395193886
+    },
+    "per_mask": {
+      "mask_count": 120,
+      "real_exceeds_all_five_nulls_mask_count": 120,
+      "real_fails_to_exceed_all_five_nulls_mask_count": 0,
+      "minimum_real_to_null_max_ratio": 1.3486878838637633,
+      "maximum_real_to_null_max_ratio": 1.5184040460803596,
+      "all_masks_individually_exceed_null_max": true
+    }
+  },
+  "target_test": {
+    "performed_only_after_global_gate_was_evaluated_as_PASS": true,
+    "fixed_target": "E. coli rrlA 23S positions 2426-2476 centered on A2451",
+    "real_shared_target_tokens": 1,
+    "dinucleotide_null_target_counts": [
+      19,
+      15,
+      0,
+      0,
+      3
+    ],
+    "null_mean": 7.4,
+    "null_range": [
+      0,
+      19
+    ],
+    "support_condition_met": false,
+    "outcome": "WEAKENED_MIXED_NONZERO_BUT_NOT_ABOVE_NULL_MAX",
+    "prediction": "LC-PRED-0012",
+    "single_real_target_token": {
+      "mask_id": 77,
+      "wildcard_positions_zero_based": [
+        6,
+        9
+      ],
+      "pattern": "ATCGCTNAANGGATAA",
+      "note": "Frozen as an unannotated raw candidate only. It is NOT promoted to a biological codebook primitive because the target test failed enrichment against matched nulls."
+    }
+  },
+  "interpretation_boundary": {
+    "allowed": "MOP16-14-v1 carries strong annotation-blind global three-domain signal beyond five exact-dinucleotide-preserving null triplets.",
+    "not_allowed": [
+      "The A2451 target is recovered by this representation.",
+      "Every masked token is functional.",
+      "The 618,470 tokens are independent observations.",
+      "This five-null calibration is a publication-level p-value."
+    ]
+  }
+}

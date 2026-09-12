@@ -1,0 +1,35 @@
+{
+  "prediction_id": "LC-PRED-0038",
+  "status": "MIXED",
+  "evidence_class": "P1",
+  "statement": "Within each domain's frozen Panel-3 NEAR/FAR pair, the NEAR genome will have a higher fraction of recovered MOP tokens whose exact 16-nt implementations were previously observed in the pre-Panel-3 same-domain training union.",
+  "primary_statistic": "three domain-wise directional contrasts in Q_g literal-reuse fraction",
+  "support_condition": "SUPPORTED_DIRECTIONAL if all 3 domain contrasts have Q_NEAR > Q_FAR.",
+  "weakening_condition": "MIXED if exactly 2 of 3 domain contrasts have Q_NEAR > Q_FAR.",
+  "falsification_condition": "FALSIFIED_DIRECTIONAL if 0 or 1 of 3 domain contrasts have Q_NEAR > Q_FAR.",
+  "p_value_claim_authorized": false,
+  "contamination_boundary": "Generated from v0.0.48 retrospective implementation-depth result and frozen before Panel-3 sequence acquisition.",
+  "source_refs": [
+    "RETRO_IMPLEMENTATION_DEPTH_RESULT_0001.json",
+    "RETRO_IMPLEMENTATION_DEPTH_DOMAIN_SUMMARY.csv"
+  ],
+  "result_release": "LIFE_CODE_CODEBOOK_v0.0.72",
+  "result_source": "PANEL3_PLUS_LINEAGE_FROZEN_PREDICTION_RESULT_0001.json",
+  "result": {
+    "Q": {
+      "SALMONELLA": 0.5038167938931297,
+      "DEINOCOCCUS": 0.09090909090909091,
+      "THERMOCOCCUS": 0.17647058823529413,
+      "METHANOSARCINA": 0.1534090909090909,
+      "KLUYVEROMYCES": 0.6185185185185185,
+      "ARABIDOPSIS": 0.7037943696450428
+    },
+    "contrasts": {
+      "SALMONELLA>DEINOCOCCUS": true,
+      "THERMOCOCCUS>METHANOSARCINA": true,
+      "KLUYVEROMYCES>ARABIDOPSIS": false
+    },
+    "positive_contrasts": 2,
+    "status": "MIXED"
+  }
+}

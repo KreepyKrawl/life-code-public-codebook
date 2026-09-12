@@ -1,0 +1,205 @@
+{
+  "status": "PANEL2_ASSEMBLY_GATE_PASS_PRE_MOP_SCAN",
+  "genomes": {
+    "PSEUDOMONAS": {
+      "fasta": "sources/PANEL2_PSEUDOMONAS_GCF_000006765.1_genomic.fna",
+      "gff": "sources/PANEL2_PSEUDOMONAS_GCF_000006765.1_genomic.gff"
+    },
+    "MYCOPLASMA": {
+      "fasta": "sources/PANEL2_MYCOPLASMA_GCF_000027325.1_genomic.fna",
+      "gff": "sources/PANEL2_MYCOPLASMA_GCF_000027325.1_genomic.gff"
+    },
+    "METHANOCALDOCOCCUS": {
+      "fasta": "sources/PANEL2_METHANOCALDOCOCCUS_GCF_000091665.1_genomic.fna",
+      "gff": "sources/PANEL2_METHANOCALDOCOCCUS_GCF_000091665.1_genomic.gff"
+    },
+    "HALOFERAX": {
+      "fasta": "sources/PANEL2_HALOFERAX_GCF_000025685.1_genomic.fna",
+      "gff": "sources/PANEL2_HALOFERAX_GCF_000025685.1_genomic.gff"
+    },
+    "NEUROSPORA": {
+      "fasta": "sources/PANEL2_NEUROSPORA_GCF_000182925.2_genomic.fna",
+      "gff": "sources/PANEL2_NEUROSPORA_GCF_000182925.2_genomic.gff"
+    },
+    "CELEGANS": {
+      "fasta": "sources/PANEL2_CELEGANS_GCF_000002985.6_genomic.fna",
+      "gff": "sources/PANEL2_CELEGANS_GCF_000002985.6_genomic.gff"
+    }
+  },
+  "record_maps": {
+    "PSEUDOMONAS": {
+      "NC_002516.2": "NC_002516.2"
+    },
+    "MYCOPLASMA": {
+      "NC_000908.2": "NC_000908.2"
+    },
+    "METHANOCALDOCOCCUS": {
+      "NC_000909.1": "NC_000909.1",
+      "NC_001732.1": "NC_001732.1",
+      "NC_001733.1": "NC_001733.1"
+    },
+    "HALOFERAX": {
+      "NC_013967.1": "NC_013967.1",
+      "NC_013968.1": "NC_013968.1",
+      "NC_013965.1": "NC_013965.1",
+      "NC_013964.1": "NC_013964.1",
+      "NC_013966.1": "NC_013966.1"
+    },
+    "NEUROSPORA": {
+      "NC_026501.1": "NC_026501.1",
+      "NC_026502.1": "NC_026502.1",
+      "NC_026503.1": "NC_026503.1",
+      "NC_026504.1": "NC_026504.1",
+      "NC_026505.1": "NC_026505.1",
+      "NC_026506.1": "NC_026506.1",
+      "NC_026507.1": "NC_026507.1",
+      "NW_011929459.1": "NW_011929459.1",
+      "NW_011929460.1": "NW_011929460.1",
+      "NW_011929461.1": "NW_011929461.1",
+      "NW_011929462.1": "NW_011929462.1",
+      "NW_011929463.1": "NW_011929463.1",
+      "NW_011929464.1": "NW_011929464.1",
+      "NW_011929465.1": "NW_011929465.1",
+      "NW_011929466.1": "NW_011929466.1",
+      "NW_011929467.1": "NW_011929467.1",
+      "NW_011929468.1": "NW_011929468.1",
+      "NW_011929469.1": "NW_011929469.1",
+      "NW_011929470.1": "NW_011929470.1",
+      "NW_011929471.1": "NW_011929471.1",
+      "NC_026614.1": "NC_026614.1"
+    },
+    "CELEGANS": {
+      "NC_003279.8": "NC_003279.8",
+      "NC_003280.10": "NC_003280.10",
+      "NC_003281.10": "NC_003281.10",
+      "NC_003282.8": "NC_003282.8",
+      "NC_003283.11": "NC_003283.11",
+      "NC_003284.9": "NC_003284.9",
+      "NC_001328.1": "NC_001328.1"
+    }
+  },
+  "record_lengths": {
+    "PSEUDOMONAS": {
+      "NC_002516.2": 6264404
+    },
+    "MYCOPLASMA": {
+      "NC_000908.2": 580076
+    },
+    "METHANOCALDOCOCCUS": {
+      "NC_000909.1": 1664970,
+      "NC_001732.1": 58407,
+      "NC_001733.1": 16550
+    },
+    "HALOFERAX": {
+      "NC_013967.1": 2847757,
+      "NC_013968.1": 85092,
+      "NC_013965.1": 6359,
+      "NC_013964.1": 437906,
+      "NC_013966.1": 635786
+    },
+    "NEUROSPORA": {
+      "NC_026501.1": 9798893,
+      "NC_026502.1": 4478683,
+      "NC_026503.1": 5274802,
+      "NC_026504.1": 6000761,
+      "NC_026505.1": 6436246,
+      "NC_026506.1": 4218384,
+      "NC_026507.1": 4255303,
+      "NW_011929459.1": 192308,
+      "NW_011929460.1": 142473,
+      "NW_011929461.1": 125404,
+      "NW_011929462.1": 31696,
+      "NW_011929463.1": 19714,
+      "NW_011929464.1": 13515,
+      "NW_011929465.1": 11565,
+      "NW_011929466.1": 9397,
+      "NW_011929467.1": 8983,
+      "NW_011929468.1": 6701,
+      "NW_011929469.1": 6309,
+      "NW_011929470.1": 4755,
+      "NW_011929471.1": 1646,
+      "NC_026614.1": 64840
+    },
+    "CELEGANS": {
+      "NC_003279.8": 15072434,
+      "NC_003280.10": 15279421,
+      "NC_003281.10": 13783801,
+      "NC_003282.8": 17493829,
+      "NC_003283.11": 20924180,
+      "NC_003284.9": 17718942,
+      "NC_001328.1": 13794
+    }
+  },
+  "circular_records": {
+    "PSEUDOMONAS": {
+      "NC_002516.2": true
+    },
+    "MYCOPLASMA": {
+      "NC_000908.2": true
+    },
+    "METHANOCALDOCOCCUS": {
+      "NC_000909.1": true,
+      "NC_001732.1": true,
+      "NC_001733.1": true
+    },
+    "HALOFERAX": {
+      "NC_013967.1": true,
+      "NC_013968.1": true,
+      "NC_013965.1": true,
+      "NC_013964.1": true,
+      "NC_013966.1": true
+    },
+    "NEUROSPORA": {
+      "NC_026501.1": false,
+      "NC_026502.1": false,
+      "NC_026503.1": false,
+      "NC_026504.1": false,
+      "NC_026505.1": false,
+      "NC_026506.1": false,
+      "NC_026507.1": false,
+      "NW_011929459.1": false,
+      "NW_011929460.1": false,
+      "NW_011929461.1": false,
+      "NW_011929462.1": false,
+      "NW_011929463.1": false,
+      "NW_011929464.1": false,
+      "NW_011929465.1": false,
+      "NW_011929466.1": false,
+      "NW_011929467.1": false,
+      "NW_011929468.1": false,
+      "NW_011929469.1": false,
+      "NW_011929470.1": false,
+      "NW_011929471.1": false,
+      "NC_026614.1": true
+    },
+    "CELEGANS": {
+      "NC_003279.8": false,
+      "NC_003280.10": false,
+      "NC_003281.10": false,
+      "NC_003282.8": false,
+      "NC_003283.11": false,
+      "NC_003284.9": false,
+      "NC_001328.1": true
+    }
+  },
+  "organellar_records": {
+    "PSEUDOMONAS": [],
+    "MYCOPLASMA": [],
+    "METHANOCALDOCOCCUS": [],
+    "HALOFERAX": [],
+    "NEUROSPORA": [
+      "NC_026614.1"
+    ],
+    "CELEGANS": [
+      "NC_001328.1"
+    ]
+  },
+  "summary_columns": {
+    "PSEUDOMONAS": "PSEUDOMONAS_occurrences",
+    "MYCOPLASMA": "MYCOPLASMA_occurrences",
+    "METHANOCALDOCOCCUS": "METHANOCALDOCOCCUS_occurrences",
+    "HALOFERAX": "HALOFERAX_occurrences",
+    "NEUROSPORA": "NEUROSPORA_occurrences",
+    "CELEGANS": "CELEGANS_occurrences"
+  }
+}

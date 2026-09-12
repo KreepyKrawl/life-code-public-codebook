@@ -1,0 +1,45 @@
+{
+  "entry_id": "LC-UNK-MOP-0001",
+  "entry_type": "UNK",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "A complete binary freeze of all 618,470 real three-domain MOP16-14-v1 token identities was created after the preregistered global gate passed.",
+      "source_refs": [
+        "REAL_SHARED_MOP16_14.ids.bin",
+        "MOP16_14_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "This file is a decompiler candidate vocabulary, not a list of 618,470 validated biological instructions.",
+      "source_refs": [
+        "MOP16_14_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "count": 618470,
+    "format": "uint64 little-endian IDs",
+    "encoding": "(mask_id << 28) | projected_14base_key",
+    "file": "REAL_SHARED_MOP16_14.ids.bin",
+    "sha256": "cf0b28a27d001e78f1a8b5022cef6282568785b8c005aceda1ddde1aba8d410c"
+  },
+  "semantics": {
+    "validated_identity": "UNKNOWN candidate vocabulary",
+    "annotation_status": "NOT_ANNOTATED"
+  },
+  "relationships": [
+    "LC-OBS-MOP-0001"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Functional, structural, historical, and lineage classification of individual token types."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "REAL_SHARED_MOP16_14.ids.bin",
+    "MOP16_14_RESULT_0001.json"
+  ]
+}

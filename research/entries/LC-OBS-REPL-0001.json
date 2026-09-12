@@ -1,0 +1,82 @@
+{
+  "entry_id": "LC-OBS-REPL-0001",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "The frozen mask-stratified diagnostic sample shared 4 token IDs with the primary sample; exclusion without replacement retained 596 tokens, all recovered in all three genomes with 2191 total classified occurrences.",
+      "source_refs": [
+        "MOP_DIAGNOSTIC_NONOVERLAP_SAMPLE_MANIFEST.json",
+        "MOP_DIAGNOSTIC_SCANNER_RUN.txt",
+        "MOP_DIAGNOSTIC_CLASSIFIED_OCCURRENCES.csv"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "Diagnostic boundary-role S_pair=36 versus matched null mean=28.44855; effect ratio=1.265 and one-sided tail=0.068219, yielding LC-PRED-0023 MIXED_WEAKENED.",
+      "source_refs": [
+        "DIAGNOSTIC_BOUNDARY_REPLICATION_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "The independent-token diagnostic sample points in the same direction as the primary boundary-role result but does not meet the frozen replication significance threshold; boundary-role generality is therefore weakened/unconfirmed rather than replicated.",
+      "source_refs": [
+        "DIAGNOSTIC_BOUNDARY_REPLICATION_RESULT_0001.json",
+        "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "retained_N": 596,
+    "overlap_removed": 4,
+    "classified_occurrences": 2191,
+    "boundary_role_counts": {
+      "ECOLI": 81,
+      "PYRO": 55,
+      "YEAST": 92
+    },
+    "pair_overlaps": {
+      "EP": 8,
+      "EY": 16,
+      "PY": 12
+    },
+    "all_three": 3,
+    "S_pair_rep": 36,
+    "null": {
+      "replicates": 100000,
+      "generator": "NumPy PCG64",
+      "seed": 290029,
+      "mean": 28.44855,
+      "sd": 4.65018417887937,
+      "q95": 36.0,
+      "q99": 40.0,
+      "mc_tail_ge": 0.06821931780682193
+    },
+    "effect_ratio": 1.2654423511918884,
+    "primary_effect_ratio_historical": 1.646917801823155,
+    "LC-PRED-0023": "MIXED_WEAKENED"
+  },
+  "semantics": {
+    "replication_status": "DIRECTIONAL_NOT_SIGNIFICANT",
+    "same_species_corpus": true
+  },
+  "relationships": [
+    "LC-OBS-INTERFACE-0002",
+    "LC-OBS-INTERFACE-0003"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Whether the broad boundary-role recurrence reproduces in independently chosen species.",
+    "Whether a larger independently frozen token sample would distinguish the ~1.27x diagnostic effect from chance."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "MOP_DIAGNOSTIC_NONOVERLAP_SAMPLE_MANIFEST.json",
+    "MOP_DIAGNOSTIC_SCANNER_RUN.txt",
+    "MOP_DIAGNOSTIC_CLASSIFIED_OCCURRENCES.csv",
+    "DIAGNOSTIC_BOUNDARY_REPLICATION_RESULT_0001.json",
+    "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json"
+  ]
+}

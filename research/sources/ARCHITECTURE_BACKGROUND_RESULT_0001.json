@@ -1,0 +1,194 @@
+{
+  "background_counts": {
+    "ECOLI": {
+      "rRNA": 32410,
+      "tRNA": 7908,
+      "protein_coding_CDS": 4003860,
+      "other_noncoding_RNA": 11583,
+      "intergenic": 418722,
+      "repeat_or_mobile_element": 8334,
+      "organellar": 0,
+      "overlap_multiple_features": 49184,
+      "unresolved": 109636,
+      "VALID_TOTAL": 4641637
+    },
+    "PYRO": {
+      "rRNA": 4834,
+      "tRNA": 4333,
+      "protein_coding_CDS": 1761834,
+      "other_noncoding_RNA": 1636,
+      "intergenic": 121337,
+      "repeat_or_mobile_element": 13904,
+      "organellar": 0,
+      "overlap_multiple_features": 363,
+      "unresolved": 0,
+      "VALID_TOTAL": 1908241
+    },
+    "YEAST": {
+      "rRNA": 10539,
+      "tRNA": 25540,
+      "protein_coding_CDS": 8567608,
+      "other_noncoding_RNA": 35033,
+      "intergenic": 2890085,
+      "repeat_or_mobile_element": 134786,
+      "organellar": 85764,
+      "overlap_multiple_features": 258430,
+      "unresolved": 149065,
+      "VALID_TOTAL": 12156850
+    }
+  },
+  "background_probabilities": {
+    "ECOLI": {
+      "rRNA": 0.006982450372573297,
+      "tRNA": 0.0017037092732585509,
+      "protein_coding_CDS": 0.8625965365236445,
+      "other_noncoding_RNA": 0.0024954558057857603,
+      "intergenic": 0.09020998410690022,
+      "repeat_or_mobile_element": 0.0017954872386617049,
+      "organellar": 0.0,
+      "overlap_multiple_features": 0.010596261620630825,
+      "unresolved": 0.02362011505854508
+    },
+    "PYRO": {
+      "rRNA": 0.0025332230048510642,
+      "tRNA": 0.002270677550686732,
+      "protein_coding_CDS": 0.9232764624594063,
+      "other_noncoding_RNA": 0.0008573340579098762,
+      "intergenic": 0.06358578397592338,
+      "repeat_or_mobile_element": 0.007286291406588581,
+      "organellar": 0.0,
+      "overlap_multiple_features": 0.0001902275446340373,
+      "unresolved": 0.0
+    },
+    "YEAST": {
+      "rRNA": 0.0008669186508018114,
+      "tRNA": 0.0021008731702702593,
+      "protein_coding_CDS": 0.7047555904695707,
+      "other_noncoding_RNA": 0.00288174979538285,
+      "intergenic": 0.23773304762335637,
+      "repeat_or_mobile_element": 0.011087247107597774,
+      "organellar": 0.007054788041310043,
+      "overlap_multiple_features": 0.021257973899488764,
+      "unresolved": 0.012261811242221464
+    }
+  },
+  "observed_occurrence_counts_by_genome": {
+    "ECOLI": 1065,
+    "PYRO": 1061,
+    "YEAST": 1538
+  },
+  "individual_context_results": {
+    "rRNA": {
+      "observed": 8,
+      "expected": 11.457380139870725,
+      "ratio": 0.6982399032184216,
+      "mc_tail_ge": 0.8826058697065147
+    },
+    "tRNA": {
+      "observed": 2,
+      "expected": 7.454782193174638,
+      "ratio": 0.26828416286006807,
+      "mc_tail_ge": 0.9948002599870006
+    },
+    "protein_coding_CDS": {
+      "observed": 2628,
+      "expected": 2982.1757362093113,
+      "ratio": 0.8812357930792135,
+      "mc_tail_ge": 1.0
+    },
+    "other_noncoding_RNA": {
+      "observed": 8,
+      "expected": 7.999423053903037,
+      "ratio": 1.0000721234635392,
+      "mc_tail_ge": 0.5421228938553072
+    },
+    "intergenic": {
+      "observed": 884,
+      "expected": 529.1715771170255,
+      "ratio": 1.670535679214125,
+      "mc_tail_ge": 4.999750012499375e-05
+    },
+    "repeat_or_mobile_element": {
+      "observed": 7,
+      "expected": 26.695135143050575,
+      "ratio": 0.2622200622881012,
+      "mc_tail_ge": 1.0
+    },
+    "organellar": {
+      "observed": 35,
+      "expected": 10.850264007534847,
+      "ratio": 3.22572796161408,
+      "mc_tail_ge": 4.999750012499375e-05
+    },
+    "overlap_multiple_features": {
+      "observed": 23,
+      "expected": 44.18161390824226,
+      "ratio": 0.520578538569621,
+      "mc_tail_ge": 0.999750012499375
+    },
+    "unresolved": {
+      "observed": 69,
+      "expected": 44.01408822788712,
+      "ratio": 1.5676798674721137,
+      "mc_tail_ge": 0.00024998750062496874
+    }
+  },
+  "composite_results": {
+    "FOUNDATION_RUNTIME": {
+      "contexts": [
+        "tRNA",
+        "rRNA",
+        "other_noncoding_RNA"
+      ],
+      "observed": 18,
+      "expected": 26.9115853869484,
+      "ratio": 0.6688569157553108,
+      "mc_tail_ge": 0.9724513774311284
+    },
+    "INTEGRATION_STACK": {
+      "contexts": [
+        "repeat_or_mobile_element",
+        "organellar"
+      ],
+      "observed": 42,
+      "expected": 37.545399150585425,
+      "ratio": 1.1186457182556047,
+      "mc_tail_ge": 0.2535873206339683
+    },
+    "HOST_EXECUTABLE": {
+      "contexts": [
+        "protein_coding_CDS"
+      ],
+      "observed": 2628,
+      "expected": 2982.1757362093113,
+      "ratio": 0.8812357930792135,
+      "mc_tail_ge": 1.0
+    },
+    "UNASSIGNED_ADDRESS_SPACE": {
+      "contexts": [
+        "intergenic",
+        "unresolved",
+        "overlap_multiple_features"
+      ],
+      "observed": 976,
+      "expected": 617.367279253155,
+      "ratio": 1.580906589640922,
+      "mc_tail_ge": 4.999750012499375e-05
+    }
+  },
+  "monte_carlo": {
+    "replicates": 20000,
+    "generator": "NumPy PCG64",
+    "seed": 150015
+  },
+  "prediction_outcomes": {
+    "LC-PRED-0013": "FALSIFIED",
+    "LC-PRED-0014": "MIXED_WEAKENED",
+    "LC-PRED-0015": "SUPPORTED"
+  },
+  "pre_execution_release": {
+    "release": "LIFE_CODE_CODEBOOK_v0.0.15",
+    "zip_sha256": "51bae69efc8ff334cd6e86fc02ff674a9265ac4d43612acd6d698b9e4c6d3c7c"
+  },
+  "algorithm_sha256": "230812f7138dcf19a78c0bf09e8d81418d2e3ca3726085613ae8462da024a5fc"
+}

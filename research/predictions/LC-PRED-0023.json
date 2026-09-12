@@ -1,0 +1,38 @@
+{
+  "prediction_id": "LC-PRED-0023",
+  "status": "MIXED_WEAKENED",
+  "evidence_class": "P1",
+  "statement": "The non-overlapping mask-stratified diagnostic MOP sample will reproduce cross-genome recurrence of identical token identities in the broad <=100-bp OUTSIDE_GENE boundary role above the independent-marginal token-identity null.",
+  "support_condition": "S_pair_rep above null mean and one-sided 100,000-replicate Monte Carlo tail <=0.05; strong support <=0.01.",
+  "weakening_condition": "S_pair_rep above null mean but tail >0.05.",
+  "falsification_condition": "S_pair_rep <= null mean.",
+  "contamination_boundary": "Frozen before primary/diagnostic token-ID overlap was counted and before any diagnostic occurrence was recovered or annotated.",
+  "source_refs": [
+    "MOP_PRIMARY_1000_TOKEN_CONTEXT_SUMMARY.csv",
+    "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json"
+  ],
+  "validation": {
+    "result": "MIXED_WEAKENED",
+    "source": "DIAGNOSTIC_BOUNDARY_REPLICATION_RESULT_0001.json",
+    "retained_N": 596,
+    "overlap_removed": 4,
+    "S_pair_rep": 36,
+    "effect_ratio": 1.2654423511918884,
+    "null": {
+      "replicates": 100000,
+      "generator": "NumPy PCG64",
+      "seed": 290029,
+      "mean": 28.44855,
+      "sd": 4.65018417887937,
+      "q95": 36.0,
+      "q99": 40.0,
+      "mc_tail_ge": 0.06821931780682193
+    },
+    "pair_overlaps": {
+      "EP": 8,
+      "EY": 16,
+      "PY": 12
+    },
+    "all_three": 3
+  }
+}

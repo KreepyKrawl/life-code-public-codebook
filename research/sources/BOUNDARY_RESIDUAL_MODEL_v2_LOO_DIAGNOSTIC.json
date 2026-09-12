@@ -1,0 +1,96 @@
+{
+  "summary": {
+    "status": "DESCRIPTIVE_MODEL_DEVELOPMENT_ONLY",
+    "genomes": 12,
+    "positive_direction_count": 8,
+    "mean_z": 0.7361166216090803,
+    "median_z": 0.5684275430208714,
+    "note": "LOO was used only as model-development calibration. Panel 3 remains the prospective test."
+  },
+  "folds": [
+    {
+      "heldout_genome": "ECOLI",
+      "observed_score_sum": 0.15619271538033055,
+      "conditioned_expectation": -0.29136337847226346,
+      "z_analytic": 0.45447686162401,
+      "direction_positive": true
+    },
+    {
+      "heldout_genome": "PYRO",
+      "observed_score_sum": 1.353911530458682,
+      "conditioned_expectation": -0.13897818286450908,
+      "z_analytic": 1.785938295010006,
+      "direction_positive": true
+    },
+    {
+      "heldout_genome": "YEAST",
+      "observed_score_sum": 1.7670075828672704,
+      "conditioned_expectation": -0.21363398349456092,
+      "z_analytic": 2.024770719682343,
+      "direction_positive": true
+    },
+    {
+      "heldout_genome": "BACILLUS",
+      "observed_score_sum": 0.5789327220050905,
+      "conditioned_expectation": 0.45792854779642067,
+      "z_analytic": 0.34124604834614464,
+      "direction_positive": true
+    },
+    {
+      "heldout_genome": "SULFOLOBUS",
+      "observed_score_sum": -0.5495351437861634,
+      "conditioned_expectation": -0.4128579748464868,
+      "z_analytic": -0.4854938227736649,
+      "direction_positive": false
+    },
+    {
+      "heldout_genome": "POMBE",
+      "observed_score_sum": 1.0936757439288984,
+      "conditioned_expectation": 0.48249655737722374,
+      "z_analytic": 1.1633079758146567,
+      "direction_positive": true
+    },
+    {
+      "heldout_genome": "PSEUDOMONAS",
+      "observed_score_sum": 0.10970193001443003,
+      "conditioned_expectation": 0.10035448733365403,
+      "z_analytic": 0.9999999999999986,
+      "direction_positive": true
+    },
+    {
+      "heldout_genome": "MYCOPLASMA",
+      "observed_score_sum": 0.13181818181818183,
+      "conditioned_expectation": 0.13181818181818183,
+      "z_analytic": 0.0,
+      "direction_positive": false
+    },
+    {
+      "heldout_genome": "METHANOCALDOCOCCUS",
+      "observed_score_sum": 0.3926707227145823,
+      "conditioned_expectation": 0.4241681970853337,
+      "z_analytic": -0.08815545510136108,
+      "direction_positive": false
+    },
+    {
+      "heldout_genome": "HALOFERAX",
+      "observed_score_sum": 0.3456477732793522,
+      "conditioned_expectation": 0.3456477732793522,
+      "z_analytic": 0.0,
+      "direction_positive": false
+    },
+    {
+      "heldout_genome": "NEUROSPORA",
+      "observed_score_sum": 0.7874300406280439,
+      "conditioned_expectation": 0.40198744401021397,
+      "z_analytic": 0.6823782244177328,
+      "direction_positive": true
+    },
+    {
+      "heldout_genome": "CELEGANS",
+      "observed_score_sum": 1.9581349049866161,
+      "conditioned_expectation": -0.028244304935004988,
+      "z_analytic": 1.9549306122890993,
+      "direction_positive": true
+    }
+  ]
+}

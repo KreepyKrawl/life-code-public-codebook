@@ -1,0 +1,44 @@
+{
+  "GC_x_wildcard_i0": {
+    "observed": 59,
+    "analytic_null_mean": 47.75354739693482,
+    "mc_null_mean": 47.73996,
+    "mc_null_sd": 3.628906060839823,
+    "q95": 54.0,
+    "q99": 56.0,
+    "mc_tail_ge": 0.0019199808001919981,
+    "fixed_boundary_memberships": 58,
+    "movable_boundary_memberships": 307,
+    "boundary_memberships_total": 365,
+    "movability_fraction": 0.8410958904109589,
+    "seed": 520061
+  },
+  "GC_x_wildcard_j0": {
+    "observed": 59,
+    "analytic_null_mean": 46.88943789515401,
+    "mc_null_mean": 46.89838,
+    "mc_null_sd": 3.6654976982123446,
+    "q95": 53.0,
+    "q99": 56.0,
+    "mc_tail_ge": 0.0008999910000899991,
+    "fixed_boundary_memberships": 44,
+    "movable_boundary_memberships": 321,
+    "boundary_memberships_total": 365,
+    "movability_fraction": 0.8794520547945206,
+    "seed": 520062
+  },
+  "GC_x_separation_x_coarse_center": {
+    "observed": 59,
+    "analytic_null_mean": 48.58212158212158,
+    "mc_null_mean": 48.58321,
+    "mc_null_sd": 3.4549871339702554,
+    "q95": 54.0,
+    "q99": 57.0,
+    "mc_tail_ge": 0.002699973000269997,
+    "fixed_boundary_memberships": 86,
+    "movable_boundary_memberships": 279,
+    "boundary_memberships_total": 365,
+    "movability_fraction": 0.7643835616438356,
+    "seed": 520063
+  }
+}

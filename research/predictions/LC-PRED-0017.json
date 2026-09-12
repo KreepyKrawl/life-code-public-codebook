@@ -1,0 +1,33 @@
+{
+  "prediction_id": "LC-PRED-0017",
+  "status": "STRONGLY_SUPPORTED",
+  "evidence_class": "P1",
+  "statement": "Conditional on true OUTSIDE_GENE primary-intergenic MOP occurrences, the fraction lying within 100 bp of an annotated gene boundary will exceed the genome-matched valid-intergenic 16-nt background fraction.",
+  "support_condition": "observed/expected >1 and one-sided 20,000-replicate Monte Carlo tail <=0.05; strong support <=0.01.",
+  "weakening_condition": "observed/expected >1 but tail >0.05.",
+  "falsification_condition": "observed/expected <=1.",
+  "contamination_boundary": "Frozen before calculating gene-boundary distances for any of the 884 observed primary-intergenic MOP occurrences.",
+  "source_refs": [
+    "ARCHITECTURE_BACKGROUND_RESULT_0001.json",
+    "MOP_PRIMARY_1000_CLASSIFIED_OCCURRENCES.csv"
+  ],
+  "validation": {
+    "result": "STRONGLY_SUPPORTED",
+    "original_prediction_text_unchanged": true,
+    "source": "INTERGENIC_BOUNDARY_RESULT_0001.json",
+    "observed_near_boundary": 513,
+    "eligible_outside_gene_by_genome": {
+      "ECOLI": 221,
+      "PYRO": 120,
+      "YEAST": 536
+    },
+    "background_near_probability_by_genome": {
+      "ECOLI": 0.7719074321062016,
+      "PYRO": 0.7627928826326676,
+      "YEAST": 0.3932747194973211
+    },
+    "expected": 472.9219380619548,
+    "ratio": 1.0847456180660302,
+    "mc_tail_ge": 0.0023498825058747065
+  }
+}

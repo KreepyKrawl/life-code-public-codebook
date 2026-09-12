@@ -1,0 +1,46 @@
+{
+  "entry_id": "LC-ARCH-0013",
+  "entry_type": "OBS",
+  "status": "PROVISIONAL",
+  "evidence": [
+    {
+      "class": "E1",
+      "statement": "The retrospective literal and masked global vocabulary similarities did not behave as universal lineage-depth rulers; branch-local established comparisons are therefore the frozen prospective strategy.",
+      "source_refs": [
+        "RETRO_LINEAGE_LITERAL_SET_JACCARD_RESULT_0001.json"
+      ]
+    },
+    {
+      "class": "P1",
+      "statement": "LC-PRED-0046/0047/0048 prospectively test exact continuity, masked continuity, and masked-only implementation reworking on three known close->far branches.",
+      "source_refs": [
+        "ESTABLISHED_BRANCH_ANCHORS_v1.csv"
+      ]
+    }
+  ],
+  "observations": {
+    "global_mop_distance_model": "NOT_PROMOTED",
+    "branch_local_workflow": "FROZEN"
+  },
+  "semantics": {
+    "evolutionary_map": "EXTERNAL_ESTABLISHED_LINEAGE",
+    "representation_transition": "PROSPECTIVE"
+  },
+  "relationships": [
+    "LC-ARCH-0012",
+    "LC-OBS-EVO-REP-0006"
+  ],
+  "predictions": [
+    "LC-PRED-0046",
+    "LC-PRED-0047",
+    "LC-PRED-0048"
+  ],
+  "unknowns": [
+    "Which representation layer survives each frozen close-to-far branch."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "ESTABLISHED_BRANCH_ANCHORS_v1.csv",
+    "RETRO_LINEAGE_LITERAL_SET_JACCARD_RESULT_0001.json"
+  ]
+}

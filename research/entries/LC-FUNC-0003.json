@@ -1,0 +1,47 @@
+{
+  "entry_id": "LC-FUNC-0003",
+  "entry_type": "FUNC",
+  "status": "SEMANTICALLY_VALIDATED",
+  "evidence": [
+    {
+      "class": "E2",
+      "statement": "The linked LC-PRIM-0006 interval overlaps the Domain V peptidyl-transferase catalytic neighborhood and includes A2058/G2061; part of the same exact sequence is recognized by TLR13 and A2058 is a known antibiotic-resistance target.",
+      "source_refs": [
+        "WEB_FUNCTIONAL_VALIDATION_0002.json"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Codebook abstraction: PTC_GATE \u2014 a conserved active-site-adjacent sequence surface at the peptide-bond-forming machinery, also exposed to antibiotic and innate-immune recognition.",
+      "source_refs": [
+        "WEB_FUNCTIONAL_VALIDATION_0002.json"
+      ]
+    }
+  ],
+  "observations": {
+    "linked_primitives": [
+      "LC-PRIM-0006"
+    ],
+    "reference_region": "23S positions 2049-2065"
+  },
+  "semantics": {
+    "validated_role": "peptidyl-transferase-center/Domain V functional neighborhood",
+    "coder_function_alias": "PTC_GATE"
+  },
+  "relationships": [
+    "LC-PRIM-0006",
+    "LC-GRAM-0003",
+    "LC-GRAM-0004"
+  ],
+  "predictions": [
+    "LC-PRED-0008",
+    "LC-PRED-0009"
+  ],
+  "unknowns": [
+    "Exact mechanistic contribution of every nucleotide in the 17-mer to catalysis versus structural positioning/recognition."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "WEB_FUNCTIONAL_VALIDATION_0002.json"
+  ]
+}

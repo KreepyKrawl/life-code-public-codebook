@@ -1,0 +1,273 @@
+{
+  "gate_id": "MOP_ANNOTATION_GATE_0001",
+  "pre_annotation_release": "LIFE_CODE_CODEBOOK_v0.0.12",
+  "packages": {
+    "ECOLI": {
+      "uploaded_filename": "ECOLI_GCF_000005845.2.zip",
+      "uploaded_zip_sha256": "b4337ba46d4f1f085aba71a39f07e40a981c3cfb781c92dd87c0509a87d1d871",
+      "uploaded_zip_size_bytes": 5214814,
+      "assembly_accession": "GCF_000005845.2",
+      "current_accession": "GCF_000005845.2",
+      "assembly_name": "ASM584v2",
+      "organism_name": "Escherichia coli str. K-12 substr. MG1655",
+      "tax_id": 511145,
+      "annotation_info": {
+        "name": "Annotation submitted by NCBI RefSeq",
+        "provider": "NCBI RefSeq",
+        "releaseDate": "2022-03-09",
+        "stats": {
+          "geneCounts": {
+            "total": 4651,
+            "proteinCoding": 4290,
+            "nonCoding": 215,
+            "pseudogene": 145,
+            "other": 1
+          }
+        }
+      },
+      "frozen_record_count": 1,
+      "annotation_record_count": 1,
+      "exact_sequence_record_matches": 1,
+      "all_frozen_records_exact_sequence_match": true,
+      "record_mapping": [
+        {
+          "frozen_record": "ENA|U00096|U00096.3",
+          "frozen_description": "ENA|U00096|U00096.3 Escherichia coli str. K-12 substr. MG1655, complete genome.",
+          "annotation_seqid": "NC_000913.3",
+          "annotation_description": "NC_000913.3 Escherichia coli str. K-12 substr. MG1655, complete genome",
+          "length_bp": 4641652,
+          "sequence_sha256": "e999dceccb76562d40e49a10d9e6d4cf1c05d184f4f80b92bb32d4a2420c11d0"
+        }
+      ],
+      "gff_source_file": "ECOLI_GCF_000005845.2_genomic.gff",
+      "gff_sha256": "af8609c2ff73e4e23f2007b4938470d350fe8ee75dba832f908992855767fac8",
+      "gbff_sha256": "555efa31643e12bc53f3e4d87f4b94dd270d2d0464e239a7833700f1b58360e4",
+      "downloaded_genome_fna_sha256": "53bb6a51b6e92139ced1e38f74b7938781027c52200922ff03718c2237d23bb4"
+    },
+    "PYRO": {
+      "uploaded_filename": "PYRO_GCF_000007305.1.zip",
+      "uploaded_zip_sha256": "de713a35bf453da88c98ca5de911eebb9ca8a87cb1f273d30aa4bdf85b80d297",
+      "uploaded_zip_size_bytes": 2189934,
+      "assembly_accession": "GCF_000007305.1",
+      "current_accession": "GCF_000007305.1",
+      "assembly_name": "ASM730v1",
+      "organism_name": "Pyrococcus furiosus DSM 3638",
+      "tax_id": 186497,
+      "annotation_info": {
+        "name": "GCF_000007305.1-RS_2024_10_21",
+        "provider": "NCBI RefSeq",
+        "releaseDate": "2024-10-21",
+        "stats": {
+          "geneCounts": {
+            "total": 2147,
+            "proteinCoding": 2025,
+            "nonCoding": 68,
+            "pseudogene": 54
+          }
+        },
+        "method": "Best-placed reference protein set; GeneMarkS-2+",
+        "pipeline": "NCBI Prokaryotic Genome Annotation Pipeline (PGAP)",
+        "softwareVersion": "6.8"
+      },
+      "frozen_record_count": 1,
+      "annotation_record_count": 1,
+      "exact_sequence_record_matches": 1,
+      "all_frozen_records_exact_sequence_match": true,
+      "record_mapping": [
+        {
+          "frozen_record": "NC_003413.1",
+          "frozen_description": "NC_003413.1 Pyrococcus furiosus DSM 3638, complete sequence",
+          "annotation_seqid": "NC_003413.1",
+          "annotation_description": "NC_003413.1 Pyrococcus furiosus DSM 3638, complete sequence",
+          "length_bp": 1908256,
+          "sequence_sha256": "34307cbb2b2f2fb8f64bc36c3581c4115347652ded46a343e1c68bb0cea9bdb2"
+        }
+      ],
+      "gff_source_file": "PYRO_GCF_000007305.1_genomic.gff",
+      "gff_sha256": "3393cf445cfeacfa23f7ff922cf9895a55ab7f4f5d92d618934862dbae9da09b",
+      "gbff_sha256": "6db6d2c6fe67eaf63cc714b6f566346107407703d45264357d72b393adfa3ca3",
+      "downloaded_genome_fna_sha256": "e9c87294756c7cfc15e61aa067c2169a8513ac755bce4a3d1f3eedf385cffa76"
+    },
+    "YEAST": {
+      "uploaded_filename": "YEAST_GCF_000146045.2.zip",
+      "uploaded_zip_sha256": "84ce1e089e072eab876c6ea7f448c66dd7359861076edebe6f82b66e9e24d096",
+      "uploaded_zip_size_bytes": 15659875,
+      "assembly_accession": "GCF_000146045.2",
+      "current_accession": "GCF_000146045.2",
+      "assembly_name": "R64",
+      "organism_name": "Saccharomyces cerevisiae S288C",
+      "tax_id": 559292,
+      "annotation_info": {
+        "name": "SGD R64-5-1",
+        "provider": "SGD",
+        "releaseDate": "2026-07-10",
+        "stats": {
+          "geneCounts": {
+            "total": 6477,
+            "proteinCoding": 6021,
+            "nonCoding": 438,
+            "pseudogene": 18
+          }
+        },
+        "busco": {
+          "buscoLineage": "saccharomycetes_odb10",
+          "buscoVer": "5.7.1",
+          "complete": 0.994384646,
+          "singleCopy": 0.972391188,
+          "duplicated": 0.021993449,
+          "fragmented": 0.00280767423,
+          "missing": 0.00280767423,
+          "totalCount": "2137"
+        },
+        "status": "Full Annotation"
+      },
+      "frozen_record_count": 17,
+      "annotation_record_count": 17,
+      "exact_sequence_record_matches": 17,
+      "all_frozen_records_exact_sequence_match": true,
+      "record_mapping": [
+        {
+          "frozen_record": "chr2",
+          "frozen_description": "chr2",
+          "annotation_seqid": "NC_001134.8",
+          "annotation_description": "NC_001134.8 Saccharomyces cerevisiae S288C chromosome II, complete sequence",
+          "length_bp": 813184,
+          "sequence_sha256": "1d3d69f9e8e924f34f23ec3daa32641f8ad637f36f21a3f0b0f350f981f3773f"
+        },
+        {
+          "frozen_record": "chr5",
+          "frozen_description": "chr5",
+          "annotation_seqid": "NC_001137.3",
+          "annotation_description": "NC_001137.3 Saccharomyces cerevisiae S288C chromosome V, complete sequence",
+          "length_bp": 576874,
+          "sequence_sha256": "27693c6f4e821d2a631e4a4988e6e0e3ccf4a6a4b2d2791fb841de7a3206075b"
+        },
+        {
+          "frozen_record": "chr13",
+          "frozen_description": "chr13",
+          "annotation_seqid": "NC_001145.3",
+          "annotation_description": "NC_001145.3 Saccharomyces cerevisiae S288C chromosome XIII, complete sequence",
+          "length_bp": 924431,
+          "sequence_sha256": "2d9d9c272baccee2ad7e52e395dd9b85efca3fb87072cc541b8a8e4f3af3d47c"
+        },
+        {
+          "frozen_record": "chr1",
+          "frozen_description": "chr1",
+          "annotation_seqid": "NC_001133.9",
+          "annotation_description": "NC_001133.9 Saccharomyces cerevisiae S288C chromosome I, complete sequence",
+          "length_bp": 230218,
+          "sequence_sha256": "3c5c06b2ccb802798265a543cc6511d954a0a64a522c3f6af05be0553d6f0a62"
+        },
+        {
+          "frozen_record": "chr6",
+          "frozen_description": "chr6",
+          "annotation_seqid": "NC_001138.5",
+          "annotation_description": "NC_001138.5 Saccharomyces cerevisiae S288C chromosome VI, complete sequence",
+          "length_bp": 270161,
+          "sequence_sha256": "473b26e8befabff7978a5019567e0c136e50fa5107680d1303cbe10d2155ac3a"
+        },
+        {
+          "frozen_record": "chr12",
+          "frozen_description": "chr12",
+          "annotation_seqid": "NC_001144.5",
+          "annotation_description": "NC_001144.5 Saccharomyces cerevisiae S288C chromosome XII, complete sequence",
+          "length_bp": 1078177,
+          "sequence_sha256": "768a47c6d9057fa70275f978c561e1e3bdf45e8c7e9b88f3313d2d0ac37c3de5"
+        },
+        {
+          "frozen_record": "chr11",
+          "frozen_description": "chr11",
+          "annotation_seqid": "NC_001143.9",
+          "annotation_description": "NC_001143.9 Saccharomyces cerevisiae S288C chromosome XI, complete sequence",
+          "length_bp": 666816,
+          "sequence_sha256": "7cc5d693ff025732b105bdc629a79cc052f41dabaf6d4ce6c75de8f9d82ec274"
+        },
+        {
+          "frozen_record": "chr10",
+          "frozen_description": "chr10",
+          "annotation_seqid": "NC_001142.9",
+          "annotation_description": "NC_001142.9 Saccharomyces cerevisiae S288C chromosome X, complete sequence",
+          "length_bp": 745751,
+          "sequence_sha256": "7e775dfee24430c4eff2dcc22656636b08bab4d356fa9199be59754cd864b6ab"
+        },
+        {
+          "frozen_record": "chrM",
+          "frozen_description": "chrM",
+          "annotation_seqid": "NC_001224.1",
+          "annotation_description": "NC_001224.1 Saccharomyces cerevisiae S288c mitochondrion, complete genome",
+          "length_bp": 85779,
+          "sequence_sha256": "91d5192f1bd21aa9a00259b21a43c450de1926e87fb1847ab1533f437e1b488e"
+        },
+        {
+          "frozen_record": "chr4",
+          "frozen_description": "chr4",
+          "annotation_seqid": "NC_001136.10",
+          "annotation_description": "NC_001136.10 Saccharomyces cerevisiae S288C chromosome IV, complete sequence",
+          "length_bp": 1531933,
+          "sequence_sha256": "a1362645406e70c61aa2bb4a880d3af83bdb4b7892598eda3350eb091e719855"
+        },
+        {
+          "frozen_record": "chr14",
+          "frozen_description": "chr14",
+          "annotation_seqid": "NC_001146.8",
+          "annotation_description": "NC_001146.8 Saccharomyces cerevisiae S288C chromosome XIV, complete sequence",
+          "length_bp": 784333,
+          "sequence_sha256": "c3bbca6b880946bd2172a6e797fe9d3830eb1494b6f63ef4637c4993cc56c789"
+        },
+        {
+          "frozen_record": "chr8",
+          "frozen_description": "chr8",
+          "annotation_seqid": "NC_001140.6",
+          "annotation_description": "NC_001140.6 Saccharomyces cerevisiae S288C chromosome VIII, complete sequence",
+          "length_bp": 562643,
+          "sequence_sha256": "c859093aeeb0fa8a9a9d74718182684d87e4c9709dc11f223c74c54763d240fe"
+        },
+        {
+          "frozen_record": "chr16",
+          "frozen_description": "chr16",
+          "annotation_seqid": "NC_001148.4",
+          "annotation_description": "NC_001148.4 Saccharomyces cerevisiae S288C chromosome XVI, complete sequence",
+          "length_bp": 948066,
+          "sequence_sha256": "d764a0e87af8d43b2dbec78d69423f4008f266bdfa5003c8b6d2ba77f8872918"
+        },
+        {
+          "frozen_record": "chr15",
+          "frozen_description": "chr15",
+          "annotation_seqid": "NC_001147.6",
+          "annotation_description": "NC_001147.6 Saccharomyces cerevisiae S288C chromosome XV, complete sequence",
+          "length_bp": 1091291,
+          "sequence_sha256": "e0d3976e52b8051431f89b97d31cfba937cdb37286f93ed5689b10949fea0c7b"
+        },
+        {
+          "frozen_record": "chr9",
+          "frozen_description": "chr9",
+          "annotation_seqid": "NC_001141.2",
+          "annotation_description": "NC_001141.2 Saccharomyces cerevisiae S288C chromosome IX, complete sequence",
+          "length_bp": 439888,
+          "sequence_sha256": "e738aaa8eee8e7b0c187ea1c96e3dccd0d661a67865388051ab445460e99971e"
+        },
+        {
+          "frozen_record": "chr3",
+          "frozen_description": "chr3",
+          "annotation_seqid": "NC_001135.5",
+          "annotation_description": "NC_001135.5 Saccharomyces cerevisiae S288C chromosome III, complete sequence",
+          "length_bp": 316620,
+          "sequence_sha256": "f2ac8762cff58a4a1375a05dcb70e783609efc19d49b64da95ecb5214ee52b3d"
+        },
+        {
+          "frozen_record": "chr7",
+          "frozen_description": "chr7",
+          "annotation_seqid": "NC_001139.9",
+          "annotation_description": "NC_001139.9 Saccharomyces cerevisiae S288C chromosome VII, complete sequence",
+          "length_bp": 1090940,
+          "sequence_sha256": "f43c30ed46c6906024f510bdf24781b44d1ec3472c5a82cda1ad5b62b5e91094"
+        }
+      ],
+      "gff_source_file": "YEAST_GCF_000146045.2_genomic.gff",
+      "gff_sha256": "228ea6918fc034e80a34f87d30729c0a8caeb019861baef7d14878324a0d7b8c",
+      "gbff_sha256": "af0b5e31355850331081fa0bcb034d311db67c7e19e9e0c5f3837eb056e75f11",
+      "downloaded_genome_fna_sha256": "fe42735d3e6242f8c40b457a232940e34ef15eb4502717e54a34ed118face4c1"
+    }
+  },
+  "status": "PASS"
+}

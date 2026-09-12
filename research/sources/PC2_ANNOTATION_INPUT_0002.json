@@ -1,0 +1,31 @@
+{
+  "status": "POST_FREEZE_ANNOTATION_INPUT",
+  "discovery_freeze_sha256_file": "../PROOF_CASE_0002_FREEZE_SHA256.txt",
+  "ecoli": {
+    "assembly_sequence": "U00096.3",
+    "gene": "fbaA",
+    "locus": "b2925 / EG10282",
+    "function": "fructose-bisphosphate aldolase class II",
+    "strand": "-",
+    "coordinate_system": "1-based inclusive",
+    "start": 3070165,
+    "end": 3071244,
+    "source": "EcoCyc / RegulonDB / UniProt cross-check"
+  },
+  "yeast": {
+    "assembly": "sacCer3 / S288C",
+    "chromosome": "chrXI",
+    "gene": "FBA1",
+    "systematic_name": "YKL060C",
+    "function": "fructose-bisphosphate aldolase",
+    "strand": "-",
+    "coordinate_system": "1-based inclusive",
+    "start": 326408,
+    "end": 327487,
+    "source": "SGD / UCSC sacCer3 / KEGG cross-check"
+  },
+  "external_validation": {
+    "class": "class II A fructose-1,6-bisphosphate aldolase",
+    "note": "Published phylogenetic analysis includes both E. coli and S. cerevisiae class-II A aldolases."
+  }
+}

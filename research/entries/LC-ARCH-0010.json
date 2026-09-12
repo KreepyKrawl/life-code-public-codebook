@@ -1,0 +1,50 @@
+{
+  "entry_id": "LC-ARCH-0010",
+  "entry_type": "OBS",
+  "status": "PROVISIONAL",
+  "evidence": [
+    {
+      "class": "I1",
+      "statement": "The retrospective implementation-depth result generated three fresh Panel-3 tests distinguishing literal implementation reuse from higher masked-token transfer.",
+      "source_refs": [
+        "RETRO_IMPLEMENTATION_DEPTH_RESULT_0001.json",
+        "RETROACTIVE_MISSED_PATTERN_MAP_v1.json"
+      ]
+    },
+    {
+      "class": "P1",
+      "statement": "LC-PRED-0036/0037/0038 are frozen before Panel-3 acquisition and directly test literal-vs-masked representation depth.",
+      "source_refs": [
+        "RETRO_IMPLEMENTATION_DEPTH_RESULT_0001.json"
+      ]
+    }
+  ],
+  "observations": {
+    "new_panel3_predictions": 3,
+    "panel3_sequence_acquired": false
+  },
+  "semantics": {
+    "validated_identity": "continuous-discovery prospective propagation",
+    "evolutionary_code_mechanism": "UNKNOWN"
+  },
+  "relationships": [
+    "LC-OBS-EVO-REP-0001",
+    "LC-ARCH-0009",
+    "LC-ARCH-0008"
+  ],
+  "predictions": [
+    "LC-PRED-0036",
+    "LC-PRED-0037",
+    "LC-PRED-0038"
+  ],
+  "unknowns": [
+    "Whether masked-only C2 recurrence replicates prospectively.",
+    "Whether boundary tokens retain more literal code.",
+    "Whether NEAR/FAR literal reuse direction holds across all three domains."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "RETRO_IMPLEMENTATION_DEPTH_RESULT_0001.json",
+    "RETROACTIVE_MISSED_PATTERN_MAP_v1.json"
+  ]
+}

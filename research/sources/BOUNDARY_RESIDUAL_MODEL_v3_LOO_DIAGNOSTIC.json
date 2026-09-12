@@ -1,0 +1,171 @@
+{
+  "status": "DESCRIPTIVE_MODEL_DEVELOPMENT_ONLY",
+  "genomes": 20,
+  "positive_direction_count": 12,
+  "mean_z": 0.9607493962359562,
+  "median_z": 0.8981493067767188,
+  "min_z": -0.9999999999999998,
+  "max_z": 3.0669962052195907,
+  "per_genome": {
+    "ECOLI": {
+      "observed_score_sum": -0.4241956085870807,
+      "analytic_null_expectation": -0.20133498119765092,
+      "analytic_null_variance": 0.759120712879712,
+      "analytic_z": -0.25578668180204844,
+      "recovered_tokens": 1000,
+      "boundary_tokens": 158
+    },
+    "BACILLUS": {
+      "observed_score_sum": 0.4529651456542214,
+      "analytic_null_expectation": 0.2819822560596371,
+      "analytic_null_variance": 0.061447795401370575,
+      "analytic_z": 0.6897623725052087,
+      "recovered_tokens": 142,
+      "boundary_tokens": 18
+    },
+    "PSEUDOMONAS": {
+      "observed_score_sum": -0.03702741702741701,
+      "analytic_null_expectation": -0.03702741702741701,
+      "analytic_null_variance": 0.0,
+      "analytic_z": null,
+      "recovered_tokens": 19,
+      "boundary_tokens": 4
+    },
+    "MYCOPLASMA": {
+      "observed_score_sum": -0.07142857142857142,
+      "analytic_null_expectation": -0.07142857142857142,
+      "analytic_null_variance": 0.0,
+      "analytic_z": null,
+      "recovered_tokens": 45,
+      "boundary_tokens": 2
+    },
+    "SALMONELLA": {
+      "observed_score_sum": 0.5457158384915738,
+      "analytic_null_expectation": 0.6823175119509789,
+      "analytic_null_variance": 0.0913044041449167,
+      "analytic_z": -0.452074651802414,
+      "recovered_tokens": 131,
+      "boundary_tokens": 26
+    },
+    "DEINOCOCCUS": {
+      "observed_score_sum": -0.18489439853076217,
+      "analytic_null_expectation": -0.1326492194674013,
+      "analytic_null_variance": 0.002729558735362643,
+      "analytic_z": -0.9999999999999998,
+      "recovered_tokens": 11,
+      "boundary_tokens": 2
+    },
+    "PYRO": {
+      "observed_score_sum": 0.8689977679459159,
+      "analytic_null_expectation": -0.144387522310425,
+      "analytic_null_variance": 0.5757296673303036,
+      "analytic_z": 1.3355658059133388,
+      "recovered_tokens": 1000,
+      "boundary_tokens": 100
+    },
+    "SULFOLOBUS": {
+      "observed_score_sum": -0.29291396628581495,
+      "analytic_null_expectation": -0.22832781131100455,
+      "analytic_null_variance": 0.048643383228278346,
+      "analytic_z": -0.2928380752818782,
+      "recovered_tokens": 75,
+      "boundary_tokens": 16
+    },
+    "METHANOCALDOCOCCUS": {
+      "observed_score_sum": 0.17292239934046666,
+      "analytic_null_expectation": -0.024086905158333647,
+      "analytic_null_variance": 0.04811454659409037,
+      "analytic_z": 0.8981493067767188,
+      "recovered_tokens": 151,
+      "boundary_tokens": 27
+    },
+    "HALOFERAX": {
+      "observed_score_sum": 0.2888888888888889,
+      "analytic_null_expectation": 0.2888888888888889,
+      "analytic_null_variance": 0.0,
+      "analytic_z": null,
+      "recovered_tokens": 8,
+      "boundary_tokens": 2
+    },
+    "THERMOCOCCUS": {
+      "observed_score_sum": 0.07504273504273505,
+      "analytic_null_expectation": -0.02393162393162393,
+      "analytic_null_variance": 0.0051410913872452346,
+      "analytic_z": 1.3803684859079548,
+      "recovered_tokens": 34,
+      "boundary_tokens": 3
+    },
+    "METHANOSARCINA": {
+      "observed_score_sum": 0.35719601173979515,
+      "analytic_null_expectation": -0.39016558540482227,
+      "analytic_null_variance": 0.14347569538595276,
+      "analytic_z": 1.9730659819866434,
+      "recovered_tokens": 176,
+      "boundary_tokens": 32
+    },
+    "YEAST": {
+      "observed_score_sum": 1.0627036648228083,
+      "analytic_null_expectation": -0.20573071587873473,
+      "analytic_null_variance": 0.7761513416550236,
+      "analytic_z": 1.43977556504931,
+      "recovered_tokens": 1000,
+      "boundary_tokens": 167
+    },
+    "POMBE": {
+      "observed_score_sum": 0.9319443453902012,
+      "analytic_null_expectation": 0.4635654322798395,
+      "analytic_null_variance": 0.164465926130016,
+      "analytic_z": 1.1549398513440838,
+      "recovered_tokens": 351,
+      "boundary_tokens": 49
+    },
+    "NEUROSPORA": {
+      "observed_score_sum": 0.0791857636680278,
+      "analytic_null_expectation": -0.24755847059103353,
+      "analytic_null_variance": 0.1546000408398421,
+      "analytic_z": 0.8310040312734082,
+      "recovered_tokens": 398,
+      "boundary_tokens": 51
+    },
+    "CELEGANS": {
+      "observed_score_sum": 2.0984116530026355,
+      "analytic_null_expectation": -0.3026280279087192,
+      "analytic_null_variance": 0.7848412104078476,
+      "analytic_z": 2.710244289694381,
+      "recovered_tokens": 779,
+      "boundary_tokens": 279
+    },
+    "KLUYVEROMYCES": {
+      "observed_score_sum": 0.9813604992507037,
+      "analytic_null_expectation": 0.6428811068332179,
+      "analytic_null_variance": 0.1713813030793183,
+      "analytic_z": 0.8176181289180494,
+      "recovered_tokens": 270,
+      "boundary_tokens": 55
+    },
+    "ARABIDOPSIS": {
+      "observed_score_sum": 1.5769326844692113,
+      "analytic_null_expectation": -0.2587226927710613,
+      "analytic_null_variance": 0.7343416562771768,
+      "analytic_z": 2.142111478954374,
+      "recovered_tokens": 817,
+      "boundary_tokens": 242
+    },
+    "DROSOPHILA": {
+      "observed_score_sum": -0.041232398797755976,
+      "analytic_null_expectation": 0.02003258042525443,
+      "analytic_null_variance": 0.3330300813525044,
+      "analytic_z": -0.10616235864546507,
+      "recovered_tokens": 750,
+      "boundary_tokens": 74
+    },
+    "CBRIGGSAE": {
+      "observed_score_sum": 2.699231988777793,
+      "analytic_null_expectation": 0.04865331589582012,
+      "analytic_null_variance": 0.7468870358060529,
+      "analytic_z": 3.0669962052195907,
+      "recovered_tokens": 742,
+      "boundary_tokens": 269
+    }
+  }
+}

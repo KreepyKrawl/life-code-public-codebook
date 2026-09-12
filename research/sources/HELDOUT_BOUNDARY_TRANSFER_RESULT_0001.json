@@ -1,0 +1,170 @@
+{
+  "recovered_token_counts": {
+    "BACILLUS": 142,
+    "SULFOLOBUS": 75,
+    "POMBE": 351
+  },
+  "boundary_role_token_counts": {
+    "BACILLUS": 18,
+    "SULFOLOBUS": 16,
+    "POMBE": 49
+  },
+  "boundary_token_ids": {
+    "BACILLUS": [
+      3674390528,
+      7784093695,
+      7797211328,
+      10183778314,
+      12465209321,
+      14562490367,
+      18000642816,
+      18253468668,
+      18266196988,
+      21429534780,
+      21861760895,
+      22313720839,
+      22804389835,
+      23087542273,
+      23890870283,
+      27914144768,
+      28118843383,
+      29310811639
+    ],
+    "SULFOLOBUS": [
+      4778344896,
+      9124573429,
+      11943024637,
+      13155629070,
+      13694142656,
+      17464036352,
+      22813622079,
+      23219945470,
+      24967643963,
+      27460944846,
+      27914144768,
+      28454291712,
+      28937597443,
+      29783555279,
+      30061043456,
+      31457288688
+    ],
+    "POMBE": [
+      268644556,
+      806880819,
+      1613887484,
+      1613955020,
+      2735718412,
+      2802847544,
+      4840359936,
+      6165495735,
+      6643790339,
+      7725649919,
+      7797211328,
+      8337776655,
+      8824849455,
+      9462349823,
+      10503269515,
+      11006246912,
+      11541925884,
+      11812146176,
+      11948294144,
+      13154320383,
+      13702791232,
+      14021804287,
+      14363406338,
+      15854207217,
+      16643752128,
+      17749246080,
+      17988321407,
+      18509428912,
+      18790479555,
+      20102259455,
+      20682162944,
+      21458108431,
+      21474835455,
+      21743263807,
+      22813622079,
+      23072014351,
+      23609425088,
+      23890870283,
+      24967383808,
+      26273112062,
+      26525593407,
+      26577404464,
+      26642022335,
+      26975657855,
+      27914144768,
+      28454155251,
+      29783555279,
+      30920470720,
+      31615613951
+    ]
+  },
+  "pair_overlaps": {
+    "BACILLUS_SULFOLOBUS": 1,
+    "BACILLUS_POMBE": 3,
+    "SULFOLOBUS_POMBE": 3
+  },
+  "all_three_overlap": 1,
+  "LC_PRED_0024": {
+    "observed": 7,
+    "null_mean": 2.96737,
+    "null_sd": 1.6461789948544476,
+    "q95": 6.0,
+    "q99": 7.0,
+    "mc_tail_ge": 0.026569734302656974
+  },
+  "P81_size": 81,
+  "P81_recovered_counts": {
+    "BACILLUS": 22,
+    "SULFOLOBUS": 12,
+    "POMBE": 46
+  },
+  "P81_boundary_hit_counts": {
+    "BACILLUS": 3,
+    "SULFOLOBUS": 3,
+    "POMBE": 12
+  },
+  "LC_PRED_0025": {
+    "observed": 18,
+    "null_mean": 11.76756,
+    "null_sd": 2.9330686399059944,
+    "q95": 17.0,
+    "q99": 19.0,
+    "mc_tail_ge": 0.02891971080289197
+  },
+  "occurrence_context_diagnostic": {
+    "BACILLUS:nonintergenic": 151,
+    "BACILLUS:boundary": 18,
+    "BACILLUS:intergenic_nonboundary": 5,
+    "SULFOLOBUS:intergenic_nonboundary": 7,
+    "SULFOLOBUS:nonintergenic": 64,
+    "SULFOLOBUS:boundary": 17,
+    "POMBE:intergenic_nonboundary": 312,
+    "POMBE:nonintergenic": 541,
+    "POMBE:boundary": 91
+  },
+  "seeds": {
+    "LC-PRED-0024": 320024,
+    "LC-PRED-0025": 320025
+  },
+  "replicates": 100000,
+  "pre_result_release": {
+    "release": "LIFE_CODE_CODEBOOK_v0.0.36",
+    "zip_sha256": "cdfe229e7aaefc9d79984652a2f735763dc09d33cac98e83319de789314949b0"
+  },
+  "analyzer_sha256": "617e31d49dc8baf4d6d7171a22fc35a1c79b5d12f7493d97fe5d5330d95acb19",
+  "geometry_sha256": "c0ff7e669ef92476b1841c22b33ecfcca29c0ef9f1634ec65cbb246f9d5948c3",
+  "prediction_outcomes": {
+    "LC-PRED-0024": "SUPPORTED",
+    "LC-PRED-0025": "SUPPORTED"
+  },
+  "cross_genome_boundary_unique_token_count": 5,
+  "cross_genome_boundary_token_ids": [
+    7797211328,
+    22813622079,
+    23890870283,
+    27914144768,
+    29783555279
+  ]
+}

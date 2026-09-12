@@ -1,0 +1,28 @@
+{
+  "test_id": "LC_PRED_0010_EXACT14",
+  "prediction": "LC-PRED-0010",
+  "pretest_release": "LIFE_CODE_CODEBOOK_v0.0.7",
+  "pretest_zip_sha256": "393ee4619c5e1b279039fea92855d98016667f23134733fc887915db6a8bada1",
+  "implementation_sha256": "d1c590bcb1fb0303642047660495d33fc2300d3fbc7c97ec094afa24384d543f",
+  "raw_output_sha256": "b19483782164952828b97a77340f027fe3f7b26ef39a8b1652820a1eb4a61681",
+  "global_reproduction": {
+    "expected_all_three_unique_14mers": 5561,
+    "observed_all_three_unique_14mers": 5561,
+    "gate_pass": true
+  },
+  "fixed_target": {
+    "reference": "E. coli U00096.3 rrlA 23S rRNA",
+    "window_positions_1based": [
+      2426,
+      2476
+    ],
+    "center": "A2451",
+    "overlap_rule": "14-mer interval overlaps any base of the fixed 51-nt window"
+  },
+  "target_result": {
+    "matching_all_three_exact_14mers": 0,
+    "support_condition_met": false,
+    "outcome": "WEAKENED_NO_EXACT14_TARGET_TOKEN"
+  },
+  "anti_drift_note": "No k<14 follow-up is permitted merely to rescue this target. The previously frozen vocabulary ladder showed k=12 is composition/null dominated. A new representation class (e.g. variable-slot/structural equivalence) must be separately designed and frozen if pursued."
+}

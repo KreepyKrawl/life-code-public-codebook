@@ -1,0 +1,15 @@
+{
+  "prediction_id": "LC-PRED-0005",
+  "status": "FROZEN_UNTESTED",
+  "evidence_class": "P1",
+  "generated_from": [
+    "LC-GRAM-0003",
+    "LC-GRAM-0004"
+  ],
+  "statement": "In additional independent large-subunit-rRNA implementations, token identity should generalize more broadly than exact multi-token spacing: LC-PRIM-0003 and/or LC-PRIM-0006 may persist when the exact 119-bp and 1,370-bp grammar does not.",
+  "test": "On predeclared independent genomes, freeze token occurrences first, then test exact and tolerance-banded spacing without changing bands after inspection.",
+  "support_condition": "Individual token transfer exceeds exact-grammar transfer across increasing phylogenetic distance.",
+  "weakening_condition": "Token and grammar transfer decline at similar rates.",
+  "falsification_condition": "Exact grammar persists at least as broadly as its component tokens across independent evolutionary depths.",
+  "contamination_boundary": "Generated from frozen pilot architecture only; no unseen-genome search performed before freeze."
+}

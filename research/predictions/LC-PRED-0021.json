@@ -1,0 +1,57 @@
+{
+  "prediction_id": "LC-PRED-0021",
+  "status": "FALSIFIED",
+  "evidence_class": "P1",
+  "statement": "Cross-genome boundary-role MOP identities will have greater neighboring-component full-protein local BLOSUM62 similarity than expected under the matched token-assignment null.",
+  "support_condition": "S_NLS above null mean and one-sided 100,000-replicate Monte Carlo tail <=0.05; strong support <=0.01.",
+  "weakening_condition": "S_NLS above null mean but tail >0.05.",
+  "falsification_condition": "S_NLS <= null mean.",
+  "contamination_boundary": "Frozen before any protein similarity score was calculated for the boundary-component candidate set.",
+  "source_refs": [
+    "C3_SAME_SYSTEM_RESULT_0001.json",
+    "C3_BOUNDARY_COMPONENTS_0001.csv",
+    "C3_GBFF_SEQUENCE_GATE_0001.json"
+  ],
+  "validation": {
+    "result": "FALSIFIED",
+    "source": "C3_PROTEIN_SEQUENCE_RESULT_0001.json",
+    "S_NLS_real": 3.9768130775926096,
+    "pair_results": {
+      "EP": {
+        "overlap_count": 29,
+        "S_NLS": 1.1035058652173642,
+        "mean_NLS": 0.038051926386805664,
+        "ge_025": 0,
+        "ge_050": 0,
+        "ge_075": 0
+      },
+      "EY": {
+        "overlap_count": 42,
+        "S_NLS": 1.796908734444948,
+        "mean_NLS": 0.042783541296308285,
+        "ge_025": 0,
+        "ge_050": 0,
+        "ge_075": 0
+      },
+      "PY": {
+        "overlap_count": 26,
+        "S_NLS": 1.076398477930297,
+        "mean_NLS": 0.04139994145885758,
+        "ge_025": 0,
+        "ge_050": 0,
+        "ge_075": 0
+      }
+    },
+    "null": {
+      "replicates": 100000,
+      "generator": "NumPy PCG64",
+      "seed": 250025,
+      "mean": 4.132937972643376,
+      "sd": 0.22416106428342436,
+      "q95": 4.510399359464645,
+      "q99": 4.683156071901322,
+      "mc_tail_ge": 0.7562824371756283
+    },
+    "alignment_cache_pairs": 65321
+  }
+}

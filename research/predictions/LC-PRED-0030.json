@@ -1,0 +1,26 @@
+{
+  "prediction_id": "LC-PRED-0030",
+  "status": "MIXED_WEAKENED",
+  "evidence_class": "P1",
+  "statement": "The immutable P81 Panel-2 boundary transfer T81_6 remains above the same fixed-GC-count \u00d7 wildcard-separation conditioned null.",
+  "primary_statistic": "T81_6",
+  "support_condition": "Observed above conditioned-null mean and one-sided 100,000-replicate Monte Carlo p<=0.05; strong support p<=0.01.",
+  "weakening_condition": "Observed above conditioned-null mean but p>0.05.",
+  "falsification_condition": "Observed <= conditioned-null mean.",
+  "contamination_boundary": "Frozen after the unconditioned Panel-2 result but before any composition-conditioned null was calculated.",
+  "source_refs": [
+    "PANEL2_BOUNDARY_PREDICTION_RESULT_0001.json",
+    "MOP_TOKEN_SIMPLE_FEATURES_v1.csv"
+  ],
+  "validation": {
+    "result": "MIXED_WEAKENED",
+    "source": "PANEL2_COMPOSITION_CONDITIONED_RESULT_0001.json",
+    "observed": 62,
+    "analytic_null_mean": 57.29198694527721,
+    "mc_null_mean": 57.29374,
+    "mc_null_sd": 4.158518583870944,
+    "q95": 64.0,
+    "q99": 67.0,
+    "mc_tail_ge": 0.15623843761562384
+  }
+}

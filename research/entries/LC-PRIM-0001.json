@@ -1,0 +1,87 @@
+{
+  "entry_id": "LC-PRIM-0001",
+  "entry_type": "PRIM",
+  "status": "SEMANTICALLY_VALIDATED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "A 25-bp exact block CCGCCTGGGGAGTACGGCCGCAAGG occurs five times in the frozen E. coli genome and once in the frozen Pyrococcus genome; no yeast occurrence was reported in the focus cluster.",
+      "source_refs": [
+        "PC1_RAW_RECURRENCE_RESULTS.json",
+        "PC1_MAXIMAL_BLOCKS_GE24.csv"
+      ]
+    },
+    {
+      "class": "E2",
+      "statement": "Post-freeze annotation records that the first 16 bases CCGCCTGGGGAGTACG exactly match a published 16sF primer targeting 16S rRNA.",
+      "source_refs": [
+        "PC1_ANNOTATION_PASS_0001.md"
+      ]
+    },
+    {
+      "class": "I1",
+      "statement": "Treat this as a 16S-rRNA-associated conserved primitive, not as proof that the natural genomic sequence itself functions as a laboratory primer.",
+      "source_refs": [
+        "PC1_ANNOTATION_PASS_0001.md"
+      ]
+    }
+  ],
+  "observations": {
+    "sequence_direct": "CCGCCTGGGGAGTACGGCCGCAAGG",
+    "length_bp": 25,
+    "occurrences": {
+      "ECOLI": [
+        [
+          "ENA|U00096|U00096.3",
+          224648
+        ],
+        [
+          "ENA|U00096|U00096.3",
+          3942685
+        ],
+        [
+          "ENA|U00096|U00096.3",
+          4036408
+        ],
+        [
+          "ENA|U00096|U00096.3",
+          4167536
+        ],
+        [
+          "ENA|U00096|U00096.3",
+          4209024
+        ]
+      ],
+      "PYRO": [
+        [
+          "NC_003413.1",
+          137766
+        ]
+      ],
+      "YEAST": []
+    },
+    "validated_subsequence": {
+      "sequence": "CCGCCTGGGGAGTACG",
+      "offset0": 0,
+      "length_bp": 16
+    }
+  },
+  "semantics": {
+    "validated_identity": "16S-rRNA-associated sequence region",
+    "exact_natural_function_of_full_25bp": "UNKNOWN",
+    "validation_note": "First 16 bases match a published 16S-rRNA primer sequence."
+  },
+  "relationships": [
+    "LC-GRAM-0001"
+  ],
+  "predictions": [],
+  "unknowns": [
+    "Specific molecular contribution of the full 25-bp sequence beyond its location in conserved 16S-rRNA-associated sequence."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "PC1_RAW_RECURRENCE_RESULTS.json",
+    "PC1_MAXIMAL_BLOCKS_GE24.csv",
+    "PC1_ANNOTATION_PASS_0001.md"
+  ]
+}

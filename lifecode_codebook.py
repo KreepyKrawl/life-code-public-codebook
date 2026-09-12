@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""LIFE-CODE Codebook Core v0.10 — executable SQLite CLI.
+"""LIFE-CODE Codebook Core v0.11 — executable SQLite CLI.
 
 Standard-library only. The supplied database contains released Tier-A
 calibration evidence and no EXP-0002 outcome values.
@@ -8,7 +8,7 @@ from __future__ import annotations
 import argparse,json,sqlite3,pathlib,hashlib
 
 HERE=pathlib.Path(__file__).resolve().parent
-DEFAULT_DB=HERE/"downloads/LIFE_CODE_CODEBOOK_CORE_v0.10.sqlite"
+DEFAULT_DB=HERE/"downloads/LIFE_CODE_CODEBOOK_CORE_v0.11.sqlite"
 
 def connect(db):
     con=sqlite3.connect(db)
@@ -100,7 +100,7 @@ def graph(con,root,depth=3):
 
 def export_all(con):
     tabs=["meta","artifacts","taxa","experiments","code_objects","occurrences","edges","measurements","annotations","claims","claim_links"]
-    tabs += [t for t in ["object_aliases","vocabulary","artifact_links","ingest_events","migration_audit"] if con.execute("SELECT 1 FROM sqlite_master WHERE name=?",(t,)).fetchone()]
+    tabs += [t for t in ["object_aliases","vocabulary","artifact_links","ingest_events","migration_audit","research_records","research_assertions","research_sources","research_record_sources","research_links","research_reading_guide","research_ingests"] if con.execute("SELECT 1 FROM sqlite_master WHERE name=?",(t,)).fetchone()]
     return {t:rows(con.execute(f"SELECT * FROM {t} ORDER BY 1")) for t in tabs}
 
 def main():

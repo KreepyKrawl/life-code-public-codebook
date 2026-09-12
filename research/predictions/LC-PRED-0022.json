@@ -1,0 +1,65 @@
+{
+  "prediction_id": "LC-PRED-0022",
+  "status": "FALSIFIED",
+  "evidence_class": "P1",
+  "statement": "Cross-genome boundary-role MOP identities will preserve the frozen three-field boundary geometry signature more strongly than expected under matched token reassignment.",
+  "support_condition": "S_G above null mean and one-sided 100,000-replicate Monte Carlo tail <=0.05; strong support <=0.01.",
+  "weakening_condition": "S_G above null mean but tail >0.05.",
+  "falsification_condition": "S_G <= null mean.",
+  "contamination_boundary": "Frozen before token-level cross-genome concordance of distance bin, nearest gene end, or flanking orientation was calculated.",
+  "source_refs": [
+    "INTERGENIC_884_GEOMETRY.csv",
+    "CROSS_GENOME_INTERFACE_ROLE_RESULT_0001.json",
+    "C3_PROTEIN_SEQUENCE_RESULT_0001.json"
+  ],
+  "validation": {
+    "result": "FALSIFIED",
+    "source": "BOUNDARY_GEOMETRY_CONCORDANCE_RESULT_0001.json",
+    "S_G_real": 36.333334147930145,
+    "pair_results": {
+      "EP": {
+        "overlap_count": 29,
+        "S_G": 11.000000238418579,
+        "mean_G": 0.3793103530489165,
+        "G1": 3,
+        "G2_3": 5,
+        "G1_3": 14,
+        "G0": 7
+      },
+      "EY": {
+        "overlap_count": 42,
+        "S_G": 20.000000417232513,
+        "mean_G": 0.47619048612458365,
+        "G1": 6,
+        "G2_3": 15,
+        "G1_3": 12,
+        "G0": 9
+      },
+      "PY": {
+        "overlap_count": 26,
+        "S_G": 5.333333492279053,
+        "mean_G": 0.20512821124150202,
+        "G1": 0,
+        "G2_3": 4,
+        "G1_3": 8,
+        "G0": 14
+      }
+    },
+    "secondary": {
+      "full_signature": 9,
+      "distance_concordant": 38,
+      "end_concordant": 44,
+      "orientation_concordant": 34
+    },
+    "null": {
+      "replicates": 100000,
+      "generator": "NumPy PCG64",
+      "seed": 270027,
+      "mean": 37.74290741568566,
+      "sd": 2.892466302069858,
+      "q95": 42.666664123535156,
+      "q99": 44.66666507720947,
+      "mc_tail_ge": 0.6802831971680283
+    }
+  }
+}

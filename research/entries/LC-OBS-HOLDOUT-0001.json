@@ -1,0 +1,45 @@
+{
+  "entry_id": "LC-OBS-HOLDOUT-0001",
+  "entry_type": "OBS",
+  "status": "OBSERVED",
+  "evidence": [
+    {
+      "class": "E0",
+      "statement": "All three prospectively frozen held-out NCBI packages match the frozen assembly accession/name and have internally exact FASTA/sequence-report/GFF coordinate lengths.",
+      "source_refs": [
+        "HELDOUT_ASSEMBLY_COORDINATE_GATE_0001.json",
+        "HELDOUT_EXECUTION_MANIFEST_v1.json"
+      ]
+    },
+    {
+      "class": "E1",
+      "statement": "The held-out MOP occurrence coordinates can therefore be interpreted directly against the supplied GFF3 records without liftover.",
+      "source_refs": [
+        "HELDOUT_ASSEMBLY_COORDINATE_GATE_0001.json",
+        "HELDOUT_EXECUTION_MANIFEST_v1.json"
+      ]
+    }
+  ],
+  "observations": {
+    "assembly_coordinate_gate": "PASS",
+    "mop_scan": "NOT_RUN"
+  },
+  "semantics": {
+    "validated_identity": "held-out assembly/coordinate compatibility gate"
+  },
+  "relationships": [
+    "LC-OBS-REPL-0001"
+  ],
+  "predictions": [
+    "LC-PRED-0024",
+    "LC-PRED-0025"
+  ],
+  "unknowns": [
+    "Held-out MOP recovery and boundary-role results."
+  ],
+  "falsification_conditions": [],
+  "source_refs": [
+    "HELDOUT_ASSEMBLY_COORDINATE_GATE_0001.json",
+    "HELDOUT_EXECUTION_MANIFEST_v1.json"
+  ]
+}
