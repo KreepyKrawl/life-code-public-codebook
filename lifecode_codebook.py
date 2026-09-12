@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""LIFE-CODE Codebook Core v0.8 — executable SQLite CLI.
+"""LIFE-CODE Codebook Core v0.10 — executable SQLite CLI.
 
 Standard-library only. The supplied database contains released Tier-A
 calibration evidence and no EXP-0002 outcome values.
@@ -8,7 +8,7 @@ from __future__ import annotations
 import argparse,json,sqlite3,pathlib,hashlib
 
 HERE=pathlib.Path(__file__).resolve().parent
-DEFAULT_DB=HERE/"LIFE_CODE_CODEBOOK_CONTINUATION_v0.8.sqlite"
+DEFAULT_DB=HERE/"downloads/LIFE_CODE_CODEBOOK_CORE_v0.10.sqlite"
 
 def connect(db):
     con=sqlite3.connect(db)
@@ -19,7 +19,14 @@ def connect(db):
 def rows(cur):
     return [dict(r) for r in cur.fetchall()]
 
+def resolve_id(con,oid):
+    if con.execute("SELECT 1 FROM sqlite_master WHERE name='object_aliases'").fetchone():
+        alias=con.execute("SELECT canonical_object_id FROM object_aliases WHERE legacy_object_id=?",(oid,)).fetchone()
+        if alias:return alias[0]
+    return oid
+
 def object_payload(con,oid):
+    oid=resolve_id(con,oid)
     obj=con.execute("SELECT * FROM code_objects WHERE object_id=?",(oid,)).fetchone()
     if not obj:return None
     aid=obj["source_artifact_id"]
@@ -77,6 +84,7 @@ def verify(con):
     return {"ok":not issues,"issues":issues,"explicit_missing_data":missing}
 
 def graph(con,root,depth=3):
+    root=resolve_id(con,root)
     seen=set()
     def walk(oid,d):
         if oid in seen:return {"object_id":oid,"cycle_or_repeat":True}
@@ -92,7 +100,8 @@ def graph(con,root,depth=3):
 
 def export_all(con):
     tabs=["meta","artifacts","taxa","experiments","code_objects","occurrences","edges","measurements","annotations","claims","claim_links"]
-    return {t:rows(con.execute(f"SELECT * FROM {t}")) for t in tabs}
+    tabs += [t for t in ["object_aliases","vocabulary","artifact_links","ingest_events","migration_audit"] if con.execute("SELECT 1 FROM sqlite_master WHERE name=?",(t,)).fetchone()]
+    return {t:rows(con.execute(f"SELECT * FROM {t} ORDER BY 1")) for t in tabs}
 
 def main():
     ap=argparse.ArgumentParser()
