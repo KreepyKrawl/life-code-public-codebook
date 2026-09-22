@@ -4,18 +4,299 @@
   "source_bundle_sha256": "76fb482a368af757a53688ef947d2a219280a2db8c3bc4d5bb5906bc6978a713",
   "acquisition_manifest_sha256": "bc863e456dc6bcd7eda866fe031a9249d8ec68f4ca203431c27abc957aa54f94",
   "assemblies": [
-    {"assembly_id":"B_ECOLI","organism":"Escherichia coli str. K-12 substr. MG1655","accession":"GCF_000005845.2","fasta_filename":"GCF_000005845.2_ASM584v2_genomic.fna","fasta_bytes":4699745,"fasta_sha256":"53bb6a51b6e92139ced1e38f74b7938781027c52200922ff03718c2237d23bb4","archive_sha256":"452a5f3fb7c69d645cef32d4e5c0631644cbd99374c474ec12282efd8b91d20d","status":"VERIFIED"},
-    {"assembly_id":"B_SALM","organism":"Salmonella enterica subsp. enterica serovar Typhimurium str. LT2","accession":"GCF_000006945.2","fasta_filename":"GCF_000006945.2_ASM694v2_genomic.fna","fasta_bytes":5013482,"fasta_sha256":"196a3eff4e6e6ed597173cc15d9dbde4cd55d76ad4d1b046da34cd75629c65cd","archive_sha256":"5f80ad7b9200fcd44d7284e9edacf469b6ce932ff6f2dce850241dea6f6e","status":"VERIFIED"},
-    {"assembly_id":"B_KLEB","organism":"Klebsiella pneumoniae HS11286","accession":"GCF_000240185.1","fasta_filename":"GCF_000240185.1_ASM24018v2_genomic.fna","fasta_bytes":5754012,"fasta_sha256":"9528cd6940c58fae4b812a4af1a4c57f0db66f00b5ba3d60e0bb14609f423b8f","archive_sha256":"d1316b61ee0cf444307737ef36708c6dc6b2759be326284fbf7525c57a73446e","status":"VERIFIED"},
-    {"assembly_id":"B_PAER","organism":"Pseudomonas aeruginosa PAO1","accession":"GCF_000006765.1","fasta_filename":"GCF_000006765.1_ASM676v1_genomic.fna","fasta_bytes":6342768,"fasta_sha256":"3e9335fb76772d324537b0c4c8cc7935e8b467b2acb0fae0c6e6dbeb2f227117","archive_sha256":"d24a131a5a06d3b7c16a410a0bc6ebe21a5326587e1a5c28619a6f92ccc149a2","status":"VERIFIED"},
-    {"assembly_id":"B_VCHO","organism":"Vibrio cholerae O1 biovar El Tor str. N16961","accession":"GCF_900205735.1","fasta_filename":"GCF_900205735.1_N16961_v2_genomic.fna","fasta_bytes":4084066,"fasta_sha256":"3ef1d63a5be6a52fb97de6233d6fff47971e060aba3dc64e3916382ae14141e1","archive_sha256":"d7fdf0a6bf5459e1533405d32989b44ac128fba882b288fefce5caf34d0ffd91","status":"VERIFIED"},
-    {"assembly_id":"B_BSUB","organism":"Bacillus subtilis subsp. subtilis str. 168","accession":"GCF_000009045.1","fasta_filename":"GCF_000009045.1_ASM904v1_genomic.fna","fasta_bytes":4268374,"fasta_sha256":"59c09816fb55fb1a0b42d0715f627bb42018a19c6bf933c9cb37f6058ee4737e","archive_sha256":"fa18ef830fa58590577a6bffa9d8a75862768b0a456ad98477a10f21b63e87ff","status":"VERIFIED"},
-    {"assembly_id":"B_MTUB","organism":"Mycobacterium tuberculosis H37Rv","accession":"GCF_000195955.2","fasta_filename":"GCF_000195955.2_ASM19595v2_genomic.fna","fasta_bytes":4466740,"fasta_sha256":"427dc8cea7ffbbac1b0baa31362bb7a30cac0a3ca9052d73634adf9122a63b28","archive_sha256":"e8d13b0aa4cb915deab2cd9a9db16c5c20b2fcb775d5466cc04f08c346bf1d02","status":"VERIFIED"}
+    {
+      "assembly_id": "B_ECOLI",
+      "organism": "Escherichia coli str. K-12 substr. MG1655",
+      "accession": "GCF_000005845.2",
+      "fasta_filename": "GCF_000005845.2_ASM584v2_genomic.fna",
+      "fasta_bytes": 4699745,
+      "fasta_sha256": "53bb6a51b6e92139ced1e38f74b7938781027c52200922ff03718c2237d23bb4",
+      "archive_sha256": "452a5f3fb7c69d645cef32d4e5c0631644cbd99374c474ec12282efd8b91d20d",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "B_SALM",
+      "organism": "Salmonella enterica subsp. enterica serovar Typhimurium str. LT2",
+      "accession": "GCF_000006945.2",
+      "fasta_filename": "GCF_000006945.2_ASM694v2_genomic.fna",
+      "fasta_bytes": 5013482,
+      "fasta_sha256": "196a3eff4e6e6ed597173cc15d9dbde4cd55d76ad4d1b046da34cd75629c65cd",
+      "archive_sha256": "5f80ad7b9200fcd44d7284e9edacf469b6ce932ff6f2dce850241dea6f6e",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "B_KLEB",
+      "organism": "Klebsiella pneumoniae HS11286",
+      "accession": "GCF_000240185.1",
+      "fasta_filename": "GCF_000240185.1_ASM24018v2_genomic.fna",
+      "fasta_bytes": 5754012,
+      "fasta_sha256": "9528cd6940c58fae4b812a4af1a4c57f0db66f00b5ba3d60e0bb14609f423b8f",
+      "archive_sha256": "d1316b61ee0cf444307737ef36708c6dc6b2759be326284fbf7525c57a73446e",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "B_PAER",
+      "organism": "Pseudomonas aeruginosa PAO1",
+      "accession": "GCF_000006765.1",
+      "fasta_filename": "GCF_000006765.1_ASM676v1_genomic.fna",
+      "fasta_bytes": 6342768,
+      "fasta_sha256": "3e9335fb76772d324537b0c4c8cc7935e8b467b2acb0fae0c6e6dbeb2f227117",
+      "archive_sha256": "d24a131a5a06d3b7c16a410a0bc6ebe21a5326587e1a5c28619a6f92ccc149a2",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "B_VCHO",
+      "organism": "Vibrio cholerae O1 biovar El Tor str. N16961",
+      "accession": "GCF_900205735.1",
+      "fasta_filename": "GCF_900205735.1_N16961_v2_genomic.fna",
+      "fasta_bytes": 4084066,
+      "fasta_sha256": "3ef1d63a5be6a52fb97de6233d6fff47971e060aba3dc64e3916382ae14141e1",
+      "archive_sha256": "d7fdf0a6bf5459e1533405d32989b44ac128fba882b288fefce5caf34d0ffd91",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "B_BSUB",
+      "organism": "Bacillus subtilis subsp. subtilis str. 168",
+      "accession": "GCF_000009045.1",
+      "fasta_filename": "GCF_000009045.1_ASM904v1_genomic.fna",
+      "fasta_bytes": 4268374,
+      "fasta_sha256": "59c09816fb55fb1a0b42d0715f627bb42018a19c6bf933c9cb37f6058ee4737e",
+      "archive_sha256": "fa18ef830fa58590577a6bffa9d8a75862768b0a456ad98477a10f21b63e87ff",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "B_MTUB",
+      "organism": "Mycobacterium tuberculosis H37Rv",
+      "accession": "GCF_000195955.2",
+      "fasta_filename": "GCF_000195955.2_ASM19595v2_genomic.fna",
+      "fasta_bytes": 4466740,
+      "fasta_sha256": "427dc8cea7ffbbac1b0baa31362bb7a30cac0a3ca9052d73634adf9122a63b28",
+      "archive_sha256": "e8d13b0aa4cb915deab2cd9a9db16c5c20b2fcb775d5466cc04f08c346bf1d02",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "F_SCER",
+      "organism": "Saccharomyces cerevisiae S288C",
+      "accession": "GCF_000146045.2",
+      "fasta_filename": "GCF_000146045.2_R64_genomic.fna",
+      "fasta_bytes": 12374255,
+      "fasta_sha256": "ff187a9d8cdbe484f6c0045509950c5ea96d6ad66070fb5fcf9f74fb7f307e04",
+      "archive_sha256": "6f7fb4e776cb7059670a3ed0b1fd5fd98c87ca06b838af0f51f42ce13d1cf42c",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "F_SPOM",
+      "organism": "Schizosaccharomyces pombe 972h-",
+      "accession": "GCF_000002945.2",
+      "fasta_filename": "GCF_000002945.2_ASM294v2_genomic.fna",
+      "fasta_bytes": 12868130,
+      "fasta_sha256": "fb8f04732f52c45a28899b74e710ac811f3c82426984ea9848fb494d9b825005",
+      "archive_sha256": "d99a3ac0b84738c42433a220bb810d810f6f1c720678b2148e75e232d948cb73",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "F_CGLA",
+      "organism": "Candida glabrata CBS 138",
+      "accession": "GCF_000002545.3",
+      "fasta_filename": "GCF_000002545.3_ASM254v2_genomic.fna",
+      "fasta_bytes": 12629958,
+      "fasta_sha256": "a7f54106ad762592472918f8ad38f9e036da9ab19edac87fb4dcc235142bef71",
+      "archive_sha256": "938fbebbaec24d4b4fbd099ec34ce3372c334604925a25eb1c76e1e22f83f880",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "F_AFUM",
+      "organism": "Aspergillus fumigatus Af293",
+      "accession": "GCF_000002655.1",
+      "fasta_filename": "GCF_000002655.1_ASM265v1_genomic.fna",
+      "fasta_bytes": 30070029,
+      "fasta_sha256": "ec07bdcb4fe8dd33b8a3ed60ce76a37f7c9b25147bc3da9d33d55a43a5d99c36",
+      "archive_sha256": "abf2dc0eb417923de5f147b66fbaf091ff7598ddc18c57f57f080db335fc0209",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "F_NCRA",
+      "organism": "Neurospora crassa OR74A",
+      "accession": "GCF_000182925.2",
+      "fasta_filename": "GCF_000182925.2_NC12_genomic.fna",
+      "fasta_bytes": 41550412,
+      "fasta_sha256": "603592055d2b50aceea4a9ce2ba26ee802c389228785f260979276997b5fd785",
+      "archive_sha256": "d60c8ad4a4e9fbb7484c0231d5a86f9c15a5520dd339aec9708be5ab91ae6798",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "F_UMAY",
+      "organism": "Ustilago maydis 521",
+      "accession": "GCF_000328475.2",
+      "fasta_filename": "GCF_000328475.2_Umaydis521_2.0_genomic.fna",
+      "fasta_bytes": 20037961,
+      "fasta_sha256": "1fc9c43f5ceee0865016c162bb831bdaefb18c394f9399c0ec22d4ff6d25f976",
+      "archive_sha256": "62760f0cb3feb263fd818ced8395cd8344749c37ecde4290f5c893ae9b8e5944",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "F_CRYP",
+      "organism": "Cryptococcus neoformans var. grubii H99",
+      "accession": "GCF_000149245.1",
+      "fasta_filename": "GCF_000149245.1_CNA3_genomic.fna",
+      "fasta_bytes": 19212607,
+      "fasta_sha256": "9810616bdc3ad1012fe53400206b52f13d5f890176a78ccac3d35d1c12a0ff16",
+      "archive_sha256": "54307d651046236d4effb7f6e5ca71b1ea10fa3081159dbd0ab32b4d19ec5a78",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "P_ARAB",
+      "organism": "Arabidopsis thaliana",
+      "accession": "GCF_000001735.4",
+      "fasta_filename": "GCF_000001735.4_TAIR10.1_genomic.fna",
+      "fasta_bytes": 122095393,
+      "fasta_sha256": "9a6e680e5d26b8f14817d5581fa52571ba142a20cbe21c6a8ec69d398e78b45b",
+      "archive_sha256": "023c94b2bb311151c8475800746948a8e9b0ccc8a24181e2eeaf2eaaed9b1b99",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "P_BRAP",
+      "organism": "Brassica rapa",
+      "accession": "GCF_000309985.2",
+      "fasta_filename": "GCF_000309985.2_CAAS_Brap_v3.01_genomic.fna",
+      "fasta_bytes": 371589119,
+      "fasta_sha256": "79bebd26374ffb8b8fe008a42869742dfc7e6be2beec1ba27af677f7e2f7247a",
+      "archive_sha256": "2fe7b46b319c149425e613527348da3bd840683ba7b34443ccbff9c9dcb38184",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "P_CSA",
+      "organism": "Camelina sativa",
+      "accession": "GCF_000633955.1",
+      "fasta_filename": "GCF_000633955.1_Cs_genome_sequence_v2_genomic.fna",
+      "fasta_bytes": 760998824,
+      "fasta_sha256": "fbc96e6f0b9022ca74504c0e91f40f731471c8341a2440b60d94f919ad043eae",
+      "archive_sha256": "fb314d90ad25370e3849e68a90b4ea2bc689be7498934e507295fac9762422bc",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "P_ORYZ",
+      "organism": "Oryza sativa Japonica Group",
+      "accession": "GCF_001433935.1",
+      "fasta_filename": "GCF_001433935.1_IRGSP-1.0_genomic.fna",
+      "fasta_bytes": 382643207,
+      "fasta_sha256": "e863059df2f79fd07a812ce0c47458634324b649695037c22fcc11f8af37ac52",
+      "archive_sha256": "b3038bbe32a69b0e197698e382bdbadfb16c43599f3e0f2c4191f8bf8bd9b958",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "P_ZMAY",
+      "organism": "Zea mays",
+      "accession": "GCF_902167145.1",
+      "fasta_filename": "GCF_902167145.1_Zm-B73-REFERENCE-NAM-5.0_genomic.fna",
+      "fasta_bytes": 2188369343,
+      "fasta_sha256": "5f4d23baef9b7aebef217b8fb79ad7012268635595de65fb2f30b6a84dc25f7d",
+      "archive_sha256": "2587526fab35983a638546c6d00f2e4f64225ae4979534acc8c3c75a3d53b61a",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "P_PATR",
+      "organism": "Populus trichocarpa",
+      "accession": "GCF_000002775.5",
+      "fasta_filename": "GCF_000002775.5_Pop_tri_v4_genomic.fna",
+      "fasta_bytes": 403668919,
+      "fasta_sha256": "38fa13e95048fd95403a7bbe8f7751f3a8cd634a6f1422b1649625390465ba67",
+      "archive_sha256": "5e81c92ce42bcbb2b197ec6c97a2fdad51ea7febf6760fbb7d252b739bf2fb77",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "P_VVIN",
+      "organism": "Vitis vinifera",
+      "accession": "GCF_030704535.1",
+      "fasta_filename": "GCF_030704535.1_PN40024.v4_genomic.fna",
+      "fasta_bytes": 491842450,
+      "fasta_sha256": "f9f4a9716a4cf9765bbb7cdb44653213604110efac85664a57a371b0b8d4973c",
+      "archive_sha256": "99727d8f47790112f64b540d8a04112272f0c58bb11cd248b6cbd137f6a61c40",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "A_HSAP",
+      "organism": "Homo sapiens",
+      "accession": "GCF_000001405.40",
+      "fasta_filename": "GCF_000001405.40_GRCh38.p14_genomic.fna",
+      "fasta_bytes": 3320096029,
+      "fasta_sha256": "4d34f9463d289ed1612870aba78b5c63a25ac5cb8603c063559be23d6d8d8b8f",
+      "archive_sha256": "5a2eb57d64362fd9c84d5b91634133879b25cd94be5369db1424660214bdfd3a",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "A_PTRO",
+      "organism": "Pan troglodytes",
+      "accession": "GCF_028858775.1",
+      "fasta_filename": "GCF_028858775.1_NHGRI_mPanTro3-v1.1-hic.freeze_pri_genomic.fna",
+      "fasta_bytes": 3213210289,
+      "fasta_sha256": "3d6d473aef6d8ac75e0380b7ea064029495523542be4224915034528b9278b05",
+      "archive_sha256": "fe85fb678ac483460f8f0a09bd489ed90f999ca3f68e58171ef1f144c1558d11",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "A_MMUL",
+      "organism": "Macaca mulatta",
+      "accession": "GCF_003339765.1",
+      "fasta_filename": "GCF_003339765.1_Mmul_10_genomic.fna",
+      "fasta_bytes": 3064829386,
+      "fasta_sha256": "a7157063410ead67e3e81a61f9c1d048136495638803175352e3e77ef2ca77f0",
+      "archive_sha256": "e172ae7aa8b2c97cd8049ad79a8d7ac93a5aa781ff9d5ee05ded65b085950022",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "A_MMUS",
+      "organism": "Mus musculus",
+      "accession": "GCF_000001635.27",
+      "fasta_filename": "GCF_000001635.27_GRCm39_genomic.fna",
+      "fasta_bytes": 2828278559,
+      "fasta_sha256": "b78a42798253ddbe30e4f96829080f347eadb0cb7785eb1bb1a80f5a7b855fda",
+      "archive_sha256": "1bf53799d70e0956bef49a9c86fbfd8191462de6c876363d9c2e8b2118237243",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "A_BTAU",
+      "organism": "Bos taurus",
+      "accession": "GCF_002263795.3",
+      "fasta_filename": "GCF_002263795.3_ARS-UCD2.0_genomic.fna",
+      "fasta_bytes": 2805688714,
+      "fasta_sha256": "379997437cd2620b44b82212d9c4c292bbdbe6339617294f4c83885654498aaf",
+      "archive_sha256": "97d445da054fd94e3a557af96ee9824a97578da38d6b9f6091c12d1ead8fa402",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "A_GGAL",
+      "organism": "Gallus gallus",
+      "accession": "GCF_016699485.2",
+      "fasta_filename": "GCF_016699485.2_bGalGal1.mat.broiler.GRCg7b_genomic.fna",
+      "fasta_bytes": 1066529827,
+      "fasta_sha256": "c00276960581c387ff99818d21159bff8275190526f2d34ae92d531f5afb498f",
+      "archive_sha256": "6d05a69a53cfcdf63667bdb6fc39545c8a9e557b9fcc8ff26d89e4fb83da7a3c",
+      "status": "VERIFIED"
+    },
+    {
+      "assembly_id": "A_DRER",
+      "organism": "Danio rerio",
+      "accession": "GCF_000002035.6",
+      "fasta_filename": "GCF_000002035.6_GRCz11_genomic.fna",
+      "fasta_bytes": 1700419557,
+      "fasta_sha256": "c0a6e6ab81b3208d33bf736eb42fa93fe0af7d9e290cf65c63a5f0e6f07f9dcd",
+      "archive_sha256": "518f547dc0e977a6c910ca0cd0250fcd835dc9f81339b74077b84b1e731304b5",
+      "status": "VERIFIED"
+    }
   ],
   "triads": [
     {"triad_id":"B1","ladder":"Bacterial ladder","depth_ordinal":"1","taxonomic_stratum":"Enterobacterales","genome_1":"B_ECOLI","genome_2":"B_SALM","genome_3":"B_KLEB"},
     {"triad_id":"B2","ladder":"Bacterial ladder","depth_ordinal":"2","taxonomic_stratum":"Gammaproteobacteria","genome_1":"B_ECOLI","genome_2":"B_PAER","genome_3":"B_VCHO"},
-    {"triad_id":"B3","ladder":"Bacterial ladder","depth_ordinal":"3","taxonomic_stratum":"Bacteria","genome_1":"B_ECOLI","genome_2":"B_BSUB","genome_3":"B_MTUB"}
-  ],
-  "note": "Bootstrap manifest; remaining frozen assemblies/triads are added only from the sealed EXP-0002 acquisition proof, never reconstructed from memory."
+    {"triad_id":"B3","ladder":"Bacterial ladder","depth_ordinal":"3","taxonomic_stratum":"Bacteria","genome_1":"B_ECOLI","genome_2":"B_BSUB","genome_3":"B_MTUB"},
+    {"triad_id":"F1","ladder":"Fungal ladder","depth_ordinal":"1","taxonomic_stratum":"Saccharomycetales","genome_1":"F_SCER","genome_2":"F_CGLA","genome_3":"F_KLAC"},
+    {"triad_id":"F2","ladder":"Fungal ladder","depth_ordinal":"2","taxonomic_stratum":"Ascomycota","genome_1":"F_SCER","genome_2":"F_SPOM","genome_3":"F_NCRA"},
+    {"triad_id":"F3","ladder":"Fungal ladder","depth_ordinal":"3","taxonomic_stratum":"Fungi","genome_1":"F_SCER","genome_2":"F_UMAY","genome_3":"F_CRYP"},
+    {"triad_id":"P1","ladder":"Plant ladder","depth_ordinal":"1","taxonomic_stratum":"Brassicaceae","genome_1":"P_ARAB","genome_2":"P_BRAP","genome_3":"P_CSA"},
+    {"triad_id":"P2","ladder":"Plant ladder","depth_ordinal":"2","taxonomic_stratum":"Angiosperms","genome_1":"P_ARAB","genome_2":"P_PATR","genome_3":"P_VVIN"},
+    {"triad_id":"P3","ladder":"Plant ladder","depth_ordinal":"3","taxonomic_stratum":"Monocot/dicot","genome_1":"P_ARAB","genome_2":"P_ORYZ","genome_3":"P_ZMAY"},
+    {"triad_id":"A1","ladder":"Animal ladder","depth_ordinal":"1","taxonomic_stratum":"Primates","genome_1":"A_HSAP","genome_2":"A_PTRO","genome_3":"A_MMUL"},
+    {"triad_id":"A2","ladder":"Animal ladder","depth_ordinal":"2","taxonomic_stratum":"Mammalia","genome_1":"A_HSAP","genome_2":"A_MMUS","genome_3":"A_BTAU"},
+    {"triad_id":"A3","ladder":"Animal ladder","depth_ordinal":"3","taxonomic_stratum":"Vertebrata","genome_1":"A_HSAP","genome_2":"A_GGAL","genome_3":"A_DRER"}
+  ]
 }
