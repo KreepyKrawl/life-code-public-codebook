@@ -1,0 +1,15 @@
+{
+  "experiment": "RCX-LCX-0001",
+  "stage": "A_PREVALENCE_MATCHED_NULL",
+  "seed": 260922,
+  "null_n": 1000,
+  "null": "within-record label permutation over observed relevant projected-kmer positions",
+  "preserves": [
+    "per-record primitive counts",
+    "record boundaries",
+    "relevant-position density",
+    "16-mer length",
+    "direction",
+    "16..10000 bp window"
+  ]
+}
