@@ -1,0 +1,20 @@
+{
+  "schema": "LIFE_CODE_CANONICAL_SOURCE_MANIFEST_V1",
+  "source": "recovered from LIFE_CODE_EXECUTION_KIT_v0.1.33 nested LIFE_CODE_v0.1.33.zip",
+  "canonical_inner_zip_sha256": "23b50cc7fbac84736ad2c2762044013dbf90d227154a754238c7a0f3c1ce963f",
+  "files": {
+    "exp0002_normalize_fasta.py": "f705448fa0dfc20aed7a4a3fa3023eb79d5a1bbbcb4b75d0489a8481ca587712",
+    "exp0002_hierarchy_score.py": "d0ea86baa9daaf8e7801de648762d06e864163b55c79c7504dbb6c0ca2892898",
+    "exp0002_results_gate.py": "033da38594e41905a4f71e6592dc0d7cdcdc4a58997355b6aa6fa028d638c092",
+    "exp0002_mummer_longest_block.py": "f3b9fb457a4ee11fe41af70962b7d268f4f12ef22e2441b20160379c9208db5e",
+    "exp0002_run_sealed.py": "a43e93f8904b495e519cc0ea3783756395e1f8b263250f3e6b54e85f7f63f9db"
+  },
+  "frozen_score_replay": {
+    "observed_hierarchy_score": 0.5,
+    "exact_permutation_n": 1296,
+    "tail_count_ge_observed": 22,
+    "exact_one_sided_p": 0.016975308641975308,
+    "animal_max_k_spearman": 0.0,
+    "primary_support": true
+  }
+}
