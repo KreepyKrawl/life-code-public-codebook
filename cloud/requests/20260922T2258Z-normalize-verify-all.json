@@ -1,0 +1,4 @@
+{
+  "experiment": "CORPUS-NORMALIZE-VERIFY-ALL",
+  "reason": "Exact v0.1.33 normalizer source recovered; verify all frozen normalized FASTA and coordinate-map hashes in cloud."
+}
