@@ -1,28 +1,36 @@
 {
   "schema": "LIFE_CODE_CLOUD_STATUS_V1",
-  "updated_utc": "2026-09-22T22:41:40Z",
+  "updated_utc": "2026-09-22T23:03:48Z",
   "authority": {
     "exp0002_state": "SEALED_COMPLETE",
     "exp0002_bundle_sha256": "76fb482a368af757a53688ef947d2a219280a2db8c3bc4d5bb5906bc6978a713",
     "a3_sealed_result_sha256": "769b21fe5f1f1caff44399eff563f1f8d29a48dcdfc1729c9a036a2eb16c7258",
-    "a3_longest_block_sha256": "cf72f5783b799b1b5f53acfcfd60071299248b6c7efbfce87ae76425c003ebf9"
+    "a3_longest_block_sha256": "cf72f5783b799b1b5f53acfcfd60071299248b6c7efbfce87ae76425c003ebf9",
+    "canonical_v0_1_33_zip_sha256": "23b50cc7fbac84736ad2c2762044013dbf90d227154a754238c7a0f3c1ce963f",
+    "canonical_normalizer_sha256": "f705448fa0dfc20aed7a4a3fa3023eb79d5a1bbbcb4b75d0489a8481ca587712",
+    "frozen_hierarchy_scorer_sha256": "d0ea86baa9daaf8e7801de648762d06e864163b55c79c7504dbb6c0ca2892898",
+    "results_gate_sha256": "033da38594e41905a4f71e6592dc0d7cdcdc4a58997355b6aa6fa028d638c092"
   },
   "corpus": {
     "frozen_assemblies": 26,
     "raw_reacquisition_verified": 26,
     "raw_reacquisition_failed": 0,
-    "verification_run_id": 35793532445,
-    "state": "RAW_CORPUS_RECONSTRUCTED_AND_HASH_VERIFIED"
+    "raw_verification_run_id": 35793532445,
+    "canonical_normalization_verified": 26,
+    "canonical_normalization_failed": 0,
+    "normalization_verification_run_id": 35795136630,
+    "state": "CANONICAL_CORPUS_RECONSTRUCTED_AND_HASH_VERIFIED"
   },
   "experiments": {
-    "EXP-0002": {"state": "SEALED_COMPLETE", "progress": 1.0, "mutable": false},
-    "EXP-0002A": {"state": "BLOCKED_CANONICAL_NORMALIZER_SOURCE", "progress": 0.15, "mutable": true},
-    "EXP-0003": {"state": "WAITING_CANONICAL_NORMALIZATION_GATE", "progress": 0.1, "mutable": true}
+    "EXP-0002": {"state": "SEALED_COMPLETE_PRIMARY_SUPPORT_CONFIRMED", "progress": 1.0, "mutable": false},
+    "EXP-0002A": {"state": "READY_FOR_CLOUD_FORENSICS", "progress": 0.25, "mutable": true},
+    "EXP-0003": {"state": "READY_FOR_PREREGISTRATION_FREEZE_AND_EXECUTION", "progress": 0.2, "mutable": true}
   },
   "runner": {
     "mode": "chunked_hash_verified",
     "local_pc_required": false,
     "checkpoint_schema": "LIFE_CODE_CHUNK_CHECKPOINT_V1",
-    "cloud_raw_reacquisition": "PASS_26_OF_26"
+    "cloud_raw_reacquisition": "PASS_26_OF_26",
+    "canonical_normalization_equivalence": "PASS_26_OF_26"
   }
 }
