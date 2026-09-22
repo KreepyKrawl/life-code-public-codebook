@@ -1,0 +1,107 @@
+name: LIFE-CODE Cloud Runner
+
+on:
+  workflow_dispatch:
+    inputs:
+      experiment:
+        description: Experiment stage
+        required: true
+        type: choice
+        options:
+          - EXP-0002A
+          - EXP-0003-PROJECTION
+      representation:
+        description: Projection for EXP-0003
+        required: false
+        default: ACGT
+        type: choice
+        options: [ACGT, RY, MK, WS]
+      input_url:
+        description: HTTPS URL of one frozen normalized FASTA for bounded test chunks
+        required: false
+        type: string
+      expected_sha256:
+        description: Required SHA-256 for input_url
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      experiment: ${{ steps.meta.outputs.experiment }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: lifecode-cloud-runner
+      - id: meta
+        run: echo "experiment=${{ inputs.experiment }}" >> "$GITHUB_OUTPUT"
+      - name: Verify sealed authority constants
+        run: |
+          python3 - <<'PY'
+          import json
+          s=json.load(open('cloud/status.json'))
+          assert s['authority']['exp0002_bundle_sha256']=='76fb482a368af757a53688ef947d2a219280a2db8c3bc4d5bb5906bc6978a713'
+          assert s['authority']['a3_sealed_result_sha256']=='769b21fe5f1f1caff44399eff563f1f8d29a48dcdfc1729c9a036a2eb16c7258'
+          assert s['experiments']['EXP-0002']['mutable'] is False
+          print('SEALED AUTHORITY GATE: PASS')
+          PY
+
+  projection_chunk:
+    if: ${{ inputs.experiment == 'EXP-0003-PROJECTION' }}
+    needs: gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: lifecode-cloud-runner
+      - name: Require immutable input binding
+        run: |
+          test -n "${{ inputs.input_url }}"
+          test -n "${{ inputs.expected_sha256 }}"
+      - name: Acquire bounded input
+        run: curl --fail --location --retry 3 "${{ inputs.input_url }}" -o input.normalized.fasta
+      - name: Verify input and project
+        run: |
+          python3 cloud/scripts/projection.py input.normalized.fasta projected.fasta \
+            --representation "${{ inputs.representation }}" \
+            --expected-input-sha256 "${{ inputs.expected_sha256 }}" \
+            > projection-result.json
+          python3 cloud/scripts/checkpoint.py \
+            --experiment EXP-0003 \
+            --chunk "projection-${{ inputs.representation }}" \
+            --status COMPLETE \
+            --output projected.fasta \
+            --output projection-result.json \
+            --checkpoint checkpoint.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lifecode-${{ inputs.representation }}-${{ github.run_id }}
+          path: |
+            projected.fasta
+            projection-result.json
+            checkpoint.json
+          if-no-files-found: error
+          retention-days: 90
+
+  exp0002a_gate:
+    if: ${{ inputs.experiment == 'EXP-0002A' }}
+    needs: gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: lifecode-cloud-runner
+      - name: Block forensic execution until exact A3 source binding is online
+        run: |
+          echo 'EXP-0002A is intentionally gated.'
+          echo 'The sealed bundle proves the 299/299/299 results but does not contain the winning candidate sequences.'
+          echo 'Execution will remain blocked until the exact A3 normalized FASTAs or equivalent immutable public-source bindings are present and hash-verified.'
+          exit 78
