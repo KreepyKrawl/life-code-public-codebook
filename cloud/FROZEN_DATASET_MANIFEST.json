@@ -1,0 +1,21 @@
+{
+  "schema": "LIFE_CODE_CLOUD_FROZEN_DATASET_MANIFEST_V1",
+  "source": "EXP-0002 sealed bundle acquisition proof + frozen triads",
+  "source_bundle_sha256": "76fb482a368af757a53688ef947d2a219280a2db8c3bc4d5bb5906bc6978a713",
+  "acquisition_manifest_sha256": "bc863e456dc6bcd7eda866fe031a9249d8ec68f4ca203431c27abc957aa54f94",
+  "assemblies": [
+    {"assembly_id":"B_ECOLI","organism":"Escherichia coli str. K-12 substr. MG1655","accession":"GCF_000005845.2","fasta_filename":"GCF_000005845.2_ASM584v2_genomic.fna","fasta_bytes":4699745,"fasta_sha256":"53bb6a51b6e92139ced1e38f74b7938781027c52200922ff03718c2237d23bb4","archive_sha256":"452a5f3fb7c69d645cef32d4e5c0631644cbd99374c474ec12282efd8b91d20d","status":"VERIFIED"},
+    {"assembly_id":"B_SALM","organism":"Salmonella enterica subsp. enterica serovar Typhimurium str. LT2","accession":"GCF_000006945.2","fasta_filename":"GCF_000006945.2_ASM694v2_genomic.fna","fasta_bytes":5013482,"fasta_sha256":"196a3eff4e6e6ed597173cc15d9dbde4cd55d76ad4d1b046da34cd75629c65cd","archive_sha256":"5f80ad7b9200fcd44d7284e9edacf469b6ce932ff6f2dce850241dea6f6e","status":"VERIFIED"},
+    {"assembly_id":"B_KLEB","organism":"Klebsiella pneumoniae HS11286","accession":"GCF_000240185.1","fasta_filename":"GCF_000240185.1_ASM24018v2_genomic.fna","fasta_bytes":5754012,"fasta_sha256":"9528cd6940c58fae4b812a4af1a4c57f0db66f00b5ba3d60e0bb14609f423b8f","archive_sha256":"d1316b61ee0cf444307737ef36708c6dc6b2759be326284fbf7525c57a73446e","status":"VERIFIED"},
+    {"assembly_id":"B_PAER","organism":"Pseudomonas aeruginosa PAO1","accession":"GCF_000006765.1","fasta_filename":"GCF_000006765.1_ASM676v1_genomic.fna","fasta_bytes":6342768,"fasta_sha256":"3e9335fb76772d324537b0c4c8cc7935e8b467b2acb0fae0c6e6dbeb2f227117","archive_sha256":"d24a131a5a06d3b7c16a410a0bc6ebe21a5326587e1a5c28619a6f92ccc149a2","status":"VERIFIED"},
+    {"assembly_id":"B_VCHO","organism":"Vibrio cholerae O1 biovar El Tor str. N16961","accession":"GCF_900205735.1","fasta_filename":"GCF_900205735.1_N16961_v2_genomic.fna","fasta_bytes":4084066,"fasta_sha256":"3ef1d63a5be6a52fb97de6233d6fff47971e060aba3dc64e3916382ae14141e1","archive_sha256":"d7fdf0a6bf5459e1533405d32989b44ac128fba882b288fefce5caf34d0ffd91","status":"VERIFIED"},
+    {"assembly_id":"B_BSUB","organism":"Bacillus subtilis subsp. subtilis str. 168","accession":"GCF_000009045.1","fasta_filename":"GCF_000009045.1_ASM904v1_genomic.fna","fasta_bytes":4268374,"fasta_sha256":"59c09816fb55fb1a0b42d0715f627bb42018a19c6bf933c9cb37f6058ee4737e","archive_sha256":"fa18ef830fa58590577a6bffa9d8a75862768b0a456ad98477a10f21b63e87ff","status":"VERIFIED"},
+    {"assembly_id":"B_MTUB","organism":"Mycobacterium tuberculosis H37Rv","accession":"GCF_000195955.2","fasta_filename":"GCF_000195955.2_ASM19595v2_genomic.fna","fasta_bytes":4466740,"fasta_sha256":"427dc8cea7ffbbac1b0baa31362bb7a30cac0a3ca9052d73634adf9122a63b28","archive_sha256":"e8d13b0aa4cb915deab2cd9a9db16c5c20b2fcb775d5466cc04f08c346bf1d02","status":"VERIFIED"}
+  ],
+  "triads": [
+    {"triad_id":"B1","ladder":"Bacterial ladder","depth_ordinal":"1","taxonomic_stratum":"Enterobacterales","genome_1":"B_ECOLI","genome_2":"B_SALM","genome_3":"B_KLEB"},
+    {"triad_id":"B2","ladder":"Bacterial ladder","depth_ordinal":"2","taxonomic_stratum":"Gammaproteobacteria","genome_1":"B_ECOLI","genome_2":"B_PAER","genome_3":"B_VCHO"},
+    {"triad_id":"B3","ladder":"Bacterial ladder","depth_ordinal":"3","taxonomic_stratum":"Bacteria","genome_1":"B_ECOLI","genome_2":"B_BSUB","genome_3":"B_MTUB"}
+  ],
+  "note": "Bootstrap manifest; remaining frozen assemblies/triads are added only from the sealed EXP-0002 acquisition proof, never reconstructed from memory."
+}
