@@ -1,0 +1,49 @@
+{
+  "schema": "RCX_LCX_0001_STAGE_A_RESULT_V1",
+  "experiment": "RCX-LCX-0001",
+  "stage": "A_DEEP_CROSS_DOMAIN_CALIBRATION",
+  "status": "STAGE_A_PREVALENCE_MATCHED_FAIL",
+  "date_utc": "2026-09-22",
+  "source_semantics": {
+    "k": 16,
+    "ordered_relation": "A before B",
+    "start_distance_bp": [16, 10000],
+    "distance_endpoints_inclusive": true,
+    "distinct_source_primitives": true,
+    "source_self_pair_excluded": "TTATAAAATAATTAAT->TTATAAAATAATTAAT"
+  },
+  "baseline_gate": {
+    "ECOLI+PYRO->YEAST": {"shared_16mers": 2462, "ordered_modules": 540, "pass": true},
+    "ECOLI+YEAST->PYRO": {"shared_16mers": 19112, "ordered_modules": 989, "pass": true},
+    "PYRO+YEAST->ECOLI": {"shared_16mers": 16479, "ordered_modules": 1395, "pass": true}
+  },
+  "inputs": {
+    "ECOLI": {"accession": "GCF_000005845.2", "raw_sha256": "53bb6a51b6e92139ced1e38f74b7938781027c52200922ff03718c2237d23bb4"},
+    "PYRO": {"accession": "GCF_000007305.1", "raw_sha256": "e9c87294756c7cfc15e61aa067c2169a8513ac755bce4a3d1f3eedf385cffa76"},
+    "YEAST": {"accession": "GCF_000146045.2", "raw_sha256": "fe42735d3e6242f8c40b457a232940e34ef15eb4502717e54a34ed118face4c1"}
+  },
+  "real_screen": {
+    "workflow_run_id": 35794586838,
+    "artifact_id": 10723627178,
+    "artifact_sha256": "7ddac07822bb532ed314940f46c52d35ce21c63975cc984bc88106263b59ccdf",
+    "result_json_sha256": "c6135e138022efdf2caff1d77e570695a70a211cf93faa8748562b93d72aa186",
+    "observation": "All three predefined quotient maps produced high descriptive rescue, requiring prevalence conditioning before interpretation."
+  },
+  "prevalence_matched_null": {
+    "workflow_run_id": 35794900626,
+    "artifact_id": 10723258153,
+    "artifact_sha256": "9664ca1c5a034c9d2ee3c21f5d2533db2be3aa2f570b02c97a7be5999853cb53",
+    "result_json_sha256": "c5f5dea57a77dcec5199b813f4d5bc1a43542886cbe1f74349b19714b3daa625",
+    "n": 1000,
+    "seed": 260922,
+    "definition": "Within each held-out record, preserve exact positions at which any relevant projected primitive occurs and preserve per-record projected primitive counts; permute primitive identity labels across those positions. Record boundaries, relevant-position density, k, direction and the 16..10000 bp window remain fixed.",
+    "combined": {
+      "RY": {"real_cross_fold_median": 0.98813936249, "null_cross_fold_median": 0.99258710156, "delta": -0.00444773907, "folds_positive_delta": 0, "combined_empirical_p": 0.9750249750, "holm_adjusted_p": 1.0},
+      "MK": {"real_cross_fold_median": 0.99856630824, "null_cross_fold_median": 1.0, "delta": -0.00143369176, "folds_positive_delta": 1, "combined_empirical_p": 0.9950049950, "holm_adjusted_p": 1.0},
+      "WS": {"real_cross_fold_median": 0.94776931447, "null_cross_fold_median": 0.95, "delta": -0.00223068553, "folds_positive_delta": 2, "combined_empirical_p": 0.6923076923, "holm_adjusted_p": 1.0}
+    }
+  },
+  "result": "At deep bacterium-archaeon-eukaryote separation, apparent quotient rescue is fully explained by projected primitive prevalence and spatial opportunity under the frozen matched relational null. RY, MK and WS all fail Stage A.",
+  "claim_ceiling": "This is a negative result for the deepest cross-domain calibration only. It does not establish failure or success of the same fixed quotient maps at the four preregistered phylogenetic ladders.",
+  "anti_drift": "Do not add a new partition, nonlinear encoding, change k, change the ordered window, or otherwise rescue Stage A post hoc. The next test uses the same fixed maps on the frozen EXP-0002 ladder architecture."
+}
