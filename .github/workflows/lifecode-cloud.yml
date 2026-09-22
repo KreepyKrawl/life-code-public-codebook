@@ -10,6 +10,7 @@ on:
         options:
           - CORPUS-RAW-VERIFY
           - CORPUS-RAW-VERIFY-ALL
+          - CORPUS-NORMALIZE-VERIFY-ALL
           - EXP-0002A
           - EXP-0003-PROJECTION
       assembly_id:
@@ -54,12 +55,15 @@ jobs:
       - name: Verify sealed authority constants
         run: |
           python3 - <<'PY'
-          import json
+          import hashlib,json
           s=json.load(open('cloud/status.json'))
           assert s['authority']['exp0002_bundle_sha256']=='76fb482a368af757a53688ef947d2a219280a2db8c3bc4d5bb5906bc6978a713'
           assert s['authority']['a3_sealed_result_sha256']=='769b21fe5f1f1caff44399eff563f1f8d29a48dcdfc1729c9a036a2eb16c7258'
           assert s['experiments']['EXP-0002']['mutable'] is False
-          print('SEALED AUTHORITY GATE: PASS')
+          p='cloud/canonical/v0.1.33/exp0002_normalize_fasta.py'
+          h=hashlib.sha256(open(p,'rb').read()).hexdigest()
+          assert h=='f705448fa0dfc20aed7a4a3fa3023eb79d5a1bbbcb4b75d0489a8481ca587712',h
+          print('SEALED AUTHORITY + CANONICAL SOURCE GATE: PASS')
           PY
       - id: request
         name: Resolve request
@@ -118,7 +122,7 @@ jobs:
           retention-days: 90
 
   corpus_matrix:
-    if: ${{ needs.gate.outputs.experiment == 'CORPUS-RAW-VERIFY-ALL' }}
+    if: ${{ needs.gate.outputs.experiment == 'CORPUS-RAW-VERIFY-ALL' || needs.gate.outputs.experiment == 'CORPUS-NORMALIZE-VERIFY-ALL' }}
     needs: gate
     runs-on: ubuntu-latest
     outputs:
@@ -167,6 +171,40 @@ jobs:
           if-no-files-found: error
           retention-days: 90
 
+  corpus_normalize_verify_all:
+    if: ${{ needs.gate.outputs.experiment == 'CORPUS-NORMALIZE-VERIFY-ALL' }}
+    needs: [gate, corpus_matrix]
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        assembly_id: ${{ fromJSON(needs.corpus_matrix.outputs.assemblies) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install NCBI Datasets CLI
+        run: |
+          curl --fail --location --retry 3 https://ftp.ncbi.nlm.nih.gov/pub/datasets/command-line/v2/linux-amd64/datasets -o datasets
+          chmod +x datasets
+          sudo mv datasets /usr/local/bin/datasets
+      - name: Reacquire exact frozen raw FASTA
+        run: |
+          python3 cloud/scripts/reacquire_raw.py --assembly-id "${{ matrix.assembly_id }}" --work work --out raw-verify-result.json
+      - name: Run exact canonical v0.1.33 normalizer and verify both frozen output hashes
+        run: |
+          python3 cloud/scripts/verify_canonical_normalization.py --assembly-id "${{ matrix.assembly_id }}" --work work --out normalization-verify-result.json
+          python3 cloud/scripts/checkpoint.py --experiment CORPUS-NORMALIZE-VERIFY --chunk "${{ matrix.assembly_id }}" --status COMPLETE --output raw-verify-result.json --output normalization-verify-result.json --checkpoint checkpoint.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lifecode-normalize-verify-${{ matrix.assembly_id }}-${{ github.run_id }}
+          path: |
+            raw-verify-result.json
+            normalization-verify-result.json
+            checkpoint.json
+          if-no-files-found: error
+          retention-days: 90
+
   projection_chunk:
     if: ${{ needs.gate.outputs.experiment == 'EXP-0003-PROJECTION' && github.event_name == 'workflow_dispatch' }}
     needs: gate
@@ -200,9 +238,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Block forensic execution until exact A3 source binding is online
+      - name: Block until full canonical normalization equivalence is recorded
         run: |
-          echo 'EXP-0002A is intentionally gated.'
-          echo 'The sealed bundle proves the 299/299/299 results but does not contain the winning candidate sequences.'
-          echo 'Execution remains blocked until the exact A3 normalized FASTAs are reacquired and canonical-normalization equivalence is hash-verified.'
+          echo 'EXP-0002A remains gated until CORPUS-NORMALIZE-VERIFY-ALL passes 26/26.'
           exit 78
