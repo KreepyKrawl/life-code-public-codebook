@@ -1,0 +1,94 @@
+name: LIFE-CODE EXP-0002A A3 Forensics
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'cloud/requests/exp0002a*.json'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  a3_299_forensics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify cloud corpus gate
+        run: |
+          python3 - <<'PY'
+          import json
+          s=json.load(open('cloud/status.json'))
+          c=s['corpus']
+          assert c['canonical_normalization_verified']==26
+          assert c['canonical_normalization_failed']==0
+          assert s['experiments']['EXP-0002A']['state']=='READY_FOR_CLOUD_FORENSICS'
+          print('EXP-0002A CORPUS GATE: PASS')
+          PY
+
+      - name: Install NCBI Datasets CLI
+        run: |
+          curl --fail --location --retry 3 https://ftp.ncbi.nlm.nih.gov/pub/datasets/command-line/v2/linux-amd64/datasets -o datasets
+          chmod +x datasets
+          sudo mv datasets /usr/local/bin/datasets
+          datasets version
+
+      - name: Build exact MUMmer 4.0.1
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential autoconf automake libtool zlib1g-dev
+          curl --fail --location --retry 3 https://github.com/mummer4/mummer/releases/download/v4.0.1/mummer-4.0.1.tar.gz -o mummer-4.0.1.tar.gz
+          tar -xzf mummer-4.0.1.tar.gz
+          cd mummer-4.0.1
+          ./configure --prefix="$HOME/mummer4"
+          make -j2
+          make install
+          "$HOME/mummer4/bin/mummer" --version || "$HOME/mummer4/bin/mummer" -h | head
+          echo "MUMMER_EXE=$HOME/mummer4/bin/mummer" >> "$GITHUB_ENV"
+
+      - name: Reacquire and canonically normalize A3 genomes
+        run: |
+          set -euo pipefail
+          for id in A_HSAP A_GGAL A_DRER; do
+            python3 cloud/scripts/reacquire_raw.py --assembly-id "$id" --work "work/$id" --out "raw-$id.json"
+            python3 cloud/scripts/verify_canonical_normalization.py --assembly-id "$id" --work "work/$id" --out "norm-$id.json"
+            rm -f "work/$id/$id.zip"
+            rm -rf "work/$id/package"
+          done
+          df -h .
+
+      - name: Recover and map the A3 299-bp transfer frontier
+        run: |
+          python3 cloud/scripts/exp0002a_a3_299_forensics.py \
+            --human work/A_HSAP/canonical_normalization/A_HSAP.normalized.fasta \
+            --chicken work/A_GGAL/canonical_normalization/A_GGAL.normalized.fasta \
+            --zebrafish work/A_DRER/canonical_normalization/A_DRER.normalized.fasta \
+            --work forensic-work \
+            --out EXP0002A_A3_299_FORENSICS.json
+          python3 cloud/scripts/checkpoint.py \
+            --experiment EXP-0002A \
+            --chunk A3-299-FORENSICS \
+            --status COMPLETE \
+            --output EXP0002A_A3_299_FORENSICS.json \
+            --checkpoint checkpoint.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lifecode-exp0002a-a3-299-${{ github.run_id }}
+          path: |
+            EXP0002A_A3_299_FORENSICS.json
+            checkpoint.json
+            raw-A_HSAP.json
+            raw-A_GGAL.json
+            raw-A_DRER.json
+            norm-A_HSAP.json
+            norm-A_GGAL.json
+            norm-A_DRER.json
+          if-no-files-found: error
+          retention-days: 90
