@@ -1,0 +1,6 @@
+{
+  "schema": "LIFE_CODE_CLOUD_REQUEST_V1",
+  "experiment": "CORPUS-RAW-VERIFY-ALL",
+  "requested_utc": "2026-09-22T22:31:00Z",
+  "purpose": "Reacquire and SHA-256 verify all 26 frozen EXP-0002 raw RefSeq FASTAs in parallel before any normalization or new experiment execution."
+}
