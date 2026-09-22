@@ -9,10 +9,11 @@ on:
         type: choice
         options:
           - CORPUS-RAW-VERIFY
+          - CORPUS-RAW-VERIFY-ALL
           - EXP-0002A
           - EXP-0003-PROJECTION
       assembly_id:
-        description: Frozen assembly ID for raw verification
+        description: Frozen assembly ID for single raw verification
         required: false
         type: string
       representation:
@@ -98,27 +99,68 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install NCBI Datasets CLI
         run: |
-          curl --fail --location --retry 3 \
-            https://ftp.ncbi.nlm.nih.gov/pub/datasets/command-line/v2/linux-amd64/datasets \
-            -o datasets
+          curl --fail --location --retry 3 https://ftp.ncbi.nlm.nih.gov/pub/datasets/command-line/v2/linux-amd64/datasets -o datasets
           chmod +x datasets
           sudo mv datasets /usr/local/bin/datasets
           datasets version
       - name: Reacquire and hash-gate frozen raw FASTA
         run: |
           test -n "${{ needs.gate.outputs.assembly_id }}"
-          python3 cloud/scripts/reacquire_raw.py \
-            --assembly-id "${{ needs.gate.outputs.assembly_id }}" \
-            --out raw-verify-result.json
-          python3 cloud/scripts/checkpoint.py \
-            --experiment CORPUS-RAW-VERIFY \
-            --chunk "${{ needs.gate.outputs.assembly_id }}" \
-            --status COMPLETE \
-            --output raw-verify-result.json \
-            --checkpoint checkpoint.json
+          python3 cloud/scripts/reacquire_raw.py --assembly-id "${{ needs.gate.outputs.assembly_id }}" --out raw-verify-result.json
+          python3 cloud/scripts/checkpoint.py --experiment CORPUS-RAW-VERIFY --chunk "${{ needs.gate.outputs.assembly_id }}" --status COMPLETE --output raw-verify-result.json --checkpoint checkpoint.json
       - uses: actions/upload-artifact@v4
         with:
           name: lifecode-raw-verify-${{ needs.gate.outputs.assembly_id }}-${{ github.run_id }}
+          path: |
+            raw-verify-result.json
+            checkpoint.json
+          if-no-files-found: error
+          retention-days: 90
+
+  corpus_matrix:
+    if: ${{ needs.gate.outputs.experiment == 'CORPUS-RAW-VERIFY-ALL' }}
+    needs: gate
+    runs-on: ubuntu-latest
+    outputs:
+      assemblies: ${{ steps.matrix.outputs.assemblies }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: matrix
+        run: |
+          python3 - <<'PY'
+          import csv,json,os
+          with open('cloud/FROZEN_CORPUS_BINDING.tsv',newline='',encoding='utf-8') as f:
+              ids=[r['assembly_id'] for r in csv.DictReader(f,delimiter='\t')]
+          assert len(ids)==26, len(ids)
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out:
+              out.write('assemblies='+json.dumps(ids,separators=(',',':'))+'\n')
+          print('frozen corpus assemblies:',len(ids))
+          PY
+
+  corpus_raw_verify_all:
+    if: ${{ needs.gate.outputs.experiment == 'CORPUS-RAW-VERIFY-ALL' }}
+    needs: [gate, corpus_matrix]
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        assembly_id: ${{ fromJSON(needs.corpus_matrix.outputs.assemblies) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install NCBI Datasets CLI
+        run: |
+          curl --fail --location --retry 3 https://ftp.ncbi.nlm.nih.gov/pub/datasets/command-line/v2/linux-amd64/datasets -o datasets
+          chmod +x datasets
+          sudo mv datasets /usr/local/bin/datasets
+      - name: Reacquire and hash-gate frozen raw FASTA
+        run: |
+          python3 cloud/scripts/reacquire_raw.py --assembly-id "${{ matrix.assembly_id }}" --out raw-verify-result.json
+          python3 cloud/scripts/checkpoint.py --experiment CORPUS-RAW-VERIFY --chunk "${{ matrix.assembly_id }}" --status COMPLETE --output raw-verify-result.json --checkpoint checkpoint.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lifecode-raw-verify-${{ matrix.assembly_id }}-${{ github.run_id }}
           path: |
             raw-verify-result.json
             checkpoint.json
@@ -140,17 +182,8 @@ jobs:
         run: curl --fail --location --retry 3 "${{ inputs.input_url }}" -o input.normalized.fasta
       - name: Verify input and project
         run: |
-          python3 cloud/scripts/projection.py input.normalized.fasta projected.fasta \
-            --representation "${{ inputs.representation }}" \
-            --expected-input-sha256 "${{ inputs.expected_sha256 }}" \
-            > projection-result.json
-          python3 cloud/scripts/checkpoint.py \
-            --experiment EXP-0003 \
-            --chunk "projection-${{ inputs.representation }}" \
-            --status COMPLETE \
-            --output projected.fasta \
-            --output projection-result.json \
-            --checkpoint checkpoint.json
+          python3 cloud/scripts/projection.py input.normalized.fasta projected.fasta --representation "${{ inputs.representation }}" --expected-input-sha256 "${{ inputs.expected_sha256 }}" > projection-result.json
+          python3 cloud/scripts/checkpoint.py --experiment EXP-0003 --chunk "projection-${{ inputs.representation }}" --status COMPLETE --output projected.fasta --output projection-result.json --checkpoint checkpoint.json
       - uses: actions/upload-artifact@v4
         with:
           name: lifecode-${{ inputs.representation }}-${{ github.run_id }}
