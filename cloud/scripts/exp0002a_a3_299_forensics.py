@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-import argparse,hashlib,importlib.util,json,os,re,shutil,subprocess,sys,tempfile
+import argparse,hashlib,json,os,re,shutil,sqlite3,subprocess
 from pathlib import Path
 
-EXPECTED_WRAPPER_SHA='f3b9fb457a4ee11fe41af70962b7d268f4f12ef22e2441b20160379c9208db5e'
+CANONICAL_WRAPPER_SHA256='f3b9fb457a4ee11fe41af70962b7d268f4f12ef22e2441b20160379c9208db5e'
+DEFAULT_SHARD_BASES=128*1024*1024
 TARGET_LEN=299
 THRESHOLD=256
 
@@ -10,100 +11,150 @@ THRESHOLD=256
 def sha256(p):
     h=hashlib.sha256()
     with open(p,'rb') as f:
-        for b in iter(lambda:f.read(1<<20),b''): h.update(b)
+        for b in iter(lambda:f.read(1<<20),b''):h.update(b)
     return h.hexdigest()
 
 
-def load_wrapper(path):
-    if sha256(path)!=EXPECTED_WRAPPER_SHA:
-        raise SystemExit(f'CANONICAL_MUMMER_WRAPPER_SHA_MISMATCH {sha256(path)}')
-    spec=importlib.util.spec_from_file_location('canon_mummer',path)
-    mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
-    return mod
+def iter_fasta(path):
+    name=None;chunks=[]
+    with open(path,encoding='ascii') as f:
+        for raw in f:
+            line=raw.strip()
+            if not line:continue
+            if line.startswith('>'):
+                if name is not None:yield name,''.join(chunks).upper()
+                name=line[1:].split()[0];chunks=[]
+            else:chunks.append(line)
+    if name is not None:yield name,''.join(chunks).upper()
 
 
-def query_hits(mod,query_fa,ref_shards,min_len,work):
+def build_shards(source,outdir,cap_bases=DEFAULT_SHARD_BASES):
+    source=Path(source);outdir=Path(outdir)
+    if outdir.exists():shutil.rmtree(outdir)
+    outdir.mkdir(parents=True)
+    shards=[];cur=None;bases=0;records=0
+    def new():
+        nonlocal cur,bases,records
+        if cur is not None:cur.close()
+        p=outdir/f'shard_{len(shards)+1:05d}.fa';cur=open(p,'w',encoding='ascii');shards.append(p);bases=0;records=0
+    for name,seq in iter_fasta(source):
+        if not seq:continue
+        if set(seq)-set('ACGT'):raise RuntimeError(f'non-ACGT sequence: {source} {name}')
+        if cur is None or (records>0 and bases+len(seq)>cap_bases):new()
+        cur.write(f'>{name}\n{seq}\n');bases+=len(seq);records+=1
+    if cur is not None:cur.close()
+    if not shards:raise RuntimeError(f'no records: {source}')
+    return shards
+
+
+def shard_ref_map(path):
+    d={}
+    for n,s in iter_fasta(path):
+        if n in d:raise RuntimeError(f'duplicate record {n}')
+        d[n]=s
+    return d
+
+
+def mummer_exe():
+    x=os.environ.get('MUMMER_EXE') or shutil.which('mummer')
+    if not x:raise RuntimeError('mummer not found')
+    return x
+
+
+def stream_mummer(ref,query,min_len,on_match,stderr_path):
+    cmd=[mummer_exe(),'-maxmatch','-n','-l',str(min_len),'-b','-F',str(ref),str(query)]
+    stderr_path=Path(stderr_path);stderr_path.parent.mkdir(parents=True,exist_ok=True)
+    query_id=None;orient='+';count=0
+    with open(stderr_path,'w',encoding='utf-8') as err:
+        p=subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=err,text=True,bufsize=1)
+        for raw in p.stdout:
+            line=raw.strip()
+            if not line or line.startswith('#'):continue
+            if line.startswith('>'):
+                h=line[1:].strip();orient='-' if re.search(r'\bReverse\b',h) else '+';query_id=h.split()[0] if h else None;continue
+            parts=line.split()
+            if len(parts)<4:continue
+            try:m={'ref':parts[0],'ref_pos':int(parts[-3]),'query':query_id,'query_pos':int(parts[-2]),'length':int(parts[-1]),'orientation':orient}
+            except ValueError:continue
+            count+=1;on_match(m)
+        rc=p.wait()
+    if rc:raise RuntimeError('FAILED: '+' '.join(cmd)+'\n'+stderr_path.read_text(errors='replace')[-20000:])
+    return count
+
+
+def candidate_db(train_ref_shards,train_query,work):
+    work=Path(work);work.mkdir(parents=True,exist_ok=True);db=work/'candidates.sqlite'
+    if db.exists():db.unlink()
+    con=sqlite3.connect(db);con.execute('PRAGMA journal_mode=OFF');con.execute('PRAGMA synchronous=OFF');con.execute('PRAGMA temp_store=FILE');con.execute('CREATE TABLE candidates(seq BLOB PRIMARY KEY,length INTEGER NOT NULL)')
+    match_count=0;pending=0
+    for si,shard in enumerate(train_ref_shards,1):
+        refs=shard_ref_map(shard)
+        def accept(m):
+            nonlocal pending
+            if m['length']<THRESHOLD:return
+            rid=m['ref'];start=m['ref_pos']-1;end=start+m['length'];seq=refs[rid][start:end]
+            if len(seq)!=m['length']:raise RuntimeError('candidate extraction mismatch')
+            if set(seq)<=set('ACGT'):
+                con.execute('INSERT OR IGNORE INTO candidates(seq,length) VALUES(?,?)',(seq.encode('ascii'),len(seq)));pending+=1
+                if pending>=5000:con.commit();pending=0
+        match_count+=stream_mummer(shard,train_query,THRESHOLD,accept,work/f'train_{si:05d}.stderr')
+    con.commit();con.execute('CREATE INDEX candidates_length_idx ON candidates(length DESC)');con.commit()
+    return con,con.execute('SELECT COUNT(*) FROM candidates').fetchone()[0],match_count
+
+
+def write_candidates(rows,path):
+    with open(path,'w',encoding='ascii') as f:
+        for rowid,seqb in rows:f.write(f'>C{rowid}|L{TARGET_LEN}\n{bytes(seqb).decode("ascii")}\n')
+
+
+def query_hits(query_fa,ref_shards,min_len,work):
     hits=[]
     for si,shard in enumerate(ref_shards,1):
         def accept(m):
             if m.get('query') and m['length']>=min_len:
-                x=dict(m); x['shard_index']=si; hits.append(x)
-        mod.stream_mummer(shard,query_fa,min_len,accept,Path(work)/f'shard_{si:05d}.stderr')
+                x=dict(m);x['shard_index']=si;hits.append(x)
+        stream_mummer(shard,query_fa,min_len,accept,Path(work)/f'shard_{si:05d}.stderr')
     return hits
 
 
-def candidate_id_to_rowid(qid):
+def parse_candidate(qid):
     m=re.match(r'^C(\d+)\|L(\d+)$',qid or '')
     return (int(m.group(1)),int(m.group(2))) if m else (None,None)
 
 
-def write_query(path,seq,label='Q'):
-    Path(path).write_text(f'>{label}\n{seq}\n',encoding='ascii')
+def write_query(path,seq,rowid):Path(path).write_text(f'>C{rowid}|L{TARGET_LEN}\n{seq}\n',encoding='ascii')
 
 
-def one_fold(mod,name,train_a,train_b,held,work):
-    work=Path(work); work.mkdir(parents=True,exist_ok=True)
-    train_shards,_=mod.build_shards(train_a,work/'train_ref_shards',mod.DEFAULT_SHARD_BASES)
-    held_shards,_=mod.build_shards(held,work/'held_shards',mod.DEFAULT_SHARD_BASES)
-    con,ncand,_,nmatches=mod.candidate_db_for_threshold(train_shards,train_b,THRESHOLD,work/'candidate_build')
-    rows=con.execute('SELECT rowid,seq FROM candidates WHERE length=? ORDER BY rowid',(TARGET_LEN,)).fetchall()
-    candidate_fa=work/'candidates_299.fa'
-    mod.write_candidate_batch(rows,candidate_fa,TARGET_LEN)
-    held_hits=query_hits(mod,candidate_fa,held_shards,TARGET_LEN,work/'held_scan') if rows else []
-    byrow={rowid:bytes(seqb).decode('ascii') for rowid,seqb in rows}
-    winner_rows=[]
-    seen=set()
+def one_fold(name,train_a,train_b,held,work):
+    work=Path(work);work.mkdir(parents=True,exist_ok=True)
+    train_a_shards=build_shards(train_a,work/'train_a_shards');held_shards=build_shards(held,work/'held_shards')
+    con,ncand,nmatches=candidate_db(train_a_shards,train_b,work/'candidate_build')
+    rows=con.execute('SELECT rowid,seq FROM candidates WHERE length=? ORDER BY rowid',(TARGET_LEN,)).fetchall();byrow={r:bytes(s).decode('ascii') for r,s in rows}
+    cand=work/'candidates_299.fa';write_candidates(rows,cand)
+    held_hits=query_hits(cand,held_shards,TARGET_LEN,work/'held_scan') if rows else []
+    winner_rows=[];seen=set()
     for h in held_hits:
-        rowid,L=candidate_id_to_rowid(h.get('query'))
-        if rowid is None or L!=TARGET_LEN or rowid not in byrow: continue
-        if rowid not in seen:
-            seen.add(rowid); winner_rows.append(rowid)
+        rowid,L=parse_candidate(h.get('query'))
+        if rowid in byrow and L==TARGET_LEN and rowid not in seen:seen.add(rowid);winner_rows.append(rowid)
+    train_b_shards=build_shards(train_b,work/'train_b_shards')
     winners=[]
-    all_a,_=mod.build_shards(train_a,work/'map_train_a',mod.DEFAULT_SHARD_BASES)
-    all_b,_=mod.build_shards(train_b,work/'map_train_b',mod.DEFAULT_SHARD_BASES)
     for rowid in winner_rows:
-        seq=byrow[rowid]; q=work/f'winner_{rowid}.fa'; write_query(q,seq,f'C{rowid}|L{TARGET_LEN}')
-        winners.append({
-            'candidate_rowid':rowid,
-            'sequence':seq,
-            'sequence_sha256':hashlib.sha256(seq.encode('ascii')).hexdigest(),
-            'train_a_hits':query_hits(mod,q,all_a,TARGET_LEN,work/f'map_{rowid}_a'),
-            'train_b_hits':query_hits(mod,q,all_b,TARGET_LEN,work/f'map_{rowid}_b'),
-            'held_hits':query_hits(mod,q,held_shards,TARGET_LEN,work/f'map_{rowid}_held')
-        })
+        seq=byrow[rowid];q=work/f'winner_{rowid}.fa';write_query(q,seq,rowid)
+        winners.append({'candidate_rowid':rowid,'sequence':seq,'sequence_sha256':hashlib.sha256(seq.encode()).hexdigest(),'train_a_hits':query_hits(q,train_a_shards,TARGET_LEN,work/f'map_{rowid}_a'),'train_b_hits':query_hits(q,train_b_shards,TARGET_LEN,work/f'map_{rowid}_b'),'held_hits':query_hits(q,held_shards,TARGET_LEN,work/f'map_{rowid}_held')})
     con.close()
-    first_shard=min((h['shard_index'] for h in held_hits),default=None)
-    return {
-        'fold':name,'threshold':THRESHOLD,'target_length':TARGET_LEN,
-        'training_match_records_seen':nmatches,'unique_candidates_all_lengths':ncand,
-        'candidate_count_length_299':len(rows),'heldout_hit_count_length_ge_299':len(held_hits),
-        'first_heldout_shard_with_hit':first_shard,'winner_count':len(winners),'winners':winners
-    }
+    return {'fold':name,'threshold':THRESHOLD,'target_length':TARGET_LEN,'training_match_records_seen':nmatches,'unique_candidates_all_lengths':ncand,'candidate_count_length_299':len(rows),'heldout_hit_count_length_ge_299':len(held_hits),'first_heldout_shard_with_hit':min((h['shard_index'] for h in held_hits),default=None),'winner_count':len(winners),'winners':winners}
 
 
 def main():
-    ap=argparse.ArgumentParser()
-    ap.add_argument('--human',required=True);ap.add_argument('--chicken',required=True);ap.add_argument('--zebrafish',required=True)
-    ap.add_argument('--wrapper',default='cloud/canonical/v0.1.33/exp0002_mummer_longest_block.py')
-    ap.add_argument('--work',default='forensics-work');ap.add_argument('--out',default='EXP0002A_A3_299_FORENSICS.json')
-    a=ap.parse_args(); mod=load_wrapper(a.wrapper)
+    ap=argparse.ArgumentParser();ap.add_argument('--human',required=True);ap.add_argument('--chicken',required=True);ap.add_argument('--zebrafish',required=True);ap.add_argument('--work',default='forensics-work');ap.add_argument('--out',default='EXP0002A_A3_299_FORENSICS.json');a=ap.parse_args()
     paths={'A_HSAP':Path(a.human),'A_GGAL':Path(a.chicken),'A_DRER':Path(a.zebrafish)}
     for k,p in paths.items():
-        if not p.exists(): raise SystemExit(f'MISSING_INPUT {k} {p}')
+        if not p.exists():raise SystemExit(f'MISSING_INPUT {k} {p}')
     folds=[('AB_C',paths['A_HSAP'],paths['A_GGAL'],paths['A_DRER']),('AC_B',paths['A_HSAP'],paths['A_DRER'],paths['A_GGAL']),('BC_A',paths['A_GGAL'],paths['A_DRER'],paths['A_HSAP'])]
-    root=Path(a.work);root.mkdir(parents=True,exist_ok=True)
-    results=[one_fold(mod,*f,root/f[0]) for f in folds]
-    sets=[{w['sequence_sha256'] for w in r['winners']} for r in results]
-    common=set.intersection(*sets) if sets else set()
-    payload={
-      'schema':'LIFE_CODE_EXP0002A_A3_299_FORENSICS_V1','status':'COMPLETE',
-      'canonical_mummer_wrapper_sha256':sha256(a.wrapper),'mummer_executable':os.environ.get('MUMMER_EXE') or shutil.which('mummer'),
-      'mummer_version':subprocess.check_output([os.environ.get('MUMMER_EXE') or shutil.which('mummer'),'--version'],text=True,stderr=subprocess.STDOUT).strip(),
-      'input_sha256':{k:sha256(v) for k,v in paths.items()},'threshold':THRESHOLD,'target_length':TARGET_LEN,
-      'folds':results,'sequence_hashes_common_to_all_three_folds':sorted(common),
-      'same_299_sequence_present_in_all_three_folds':bool(common)
-    }
-    Path(a.out).write_text(json.dumps(payload,indent=2,sort_keys=True)+'\n',encoding='utf-8')
-    print(json.dumps({'status':'COMPLETE','winner_counts':{r['fold']:r['winner_count'] for r in results},'common_sequence_count':len(common)},sort_keys=True))
+    root=Path(a.work);root.mkdir(parents=True,exist_ok=True);results=[one_fold(*f,root/f[0]) for f in folds]
+    sets=[{w['sequence_sha256'] for w in r['winners']} for r in results];common=set.intersection(*sets) if sets else set()
+    version=subprocess.check_output([mummer_exe(),'--version'],text=True,stderr=subprocess.STDOUT).strip()
+    payload={'schema':'LIFE_CODE_EXP0002A_A3_299_FORENSICS_V1','status':'COMPLETE','method_state':'POST_FREEZE_FORENSIC_DERIVATIVE_OF_CANONICAL_LONGEST_BLOCK','canonical_longest_block_wrapper_sha256_reference':CANONICAL_WRAPPER_SHA256,'mummer_executable':mummer_exe(),'mummer_version':version,'input_sha256':{k:sha256(v) for k,v in paths.items()},'threshold':THRESHOLD,'target_length':TARGET_LEN,'folds':results,'sequence_hashes_common_to_all_three_folds':sorted(common),'same_299_sequence_present_in_all_three_folds':bool(common)}
+    Path(a.out).write_text(json.dumps(payload,indent=2,sort_keys=True)+'\n',encoding='utf-8');print(json.dumps({'status':'COMPLETE','winner_counts':{r['fold']:r['winner_count'] for r in results},'common_sequence_count':len(common)},sort_keys=True))
 
 if __name__=='__main__':main()
