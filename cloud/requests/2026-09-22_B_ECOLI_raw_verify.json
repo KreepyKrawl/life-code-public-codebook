@@ -1,0 +1,6 @@
+{
+  "schema": "LIFE_CODE_CLOUD_REQUEST_V1",
+  "experiment": "CORPUS-RAW-VERIFY",
+  "assembly_id": "B_ECOLI",
+  "purpose": "Cloud smoke test: reacquire one frozen RefSeq assembly and verify exact raw FASTA SHA-256 before enabling larger corpus jobs."
+}
