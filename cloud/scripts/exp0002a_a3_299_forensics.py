@@ -28,31 +28,30 @@ def iter_fasta(path):
     if name is not None:yield name,''.join(chunks).upper()
 
 
-def build_shards(source,outdir,cap_bases=DEFAULT_SHARD_BASES):
-    source=Path(source);outdir=Path(outdir)
-    if outdir.exists():shutil.rmtree(outdir)
-    outdir.mkdir(parents=True)
-    shards=[];cur=None;bases=0;records=0
-    def new():
-        nonlocal cur,bases,records
-        if cur is not None:cur.close()
-        p=outdir/f'shard_{len(shards)+1:05d}.fa';cur=open(p,'w',encoding='ascii');shards.append(p);bases=0;records=0
+def stream_shards(source,outdir,cap=DEFAULT_SHARD_BASES):
+    outdir=Path(outdir);outdir.mkdir(parents=True,exist_ok=True)
+    batch=[];bases=0;idx=0
+    def emit(records,n):
+        p=outdir/f'shard_{n:05d}.fa'
+        with open(p,'w',encoding='ascii') as f:
+            for name,seq in records:f.write(f'>{name}\n{seq}\n')
+        return p
     for name,seq in iter_fasta(source):
         if not seq:continue
         if set(seq)-set('ACGT'):raise RuntimeError(f'non-ACGT sequence: {source} {name}')
-        if cur is None or (records>0 and bases+len(seq)>cap_bases):new()
-        cur.write(f'>{name}\n{seq}\n');bases+=len(seq);records+=1
-    if cur is not None:cur.close()
-    if not shards:raise RuntimeError(f'no records: {source}')
-    return shards
+        if batch and bases+len(seq)>cap:
+            idx+=1;p=emit(batch,idx)
+            try:yield idx,p
+            finally:p.unlink(missing_ok=True)
+            batch=[];bases=0
+        batch.append((name,seq));bases+=len(seq)
+    if batch:
+        idx+=1;p=emit(batch,idx)
+        try:yield idx,p
+        finally:p.unlink(missing_ok=True)
 
 
-def shard_ref_map(path):
-    d={}
-    for n,s in iter_fasta(path):
-        if n in d:raise RuntimeError(f'duplicate record {n}')
-        d[n]=s
-    return d
+def shard_ref_map(path):return {n:s for n,s in iter_fasta(path)}
 
 
 def mummer_exe():
@@ -82,13 +81,13 @@ def stream_mummer(ref,query,min_len,on_match,stderr_path):
     return count
 
 
-def candidate_db(train_ref_shards,train_query,work):
+def candidate_db(train_ref,train_query,work):
     work=Path(work);work.mkdir(parents=True,exist_ok=True);db=work/'candidates.sqlite'
     if db.exists():db.unlink()
     con=sqlite3.connect(db);con.execute('PRAGMA journal_mode=OFF');con.execute('PRAGMA synchronous=OFF');con.execute('PRAGMA temp_store=FILE');con.execute('CREATE TABLE candidates(seq BLOB PRIMARY KEY,length INTEGER NOT NULL)')
-    match_count=0;pending=0
-    for si,shard in enumerate(train_ref_shards,1):
-        refs=shard_ref_map(shard)
+    match_count=0;pending=0;shards=0
+    for si,shard in stream_shards(train_ref,work/'streamed_train_shards'):
+        shards=si;refs=shard_ref_map(shard)
         def accept(m):
             nonlocal pending
             if m['length']<THRESHOLD:return
@@ -99,7 +98,7 @@ def candidate_db(train_ref_shards,train_query,work):
                 if pending>=5000:con.commit();pending=0
         match_count+=stream_mummer(shard,train_query,THRESHOLD,accept,work/f'train_{si:05d}.stderr')
     con.commit();con.execute('CREATE INDEX candidates_length_idx ON candidates(length DESC)');con.commit()
-    return con,con.execute('SELECT COUNT(*) FROM candidates').fetchone()[0],match_count
+    return con,con.execute('SELECT COUNT(*) FROM candidates').fetchone()[0],match_count,shards
 
 
 def write_candidates(rows,path):
@@ -107,14 +106,15 @@ def write_candidates(rows,path):
         for rowid,seqb in rows:f.write(f'>C{rowid}|L{TARGET_LEN}\n{bytes(seqb).decode("ascii")}\n')
 
 
-def query_hits(query_fa,ref_shards,min_len,work):
-    hits=[]
-    for si,shard in enumerate(ref_shards,1):
+def query_hits(query_fa,ref_source,min_len,work):
+    hits=[];shards=0
+    for si,shard in stream_shards(ref_source,Path(work)/'streamed_ref_shards'):
+        shards=si
         def accept(m):
             if m.get('query') and m['length']>=min_len:
                 x=dict(m);x['shard_index']=si;hits.append(x)
         stream_mummer(shard,query_fa,min_len,accept,Path(work)/f'shard_{si:05d}.stderr')
-    return hits
+    return hits,shards
 
 
 def parse_candidate(qid):
@@ -127,22 +127,21 @@ def write_query(path,seq,rowid):Path(path).write_text(f'>C{rowid}|L{TARGET_LEN}\
 
 def one_fold(name,train_a,train_b,held,work):
     work=Path(work);work.mkdir(parents=True,exist_ok=True)
-    train_a_shards=build_shards(train_a,work/'train_a_shards');held_shards=build_shards(held,work/'held_shards')
-    con,ncand,nmatches=candidate_db(train_a_shards,train_b,work/'candidate_build')
+    con,ncand,nmatches,train_shard_count=candidate_db(train_a,train_b,work/'candidate_build')
     rows=con.execute('SELECT rowid,seq FROM candidates WHERE length=? ORDER BY rowid',(TARGET_LEN,)).fetchall();byrow={r:bytes(s).decode('ascii') for r,s in rows}
     cand=work/'candidates_299.fa';write_candidates(rows,cand)
-    held_hits=query_hits(cand,held_shards,TARGET_LEN,work/'held_scan') if rows else []
+    held_hits,held_shard_count=query_hits(cand,held,TARGET_LEN,work/'held_scan') if rows else ([],0)
     winner_rows=[];seen=set()
     for h in held_hits:
         rowid,L=parse_candidate(h.get('query'))
         if rowid in byrow and L==TARGET_LEN and rowid not in seen:seen.add(rowid);winner_rows.append(rowid)
-    train_b_shards=build_shards(train_b,work/'train_b_shards')
     winners=[]
     for rowid in winner_rows:
         seq=byrow[rowid];q=work/f'winner_{rowid}.fa';write_query(q,seq,rowid)
-        winners.append({'candidate_rowid':rowid,'sequence':seq,'sequence_sha256':hashlib.sha256(seq.encode()).hexdigest(),'train_a_hits':query_hits(q,train_a_shards,TARGET_LEN,work/f'map_{rowid}_a'),'train_b_hits':query_hits(q,train_b_shards,TARGET_LEN,work/f'map_{rowid}_b'),'held_hits':query_hits(q,held_shards,TARGET_LEN,work/f'map_{rowid}_held')})
+        ah,_=query_hits(q,train_a,TARGET_LEN,work/f'map_{rowid}_a');bh,_=query_hits(q,train_b,TARGET_LEN,work/f'map_{rowid}_b');hh,_=query_hits(q,held,TARGET_LEN,work/f'map_{rowid}_held')
+        winners.append({'candidate_rowid':rowid,'sequence':seq,'sequence_sha256':hashlib.sha256(seq.encode()).hexdigest(),'train_a_hits':ah,'train_b_hits':bh,'held_hits':hh})
     con.close()
-    return {'fold':name,'threshold':THRESHOLD,'target_length':TARGET_LEN,'training_match_records_seen':nmatches,'unique_candidates_all_lengths':ncand,'candidate_count_length_299':len(rows),'heldout_hit_count_length_ge_299':len(held_hits),'first_heldout_shard_with_hit':min((h['shard_index'] for h in held_hits),default=None),'winner_count':len(winners),'winners':winners}
+    return {'fold':name,'threshold':THRESHOLD,'target_length':TARGET_LEN,'training_match_records_seen':nmatches,'unique_candidates_all_lengths':ncand,'candidate_count_length_299':len(rows),'heldout_hit_count_length_ge_299':len(held_hits),'training_reference_shards':train_shard_count,'held_reference_shards':held_shard_count,'first_heldout_shard_with_hit':min((h['shard_index'] for h in held_hits),default=None),'winner_count':len(winners),'winners':winners}
 
 
 def main():
