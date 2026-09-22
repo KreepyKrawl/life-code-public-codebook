@@ -1,0 +1,13 @@
+{
+  "experiment": "RCX-LCX-0001",
+  "stage": "A_REAL_SCREEN",
+  "requested_utc_date": "2026-09-22",
+  "baseline_gate": {
+    "shared_16mers": [2462, 19112, 16479],
+    "ordered_modules": [540, 989, 1395],
+    "distinct_source_primitives": true,
+    "start_distance_bp": [16, 10000]
+  },
+  "quotients": ["RY", "MK", "WS"],
+  "execution": "cloud"
+}
