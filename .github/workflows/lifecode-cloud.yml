@@ -8,8 +8,13 @@ on:
         required: true
         type: choice
         options:
+          - CORPUS-RAW-VERIFY
           - EXP-0002A
           - EXP-0003-PROJECTION
+      assembly_id:
+        description: Frozen assembly ID for raw verification
+        required: false
+        type: string
       representation:
         description: Projection for EXP-0003
         required: false
@@ -17,13 +22,17 @@ on:
         type: choice
         options: [ACGT, RY, MK, WS]
       input_url:
-        description: HTTPS URL of one frozen normalized FASTA for bounded test chunks
+        description: HTTPS URL of one frozen normalized FASTA for bounded projection chunks
         required: false
         type: string
       expected_sha256:
         description: Required SHA-256 for input_url
         required: false
         type: string
+  push:
+    branches: [main]
+    paths:
+      - 'cloud/requests/*.json'
 
 permissions:
   contents: read
@@ -35,13 +44,12 @@ jobs:
   gate:
     runs-on: ubuntu-latest
     outputs:
-      experiment: ${{ steps.meta.outputs.experiment }}
+      experiment: ${{ steps.request.outputs.experiment }}
+      assembly_id: ${{ steps.request.outputs.assembly_id }}
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: lifecode-cloud-runner
-      - id: meta
-        run: echo "experiment=${{ inputs.experiment }}" >> "$GITHUB_OUTPUT"
+          fetch-depth: 2
       - name: Verify sealed authority constants
         run: |
           python3 - <<'PY'
@@ -52,16 +60,78 @@ jobs:
           assert s['experiments']['EXP-0002']['mutable'] is False
           print('SEALED AUTHORITY GATE: PASS')
           PY
+      - id: request
+        name: Resolve request
+        env:
+          MANUAL_EXPERIMENT: ${{ inputs.experiment }}
+          MANUAL_ASSEMBLY: ${{ inputs.assembly_id }}
+          BEFORE_SHA: ${{ github.event.before }}
+          CURRENT_SHA: ${{ github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python3 - <<'PY'
+          import json,os,subprocess
+          from pathlib import Path
+          if os.environ['EVENT_NAME']=='workflow_dispatch':
+              experiment=os.environ.get('MANUAL_EXPERIMENT','')
+              assembly=os.environ.get('MANUAL_ASSEMBLY','')
+          else:
+              before=os.environ['BEFORE_SHA']; cur=os.environ['CURRENT_SHA']
+              changed=subprocess.check_output(['git','diff','--name-only',before,cur,'--','cloud/requests/*.json'],text=True).splitlines()
+              if len(changed)!=1:
+                  raise SystemExit(f'expected exactly one request file in commit, got {changed}')
+              req=json.loads(Path(changed[0]).read_text())
+              experiment=req.get('experiment','')
+              assembly=req.get('assembly_id','')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write(f'experiment={experiment}\n')
+              f.write(f'assembly_id={assembly}\n')
+          print('request:',experiment,assembly)
+          PY
+
+  corpus_raw_verify:
+    if: ${{ needs.gate.outputs.experiment == 'CORPUS-RAW-VERIFY' }}
+    needs: gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install NCBI Datasets CLI
+        run: |
+          curl --fail --location --retry 3 \
+            https://ftp.ncbi.nlm.nih.gov/pub/datasets/command-line/v2/linux-amd64/datasets \
+            -o datasets
+          chmod +x datasets
+          sudo mv datasets /usr/local/bin/datasets
+          datasets version
+      - name: Reacquire and hash-gate frozen raw FASTA
+        run: |
+          test -n "${{ needs.gate.outputs.assembly_id }}"
+          python3 cloud/scripts/reacquire_raw.py \
+            --assembly-id "${{ needs.gate.outputs.assembly_id }}" \
+            --out raw-verify-result.json
+          python3 cloud/scripts/checkpoint.py \
+            --experiment CORPUS-RAW-VERIFY \
+            --chunk "${{ needs.gate.outputs.assembly_id }}" \
+            --status COMPLETE \
+            --output raw-verify-result.json \
+            --checkpoint checkpoint.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lifecode-raw-verify-${{ needs.gate.outputs.assembly_id }}-${{ github.run_id }}
+          path: |
+            raw-verify-result.json
+            checkpoint.json
+          if-no-files-found: error
+          retention-days: 90
 
   projection_chunk:
-    if: ${{ inputs.experiment == 'EXP-0003-PROJECTION' }}
+    if: ${{ needs.gate.outputs.experiment == 'EXP-0003-PROJECTION' && github.event_name == 'workflow_dispatch' }}
     needs: gate
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: lifecode-cloud-runner
       - name: Require immutable input binding
         run: |
           test -n "${{ inputs.input_url }}"
@@ -92,16 +162,14 @@ jobs:
           retention-days: 90
 
   exp0002a_gate:
-    if: ${{ inputs.experiment == 'EXP-0002A' }}
+    if: ${{ needs.gate.outputs.experiment == 'EXP-0002A' }}
     needs: gate
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: lifecode-cloud-runner
       - name: Block forensic execution until exact A3 source binding is online
         run: |
           echo 'EXP-0002A is intentionally gated.'
           echo 'The sealed bundle proves the 299/299/299 results but does not contain the winning candidate sequences.'
-          echo 'Execution will remain blocked until the exact A3 normalized FASTAs or equivalent immutable public-source bindings are present and hash-verified.'
+          echo 'Execution remains blocked until the exact A3 normalized FASTAs are reacquired and canonical-normalization equivalence is hash-verified.'
           exit 78
