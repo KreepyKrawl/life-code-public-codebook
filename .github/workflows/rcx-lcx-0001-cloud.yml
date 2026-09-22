@@ -1,0 +1,62 @@
+name: RCX-LCX-0001 Cloud Runner
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'cloud/requests/rcx-lcx-0001-*.json'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  rcx_lcx_0001_stage_a:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify request when push-triggered
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          python3 - <<'PY'
+          import json,glob
+          files=glob.glob('cloud/requests/rcx-lcx-0001-*.json')
+          if not files:
+              raise SystemExit('missing RCX-LCX-0001 request file')
+          req=json.load(open(sorted(files)[-1]))
+          assert req.get('experiment')=='RCX-LCX-0001', req
+          print('REQUEST PASS', req)
+          PY
+      - name: Install NCBI Datasets CLI
+        run: |
+          curl --fail --location --retry 3 https://ftp.ncbi.nlm.nih.gov/pub/datasets/command-line/v2/linux-amd64/datasets -o datasets
+          chmod +x datasets
+          sudo mv datasets /usr/local/bin/datasets
+          datasets version
+      - name: Execute hash-gated Stage A real screen
+        run: |
+          python3 cloud/scripts/rcx_lcx_0001_stage_a.py
+      - name: Write checkpoint
+        if: ${{ success() }}
+        run: |
+          python3 cloud/scripts/checkpoint.py \
+            --experiment RCX-LCX-0001 \
+            --chunk STAGE-A-REAL-SCREEN \
+            --status COMPLETE \
+            --output rcx-lcx-0001-results.json \
+            --output rcx-lcx-0001-sha256.txt \
+            --checkpoint rcx-lcx-0001-checkpoint.json
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: rcx-lcx-0001-stage-a-${{ github.run_id }}
+          path: |
+            rcx-lcx-0001-results.json
+            rcx-lcx-0001-sha256.txt
+            rcx-lcx-0001-checkpoint.json
+          if-no-files-found: warn
+          retention-days: 90
