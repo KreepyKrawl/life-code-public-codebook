@@ -1,20 +1,28 @@
 {
   "schema": "LIFE_CODE_CLOUD_STATUS_V1",
-  "updated_utc": null,
+  "updated_utc": "2026-09-22T22:41:40Z",
   "authority": {
     "exp0002_state": "SEALED_COMPLETE",
     "exp0002_bundle_sha256": "76fb482a368af757a53688ef947d2a219280a2db8c3bc4d5bb5906bc6978a713",
     "a3_sealed_result_sha256": "769b21fe5f1f1caff44399eff563f1f8d29a48dcdfc1729c9a036a2eb16c7258",
     "a3_longest_block_sha256": "cf72f5783b799b1b5f53acfcfd60071299248b6c7efbfce87ae76425c003ebf9"
   },
+  "corpus": {
+    "frozen_assemblies": 26,
+    "raw_reacquisition_verified": 26,
+    "raw_reacquisition_failed": 0,
+    "verification_run_id": 35793532445,
+    "state": "RAW_CORPUS_RECONSTRUCTED_AND_HASH_VERIFIED"
+  },
   "experiments": {
     "EXP-0002": {"state": "SEALED_COMPLETE", "progress": 1.0, "mutable": false},
-    "EXP-0002A": {"state": "READY_FOR_INPUT_BINDING", "progress": 0.0, "mutable": true},
-    "EXP-0003": {"state": "PROTOCOL_DRAFT", "progress": 0.0, "mutable": true}
+    "EXP-0002A": {"state": "BLOCKED_CANONICAL_NORMALIZER_SOURCE", "progress": 0.15, "mutable": true},
+    "EXP-0003": {"state": "WAITING_CANONICAL_NORMALIZATION_GATE", "progress": 0.1, "mutable": true}
   },
   "runner": {
     "mode": "chunked_hash_verified",
     "local_pc_required": false,
-    "checkpoint_schema": "LIFE_CODE_CHUNK_CHECKPOINT_V1"
+    "checkpoint_schema": "LIFE_CODE_CHUNK_CHECKPOINT_V1",
+    "cloud_raw_reacquisition": "PASS_26_OF_26"
   }
 }
