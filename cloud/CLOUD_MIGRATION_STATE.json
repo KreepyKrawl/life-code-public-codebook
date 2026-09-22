@@ -1,0 +1,30 @@
+{
+  "schema": "LIFE_CODE_CLOUD_MIGRATION_STATE_V1",
+  "status": "BOOTSTRAP",
+  "scientific_authority": {
+    "exp0002_status": "SEALED_COMPLETE",
+    "exp0002_bundle_sha256": "76fb482a368af757a53688ef947d2a219280a2db8c3bc4d5bb5906bc6978a713",
+    "exp0002_a3_sealed_result_sha256": "769b21fe5f1f1caff44399eff563f1f8d29a48dcdfc1729c9a036a2eb16c7258",
+    "exp0002_a3_longest_block_sha256": "cf72f5783b799b1b5f53acfcfd60071299248b6c7efbfce87ae76425c003ebf9",
+    "execution_kit_v0_1_33_sha256": "23b50cc7fbac84736ad2c2762044013dbf90d227154a754238c7a0f3c1ce963f"
+  },
+  "rules": {
+    "rerun_exp0002": false,
+    "overwrite_canonical_codebook": false,
+    "reconstruct_missing_canonical_source": false,
+    "keep_reality_code_separate": true,
+    "future_bridge_analysis_allowed": true
+  },
+  "next_experiments": [
+    "EXP-0002A_A3_299_FORENSICS",
+    "EXP-0003_PHYLOGENETIC_QUOTIENT_TRANSFER"
+  ],
+  "cloud_requirements": {
+    "checkpoint_resume": true,
+    "persistent_artifacts": true,
+    "sha256_provenance": true,
+    "chunked_jobs": true,
+    "mobile_web_status": true,
+    "local_pc_required": false
+  }
+}
