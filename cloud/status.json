@@ -1,6 +1,6 @@
 {
   "schema": "LIFE_CODE_CLOUD_STATUS_V1",
-  "updated_utc": "2026-09-23T18:02:00Z",
+  "updated_utc": "2026-09-23T18:04:00Z",
   "authority": {
     "exp0002_state": "SEALED_COMPLETE",
     "exp0002_bundle_sha256": "76fb482a368af757a53688ef947d2a219280a2db8c3bc4d5bb5906bc6978a713",
@@ -26,8 +26,8 @@
     "EXP-0002": {"state": "SEALED_COMPLETE_PRIMARY_SUPPORT_CONFIRMED", "progress": 1.0, "mutable": false},
     "EXP-0002A": {"state": "A3_299_FORENSICS_COMPLETE_LOW_COMPLEXITY_REPEAT", "progress": 1.0, "mutable": false, "run_id": 35804419600, "aggregate_sha256": "2ff3a501481ee199192183a176602fbad613da1119c7055b0738995295ee6113"},
     "EXP-0003": {
-      "state": "PRIMARY_EXECUTION_FROZEN_B1_LAUNCH_NEXT",
-      "progress": 0.85,
+      "state": "PRIMARY_EXECUTION_IN_PROGRESS_B1",
+      "progress": 0.86,
       "mutable": true,
       "n1_replicates": 99,
       "engine_qualification_run_id": 35891368942,
@@ -39,6 +39,7 @@
       "production_qualification_run_id": 35893654175,
       "production_qualification_artifact_sha256": "d797b053c1bb4798f3986661cca59a3f258126520b531ef6f0a42d6744137608",
       "primary_resource_plan": "FROZEN_v1.0",
+      "primary_b1_run_id": 35899850184,
       "primary_outcomes_inspected": false
     }
   },
