@@ -1,0 +1,6 @@
+{
+  "schema": "LIFE_CODE_CLOUD_REQUEST_V1",
+  "experiment": "EXP-0003-ENGINE-QUALIFICATION",
+  "requested_utc": "2026-09-23T17:00:00Z",
+  "purpose": "Synthetic-only requalification of the frozen projection/N1 engine after adding deterministic FWD/RC N1 substreams. No primary genomic EXP-0003 outcomes are computed."
+}
