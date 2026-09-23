@@ -1,0 +1,51 @@
+name: LIFE-CODE EXP-0003 Transfer Orientation Qualification
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'cloud/requests/exp0003-transfer-qualify*.json'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  qualify-transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify EXP-0003 pre-transfer gates
+        run: |
+          python3 - <<'PY'
+          import json
+          s=json.load(open('cloud/status.json'))
+          assert s['experiments']['EXP-0003']['state']=='PROJECTION_AND_N1_ENGINE_QUALIFIED_TRANSFER_SCORER_QUALIFICATION_NEXT'
+          assert s['runner']['exp0003_exact_triad_binding']=='PASS'
+          assert s['runner']['exp0003_n1_replicates']==99
+          print('EXP-0003 TRANSFER QUALIFICATION GATE: PASS')
+          PY
+      - name: Build exact MUMmer 4.0.1
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential autoconf automake libtool zlib1g-dev
+          curl --fail --location --retry 3 https://github.com/mummer4/mummer/releases/download/v4.0.1/mummer-4.0.1.tar.gz -o mummer-4.0.1.tar.gz
+          tar -xzf mummer-4.0.1.tar.gz
+          cd mummer-4.0.1
+          ./configure --prefix="$HOME/mummer4"
+          make -j2
+          make install
+          echo "MUMMER_EXE=$HOME/mummer4/bin/mummer" >> "$GITHUB_ENV"
+      - name: Run synthetic orientation qualification
+        run: |
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_transfer_qualify.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lifecode-exp0003-transfer-qualification-${{ github.run_id }}
+          path: exp0003-transfer-qualification.json
+          if-no-files-found: error
+          retention-days: 90
