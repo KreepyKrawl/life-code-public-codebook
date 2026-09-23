@@ -1,0 +1,13 @@
+triad_id,ladder,depth_ordinal,taxonomic_stratum,genome_1,genome_2,genome_3,status
+B1,Bacterial ladder,1,Enterobacterales,B_ECOLI,B_SALM,B_KLEB,FROZEN_NO_SEQUENCE_RESULTS
+B2,Bacterial ladder,2,Gammaproteobacteria,B_ECOLI,B_PAER,B_VCHO,FROZEN_NO_SEQUENCE_RESULTS
+B3,Bacterial ladder,3,Bacteria,B_ECOLI,B_BSUB,B_MTUB,FROZEN_NO_SEQUENCE_RESULTS
+F1,Fungal ladder,1,Saccharomycetes,F_SCER,F_KLAC,F_CALB,FROZEN_NO_SEQUENCE_RESULTS
+F2,Fungal ladder,2,Ascomycota,F_SCER,F_NCRA,F_SPOM,FROZEN_NO_SEQUENCE_RESULTS
+F3,Fungal ladder,3,Fungi,F_SCER,F_SPOM,F_CNEO,FROZEN_NO_SEQUENCE_RESULTS
+P1,Plant ladder,1,Brassicaceae,P_ATHA,P_ALYR,P_CRUB,FROZEN_NO_SEQUENCE_RESULTS
+P2,Plant ladder,2,eudicotyledons,P_ATHA,P_PTRI,P_SLYC,FROZEN_NO_SEQUENCE_RESULTS
+P3,Plant ladder,3,Embryophyta / land plants,P_ATHA,P_PTRI,P_PPAT,FROZEN_NO_SEQUENCE_RESULTS
+A1,Animal ladder,1,Primates,A_HSAP,A_PTRO,A_MMUL,FROZEN_NO_SEQUENCE_RESULTS
+A2,Animal ladder,2,Mammalia,A_HSAP,A_MMUS,A_BTAU,FROZEN_NO_SEQUENCE_RESULTS
+A3,Animal ladder,3,Vertebrata,A_HSAP,A_GGAL,A_DRER,FROZEN_NO_SEQUENCE_RESULTS
