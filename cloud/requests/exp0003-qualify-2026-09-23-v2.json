@@ -1,0 +1,5 @@
+{
+  "schema": "LIFE_CODE_CLOUD_REQUEST_V1",
+  "experiment": "EXP-0003-ENGINE-QUALIFICATION",
+  "purpose": "Repeat synthetic-only engine qualification after adding qualified engine SHA-256 to the artifact. No EXP-0003 outcomes are inspected."
+}
