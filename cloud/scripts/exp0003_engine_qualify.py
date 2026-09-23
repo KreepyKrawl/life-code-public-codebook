@@ -7,8 +7,8 @@ TEST_SEQ='ACGTACGTTGCAACGT'
 EXPECTED={
  'ACGT':'ACGTACGTTGCAACGT',
  'RY':'ACACACACCACAACAC',
- 'MK':'AACCAACCCC AAAACC'.replace(' ',''),
- 'WS':'ACCAACAAA CCAACCA'.replace(' ',''),
+ 'MK':'AACCAACCCCAAAACC',
+ 'WS':'ACCAACCAACCAACCA',
 }
 
 def sha_text(s):return hashlib.sha256(s.encode()).hexdigest()
