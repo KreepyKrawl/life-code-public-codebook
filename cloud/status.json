@@ -1,6 +1,6 @@
 {
   "schema": "LIFE_CODE_CLOUD_STATUS_V1",
-  "updated_utc": "2026-09-23T16:49:20Z",
+  "updated_utc": "2026-09-23T17:05:25Z",
   "authority": {
     "exp0002_state": "SEALED_COMPLETE",
     "exp0002_bundle_sha256": "76fb482a368af757a53688ef947d2a219280a2db8c3bc4d5bb5906bc6978a713",
@@ -25,7 +25,19 @@
   "experiments": {
     "EXP-0002": {"state": "SEALED_COMPLETE_PRIMARY_SUPPORT_CONFIRMED", "progress": 1.0, "mutable": false},
     "EXP-0002A": {"state": "A3_299_FORENSICS_COMPLETE_LOW_COMPLEXITY_REPEAT", "progress": 1.0, "mutable": false, "run_id": 35804419600, "aggregate_sha256": "2ff3a501481ee199192183a176602fbad613da1119c7055b0738995295ee6113"},
-    "EXP-0003": {"state": "PROJECTION_AND_N1_ENGINE_QUALIFIED_TRANSFER_SCORER_QUALIFICATION_NEXT", "progress": 0.55, "mutable": true, "n1_replicates": 99, "engine_qualification_run_id": 35891368942, "qualified_engine_sha256": "ef1064a1afef64a9aed351d140132ce2874accdf3ac994c45a647396fcb0f20e", "qualification_artifact_sha256": "bebf22ae600c60be966cd4c7be4a1dc85498cab98b15b117d1cccad9c7a87e5a"}
+    "EXP-0003": {
+      "state": "FULL_TRIAD_SCORER_QUALIFIED_PRIMARY_PRODUCTION_ENGINEERING_NEXT",
+      "progress": 0.7,
+      "mutable": true,
+      "n1_replicates": 99,
+      "engine_qualification_run_id": 35891368942,
+      "qualified_engine_sha256": "ef1064a1afef64a9aed351d140132ce2874accdf3ac994c45a647396fcb0f20e",
+      "qualification_artifact_sha256": "bebf22ae600c60be966cd4c7be4a1dc85498cab98b15b117d1cccad9c7a87e5a",
+      "orientation_qualification_run_id": 35892470449,
+      "full_triad_qualification_run_id": 35893140632,
+      "full_triad_qualification_artifact_sha256": "b4630407692c8af441a5f55a5b8f230434073b80bcd65fa30d613bf8c133feda",
+      "primary_outcomes_inspected": false
+    }
   },
   "runner": {
     "mode": "chunked_hash_verified",
@@ -36,6 +48,9 @@
     "exp0003_exact_triad_binding": "PASS",
     "exp0003_n1_replicates": 99,
     "exp0003_seed_schedule": "FROZEN_SHA256_CELL_SPECIFIC",
-    "exp0003_projection_n1_engine_qualification": "PASS_SYNTHETIC_ONLY"
+    "exp0003_projection_n1_engine_qualification": "PASS_SYNTHETIC_ONLY",
+    "exp0003_pairwise_orientation_qualification": "PASS_SYNTHETIC_ONLY",
+    "exp0003_full_triad_transfer_qualification": "PASS_SYNTHETIC_ONLY_48_CELLS_50_CHECKS",
+    "exp0003_n1_orientation_semantics": "FROZEN_DUAL_ORIENTATION_INDEPENDENT_MARKOV"
   }
 }
