@@ -1,0 +1,42 @@
+name: LIFE-CODE EXP-0003 Engine Qualification
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'cloud/requests/exp0003-qualify*.json'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify preregistration gates
+        run: |
+          python3 - <<'PY'
+          import csv,json
+          s=json.load(open('cloud/status.json'))
+          assert s['corpus']['canonical_normalization_verified']==26
+          assert s['runner']['exp0003_exact_triad_binding']=='PASS'
+          assert s['runner']['exp0003_n1_replicates']==99
+          rows=list(csv.DictReader(open('cloud/canonical/v0.1.33/EXP0002_TRIADS.csv',newline='',encoding='utf-8')))
+          assert len(rows)==12
+          print('EXP-0003 PREREGISTRATION GATES: PASS')
+          PY
+      - name: Run synthetic-only engine qualification
+        working-directory: cloud/scripts
+        run: python3 exp0003_engine_qualify.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lifecode-exp0003-engine-qualification-${{ github.run_id }}
+          path: cloud/scripts/exp0003-engine-qualification.json
+          if-no-files-found: error
+          retention-days: 90
