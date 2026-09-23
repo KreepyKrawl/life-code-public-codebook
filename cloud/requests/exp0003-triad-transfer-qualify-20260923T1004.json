@@ -1,0 +1,6 @@
+{
+  "experiment": "EXP-0003-FULL-TRIAD-TRANSFER-QUALIFICATION",
+  "synthetic_only": true,
+  "primary_outcomes_inspected": false,
+  "purpose": "Qualify the complete two-train/one-held-out transfer scorer against an independent brute-force maximal-match oracle for all 16 frozen representations and all three fold orientations."
+}
