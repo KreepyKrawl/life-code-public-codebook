@@ -1,0 +1,9 @@
+{
+  "schema": "LIFE_CODE_EXP0003_PRIMARY_TRIAD_REQUEST_V1",
+  "experiment": "EXP-0003",
+  "triad_id": "B1",
+  "purpose": "PRIMARY_EXECUTION",
+  "scientific_outcomes_may_not_be_used_for_resource_tuning": true,
+  "global_reveal_barrier": "NO_INTERPRETATION_UNTIL_REQUIRED_PRIMARY_FAMILY_COMPLETE",
+  "requested_utc": "2026-09-23T18:02:00Z"
+}
