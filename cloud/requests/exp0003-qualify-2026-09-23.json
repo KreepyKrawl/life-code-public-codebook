@@ -1,0 +1,5 @@
+{
+  "schema": "LIFE_CODE_CLOUD_REQUEST_V1",
+  "experiment": "EXP-0003-ENGINE-QUALIFICATION",
+  "purpose": "Synthetic-only qualification of frozen representation transforms, 12 non-biological controls, deterministic seed schedule, and primary N1 generator before any EXP-0003 outcome is inspected."
+}
