@@ -1,0 +1,6 @@
+{
+  "schema": "LIFE_CODE_CLOUD_REQUEST_V1",
+  "experiment": "EXP-0003-TRANSFER-QUALIFICATION",
+  "requested_utc": "2026-09-23T16:49:30Z",
+  "purpose": "Qualify frozen raw-strand-aware orientation semantics and MUMmer forward-only transfer scoring on synthetic cases before any EXP-0003 primary genomic outcome is inspected."
+}
