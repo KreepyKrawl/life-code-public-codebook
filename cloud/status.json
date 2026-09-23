@@ -1,6 +1,6 @@
 {
   "schema": "LIFE_CODE_CLOUD_STATUS_V1",
-  "updated_utc": "2026-09-23T13:02:00Z",
+  "updated_utc": "2026-09-23T16:49:20Z",
   "authority": {
     "exp0002_state": "SEALED_COMPLETE",
     "exp0002_bundle_sha256": "76fb482a368af757a53688ef947d2a219280a2db8c3bc4d5bb5906bc6978a713",
@@ -25,7 +25,7 @@
   "experiments": {
     "EXP-0002": {"state": "SEALED_COMPLETE_PRIMARY_SUPPORT_CONFIRMED", "progress": 1.0, "mutable": false},
     "EXP-0002A": {"state": "A3_299_FORENSICS_COMPLETE_LOW_COMPLEXITY_REPEAT", "progress": 1.0, "mutable": false, "run_id": 35804419600, "aggregate_sha256": "2ff3a501481ee199192183a176602fbad613da1119c7055b0738995295ee6113"},
-    "EXP-0003": {"state": "PREREGISTRATION_COMPLETE_READY_FOR_ENGINE_QUALIFICATION_AND_PRIMARY_EXECUTION", "progress": 0.45, "mutable": true, "n1_replicates": 99}
+    "EXP-0003": {"state": "PROJECTION_AND_N1_ENGINE_QUALIFIED_TRANSFER_SCORER_QUALIFICATION_NEXT", "progress": 0.55, "mutable": true, "n1_replicates": 99, "engine_qualification_run_id": 35891368942, "qualified_engine_sha256": "ef1064a1afef64a9aed351d140132ce2874accdf3ac994c45a647396fcb0f20e", "qualification_artifact_sha256": "bebf22ae600c60be966cd4c7be4a1dc85498cab98b15b117d1cccad9c7a87e5a"}
   },
   "runner": {
     "mode": "chunked_hash_verified",
@@ -35,6 +35,7 @@
     "canonical_normalization_equivalence": "PASS_26_OF_26",
     "exp0003_exact_triad_binding": "PASS",
     "exp0003_n1_replicates": 99,
-    "exp0003_seed_schedule": "FROZEN_SHA256_CELL_SPECIFIC"
+    "exp0003_seed_schedule": "FROZEN_SHA256_CELL_SPECIFIC",
+    "exp0003_projection_n1_engine_qualification": "PASS_SYNTHETIC_ONLY"
   }
 }
