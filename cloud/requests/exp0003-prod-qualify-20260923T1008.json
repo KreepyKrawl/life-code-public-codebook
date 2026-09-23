@@ -1,0 +1,6 @@
+{
+  "experiment": "EXP-0003-PRODUCTION-ENGINE-QUALIFICATION",
+  "synthetic_only": true,
+  "primary_outcomes_inspected": false,
+  "purpose": "Verify the resource-bounded production scorer is exactly equivalent to the qualified triadic scorer and independent oracle, and verify N1 dual-orientation seed semantics."
+}
