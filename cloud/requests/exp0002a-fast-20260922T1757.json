@@ -1,0 +1,5 @@
+{
+  "experiment": "EXP-0002A",
+  "mode": "A3_299_PARALLEL_FORENSICS_V2",
+  "reason": "parallelize three folds and batch winner remapping"
+}
