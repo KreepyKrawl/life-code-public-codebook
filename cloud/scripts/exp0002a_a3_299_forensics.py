@@ -6,6 +6,7 @@ CANONICAL_WRAPPER_SHA256='f3b9fb457a4ee11fe41af70962b7d268f4f12ef22e2441b2016037
 DEFAULT_SHARD_BASES=128*1024*1024
 TARGET_LEN=299
 THRESHOLD=256
+FOLD_NAMES=('AB_C','AC_B','BC_A')
 
 
 def sha256(p):
@@ -66,6 +67,7 @@ def stream_mummer(ref,query,min_len,on_match,stderr_path):
     query_id=None;orient='+';count=0
     with open(stderr_path,'w',encoding='utf-8') as err:
         p=subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=err,text=True,bufsize=1)
+        assert p.stdout is not None
         for raw in p.stdout:
             line=raw.strip()
             if not line or line.startswith('#'):continue
@@ -122,7 +124,12 @@ def parse_candidate(qid):
     return (int(m.group(1)),int(m.group(2))) if m else (None,None)
 
 
-def write_query(path,seq,rowid):Path(path).write_text(f'>C{rowid}|L{TARGET_LEN}\n{seq}\n',encoding='ascii')
+def group_hits_by_row(hits):
+    out={}
+    for h in hits:
+        rowid,L=parse_candidate(h.get('query'))
+        if rowid is not None and L==TARGET_LEN:out.setdefault(rowid,[]).append(h)
+    return out
 
 
 def one_fold(name,train_a,train_b,held,work):
@@ -131,29 +138,35 @@ def one_fold(name,train_a,train_b,held,work):
     rows=con.execute('SELECT rowid,seq FROM candidates WHERE length=? ORDER BY rowid',(TARGET_LEN,)).fetchall();byrow={r:bytes(s).decode('ascii') for r,s in rows}
     cand=work/'candidates_299.fa';write_candidates(rows,cand)
     held_hits,held_shard_count=query_hits(cand,held,TARGET_LEN,work/'held_scan') if rows else ([],0)
-    winner_rows=[];seen=set()
-    for h in held_hits:
-        rowid,L=parse_candidate(h.get('query'))
-        if rowid in byrow and L==TARGET_LEN and rowid not in seen:seen.add(rowid);winner_rows.append(rowid)
+    held_byrow=group_hits_by_row(held_hits)
+    winner_rows=sorted(r for r in held_byrow if r in byrow)
+
     winners=[]
-    for rowid in winner_rows:
-        seq=byrow[rowid];q=work/f'winner_{rowid}.fa';write_query(q,seq,rowid)
-        ah,_=query_hits(q,train_a,TARGET_LEN,work/f'map_{rowid}_a');bh,_=query_hits(q,train_b,TARGET_LEN,work/f'map_{rowid}_b');hh,_=query_hits(q,held,TARGET_LEN,work/f'map_{rowid}_held')
-        winners.append({'candidate_rowid':rowid,'sequence':seq,'sequence_sha256':hashlib.sha256(seq.encode()).hexdigest(),'train_a_hits':ah,'train_b_hits':bh,'held_hits':hh})
+    if winner_rows:
+        winner_fa=work/'winner_candidates_299.fa'
+        write_candidates([(r,byrow[r].encode('ascii')) for r in winner_rows],winner_fa)
+        train_a_hits,_=query_hits(winner_fa,train_a,TARGET_LEN,work/'map_winners_a')
+        train_b_hits,_=query_hits(winner_fa,train_b,TARGET_LEN,work/'map_winners_b')
+        a_byrow=group_hits_by_row(train_a_hits);b_byrow=group_hits_by_row(train_b_hits)
+        for rowid in winner_rows:
+            seq=byrow[rowid]
+            winners.append({'candidate_rowid':rowid,'sequence':seq,'sequence_sha256':hashlib.sha256(seq.encode()).hexdigest(),'train_a_hits':a_byrow.get(rowid,[]),'train_b_hits':b_byrow.get(rowid,[]),'held_hits':held_byrow.get(rowid,[])})
     con.close()
     return {'fold':name,'threshold':THRESHOLD,'target_length':TARGET_LEN,'training_match_records_seen':nmatches,'unique_candidates_all_lengths':ncand,'candidate_count_length_299':len(rows),'heldout_hit_count_length_ge_299':len(held_hits),'training_reference_shards':train_shard_count,'held_reference_shards':held_shard_count,'first_heldout_shard_with_hit':min((h['shard_index'] for h in held_hits),default=None),'winner_count':len(winners),'winners':winners}
 
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--human',required=True);ap.add_argument('--chicken',required=True);ap.add_argument('--zebrafish',required=True);ap.add_argument('--work',default='forensics-work');ap.add_argument('--out',default='EXP0002A_A3_299_FORENSICS.json');a=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--human',required=True);ap.add_argument('--chicken',required=True);ap.add_argument('--zebrafish',required=True);ap.add_argument('--fold',choices=FOLD_NAMES);ap.add_argument('--work',default='forensics-work');ap.add_argument('--out',default='EXP0002A_A3_299_FORENSICS.json');a=ap.parse_args()
     paths={'A_HSAP':Path(a.human),'A_GGAL':Path(a.chicken),'A_DRER':Path(a.zebrafish)}
     for k,p in paths.items():
         if not p.exists():raise SystemExit(f'MISSING_INPUT {k} {p}')
-    folds=[('AB_C',paths['A_HSAP'],paths['A_GGAL'],paths['A_DRER']),('AC_B',paths['A_HSAP'],paths['A_DRER'],paths['A_GGAL']),('BC_A',paths['A_GGAL'],paths['A_DRER'],paths['A_HSAP'])]
-    root=Path(a.work);root.mkdir(parents=True,exist_ok=True);results=[one_fold(*f,root/f[0]) for f in folds]
-    sets=[{w['sequence_sha256'] for w in r['winners']} for r in results];common=set.intersection(*sets) if sets else set()
+    fold_map={'AB_C':('AB_C',paths['A_HSAP'],paths['A_GGAL'],paths['A_DRER']),'AC_B':('AC_B',paths['A_HSAP'],paths['A_DRER'],paths['A_GGAL']),'BC_A':('BC_A',paths['A_GGAL'],paths['A_DRER'],paths['A_HSAP'])}
+    selected=[fold_map[a.fold]] if a.fold else [fold_map[n] for n in FOLD_NAMES]
+    root=Path(a.work);root.mkdir(parents=True,exist_ok=True);results=[one_fold(*f,root/f[0]) for f in selected]
+    sets=[{w['sequence_sha256'] for w in r['winners']} for r in results]
+    common=set.intersection(*sets) if len(sets)==3 else set()
     version=subprocess.check_output([mummer_exe(),'--version'],text=True,stderr=subprocess.STDOUT).strip()
-    payload={'schema':'LIFE_CODE_EXP0002A_A3_299_FORENSICS_V1','status':'COMPLETE','method_state':'POST_FREEZE_FORENSIC_DERIVATIVE_OF_CANONICAL_LONGEST_BLOCK','canonical_longest_block_wrapper_sha256_reference':CANONICAL_WRAPPER_SHA256,'mummer_executable':mummer_exe(),'mummer_version':version,'input_sha256':{k:sha256(v) for k,v in paths.items()},'threshold':THRESHOLD,'target_length':TARGET_LEN,'folds':results,'sequence_hashes_common_to_all_three_folds':sorted(common),'same_299_sequence_present_in_all_three_folds':bool(common)}
+    payload={'schema':'LIFE_CODE_EXP0002A_A3_299_FORENSICS_V2','status':'COMPLETE','method_state':'POST_FREEZE_FORENSIC_DERIVATIVE_OF_CANONICAL_LONGEST_BLOCK','canonical_longest_block_wrapper_sha256_reference':CANONICAL_WRAPPER_SHA256,'mummer_executable':mummer_exe(),'mummer_version':version,'input_sha256':{k:sha256(v) for k,v in paths.items()},'threshold':THRESHOLD,'target_length':TARGET_LEN,'selected_fold':a.fold,'folds':results,'sequence_hashes_common_to_all_three_folds':sorted(common),'same_299_sequence_present_in_all_three_folds':bool(common) if len(sets)==3 else None}
     Path(a.out).write_text(json.dumps(payload,indent=2,sort_keys=True)+'\n',encoding='utf-8');print(json.dumps({'status':'COMPLETE','winner_counts':{r['fold']:r['winner_count'] for r in results},'common_sequence_count':len(common)},sort_keys=True))
 
 if __name__=='__main__':main()
