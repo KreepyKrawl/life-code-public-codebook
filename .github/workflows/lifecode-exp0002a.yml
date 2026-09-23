@@ -14,7 +14,11 @@ env:
   PYTHONUNBUFFERED: '1'
 
 jobs:
-  a3_299_forensics:
+  fold_forensics:
+    strategy:
+      fail-fast: false
+      matrix:
+        fold: [AB_C, AC_B, BC_A]
     runs-on: ubuntu-latest
     timeout-minutes: 360
     steps:
@@ -37,7 +41,6 @@ jobs:
           curl --fail --location --retry 3 https://ftp.ncbi.nlm.nih.gov/pub/datasets/command-line/v2/linux-amd64/datasets -o datasets
           chmod +x datasets
           sudo mv datasets /usr/local/bin/datasets
-          datasets version
 
       - name: Build exact MUMmer 4.0.1
         run: |
@@ -49,7 +52,6 @@ jobs:
           ./configure --prefix="$HOME/mummer4"
           make -j2
           make install
-          "$HOME/mummer4/bin/mummer" --version || "$HOME/mummer4/bin/mummer" -h | head
           echo "MUMMER_EXE=$HOME/mummer4/bin/mummer" >> "$GITHUB_ENV"
 
       - name: Reacquire and canonically normalize A3 genomes
@@ -61,34 +63,77 @@ jobs:
             rm -f "work/$id/$id.zip"
             rm -rf "work/$id/package"
           done
-          df -h .
 
-      - name: Recover and map the A3 299-bp transfer frontier
+      - name: Recover one A3 299-bp forensic fold
         run: |
           python3 cloud/scripts/exp0002a_a3_299_forensics.py \
             --human work/A_HSAP/canonical_normalization/A_HSAP.normalized.fasta \
             --chicken work/A_GGAL/canonical_normalization/A_GGAL.normalized.fasta \
             --zebrafish work/A_DRER/canonical_normalization/A_DRER.normalized.fasta \
-            --work forensic-work \
-            --out EXP0002A_A3_299_FORENSICS.json
+            --fold "${{ matrix.fold }}" \
+            --work "forensic-work-${{ matrix.fold }}" \
+            --out "fold-${{ matrix.fold }}.json"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lifecode-exp0002a-fold-${{ matrix.fold }}-${{ github.run_id }}
+          path: fold-${{ matrix.fold }}.json
+          if-no-files-found: error
+          retention-days: 90
+
+  aggregate:
+    needs: fold_forensics
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: lifecode-exp0002a-fold-*-${{ github.run_id }}
+          path: fold-results
+          merge-multiple: true
+      - name: Aggregate three frozen folds
+        run: |
+          python3 - <<'PY'
+          import glob,json,hashlib
+          files=sorted(glob.glob('fold-results/fold-*.json'))
+          assert len(files)==3,files
+          docs=[json.load(open(p)) for p in files]
+          folds=[]
+          for d in docs:
+              assert d['status']=='COMPLETE'
+              assert len(d['folds'])==1
+              folds.extend(d['folds'])
+          order={'AB_C':0,'AC_B':1,'BC_A':2};folds.sort(key=lambda x:order[x['fold']])
+          sets=[{w['sequence_sha256'] for w in f['winners']} for f in folds]
+          common=set.intersection(*sets)
+          out={
+            'schema':'LIFE_CODE_EXP0002A_A3_299_FORENSICS_AGGREGATE_V1',
+            'status':'COMPLETE',
+            'method_state':'POST_FREEZE_FORENSIC_DERIVATIVE_OF_CANONICAL_LONGEST_BLOCK',
+            'canonical_longest_block_wrapper_sha256_reference':'f3b9fb457a4ee11fe41af70962b7d268f4f12ef22e2441b20160379c9208db5e',
+            'threshold':256,'target_length':299,'folds':folds,
+            'winner_counts':{f['fold']:f['winner_count'] for f in folds},
+            'sequence_hashes_common_to_all_three_folds':sorted(common),
+            'same_299_sequence_present_in_all_three_folds':bool(common)
+          }
+          raw=(json.dumps(out,indent=2,sort_keys=True)+'\n').encode()
+          open('EXP0002A_A3_299_FORENSICS.json','wb').write(raw)
+          open('EXP0002A_A3_299_FORENSICS.sha256','w').write(hashlib.sha256(raw).hexdigest()+'  EXP0002A_A3_299_FORENSICS.json\n')
+          print(json.dumps({'winner_counts':out['winner_counts'],'common_sequence_count':len(common)},sort_keys=True))
+          PY
           python3 cloud/scripts/checkpoint.py \
             --experiment EXP-0002A \
             --chunk A3-299-FORENSICS \
             --status COMPLETE \
             --output EXP0002A_A3_299_FORENSICS.json \
+            --output EXP0002A_A3_299_FORENSICS.sha256 \
             --checkpoint checkpoint.json
-
       - uses: actions/upload-artifact@v4
         with:
           name: lifecode-exp0002a-a3-299-${{ github.run_id }}
           path: |
             EXP0002A_A3_299_FORENSICS.json
+            EXP0002A_A3_299_FORENSICS.sha256
             checkpoint.json
-            raw-A_HSAP.json
-            raw-A_GGAL.json
-            raw-A_DRER.json
-            norm-A_HSAP.json
-            norm-A_GGAL.json
-            norm-A_DRER.json
           if-no-files-found: error
           retention-days: 90
