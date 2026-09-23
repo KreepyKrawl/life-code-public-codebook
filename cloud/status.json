@@ -1,6 +1,6 @@
 {
   "schema": "LIFE_CODE_CLOUD_STATUS_V1",
-  "updated_utc": "2026-09-22T23:03:48Z",
+  "updated_utc": "2026-09-23T12:55:00Z",
   "authority": {
     "exp0002_state": "SEALED_COMPLETE",
     "exp0002_bundle_sha256": "76fb482a368af757a53688ef947d2a219280a2db8c3bc4d5bb5906bc6978a713",
@@ -9,7 +9,8 @@
     "canonical_v0_1_33_zip_sha256": "23b50cc7fbac84736ad2c2762044013dbf90d227154a754238c7a0f3c1ce963f",
     "canonical_normalizer_sha256": "f705448fa0dfc20aed7a4a3fa3023eb79d5a1bbbcb4b75d0489a8481ca587712",
     "frozen_hierarchy_scorer_sha256": "d0ea86baa9daaf8e7801de648762d06e864163b55c79c7504dbb6c0ca2892898",
-    "results_gate_sha256": "033da38594e41905a4f71e6592dc0d7cdcdc4a58997355b6aa6fa028d638c092"
+    "results_gate_sha256": "033da38594e41905a4f71e6592dc0d7cdcdc4a58997355b6aa6fa028d638c092",
+    "exp0002_triads_sha256": "81e98c2bd235609cada938519b8d7890ff180b03f406f6ad9852c0fed6c198f4"
   },
   "corpus": {
     "frozen_assemblies": 26,
@@ -23,14 +24,15 @@
   },
   "experiments": {
     "EXP-0002": {"state": "SEALED_COMPLETE_PRIMARY_SUPPORT_CONFIRMED", "progress": 1.0, "mutable": false},
-    "EXP-0002A": {"state": "READY_FOR_CLOUD_FORENSICS", "progress": 0.25, "mutable": true},
-    "EXP-0003": {"state": "READY_FOR_PREREGISTRATION_FREEZE_AND_EXECUTION", "progress": 0.2, "mutable": true}
+    "EXP-0002A": {"state": "A3_299_FORENSICS_COMPLETE_LOW_COMPLEXITY_REPEAT", "progress": 1.0, "mutable": false, "run_id": 35804419600, "aggregate_sha256": "2ff3a501481ee199192183a176602fbad613da1119c7055b0738995295ee6113"},
+    "EXP-0003": {"state": "PREREGISTERED_TRIAD_BINDING_PASS_WAITING_N1_RUNTIME_QUALIFICATION", "progress": 0.35, "mutable": true}
   },
   "runner": {
     "mode": "chunked_hash_verified",
     "local_pc_required": false,
     "checkpoint_schema": "LIFE_CODE_CHUNK_CHECKPOINT_V1",
     "cloud_raw_reacquisition": "PASS_26_OF_26",
-    "canonical_normalization_equivalence": "PASS_26_OF_26"
+    "canonical_normalization_equivalence": "PASS_26_OF_26",
+    "exp0003_exact_triad_binding": "PASS"
   }
 }
