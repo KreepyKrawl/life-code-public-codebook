@@ -12,6 +12,7 @@ EXPECTED={
 }
 
 def sha_text(s):return hashlib.sha256(s.encode()).hexdigest()
+def sha_file(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
 def main():
     checks={}
@@ -43,7 +44,7 @@ def main():
         q1=Path(td)/'n1a.fa';q2=Path(td)/'n1b.fa'
         e.write_n1_fasta(p,q1,'RY','B1','AB_C',0);e.write_n1_fasta(p,q2,'RY','B1','AB_C',0)
         checks['fasta_n1_reproducible']=q1.read_bytes()==q2.read_bytes()
-    payload={'schema':'LIFE_CODE_EXP0003_ENGINE_QUALIFICATION_V1','status':'PASS','synthetic_only':True,'exp0003_outcomes_inspected':False,'checks':checks,'test_sequence_sha256':sha_text(TEST_SEQ)}
+    payload={'schema':'LIFE_CODE_EXP0003_ENGINE_QUALIFICATION_V1','status':'PASS','synthetic_only':True,'exp0003_outcomes_inspected':False,'checks':checks,'test_sequence_sha256':sha_text(TEST_SEQ),'qualified_engine_sha256':sha_file(Path(__file__).with_name('exp0003_engine.py'))}
     Path('exp0003-engine-qualification.json').write_text(json.dumps(payload,indent=2,sort_keys=True)+'\n',encoding='utf-8')
     print(json.dumps(payload,sort_keys=True))
 
