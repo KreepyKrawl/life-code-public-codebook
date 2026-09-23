@@ -22,11 +22,19 @@ CONTROL_TUPLES = {
     'C12': ('RY','MK','MK','RY'),
 }
 STATE_INDEX={'A':0,'C':1,'G':2,'T':3}
+DNA_COMP=str.maketrans('ACGT','TGCA')
 
 
 def seed64(representation, triad_id, fold, replicate):
     s=f'LIFE_CODE|EXP-0003|N1|{representation}|{triad_id}|{fold}|{replicate}'
     return int(hashlib.sha256(s.encode('utf-8')).hexdigest()[:16],16)
+
+
+def reverse_complement(seq):
+    s=seq.upper()
+    if set(s)-set('ACGT'):
+        raise ValueError('reverse complement input must be ACGT only')
+    return s.translate(DNA_COMP)[::-1]
 
 
 def project_sequence(seq, representation):
@@ -104,11 +112,39 @@ def write_projected_fasta(inp,out,representation):
             dst.write(f'>{name}\n{project_sequence(seq,representation)}\n')
 
 
+def _record_subseed(cell_seed,name,record_index,orientation=None):
+    suffix=f'{name}|{record_index}' if orientation is None else f'{name}|{record_index}|{orientation}'
+    return cell_seed ^ int(hashlib.sha256(suffix.encode('utf-8')).hexdigest()[:16],16)
+
+
 def write_n1_fasta(inp,out,representation,triad_id,fold,replicate):
     with open(out,'w',encoding='ascii',newline='\n') as dst:
         for record_index,(name,raw_seq) in enumerate(iter_fasta(inp)):
             projected=project_sequence(raw_seq,representation)
             cell_seed=seed64(representation,triad_id,fold,replicate)
-            record_seed=cell_seed ^ int(hashlib.sha256(f'{name}|{record_index}'.encode()).hexdigest()[:16],16)
+            record_seed=_record_subseed(cell_seed,name,record_index)
             null=generate_n1(projected,record_seed)
             dst.write(f'>{name}\n{null}\n')
+
+
+def write_oriented_projected_fasta(inp,out,representation,orientation):
+    if orientation not in ('FWD','RC'):
+        raise ValueError('orientation must be FWD or RC')
+    with open(out,'w',encoding='ascii',newline='\n') as dst:
+        for name,raw_seq in iter_fasta(inp):
+            oriented=raw_seq if orientation=='FWD' else reverse_complement(raw_seq)
+            projected=project_sequence(oriented,representation)
+            dst.write(f'>{name}|{orientation}\n{projected}\n')
+
+
+def write_oriented_n1_fasta(inp,out,representation,triad_id,fold,replicate,orientation):
+    if orientation not in ('FWD','RC'):
+        raise ValueError('orientation must be FWD or RC')
+    cell_seed=seed64(representation,triad_id,fold,replicate)
+    with open(out,'w',encoding='ascii',newline='\n') as dst:
+        for record_index,(name,raw_seq) in enumerate(iter_fasta(inp)):
+            oriented=raw_seq if orientation=='FWD' else reverse_complement(raw_seq)
+            projected=project_sequence(oriented,representation)
+            record_seed=_record_subseed(cell_seed,name,record_index,orientation)
+            null=generate_n1(projected,record_seed)
+            dst.write(f'>{name}|{orientation}\n{null}\n')
