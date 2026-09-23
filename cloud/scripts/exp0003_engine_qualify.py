@@ -35,17 +35,35 @@ def main():
     checks['n1_different_seed_changes_output']=(n0!=n1)
     if not all(checks.values()):raise SystemExit('qualification check failed')
     with tempfile.TemporaryDirectory() as td:
-        p=Path(td)/'in.fa';p.write_text('>r1\nACGTACGT\n>r2\nTTTTCCCCAAAAGGGG\n',encoding='ascii')
+        td=Path(td)
+        p=td/'in.fa';p.write_text('>r1\nACGTTGCAACGTACGT\n>r2\nTTTTCCCCAAAAGGGG\n',encoding='ascii')
+        src=list(e.iter_fasta(p))
         for rep in ['ACGT','RY','MK','WS',*e.CONTROL_TUPLES.keys()]:
-            out=Path(td)/f'{rep}.fa';e.write_projected_fasta(p,out,rep)
-            rows=list(e.iter_fasta(out));src=list(e.iter_fasta(p))
-            assert [x[0] for x in rows]==[x[0] for x in src]
-            assert [len(x[1]) for x in rows]==[len(x[1]) for x in src]
-        q1=Path(td)/'n1a.fa';q2=Path(td)/'n1b.fa'
+            out=td/f'{rep}.fa';e.write_projected_fasta(p,out,rep)
+            rows=list(e.iter_fasta(out))
+            checks[f'{rep}_record_identity_length_preserved']=([len(x[1]) for x in rows]==[len(x[1]) for x in src])
+            if not checks[f'{rep}_record_identity_length_preserved']: raise SystemExit(f'{rep} projected length mismatch')
+
+            f1=td/f'{rep}-fwd1.fa';f2=td/f'{rep}-fwd2.fa';r1=td/f'{rep}-rc1.fa';r2=td/f'{rep}-rc2.fa'
+            e.write_oriented_n1_fasta(p,f1,rep,'B1','AB_C',0,'FWD')
+            e.write_oriented_n1_fasta(p,f2,rep,'B1','AB_C',0,'FWD')
+            e.write_oriented_n1_fasta(p,r1,rep,'B1','AB_C',0,'RC')
+            e.write_oriented_n1_fasta(p,r2,rep,'B1','AB_C',0,'RC')
+            checks[f'{rep}_oriented_n1_fwd_reproducible']=(f1.read_bytes()==f2.read_bytes())
+            checks[f'{rep}_oriented_n1_rc_reproducible']=(r1.read_bytes()==r2.read_bytes())
+            frows=list(e.iter_fasta(f1)); rrows=list(e.iter_fasta(r1))
+            checks[f'{rep}_oriented_n1_lengths_preserved']=([len(x[1]) for x in frows]==[len(x[1]) for x in src] and [len(x[1]) for x in rrows]==[len(x[1]) for x in src])
+            alphabet=set('ACGT') if rep=='ACGT' else set('AC')
+            checks[f'{rep}_oriented_n1_alphabet_preserved']=all(set(x[1])<=alphabet for x in frows+rrows)
+            checks[f'{rep}_orientation_substreams_distinct']=(f1.read_bytes()!=r1.read_bytes())
+            for key in [f'{rep}_oriented_n1_fwd_reproducible',f'{rep}_oriented_n1_rc_reproducible',f'{rep}_oriented_n1_lengths_preserved',f'{rep}_oriented_n1_alphabet_preserved',f'{rep}_orientation_substreams_distinct']:
+                if not checks[key]: raise SystemExit(f'orientation qualification fail: {key}')
+
+        q1=td/'n1a.fa';q2=td/'n1b.fa'
         e.write_n1_fasta(p,q1,'RY','B1','AB_C',0);e.write_n1_fasta(p,q2,'RY','B1','AB_C',0)
-        checks['fasta_n1_reproducible']=q1.read_bytes()==q2.read_bytes()
-    payload={'schema':'LIFE_CODE_EXP0003_ENGINE_QUALIFICATION_V1','status':'PASS','synthetic_only':True,'exp0003_outcomes_inspected':False,'checks':checks,'test_sequence_sha256':sha_text(TEST_SEQ),'qualified_engine_sha256':sha_file(Path(__file__).with_name('exp0003_engine.py'))}
+        checks['legacy_fasta_n1_reproducible']=q1.read_bytes()==q2.read_bytes()
+    payload={'schema':'LIFE_CODE_EXP0003_ENGINE_QUALIFICATION_V2','status':'PASS','synthetic_only':True,'exp0003_outcomes_inspected':False,'checks':checks,'test_sequence_sha256':sha_text(TEST_SEQ),'qualified_engine_sha256':sha_file(Path(__file__).with_name('exp0003_engine.py')),'n1_orientation_substreams':'FROZEN_FWD_RC_RECORD_SPECIFIC'}
     Path('exp0003-engine-qualification.json').write_text(json.dumps(payload,indent=2,sort_keys=True)+'\n',encoding='utf-8')
-    print(json.dumps(payload,sort_keys=True))
+    print(json.dumps({'status':'PASS','checks':len(checks),'qualified_engine_sha256':payload['qualified_engine_sha256']},sort_keys=True))
 
 if __name__=='__main__':main()
