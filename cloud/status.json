@@ -1,6 +1,6 @@
 {
   "schema": "LIFE_CODE_CLOUD_STATUS_V1",
-  "updated_utc": "2026-09-23T17:05:25Z",
+  "updated_utc": "2026-09-23T17:10:10Z",
   "authority": {
     "exp0002_state": "SEALED_COMPLETE",
     "exp0002_bundle_sha256": "76fb482a368af757a53688ef947d2a219280a2db8c3bc4d5bb5906bc6978a713",
@@ -26,8 +26,8 @@
     "EXP-0002": {"state": "SEALED_COMPLETE_PRIMARY_SUPPORT_CONFIRMED", "progress": 1.0, "mutable": false},
     "EXP-0002A": {"state": "A3_299_FORENSICS_COMPLETE_LOW_COMPLEXITY_REPEAT", "progress": 1.0, "mutable": false, "run_id": 35804419600, "aggregate_sha256": "2ff3a501481ee199192183a176602fbad613da1119c7055b0738995295ee6113"},
     "EXP-0003": {
-      "state": "FULL_TRIAD_SCORER_QUALIFIED_PRIMARY_PRODUCTION_ENGINEERING_NEXT",
-      "progress": 0.7,
+      "state": "PRODUCTION_ENGINE_QUALIFIED_RESOURCE_AND_CHECKPOINT_PLAN_NEXT",
+      "progress": 0.8,
       "mutable": true,
       "n1_replicates": 99,
       "engine_qualification_run_id": 35891368942,
@@ -36,6 +36,8 @@
       "orientation_qualification_run_id": 35892470449,
       "full_triad_qualification_run_id": 35893140632,
       "full_triad_qualification_artifact_sha256": "b4630407692c8af441a5f55a5b8f230434073b80bcd65fa30d613bf8c133feda",
+      "production_qualification_run_id": 35893654175,
+      "production_qualification_artifact_sha256": "d797b053c1bb4798f3986661cca59a3f258126520b531ef6f0a42d6744137608",
       "primary_outcomes_inspected": false
     }
   },
@@ -51,6 +53,7 @@
     "exp0003_projection_n1_engine_qualification": "PASS_SYNTHETIC_ONLY",
     "exp0003_pairwise_orientation_qualification": "PASS_SYNTHETIC_ONLY",
     "exp0003_full_triad_transfer_qualification": "PASS_SYNTHETIC_ONLY_48_CELLS_50_CHECKS",
+    "exp0003_production_engine_qualification": "PASS_SYNTHETIC_ONLY_48_CELLS_113_CHECKS",
     "exp0003_n1_orientation_semantics": "FROZEN_DUAL_ORIENTATION_INDEPENDENT_MARKOV"
   }
 }
