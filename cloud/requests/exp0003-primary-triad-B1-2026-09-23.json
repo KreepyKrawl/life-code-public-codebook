@@ -1,0 +1,7 @@
+{
+  "schema": "LIFE_CODE_CLOUD_REQUEST_V1",
+  "experiment": "EXP-0003-PRIMARY-TRIAD",
+  "triad_id": "B1",
+  "requested_utc": "2026-09-23T17:15:00Z",
+  "purpose": "Launch the first complete preregistered EXP-0003 primary tranche. Execute all 16 frozen representations, all 3 held-out folds, one observed score and all 99 frozen N1 replicates per cell. Do not interpret primary outcomes until the complete 12-triad family is finished."
+}
