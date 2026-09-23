@@ -1,0 +1,6 @@
+{
+  "experiment": "EXP-0003-TRANSFER-QUALIFICATION",
+  "purpose": "Trigger frozen synthetic-only transfer orientation/scorer qualification before any primary EXP-0003 outcome is inspected.",
+  "requested_local_date": "2026-09-23",
+  "outcome_blind": true
+}
