@@ -16,12 +16,12 @@ Purpose: durable, evidence-bounded registry of claims connecting LIFE-CODE and R
 
 Status: **L0 FORMAL — PROVED**
 
-Claim: under the fixed encoding A=(0,0), G=(0,1), C=(1,0), T=(1,1), the DNA alphabet is Z2 x Z2; R/Y, M/K and W/S are exactly the three nonzero linear maps to Z2; Watson-Crick complement is translation by (1,1), forcing the frozen projected reverse-complement rules.
+Claim: under the fixed encoding A=(0,0), G=(0,1), C=(1,0), T=(1,1), the DNA alphabet is Z2 x Z2; R/Y, M/K and W/S are exactly the three nonzero linear maps to Z2; Watson-Crick complement is translation by (1,1), forcing the frozen projected reverse-complement rules. The three canonical quotient bits also obey the exact parity identity RY XOR MK XOR WS = 0.
 
 Evidence: `cloud/bridges/BRIDGE-0001_DNA_KLEIN_QUOTIENT_PROOF.md`
 Verifier: `cloud/scripts/bridge0001_verify.py`
 
-Interpretive ceiling: proves shared formal quotient/involution architecture only. Does not prove shared physical substrate.
+Interpretive ceiling: proves shared formal quotient/involution/parity architecture only. Does not prove shared physical substrate.
 
 ### BRIDGE-0002 — Compiler-invariant transfer under quotienting
 
@@ -57,10 +57,23 @@ Question: can the same frozen decomposition class `shared latent structure + loc
 
 Important: similarity of language is not evidence. A common scorer and explicit baselines are required.
 
+### BRIDGE-0006 — Unified Substrate necessity / observer projection
+
+Status: **L0 FORMAL — ESTABLISHED UNDER EXPLICIT DEFINITIONS**
+
+Claim: if Unified Substrate is defined as the total state-relational structure containing everything that exists and every actual relation/operation among those existents, then its existence follows deductively from the existence of anything at all. Distinct observer-realities may be non-injective projections of that same substrate; multiple limited views may jointly reconstruct hidden state; and finite embedded observations generally do not uniquely identify the hidden realization.
+
+Evidence: `cloud/bridges/BRIDGE-0006_UNIFIED_SUBSTRATE_NECESSITY.md`
+Verifier: `cloud/scripts/bridge0006_verify.py` (finite projection/reconstruction/non-identifiability examples; the necessity theorem itself is deductive).
+
+Interpretive ceiling: establishes ontological necessity only under the stated broad definition and formal observer consequences. It does not identify the substrate's physical form, prove simulation, prove one fundamental observer, or select a metaphysical interpretation.
+
 ## Operating rule
 
 A higher bridge level may use lower-level proved facts but may not inherit their evidentiary status. Formal equivalence is not empirical mechanism evidence. Synthetic success is not real-domain validation. Real-domain correlation is not a common physical substrate.
 
+Metaphysical, historical-anomalous, and pseudoscientific material may enter the discovery layer as candidate observations. They do not enter the claim ledger as established mechanisms unless they produce discriminating predictions that survive the appropriate empirical level.
+
 ## Immediate priority
 
-EXP-0003 continues concurrently. BRIDGE-0001 is already a durable proved result. BRIDGE-0003, BRIDGE-0004, and BRIDGE-0005 can be preregistered and run while EXP-0003 executes because they do not require inspecting EXP-0003 primary outcomes.
+EXP-0003 continues concurrently. BRIDGE-0001 and BRIDGE-0006 are durable formal results. BRIDGE-0003, BRIDGE-0004, and BRIDGE-0005 can be preregistered and run while EXP-0003 executes because they do not require inspecting EXP-0003 primary outcomes.
