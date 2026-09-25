@@ -1,13 +1,13 @@
 {
   "schema": "LIFE_CODE_CLOUD_STATUS_V1",
-  "updated_utc": "2026-09-23T18:04:00Z",
+  "updated_utc": "2026-09-25T16:58:25Z",
   "authority": {
     "exp0002_state": "SEALED_COMPLETE",
     "exp0002_bundle_sha256": "76fb482a368af757a53688ef947d2a219280a2db8c3bc4d5bb5906bc6978a713",
     "a3_sealed_result_sha256": "769b21fe5f1f1caff44399eff563f1f8d29a48dcdfc1729c9a036a2eb16c7258",
     "a3_longest_block_sha256": "cf72f5783b799b1b5f53acfcfd60071299248b6c7efbfce87ae76425c003ebf9",
     "canonical_v0_1_33_zip_sha256": "23b50cc7fbac84736ad2c2762044013dbf90d227154a754238c7a0f3c1ce963f",
-    "canonical_normalizer_sha256": "f705448fa0dfc20aed7a4fa3023eb79d5a1bbbcb4b75d0489a8481ca587712",
+    "canonical_normalizer_sha256": "f705448fa0dfc20aed7a4a3fa3023eb79d5a1bbbcb4b75d0489a8481ca587712",
     "frozen_hierarchy_scorer_sha256": "d0ea86baa9daaf8e7801de648762d06e864163b55c79c7504dbb6c0ca2892898",
     "results_gate_sha256": "033da38594e41905a4f71e6592dc0d7cdcdc4a58997355b6aa6fa028d638c092",
     "exp0002_triads_sha256": "81e98c2bd235609cada938519b8d7890ff180b03f406f6ad9852c0fed6c198f4"
@@ -26,8 +26,8 @@
     "EXP-0002": {"state": "SEALED_COMPLETE_PRIMARY_SUPPORT_CONFIRMED", "progress": 1.0, "mutable": false},
     "EXP-0002A": {"state": "A3_299_FORENSICS_COMPLETE_LOW_COMPLEXITY_REPEAT", "progress": 1.0, "mutable": false, "run_id": 35804419600, "aggregate_sha256": "2ff3a501481ee199192183a176602fbad613da1119c7055b0738995295ee6113"},
     "EXP-0003": {
-      "state": "PRIMARY_EXECUTION_IN_PROGRESS_B1",
-      "progress": 0.86,
+      "state": "PRIMARY_FAMILY_EXECUTION_ACTIVE_B1_COMPLETE_REMAINING_SUBMITTED",
+      "progress": 0.08333333333333333,
       "mutable": true,
       "n1_replicates": 99,
       "engine_qualification_run_id": 35891368942,
@@ -39,7 +39,13 @@
       "production_qualification_run_id": 35893654175,
       "production_qualification_artifact_sha256": "d797b053c1bb4798f3986661cca59a3f258126520b531ef6f0a42d6744137608",
       "primary_resource_plan": "FROZEN_v1.0",
+      "primary_triads_required": 12,
+      "primary_triads_submitted": 12,
+      "primary_triads_complete": 1,
       "primary_b1_run_id": 35899850184,
+      "primary_b1_conclusion": "success",
+      "primary_family_parallel_fanout_verified": true,
+      "primary_reveal_barrier_active": true,
       "primary_outcomes_inspected": false
     }
   },
