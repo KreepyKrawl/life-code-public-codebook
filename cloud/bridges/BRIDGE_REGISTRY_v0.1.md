@@ -68,6 +68,32 @@ Verifier: `cloud/scripts/bridge0006_verify.py` (finite projection/reconstruction
 
 Interpretive ceiling: establishes ontological necessity only under the stated broad definition and formal observer consequences. It does not identify the substrate's physical form, prove simulation, prove one fundamental observer, or select a metaphysical interpretation.
 
+### BRIDGE-0007 — Quotient descent / embedded-observer non-identifiability
+
+Status: **L0 FORMAL — PROVED**
+
+Claim: a substrate transformation T induces a well-defined observer-level law T_q exactly when T preserves the observer's equivalence classes. Multiple non-injective observer views may jointly reconstruct hidden state. Any finite observable stream admits multiple hidden-state realizations, so hidden implementation is generally non-identifiable from embedded observations alone.
+
+Evidence: `cloud/bridges/BRIDGE-0007_QUOTIENT_DESCENT_AND_OBSERVER_NONIDENTIFIABILITY.md`
+
+Interpretive ceiling: proves the mathematical conditions for projected effective law and non-identifiability. It does not identify which hidden ontology is physically realized.
+
+### BRIDGE-0008 — Cross-projection operator conjugacy
+
+Status: **L0 FORMAL — PROVED; L3 EMPIRICAL TEST TARGET DEFINED**
+
+Claim: if two observer/domain representations instantiate the same latent operation g under coordinate maps h_A and h_B, then their observed operators satisfy
+
+`T_B(g) = C o T_A(g) o C^-1`, where `C = h_B o h_A^-1`.
+
+Consequences: operation composition, order dependence, identities, inverses, and commutators transfer under the same frozen C. After primitive alignment is frozen, unseen compositions become parameter-free predictions of the shared-algebra hypothesis.
+
+Evidence: `cloud/bridges/BRIDGE-0008_CROSS_PROJECTION_OPERATOR_CONJUGACY.md`
+
+Empirical instantiation: RC-X03 / RC-X03B. Source-domain intervention algebra frozen; target calibrated only on primitives; then blind-test `g2g1`, `g1g2`, `g3g2g1`, and commutator loop `g1^-1 g2^-1 g1 g2`, against preregistered alternative model classes.
+
+Interpretive ceiling: the theorem is exact. A successful blind real-domain pass would establish transferable operation algebra under the frozen mapping, but independently isomorphic systems would remain a logical alternative to literal substrate identity.
+
 ## Operating rule
 
 A higher bridge level may use lower-level proved facts but may not inherit their evidentiary status. Formal equivalence is not empirical mechanism evidence. Synthetic success is not real-domain validation. Real-domain correlation is not a common physical substrate.
@@ -76,4 +102,4 @@ Metaphysical, historical-anomalous, and pseudoscientific material may enter the 
 
 ## Immediate priority
 
-EXP-0003 continues concurrently. BRIDGE-0001 and BRIDGE-0006 are durable formal results. BRIDGE-0003, BRIDGE-0004, and BRIDGE-0005 can be preregistered and run while EXP-0003 executes because they do not require inspecting EXP-0003 primary outcomes.
+EXP-0003 continues concurrently. BRIDGE-0001, BRIDGE-0006, BRIDGE-0007, and BRIDGE-0008 are durable formal results. The highest-value empirical target is now the frozen RC-X03B-style blind composition/conjugacy test, because it can elevate the project from shared formal architecture to cross-domain predictive operator transfer without waiting for EXP-0003 outcomes.
