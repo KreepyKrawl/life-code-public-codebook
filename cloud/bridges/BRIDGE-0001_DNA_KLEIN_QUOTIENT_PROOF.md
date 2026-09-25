@@ -2,7 +2,7 @@
 
 Status: **FORMALLY PROVED**
 
-Scope: This is a mathematical/formal bridge only. It proves that the canonical four-base DNA alphabet, under a fixed two-bit encoding, carries the same quotient/involution structure used by the Reality-Code compiler-invariant framework. It does **not** by itself prove a shared physical substrate, causal mechanism, simulation hypothesis, or biological use of that algebra.
+Scope: This is a mathematical/formal bridge only. It proves that the canonical four-base DNA alphabet, under a fixed two-bit encoding, carries the same quotient/involution/parity-check structure used by the Reality-Code compiler-invariant framework. It does **not** by itself prove a shared physical substrate, causal mechanism, simulation hypothesis, or biological use of that algebra.
 
 ## Fixed encoding
 
@@ -51,6 +51,36 @@ Truth table:
 
 Therefore complement is an involution because applying the same translation twice adds (0,0).
 
+## Theorem 3 — the three canonical quotients form a single-parity-check code
+
+Let
+
+- r = f_RY(x,y)
+- m = f_MK(x,y)
+- w = f_WS(x,y)
+
+Since w = r XOR m, every DNA base satisfies the exact parity constraint
+
+r XOR m XOR w = 0.
+
+Truth table:
+
+- A -> (r,m,w) = (0,0,0)
+- G -> (0,1,1)
+- C -> (1,0,1)
+- T -> (1,1,0)
+
+Therefore the three canonical binary descriptions are not independent. They form the four codewords of a [3,2] single-parity-check code over Z2.
+
+Two consequences follow immediately:
+
+1. **Any two of R/Y, M/K, and W/S reconstruct the full four-state base exactly.**
+2. **The third quotient is a deterministic parity relation, not an extra fitted feature.**
+
+This is a direct finite realization of the Reality-Code skeleton `alphabet + parity checks + equivalence classes`: a two-bit logical state is represented by three observable binary partitions constrained by one exact parity equation.
+
+Important interpretive limit: this does not show that biology evolved DNA as an error-correcting code for this reason, nor that the biochemical categories implement a physical stabilizer code. It proves only the algebraic/code-theoretic structure of these canonical partitions under the fixed encoding.
+
 ## Corollary — projected complement behavior is forced
 
 For a quotient f, complement toggles its output exactly when f(1,1)=1.
@@ -69,9 +99,9 @@ This is exactly the transformation rule independently frozen in RCX-LCX-0001 bef
 
 ## Why this is a legitimate bridge
 
-Reality-Code operates on observation-equivalence classes, quotient maps, hidden-state non-identifiability, and involutive/symmetry operations. LIFE-CODE operates on the four-state DNA alphabet and exact sequence transfer.
+Reality-Code operates on observation-equivalence classes, quotient maps, parity/check relations, hidden-state non-identifiability, and involutive/symmetry operations. LIFE-CODE operates on the four-state DNA alphabet and exact sequence transfer.
 
-BRIDGE-0001 proves that the canonical DNA reduction maps are mathematically identical in type to the quotient operators required by Reality-Code: the full state alphabet V is mapped to lower-resolution observational equivalence classes by homomorphisms, while complement/reverse-complement acts as a deterministic involution whose action descends to those quotients.
+BRIDGE-0001 proves that the canonical DNA reduction maps are mathematically identical in type to the quotient operators required by Reality-Code: the full state alphabet V is mapped to lower-resolution observational equivalence classes by homomorphisms, the three canonical one-bit views obey an exact parity constraint, and complement/reverse-complement acts as a deterministic involution whose action descends to those quotients.
 
 This establishes a shared **formal architecture** between the projects without using biological annotations, fitted parameters, EXP-0003 outcomes, or a retrospective encoding search.
 
