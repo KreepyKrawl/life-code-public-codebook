@@ -44,12 +44,25 @@ def main():
             assert fn(v) == expected[name][b]
 
     # Exhaust all nonzero linear functionals V -> Z2.
-    # Any linear functional is f_ab(x,y)=a*x XOR b*y.
     observed = set()
     for a, b in [(1, 0), (0, 1), (1, 1)]:
         outputs = tuple((a & v[0]) ^ (b & v[1]) for v in BASES.values())
         observed.add(outputs)
     assert len(observed) == 3
+
+    # Exact [3,2] single-parity-check code relation.
+    codewords = set()
+    for base, v in BASES.items():
+        r, m, w = f_ry(v), f_mk(v), f_ws(v)
+        assert (r ^ m ^ w) == 0
+        codewords.add((r, m, w))
+        # RY + MK reconstruct the full base exactly.
+        assert INV[(r, m)] == base
+        # Any other pair reconstructs the third quotient.
+        assert (r ^ m) == w
+        assert (r ^ w) == m
+        assert (m ^ w) == r
+    assert codewords == {(0,0,0),(0,1,1),(1,0,1),(1,1,0)}
 
     # Complement action on each quotient.
     assert f_ry((1, 1)) == 1
@@ -59,6 +72,8 @@ def main():
     print('BRIDGE-0001: PASS')
     print('DNA alphabet is Z2 x Z2 under the fixed encoding.')
     print('RY, MK, WS are exactly the three nonzero linear one-bit quotients.')
+    print('RY XOR MK XOR WS = 0 for every base: exact [3,2] parity-check code.')
+    print('Any two canonical quotient bits determine the full four-state base.')
     print('Watson-Crick complement is translation by (1,1).')
     print('Projected complement action: RY flip, MK flip, WS preserve.')
 
