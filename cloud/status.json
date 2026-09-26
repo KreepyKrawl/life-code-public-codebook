@@ -1,6 +1,6 @@
 {
   "schema": "LIFE_CODE_CLOUD_STATUS_V1",
-  "updated_utc": "2026-09-25T16:58:25Z",
+  "updated_utc": "2026-09-26T14:08:00Z",
   "authority": {
     "exp0002_state": "SEALED_COMPLETE",
     "exp0002_bundle_sha256": "76fb482a368af757a53688ef947d2a219280a2db8c3bc4d5bb5906bc6978a713",
@@ -26,7 +26,7 @@
     "EXP-0002": {"state": "SEALED_COMPLETE_PRIMARY_SUPPORT_CONFIRMED", "progress": 1.0, "mutable": false},
     "EXP-0002A": {"state": "A3_299_FORENSICS_COMPLETE_LOW_COMPLEXITY_REPEAT", "progress": 1.0, "mutable": false, "run_id": 35804419600, "aggregate_sha256": "2ff3a501481ee199192183a176602fbad613da1119c7055b0738995295ee6113"},
     "EXP-0003": {
-      "state": "PRIMARY_FAMILY_EXECUTION_ACTIVE_B1_COMPLETE_REMAINING_SUBMITTED",
+      "state": "PRIMARY_FAMILY_EXECUTION_ACTIVE_B1_COMPLETE_REMAINING_SUBMITTED_ACCELERATOR_READY",
       "progress": 0.08333333333333333,
       "mutable": true,
       "n1_replicates": 99,
@@ -46,7 +46,15 @@
       "primary_b1_conclusion": "success",
       "primary_family_parallel_fanout_verified": true,
       "primary_reveal_barrier_active": true,
-      "primary_outcomes_inspected": false
+      "primary_outcomes_inspected": false,
+      "queue_efficient_runner": {
+        "state": "READY_NOT_LAUNCHED_TO_AVOID_DUPLICATE_PRIMARY_EXECUTION",
+        "workflow": ".github/workflows/lifecode-exp0003-primary-triad-accelerated.yml",
+        "jobs_per_triad": 192,
+        "max_parallel": 20,
+        "scientific_semantics_changed": false,
+        "note": "OBS is co-scheduled with N1_75_98 only; exp0003_primary_chunk.py remains unchanged and emits the same per-chunk JSON outputs. Existing submitted runs are not duplicated while they remain active/queued."
+      }
     }
   },
   "runner": {
