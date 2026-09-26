@@ -19,9 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Verify frozen target runner bytes
+      - name: Verify frozen scorer and execution adapter bytes
         run: |
           echo '9dc57fe6ebdf5d92109547f1f267197d5d5caec0781562e59acfb595945df897  cloud/ucb0004x/ucb0004x_target_runner_v1.0.py' | sha256sum -c -
+          echo 'd1de3c1fa482eae48cd5dc20ae2c92cdbed0738ca90ef043611709b8b746b8d5  cloud/ucb0004x/ucb0004x_target_exec_adapter_v1.0.1.py' | sha256sum -c -
+          echo '727a6f5a874e0c79c168b2fbfdb5abb0a4a1bfc2b21648535ff49115ccd94e98  cloud/ucb0004x/UCB-0004X_EXECUTION_AMENDMENT_v1.0.1.md' | sha256sum -c -
 
       - name: Freeze execution environment record
         run: |
@@ -34,7 +36,12 @@ jobs:
             'python': sys.version,
             'platform': platform.platform(),
             'numpy': numpy.__version__,
-            'runner_sha256': '9dc57fe6ebdf5d92109547f1f267197d5d5caec0781562e59acfb595945df897'
+            'scientific_protocol_version': '1.0',
+            'execution_patch': '1.0.1',
+            'frozen_runner_sha256': '9dc57fe6ebdf5d92109547f1f267197d5d5caec0781562e59acfb595945df897',
+            'execution_adapter_sha256': 'd1de3c1fa482eae48cd5dc20ae2c92cdbed0738ca90ef043611709b8b746b8d5',
+            'amendment_sha256': '727a6f5a874e0c79c168b2fbfdb5abb0a4a1bfc2b21648535ff49115ccd94e98',
+            'prior_failed_run_id': '36273814889'
           }, indent=2, sort_keys=True) + '\n')
           PY
 
@@ -55,10 +62,10 @@ jobs:
           md5sum -c /tmp/MD5SUMS
           sha256sum sealed_input/h1.csv sealed_input/h2.csv sealed_input/U.csv > sealed/INPUT_SHA256SUMS.txt
 
-      - name: Execute frozen scorer without printing result
+      - name: Execute frozen scorer through execution-only shape adapter
         run: |
           set -euo pipefail
-          python3 cloud/ucb0004x/ucb0004x_target_runner_v1.0.py \
+          python3 cloud/ucb0004x/ucb0004x_target_exec_adapter_v1.0.1.py \
             --data-dir sealed_input \
             --output sealed/UCB-0004X_TARGET_RESULT_v1.0.json
           sha256sum sealed/UCB-0004X_TARGET_RESULT_v1.0.json > sealed/TARGET_RESULT_SHA256.txt
@@ -70,10 +77,14 @@ jobs:
           receipt={
             'experiment_id':'UCB-0004X',
             'version':'1.0',
+            'execution_patch':'1.0.1',
             'execution_state':'TARGET_EXECUTED_AND_SEALED',
             'source_exp0003_inspected':False,
             'target_result_sha256':h('sealed/UCB-0004X_TARGET_RESULT_v1.0.json','sha256'),
-            'runner_sha256':'9dc57fe6ebdf5d92109547f1f267197d5d5caec0781562e59acfb595945df897',
+            'frozen_runner_sha256':'9dc57fe6ebdf5d92109547f1f267197d5d5caec0781562e59acfb595945df897',
+            'execution_adapter_sha256':'d1de3c1fa482eae48cd5dc20ae2c92cdbed0738ca90ef043611709b8b746b8d5',
+            'amendment_sha256':'727a6f5a874e0c79c168b2fbfdb5abb0a4a1bfc2b21648535ff49115ccd94e98',
+            'prior_failed_run_id':'36273814889',
             'inputs':{
               'h1.csv':{'md5':h('sealed_input/h1.csv','md5'),'sha256':h('sealed_input/h1.csv','sha256')},
               'h2.csv':{'md5':h('sealed_input/h2.csv','md5'),'sha256':h('sealed_input/h2.csv','sha256')},
@@ -87,6 +98,7 @@ jobs:
           echo 'UCB-0004X target execution sealed; numerical result intentionally not printed.'
 
       - name: Preserve sealed target artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ucb0004x-target-sealed-${{ github.run_id }}
@@ -99,6 +111,7 @@ jobs:
             sealed/TARGET_RESULT_SHA256.txt
             sealed/INPUT_SHA256SUMS.txt
             sealed/EXECUTION_ENVIRONMENT.json
-          if-no-files-found: error
+            cloud/ucb0004x/UCB-0004X_EXECUTION_AMENDMENT_v1.0.1.md
+          if-no-files-found: warn
           retention-days: 90
           compression-level: 6
