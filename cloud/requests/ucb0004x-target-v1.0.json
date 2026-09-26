@@ -1,0 +1,10 @@
+{
+  "experiment_id": "UCB-0004X",
+  "version": "1.0",
+  "action": "execute_frozen_target_and_seal",
+  "frozen_package_sha256": "0d166d4fb18ddf3fb07fcd2d88a8484e7d6a88c3da20c6710e51cedf68ebee88",
+  "runner_sha256": "9dc57fe6ebdf5d92109547f1f267197d5d5caec0781562e59acfb595945df897",
+  "target_doi": "10.5281/zenodo.19856119",
+  "source_exp0003_must_remain_uninspected": true,
+  "requested_utc": "2026-09-26T21:00:00Z"
+}
