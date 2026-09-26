@@ -1,10 +1,15 @@
 {
   "experiment_id": "UCB-0004X",
   "version": "1.0",
+  "execution_patch": "1.0.1",
   "action": "execute_frozen_target_and_seal",
   "frozen_package_sha256": "0d166d4fb18ddf3fb07fcd2d88a8484e7d6a88c3da20c6710e51cedf68ebee88",
-  "runner_sha256": "9dc57fe6ebdf5d92109547f1f267197d5d5caec0781562e59acfb595945df897",
+  "frozen_runner_sha256": "9dc57fe6ebdf5d92109547f1f267197d5d5caec0781562e59acfb595945df897",
+  "execution_adapter_sha256": "d1de3c1fa482eae48cd5dc20ae2c92cdbed0738ca90ef043611709b8b746b8d5",
+  "execution_amendment_sha256": "727a6f5a874e0c79c168b2fbfdb5abb0a4a1bfc2b21648535ff49115ccd94e98",
+  "prior_failed_run_id": 36273814889,
+  "repair_class": "input_schema_only_no_scoring_change",
   "target_doi": "10.5281/zenodo.19856119",
   "source_exp0003_must_remain_uninspected": true,
-  "requested_utc": "2026-09-26T21:00:00Z"
+  "requested_utc": "2026-09-26T22:10:00Z"
 }
