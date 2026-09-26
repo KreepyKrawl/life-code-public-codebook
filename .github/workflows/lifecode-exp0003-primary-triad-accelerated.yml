@@ -1,0 +1,185 @@
+name: LIFE-CODE EXP-0003 Primary Triad Accelerated
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'cloud/requests/exp0003-accelerated-triad-*.json'
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      triad_id: ${{ steps.req.outputs.triad_id }}
+      matrix: ${{ steps.matrix.outputs.matrix }}
+      genome_a: ${{ steps.req.outputs.genome_a }}
+      genome_b: ${{ steps.req.outputs.genome_b }}
+      genome_c: ${{ steps.req.outputs.genome_c }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Verify frozen primary gates
+        run: |
+          python3 - <<'PY'
+          import json,hashlib
+          s=json.load(open('cloud/status.json'))
+          assert s['corpus']['canonical_normalization_verified']==26
+          assert s['runner']['exp0003_n1_replicates']==99
+          assert s['runner']['exp0003_production_engine_qualification'].startswith('PASS_')
+          assert s['experiments']['EXP-0003']['primary_outcomes_inspected'] is False
+          assert hashlib.sha256(open('cloud/canonical/v0.1.33/exp0002_normalize_fasta.py','rb').read()).hexdigest()=='f705448fa0dfc20aed7a4a3fa3023eb79d5a1bbbcb4b75d0489a8481ca587712'
+          print('EXP-0003 PRIMARY ACCELERATED GATE: PASS')
+          PY
+      - id: req
+        name: Resolve triad request against frozen triad table
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          CURRENT_SHA: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import csv,json,os,subprocess
+          from pathlib import Path
+          changed=subprocess.check_output(['git','diff','--name-only',os.environ['BEFORE_SHA'],os.environ['CURRENT_SHA'],'--','cloud/requests/exp0003-accelerated-triad-*.json'],text=True).splitlines()
+          if len(changed)!=1: raise SystemExit(f'expected one EXP-0003 accelerated request, got {changed}')
+          req=json.loads(Path(changed[0]).read_text()); tid=req['triad_id']
+          rows=list(csv.DictReader(open('cloud/canonical/v0.1.33/EXP0002_TRIADS.csv',newline='',encoding='utf-8')))
+          row=next((r for r in rows if r['triad_id']==tid),None)
+          if row is None: raise SystemExit(f'unknown frozen triad {tid}')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as o:
+            o.write(f'triad_id={tid}\n');o.write(f'genome_a={row["genome_1"]}\n');o.write(f'genome_b={row["genome_2"]}\n');o.write(f'genome_c={row["genome_3"]}\n')
+          print('triad',tid,row['genome_1'],row['genome_2'],row['genome_3'])
+          PY
+      - id: matrix
+        name: Build queue-efficient 192-job matrix
+        run: |
+          python3 - <<'PY'
+          import itertools,json,os
+          reps=['ACGT','RY','MK','WS']+[f'C{i:02d}' for i in range(1,13)]
+          folds=['AB_C','AC_B','BC_A']
+          groups=['OBS_PLUS_N1_75_98','N1_00_24','N1_25_49','N1_50_74']
+          m={'include':[{'representation':r,'fold':f,'group':g} for r,f,g in itertools.product(reps,folds,groups)]}
+          assert len(m['include'])==192
+          with open(os.environ['GITHUB_OUTPUT'],'a') as o:o.write('matrix='+json.dumps(m,separators=(',',':'))+'\n')
+          print('primary worker jobs',len(m['include']))
+          PY
+
+  prepare:
+    needs: gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install NCBI Datasets CLI
+        run: |
+          curl --fail --location --retry 3 https://ftp.ncbi.nlm.nih.gov/pub/datasets/command-line/v2/linux-amd64/datasets -o datasets
+          chmod +x datasets
+          sudo mv datasets /usr/local/bin/datasets
+          datasets version
+      - name: Reacquire, normalize, and hash-gate triad corpus
+        env:
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+        run: |
+          mkdir -p prepared
+          for ID in "$GA" "$GB" "$GC"; do
+            rm -rf "work-$ID"
+            python3 cloud/scripts/reacquire_raw.py --assembly-id "$ID" --work "work-$ID" --out "raw-$ID.json"
+            python3 cloud/scripts/verify_canonical_normalization.py --assembly-id "$ID" --work "work-$ID" --out "norm-$ID.json"
+            cp "work-$ID/canonical_normalization/$ID.normalized.fasta" "prepared/$ID.fasta"
+          done
+          python3 - <<'PY'
+          import hashlib,json,glob,os
+          d={}
+          for p in sorted(glob.glob('prepared/*.fasta')):
+            h=hashlib.sha256(open(p,'rb').read()).hexdigest();d[os.path.basename(p)]=h
+          open('prepared/PREPARED_MANIFEST.json','w').write(json.dumps(d,indent=2,sort_keys=True)+'\n')
+          print(d)
+          PY
+      - name: Build pinned MUMmer 4.0.1 once for tranche
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential autoconf automake libtool zlib1g-dev
+          curl --fail --location --retry 3 https://github.com/mummer4/mummer/releases/download/v4.0.1/mummer-4.0.1.tar.gz -o mummer-4.0.1.tar.gz
+          tar -xzf mummer-4.0.1.tar.gz
+          cd mummer-4.0.1
+          ./configure --prefix="$GITHUB_WORKSPACE/mummer4"
+          make -j2
+          make install
+          cd ..
+          tar -czf prepared/mummer4.tar.gz mummer4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-${{ needs.gate.outputs.triad_id }}-prepared-${{ github.run_id }}
+          path: prepared/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
+
+  score:
+    needs: [gate,prepare]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix: ${{ fromJSON(needs.gate.outputs.matrix) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: exp0003-${{ needs.gate.outputs.triad_id }}-prepared-${{ github.run_id }}
+          path: prepared
+      - name: Restore MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Execute immutable primary worker group
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          GROUP: ${{ matrix.group }}
+        run: |
+          mkdir -p result work
+          if [ "$GROUP" = "OBS_PLUS_N1_75_98" ]; then
+            CHUNKS="OBS N1_75_98"
+          else
+            CHUNKS="$GROUP"
+          fi
+          for CHUNK in $CHUNKS; do
+            PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_primary_chunk.py \
+              --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+              --representation "$REP" --triad-id "$TID" --fold "$FOLD" --chunk "$CHUNK" \
+              --work "work/$REP/$FOLD/$CHUNK" --out "result/${TID}_${REP}_${FOLD}_${CHUNK}.json"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-${{ needs.gate.outputs.triad_id }}-${{ matrix.representation }}-${{ matrix.fold }}-${{ matrix.group }}-${{ github.run_id }}
+          path: result/*.json
+          if-no-files-found: error
+          retention-days: 90
+
+  tranche-complete:
+    if: ${{ always() }}
+    needs: [gate,prepare,score]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Record workflow-level completion state only
+        env:
+          SCORE_RESULT: ${{ needs.score.result }}
+          TID: ${{ needs.gate.outputs.triad_id }}
+        run: |
+          echo "triad=$TID score_matrix_result=$SCORE_RESULT"
+          test "$SCORE_RESULT" = "success"
