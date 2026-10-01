@@ -1,0 +1,325 @@
+name: LIFE-CODE EXP-0003 A1 Primary Group
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'cloud/requests/exp0003-a1-primary-group-*.json'
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+  A1_CACHE_KEY: exp0003-a3-prepared-c754b105a7a9d7be1fe5a694c00f4fc0611e90601dc89b676e2716e744807cdc
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      triad_id: ${{ steps.req.outputs.triad_id }}
+      group: ${{ steps.req.outputs.group }}
+      matrix: ${{ steps.matrix.outputs.matrix }}
+      genome_a: ${{ steps.req.outputs.genome_a }}
+      genome_b: ${{ steps.req.outputs.genome_b }}
+      genome_c: ${{ steps.req.outputs.genome_c }}
+      source_run_id: ${{ steps.req.outputs.source_run_id }}
+      source_artifact_name: ${{ steps.req.outputs.source_artifact_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - id: req
+        name: Resolve and freeze A1 request
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          CURRENT_SHA: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import csv,hashlib,json,os,subprocess
+          from pathlib import Path
+
+          changed=subprocess.check_output([
+              'git','diff','--name-only',os.environ['BEFORE_SHA'],os.environ['CURRENT_SHA'],
+              '--','cloud/requests/exp0003-a1-primary-group-*.json'
+          ],text=True).splitlines()
+          if len(changed)!=1:
+              raise SystemExit(f'expected one A1 request, got {changed}')
+          req=json.loads(Path(changed[0]).read_text())
+          required={
+            'amendment_git_blob':'cloud/protocols/EXP-0003_EXECUTION_AMENDMENT_A1_v1.0.md',
+            'executor_git_blob':'cloud/scripts/exp0003_triad_transfer_a1.py',
+            'packet_runner_git_blob':'cloud/scripts/exp0003_primary_packet_a1.py',
+            'merge_runner_git_blob':'cloud/scripts/exp0003_merge_packets_a1.py',
+          }
+          for field,path in required.items():
+              actual=subprocess.check_output(['git','hash-object',path],text=True).strip()
+              if actual!=req[field]:
+                  raise SystemExit(f'{field} mismatch: {actual} != {req[field]}')
+
+          frozen={
+            'cloud/scripts/exp0003_triad_transfer_prod.py':'8ca50c93ef462c30f4b287bb5fcf66213895a3ed',
+            'cloud/scripts/exp0003_primary_chunk.py':'487c4626959ad5643a80c8f9d8940368c15daca7',
+            'cloud/protocols/EXP-0003_PRIMARY_EXECUTION_RESOURCE_PLAN_v1.0.md':'ee0afb87bc9b2219d386a571de6770e57e154924',
+          }
+          for path,expected in frozen.items():
+              actual=subprocess.check_output(['git','hash-object',path],text=True).strip()
+              if actual!=expected:
+                  raise SystemExit(f'frozen blob changed: {path}: {actual}')
+
+          s=json.load(open('cloud/status.json'))
+          assert s['corpus']['canonical_normalization_verified']==26
+          assert s['runner']['exp0003_n1_replicates']==99
+          assert s['runner']['exp0003_production_engine_qualification'].startswith('PASS_')
+          assert s['experiments']['EXP-0003']['primary_outcomes_inspected'] is False
+
+          tid=req['triad_id']
+          group=req['group']
+          allowed={'OBS','N1_00_24','N1_25_49','N1_50_74','N1_75_98'}
+          if group not in allowed:
+              raise SystemExit(f'invalid group {group}')
+          rows=list(csv.DictReader(open('cloud/canonical/v0.1.33/EXP0002_TRIADS.csv',newline='',encoding='utf-8')))
+          row=next((r for r in rows if r['triad_id']==tid),None)
+          if row is None:
+              raise SystemExit(f'unknown frozen triad {tid}')
+          if req['source_prepared_digest']!='sha256:c754b105a7a9d7be1fe5a694c00f4fc0611e90601dc89b676e2716e744807cdc':
+              raise SystemExit('unexpected source prepared digest')
+
+          with open(os.environ['GITHUB_OUTPUT'],'a') as o:
+              o.write(f'triad_id={tid}\n')
+              o.write(f'group={group}\n')
+              o.write(f'genome_a={row["genome_1"]}\n')
+              o.write(f'genome_b={row["genome_2"]}\n')
+              o.write(f'genome_c={row["genome_3"]}\n')
+              o.write(f'source_run_id={req["source_prepared_run_id"]}\n')
+              o.write(f'source_artifact_name={req["source_prepared_artifact"]}\n')
+          print('EXP-0003 A1 REQUEST GATE: PASS', tid, group)
+          PY
+
+      - id: matrix
+        name: Build deterministic execution-packet matrix
+        env:
+          GROUP: ${{ steps.req.outputs.group }}
+        run: |
+          python3 - <<'PY'
+          import itertools,json,os
+          reps=['ACGT','RY','MK','WS']+[f'C{i:02d}' for i in range(1,13)]
+          folds=['AB_C','AC_B','BC_A']
+          packets={
+            'OBS':['OBS'],
+            'N1_00_24':['N1_00_04','N1_05_09','N1_10_14','N1_15_19','N1_20_24'],
+            'N1_25_49':['N1_25_29','N1_30_34','N1_35_39','N1_40_44','N1_45_49'],
+            'N1_50_74':['N1_50_54','N1_55_59','N1_60_64','N1_65_69','N1_70_74'],
+            'N1_75_98':['N1_75_79','N1_80_84','N1_85_89','N1_90_94','N1_95_98'],
+          }[os.environ['GROUP']]
+          include=[
+            {'representation':r,'fold':f,'packet':p}
+            for r,f,p in itertools.product(reps,folds,packets)
+          ]
+          if len(include)>240:
+              raise SystemExit('matrix unexpectedly exceeds 240 jobs')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as o:
+              o.write('matrix='+json.dumps({'include':include},separators=(',',':'))+'\n')
+          print('A1 packet jobs',len(include))
+          PY
+
+  prepare:
+    needs: gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A1_CACHE_KEY }}
+
+      - name: Recover original verified A3 prepared bundle
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.gate.outputs.source_artifact_name }}
+          path: prepared
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: ${{ needs.gate.outputs.source_run_id }}
+
+      - name: Reverify normalized FASTA hashes
+        env:
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+        run: |
+          python3 - <<'PY'
+          import csv,hashlib,json,os
+          from pathlib import Path
+          def sha(p):
+              h=hashlib.sha256()
+              with open(p,'rb') as f:
+                  for b in iter(lambda:f.read(1<<20),b''): h.update(b)
+              return h.hexdigest()
+          rows={r['assembly_id']:r for r in csv.DictReader(open('cloud/FROZEN_CORPUS_BINDING.tsv',newline='',encoding='utf-8'),delimiter='\t')}
+          manifest=json.load(open('prepared/PREPARED_MANIFEST.json'))
+          for ID in [os.environ['GA'],os.environ['GB'],os.environ['GC']]:
+              p=Path('prepared')/f'{ID}.fasta'
+              got=sha(p)
+              expected=rows[ID]['normalized_fasta_sha256']
+              assert got==expected,(ID,got,expected)
+              assert manifest[f'{ID}.fasta']==expected
+          assert Path('prepared/mummer4.tar.gz').is_file()
+          print('A1 PREPARED HASH GATE: PASS')
+          PY
+
+      - name: Save verified prepared bundle to operational cache
+        if: steps.cache.outputs.cache-hit != 'true'
+        continue-on-error: true
+        uses: actions/cache/save@v4
+        with:
+          path: prepared
+          key: ${{ env.A1_CACHE_KEY }}
+
+  qualify:
+    needs: [gate,prepare]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A1_CACHE_KEY }}
+          fail-on-cache-miss: true
+
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+
+      - name: Frozen-serial versus A1-parallel parity qualification
+        run: |
+          PYTHONPATH=cloud/scripts python3 - <<'PY'
+          from pathlib import Path
+          import shutil,tempfile
+          import exp0003_triad_transfer_prod as frozen
+          import exp0003_triad_transfer_a1 as a1
+
+          root=Path(tempfile.mkdtemp(prefix='exp0003-a1-parity-'))
+          try:
+              A=root/'A.fa';B=root/'B.fa';H=root/'H.fa'
+              A.write_text('>a1\nAAAACCCCGGGGTTTTAAAACCCCGGGGTTTT\n>a2\nTTTTGGGGCCCCAAAATTTTGGGGCCCCAAAA\n')
+              B.write_text('>b1\nGGGGTTTTAAAACCCCGGGGTTTTAAAACCCC\n>b2\nCCCCAAAATTTTGGGGCCCCAAAATTTTGGGG\n')
+              H.write_text('>h1\nAAAACCCCGGGGTTTTCCCCAAAAGGGGTTTT\n>h2\nTTTTGGGGCCCCAAAAGGGGTTTTAAAACCCC\n')
+              cases=[('ACGT',None),('RY',None),('ACGT',0),('C01',1)]
+              for i,(rep,nullrep) in enumerate(cases):
+                  sdir=root/f'serial_{i}'
+                  pdir=root/f'parallel_{i}'
+                  v1,d1=frozen.score_fold(A,B,H,rep,'PARITY','AB_C',nullrep,sdir,20)
+                  v2,d2=a1.score_fold(A,B,H,rep,'PARITY','AB_C',nullrep,pdir,20,2)
+                  if (v1,d1)!=(v2,d2):
+                      raise SystemExit(f'A1 PARITY FAIL case={i} rep={rep} null={nullrep}')
+              print('EXP-0003 A1 PARITY: PASS cases=4')
+          finally:
+              shutil.rmtree(root,ignore_errors=True)
+          PY
+
+  score:
+    needs: [gate,prepare,qualify]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix: ${{ fromJSON(needs.gate.outputs.matrix) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A1_CACHE_KEY }}
+          fail-on-cache-miss: true
+
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+
+      - name: Execute A1 outcome-blind packet
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          PACKET: ${{ matrix.packet }}
+        run: |
+          mkdir -p result work
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_primary_packet_a1.py \
+            --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+            --representation "$REP" --triad-id "$TID" --fold "$FOLD" --packet "$PACKET" \
+            --workers 3 \
+            --work "work/$REP/$FOLD/$PACKET" \
+            --out "result/${TID}_${REP}_${FOLD}_${PACKET}.json"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a1-${{ needs.gate.outputs.triad_id }}-${{ needs.gate.outputs.group }}-packet-${{ matrix.representation }}-${{ matrix.fold }}-${{ matrix.packet }}-${{ github.run_id }}
+          path: result/*.json
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 0
+
+  merge:
+    needs: [gate,score]
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: exp0003-a1-${{ needs.gate.outputs.triad_id }}-${{ needs.gate.outputs.group }}-packet-*-${{ github.run_id }}
+          path: packets
+          merge-multiple: true
+
+      - name: Mechanically reconstruct frozen primary chunks
+        run: |
+          mkdir -p merged
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_merge_packets_a1.py \
+            --input-dir packets \
+            --group "${{ needs.gate.outputs.group }}" \
+            --out-dir merged
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a1-${{ needs.gate.outputs.triad_id }}-${{ needs.gate.outputs.group }}-merged-${{ github.run_id }}
+          path: merged/*.json
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
+
+  group-complete:
+    if: ${{ always() }}
+    needs: [gate,prepare,qualify,score,merge]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Record execution state only
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GROUP: ${{ needs.gate.outputs.group }}
+          PREP: ${{ needs.prepare.result }}
+          QUAL: ${{ needs.qualify.result }}
+          SCORE: ${{ needs.score.result }}
+          MERGE: ${{ needs.merge.result }}
+        run: |
+          echo "triad=$TID group=$GROUP prepare=$PREP qualify=$QUAL score=$SCORE merge=$MERGE"
+          test "$PREP" = "success"
+          test "$QUAL" = "success"
+          test "$SCORE" = "success"
+          test "$MERGE" = "success"
