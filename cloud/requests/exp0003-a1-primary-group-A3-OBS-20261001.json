@@ -1,0 +1,13 @@
+{
+  "schema": "LIFE_CODE_EXP0003_A1_REQUEST_V1",
+  "execution_amendment": "EXP-0003-A1",
+  "triad_id": "A3",
+  "group": "OBS",
+  "source_prepared_run_id": 36160342712,
+  "source_prepared_artifact": "exp0003-A3-prepared-36160342712",
+  "source_prepared_digest": "sha256:c754b105a7a9d7be1fe5a694c00f4fc0611e90601dc89b676e2716e744807cdc",
+  "amendment_git_blob": "1fc60fe08ef111cf75d1e60f97cfec4d6dd0b3b3",
+  "executor_git_blob": "079d1af877c257d2c91237bade7340554afa293e",
+  "packet_runner_git_blob": "a40acb50c4926e239b164dd06904bb3c4ff8e900",
+  "merge_runner_git_blob": "12263ecbbaba3c247728e495c05aac57d98278c9"
+}
