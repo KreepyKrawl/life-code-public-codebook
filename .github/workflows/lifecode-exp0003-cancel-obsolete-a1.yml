@@ -23,6 +23,10 @@ jobs:
           set -euo pipefail
           for RUN in 36160342712 36865736730 36865754921 36865771244 36865791455 36865807441; do
             echo "cancelling obsolete run $RUN"
-            gh api --method POST "repos/$REPO/actions/runs/$RUN/cancel" >/dev/null 2>&1 || true
+            if [ "$RUN" = "36160342712" ]; then
+              gh api --method POST "repos/$REPO/actions/runs/$RUN/force-cancel" >/dev/null 2>&1 || gh api --method POST "repos/$REPO/actions/runs/$RUN/cancel" >/dev/null 2>&1 || true
+            else
+              gh api --method POST "repos/$REPO/actions/runs/$RUN/cancel" >/dev/null 2>&1 || true
+            fi
           done
           echo "obsolete execution cancellation requests sent"
