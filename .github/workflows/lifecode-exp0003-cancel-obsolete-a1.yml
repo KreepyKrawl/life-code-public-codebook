@@ -1,0 +1,28 @@
+name: LIFE-CODE EXP-0003 Cancel Obsolete A1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'cloud/requests/exp0003-cancel-obsolete-a1.json'
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  cancel-obsolete:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Cancel quarantined A3/A1 execution runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          for RUN in 36160342712 36865736730 36865754921 36865771244 36865791455 36865807441; do
+            echo "cancelling obsolete run $RUN"
+            gh api --method POST "repos/$REPO/actions/runs/$RUN/cancel" >/dev/null 2>&1 || true
+          done
+          echo "obsolete execution cancellation requests sent"
