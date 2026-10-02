@@ -1,0 +1,13 @@
+{
+  "schema": "LIFE_CODE_EXP0003_CANCEL_OBSOLETE_A1_V1",
+  "reason": "Superseded by frozen A2 OBS and A3 N1 execution amendments; preserve obsolete runs as provenance only.",
+  "run_ids": [
+    36160342712,
+    36865736730,
+    36865754921,
+    36865771244,
+    36865791455,
+    36865807441
+  ],
+  "scientific_outcomes_inspected": false
+}
