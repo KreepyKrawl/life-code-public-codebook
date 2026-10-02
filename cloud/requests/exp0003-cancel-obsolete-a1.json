@@ -9,5 +9,7 @@
     36865791455,
     36865807441
   ],
-  "scientific_outcomes_inspected": false
+  "scientific_outcomes_inspected": false,
+  "attempt": 2,
+  "runner": "ubuntu-slim"
 }
