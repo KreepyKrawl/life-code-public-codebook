@@ -40,7 +40,7 @@ def main():
     p.add_argument("--triad-id",required=True); p.add_argument("--fold",required=True,choices=FOLDS)
     p.add_argument("--replicate",type=int,required=True); p.add_argument("--state-in")
     p.add_argument("--work",required=True); p.add_argument("--out",required=True)
-    p.add_argument("--workers",type=int,default=3)
+    p.add_argument("--workers",type=int,default=3); p.add_argument("--thresholds",type=int,default=1)
     p.add_argument("--shard-bases",type=int,default=frozen.DEFAULT_SHARD_BASES)
     x=p.parse_args()
     if not 0<=x.replicate<99: raise SystemExit("replicate must be 0..98")
@@ -49,7 +49,7 @@ def main():
         s=validate(json.loads(Path(x.state_in).read_text()),a,b,h,x.representation,x.triad_id,x.fold,x.replicate,x.shard_bases,x.workers)
     else:
         s=new_state(a,b,h,x.representation,x.triad_id,x.fold,x.replicate,x.shard_bases,x.workers)
-    s=core.advance(a,b,h,x.representation,x.triad_id,x.fold,x.replicate,x.work,s,x.shard_bases,x.workers)
+    s=core.advance(a,b,h,x.representation,x.triad_id,x.fold,x.replicate,x.work,s,x.shard_bases,x.workers,x.thresholds)
     here=Path(__file__).resolve().parent
     s["engine_sha256"]=frozen.sha(here/"exp0003_engine.py")
     s["frozen_prod_scorer_sha256"]=frozen.sha(here/"exp0003_triad_transfer_prod.py")
