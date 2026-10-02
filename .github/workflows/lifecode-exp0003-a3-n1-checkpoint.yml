@@ -48,6 +48,7 @@ jobs:
           req=json.loads(Path(changed[0]).read_text())
           required={
             'amendment_git_blob':'cloud/protocols/EXP-0003_EXECUTION_AMENDMENT_A3_v1.0.md',
+            'schedule_addendum_git_blob':'cloud/protocols/EXP-0003_EXECUTION_AMENDMENT_A3_SCHEDULE_ADDENDUM.md',
             'core_git_blob':'cloud/scripts/exp0003_n1_checkpoint_core_a3.py',
             'executor_git_blob':'cloud/scripts/exp0003_n1_checkpoint_a3.py',
             'finalizer_git_blob':'cloud/scripts/exp0003_n1_finalize_a3.py',
