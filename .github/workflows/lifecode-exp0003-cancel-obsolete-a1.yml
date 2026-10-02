@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   cancel-obsolete:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     timeout-minutes: 10
     steps:
       - name: Cancel quarantined A3/A1 execution runs
