@@ -10,6 +10,7 @@
     36865807441
   ],
   "scientific_outcomes_inspected": false,
-  "attempt": 2,
-  "runner": "ubuntu-slim"
+  "attempt": 3,
+  "runner": "ubuntu-slim",
+  "force_cancel_original_a3": true
 }
