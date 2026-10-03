@@ -31,11 +31,6 @@ on:
         description: Required SHA-256 for input_url
         required: false
         type: string
-  push:
-    branches: [main]
-    paths:
-      - 'cloud/requests/*.json'
-      - '!cloud/requests/exp0003-*.json'
 
 permissions:
   contents: read
@@ -51,8 +46,6 @@ jobs:
       assembly_id: ${{ steps.request.outputs.assembly_id }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
       - name: Verify sealed authority constants
         run: |
           python3 - <<'PY'
@@ -71,29 +64,11 @@ jobs:
         env:
           MANUAL_EXPERIMENT: ${{ inputs.experiment }}
           MANUAL_ASSEMBLY: ${{ inputs.assembly_id }}
-          BEFORE_SHA: ${{ github.event.before }}
-          CURRENT_SHA: ${{ github.sha }}
-          EVENT_NAME: ${{ github.event_name }}
         run: |
-          python3 - <<'PY'
-          import json,os,subprocess
-          from pathlib import Path
-          if os.environ['EVENT_NAME']=='workflow_dispatch':
-              experiment=os.environ.get('MANUAL_EXPERIMENT','')
-              assembly=os.environ.get('MANUAL_ASSEMBLY','')
-          else:
-              before=os.environ['BEFORE_SHA']; cur=os.environ['CURRENT_SHA']
-              changed=subprocess.check_output(['git','diff','--name-only',before,cur,'--','cloud/requests/*.json'],text=True).splitlines()
-              if len(changed)!=1:
-                  raise SystemExit(f'expected exactly one request file in commit, got {changed}')
-              req=json.loads(Path(changed[0]).read_text())
-              experiment=req.get('experiment','')
-              assembly=req.get('assembly_id','')
-          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
-              f.write(f'experiment={experiment}\n')
-              f.write(f'assembly_id={assembly}\n')
-          print('request:',experiment,assembly)
-          PY
+          {
+            echo "experiment=$MANUAL_EXPERIMENT"
+            echo "assembly_id=$MANUAL_ASSEMBLY"
+          } >> "$GITHUB_OUTPUT"
 
   corpus_raw_verify:
     if: ${{ needs.gate.outputs.experiment == 'CORPUS-RAW-VERIFY' }}
