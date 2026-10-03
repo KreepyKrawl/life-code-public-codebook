@@ -1,10 +1,7 @@
 name: LIFE-CODE EXP-0003 A3 N1 Checkpoint
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'cloud/requests/exp0003-a3-n1-*.json'
+  workflow_dispatch:
 
 permissions:
   contents: read
