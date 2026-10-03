@@ -1,0 +1,1171 @@
+name: LIFE-CODE EXP-0003 A3 N1 Checkpoint v2
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'cloud/requests/exp0003-a3v2-n1-*.json'
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+  A3_CACHE_KEY: exp0003-a3-prepared-c754b105a7a9d7be1fe5a694c00f4fc0611e90601dc89b676e2716e744807cdc
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      triad_id: ${{ steps.req.outputs.triad_id }}
+      group: ${{ steps.req.outputs.group }}
+      representations: ${{ steps.req.outputs.representations }}
+      replicates: ${{ steps.req.outputs.replicates }}
+      genome_a: ${{ steps.req.outputs.genome_a }}
+      genome_b: ${{ steps.req.outputs.genome_b }}
+      genome_c: ${{ steps.req.outputs.genome_c }}
+      source_run_id: ${{ steps.req.outputs.source_run_id }}
+      source_artifact_name: ${{ steps.req.outputs.source_artifact_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - id: req
+        name: Resolve and freeze A3 v2 request
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          CURRENT_SHA: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import csv,json,os,subprocess
+          from pathlib import Path
+          changed=subprocess.check_output([
+            'git','diff','--name-only',os.environ['BEFORE_SHA'],os.environ['CURRENT_SHA'],
+            '--','cloud/requests/exp0003-a3v2-n1-*.json'
+          ],text=True).splitlines()
+          if len(changed)!=1: raise SystemExit(f'expected one A3 v2 request, got {changed}')
+          req=json.loads(Path(changed[0]).read_text())
+          required={
+            'amendment_git_blob':'cloud/protocols/EXP-0003_EXECUTION_AMENDMENT_A3_v1.0.md',
+            'schedule_v2_git_blob':'cloud/protocols/EXP-0003_EXECUTION_AMENDMENT_A3_SCHEDULE_ADDENDUM_v2.md',
+            'core_git_blob':'cloud/scripts/exp0003_n1_checkpoint_core_a3.py',
+            'executor_git_blob':'cloud/scripts/exp0003_n1_checkpoint_a3.py',
+            'finalizer_git_blob':'cloud/scripts/exp0003_n1_finalize_a3.py',
+            'merge_git_blob':'cloud/scripts/exp0003_n1_merge_a3.py',
+            'workflow_git_blob':'.github/workflows/lifecode-exp0003-a3v2-n1-checkpoint.yml',
+          }
+          for field,path in required.items():
+            actual=subprocess.check_output(['git','hash-object',path],text=True).strip()
+            if actual!=req.get(field): raise SystemExit(f'{field} mismatch: {actual} != {req.get(field)}')
+          frozen={
+            'cloud/scripts/exp0003_engine.py':'2ac8e1e2a8bdbde8046cd62b2f7088f68322f851',
+            'cloud/scripts/exp0003_triad_transfer_prod.py':'8ca50c93ef462c30f4b287bb5fcf66213895a3ed',
+            'cloud/scripts/exp0003_triad_transfer_a1.py':'079d1af877c257d2c91237bade7340554afa293e',
+          }
+          for path,expected in frozen.items():
+            actual=subprocess.check_output(['git','hash-object',path],text=True).strip()
+            if actual!=expected: raise SystemExit(f'frozen blob changed: {path}: {actual}')
+          s=json.load(open('cloud/status.json'))
+          assert s['corpus']['canonical_normalization_verified']==26
+          assert s['runner']['exp0003_n1_replicates']==99
+          assert s['runner']['exp0003_production_engine_qualification'].startswith('PASS_')
+          assert s['experiments']['EXP-0003']['primary_outcomes_inspected'] is False
+          if req['triad_id']!='A3': raise SystemExit('A3 v2 restricted to triad A3')
+          reps=req['representations']; allowed=['ACGT','RY','MK','WS']+[f'C{i:02d}' for i in range(1,13)]
+          if not isinstance(reps,list) or not 1<=len(reps)<=2 or len(set(reps))!=len(reps) or any(r not in allowed for r in reps):
+            raise SystemExit('invalid representation group')
+          groups={
+            'N1_00_24':list(range(0,25)),
+            'N1_25_49':list(range(25,50)),
+            'N1_50_74':list(range(50,75)),
+            'N1_75_98':list(range(75,99)),
+          }
+          group=req['group']; expected=groups.get(group)
+          if expected is None or req['replicates']!=expected: raise SystemExit('replicate range mismatch')
+          rows=list(csv.DictReader(open('cloud/canonical/v0.1.33/EXP0002_TRIADS.csv',newline='',encoding='utf-8')))
+          row=next(r for r in rows if r['triad_id']=='A3')
+          if req['source_prepared_digest']!='sha256:c754b105a7a9d7be1fe5a694c00f4fc0611e90601dc89b676e2716e744807cdc':
+            raise SystemExit('unexpected prepared digest')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as o:
+            o.write('triad_id=A3\n'); o.write(f'group={group}\n')
+            o.write('representations='+json.dumps(reps,separators=(',',':'))+'\n')
+            o.write('replicates='+json.dumps(expected,separators=(',',':'))+'\n')
+            o.write(f'genome_a={row["genome_1"]}\n'); o.write(f'genome_b={row["genome_2"]}\n'); o.write(f'genome_c={row["genome_3"]}\n')
+            o.write(f'source_run_id={req["source_prepared_run_id"]}\n')
+            o.write(f'source_artifact_name={req["source_prepared_artifact"]}\n')
+          print('EXP-0003 A3 V2 REQUEST GATE: PASS',group,reps)
+          PY
+
+  prepare:
+    needs: gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+      - name: Recover verified A3 prepared bundle
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.gate.outputs.source_artifact_name }}
+          path: prepared
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: ${{ needs.gate.outputs.source_run_id }}
+      - name: Reverify normalized FASTA hashes
+        env:
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+        run: |
+          python3 - <<'PY'
+          import csv,hashlib,json,os
+          from pathlib import Path
+          def sha(p):
+            h=hashlib.sha256()
+            with open(p,'rb') as f:
+              for b in iter(lambda:f.read(1<<20),b''): h.update(b)
+            return h.hexdigest()
+          rows={r['assembly_id']:r for r in csv.DictReader(open('cloud/FROZEN_CORPUS_BINDING.tsv',newline='',encoding='utf-8'),delimiter='\t')}
+          manifest=json.load(open('prepared/PREPARED_MANIFEST.json'))
+          for ID in [os.environ['GA'],os.environ['GB'],os.environ['GC']]:
+            got=sha(Path('prepared')/f'{ID}.fasta'); expected=rows[ID]['normalized_fasta_sha256']
+            assert got==expected and manifest[f'{ID}.fasta']==expected
+          assert Path('prepared/mummer4.tar.gz').is_file()
+          print('A3 V2 PREPARED HASH GATE: PASS')
+          PY
+      - name: Save verified prepared bundle to operational cache
+        if: steps.cache.outputs.cache-hit != 'true'
+        continue-on-error: true
+        uses: actions/cache/save@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+
+  qualify:
+    needs: [gate,prepare]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+          fail-on-cache-miss: true
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Frozen serial versus checkpoint parity
+        run: |
+          PYTHONPATH=cloud/scripts python3 - <<'PY'
+          from pathlib import Path
+          import shutil,tempfile
+          import exp0003_triad_transfer_prod as frozen
+          import exp0003_n1_checkpoint_core_a3 as a3
+          root=Path(tempfile.mkdtemp(prefix='exp0003-a3v2-parity-'))
+          try:
+            A=root/'A.fa';B=root/'B.fa';H=root/'H.fa'
+            A.write_text('>a\nAAAACCCCGGGGTTTTAAAACCCCGGGGTTTT\n')
+            B.write_text('>b\nTTTTAAAACCCCGGGGTTTTAAAACCCCGGGG\n')
+            H.write_text('>h\nGGGGAAAACCCCGGGGTTTTCCCCAAAATTTT\n')
+            for i,(rep,n) in enumerate([('ACGT',0),('C01',1)]):
+              v,d=frozen.score_fold(A,B,H,rep,'PARITY','AB_C',n,root/f'serial{i}')
+              s={'ladder':None,'next_index':0,'detail':[],'complete':False,'Lstar':None}
+              k=0
+              while not s['complete']:
+                s=a3.advance(A,B,H,rep,'PARITY','AB_C',n,root/f'v2_{i}_{k}',s,frozen.DEFAULT_SHARD_BASES,2,2)
+                k+=1
+                if k>64: raise SystemExit('A3 v2 parity did not terminate')
+              if (v,d)!=(s['Lstar'],s['detail']): raise SystemExit(f'A3 V2 PARITY FAIL {rep}/{n}')
+            print('EXP-0003 A3 V2 PARITY: PASS')
+          finally:
+            shutil.rmtree(root,ignore_errors=True)
+          PY
+
+  stage01:
+    if: ${{ always() && needs.gate.result == 'success' && needs.prepare.result == 'success' && needs.qualify.result == 'success' }}
+    needs: [gate,prepare,qualify]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+        replicate: ${{ fromJSON(needs.gate.outputs.replicates) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+          fail-on-cache-miss: true
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Execute sealed A3 v2 checkpoint
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          N: ${{ matrix.replicate }}
+        run: |
+          rm -rf result work
+          mkdir -p result work
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_checkpoint_a3.py \
+            --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+            --representation "$REP" --triad-id "$TID" --fold "$FOLD" --replicate "$N" \
+            --workers 3 --thresholds 2 --work "work/$REP/$FOLD/r$N/s01" --out result/state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s01-${{ github.run_id }}
+          path: result/state.json
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
+
+  stage02:
+    if: ${{ always() && needs.gate.result == 'success' && needs.prepare.result == 'success' && needs.qualify.result == 'success' }}
+    needs: [gate,prepare,qualify,stage01]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+        replicate: ${{ fromJSON(needs.gate.outputs.replicates) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover previous sealed checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s01-${{ github.run_id }}
+          path: prev
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+          fail-on-cache-miss: true
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Execute sealed A3 v2 checkpoint
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          N: ${{ matrix.replicate }}
+        run: |
+          rm -rf result work
+          mkdir -p result work
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_checkpoint_a3.py \
+            --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+            --representation "$REP" --triad-id "$TID" --fold "$FOLD" --replicate "$N" \
+            --workers 3 --thresholds 2 --state-in "prev/state.json" --work "work/$REP/$FOLD/r$N/s02" --out result/state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s02-${{ github.run_id }}
+          path: result/state.json
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
+
+  stage03:
+    if: ${{ always() && needs.gate.result == 'success' && needs.prepare.result == 'success' && needs.qualify.result == 'success' }}
+    needs: [gate,prepare,qualify,stage02]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+        replicate: ${{ fromJSON(needs.gate.outputs.replicates) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover previous sealed checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s02-${{ github.run_id }}
+          path: prev
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+          fail-on-cache-miss: true
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Execute sealed A3 v2 checkpoint
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          N: ${{ matrix.replicate }}
+        run: |
+          rm -rf result work
+          mkdir -p result work
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_checkpoint_a3.py \
+            --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+            --representation "$REP" --triad-id "$TID" --fold "$FOLD" --replicate "$N" \
+            --workers 3 --thresholds 2 --state-in "prev/state.json" --work "work/$REP/$FOLD/r$N/s03" --out result/state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s03-${{ github.run_id }}
+          path: result/state.json
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
+
+  stage04:
+    if: ${{ always() && needs.gate.result == 'success' && needs.prepare.result == 'success' && needs.qualify.result == 'success' }}
+    needs: [gate,prepare,qualify,stage03]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+        replicate: ${{ fromJSON(needs.gate.outputs.replicates) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover previous sealed checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s03-${{ github.run_id }}
+          path: prev
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+          fail-on-cache-miss: true
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Execute sealed A3 v2 checkpoint
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          N: ${{ matrix.replicate }}
+        run: |
+          rm -rf result work
+          mkdir -p result work
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_checkpoint_a3.py \
+            --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+            --representation "$REP" --triad-id "$TID" --fold "$FOLD" --replicate "$N" \
+            --workers 3 --thresholds 2 --state-in "prev/state.json" --work "work/$REP/$FOLD/r$N/s04" --out result/state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s04-${{ github.run_id }}
+          path: result/state.json
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
+
+  stage05:
+    if: ${{ always() && needs.gate.result == 'success' && needs.prepare.result == 'success' && needs.qualify.result == 'success' }}
+    needs: [gate,prepare,qualify,stage04]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+        replicate: ${{ fromJSON(needs.gate.outputs.replicates) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover previous sealed checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s04-${{ github.run_id }}
+          path: prev
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+          fail-on-cache-miss: true
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Execute sealed A3 v2 checkpoint
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          N: ${{ matrix.replicate }}
+        run: |
+          rm -rf result work
+          mkdir -p result work
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_checkpoint_a3.py \
+            --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+            --representation "$REP" --triad-id "$TID" --fold "$FOLD" --replicate "$N" \
+            --workers 3 --thresholds 2 --state-in "prev/state.json" --work "work/$REP/$FOLD/r$N/s05" --out result/state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s05-${{ github.run_id }}
+          path: result/state.json
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
+
+  stage06:
+    if: ${{ always() && needs.gate.result == 'success' && needs.prepare.result == 'success' && needs.qualify.result == 'success' }}
+    needs: [gate,prepare,qualify,stage05]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+        replicate: ${{ fromJSON(needs.gate.outputs.replicates) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover previous sealed checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s05-${{ github.run_id }}
+          path: prev
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+          fail-on-cache-miss: true
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Execute sealed A3 v2 checkpoint
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          N: ${{ matrix.replicate }}
+        run: |
+          rm -rf result work
+          mkdir -p result work
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_checkpoint_a3.py \
+            --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+            --representation "$REP" --triad-id "$TID" --fold "$FOLD" --replicate "$N" \
+            --workers 3 --thresholds 2 --state-in "prev/state.json" --work "work/$REP/$FOLD/r$N/s06" --out result/state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s06-${{ github.run_id }}
+          path: result/state.json
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
+
+  stage07:
+    if: ${{ always() && needs.gate.result == 'success' && needs.prepare.result == 'success' && needs.qualify.result == 'success' }}
+    needs: [gate,prepare,qualify,stage06]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+        replicate: ${{ fromJSON(needs.gate.outputs.replicates) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover previous sealed checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s06-${{ github.run_id }}
+          path: prev
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+          fail-on-cache-miss: true
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Execute sealed A3 v2 checkpoint
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          N: ${{ matrix.replicate }}
+        run: |
+          rm -rf result work
+          mkdir -p result work
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_checkpoint_a3.py \
+            --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+            --representation "$REP" --triad-id "$TID" --fold "$FOLD" --replicate "$N" \
+            --workers 3 --thresholds 2 --state-in "prev/state.json" --work "work/$REP/$FOLD/r$N/s07" --out result/state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s07-${{ github.run_id }}
+          path: result/state.json
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
+
+  stage08:
+    if: ${{ always() && needs.gate.result == 'success' && needs.prepare.result == 'success' && needs.qualify.result == 'success' }}
+    needs: [gate,prepare,qualify,stage07]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+        replicate: ${{ fromJSON(needs.gate.outputs.replicates) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover previous sealed checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s07-${{ github.run_id }}
+          path: prev
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+          fail-on-cache-miss: true
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Execute sealed A3 v2 checkpoint
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          N: ${{ matrix.replicate }}
+        run: |
+          rm -rf result work
+          mkdir -p result work
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_checkpoint_a3.py \
+            --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+            --representation "$REP" --triad-id "$TID" --fold "$FOLD" --replicate "$N" \
+            --workers 3 --thresholds 2 --state-in "prev/state.json" --work "work/$REP/$FOLD/r$N/s08" --out result/state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s08-${{ github.run_id }}
+          path: result/state.json
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
+
+  stage09:
+    if: ${{ always() && needs.gate.result == 'success' && needs.prepare.result == 'success' && needs.qualify.result == 'success' }}
+    needs: [gate,prepare,qualify,stage08]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+        replicate: ${{ fromJSON(needs.gate.outputs.replicates) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover previous sealed checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s08-${{ github.run_id }}
+          path: prev
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+          fail-on-cache-miss: true
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Execute sealed A3 v2 checkpoint
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          N: ${{ matrix.replicate }}
+        run: |
+          rm -rf result work
+          mkdir -p result work
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_checkpoint_a3.py \
+            --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+            --representation "$REP" --triad-id "$TID" --fold "$FOLD" --replicate "$N" \
+            --workers 3 --thresholds 1 --state-in "prev/state.json" --work "work/$REP/$FOLD/r$N/s09" --out result/state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s09-${{ github.run_id }}
+          path: result/state.json
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
+
+  stage10:
+    if: ${{ always() && needs.gate.result == 'success' && needs.prepare.result == 'success' && needs.qualify.result == 'success' }}
+    needs: [gate,prepare,qualify,stage09]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+        replicate: ${{ fromJSON(needs.gate.outputs.replicates) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover previous sealed checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s09-${{ github.run_id }}
+          path: prev
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+          fail-on-cache-miss: true
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Execute sealed A3 v2 checkpoint
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          N: ${{ matrix.replicate }}
+        run: |
+          rm -rf result work
+          mkdir -p result work
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_checkpoint_a3.py \
+            --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+            --representation "$REP" --triad-id "$TID" --fold "$FOLD" --replicate "$N" \
+            --workers 3 --thresholds 1 --state-in "prev/state.json" --work "work/$REP/$FOLD/r$N/s10" --out result/state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s10-${{ github.run_id }}
+          path: result/state.json
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
+
+  stage11:
+    if: ${{ always() && needs.gate.result == 'success' && needs.prepare.result == 'success' && needs.qualify.result == 'success' }}
+    needs: [gate,prepare,qualify,stage10]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+        replicate: ${{ fromJSON(needs.gate.outputs.replicates) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover previous sealed checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s10-${{ github.run_id }}
+          path: prev
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+          fail-on-cache-miss: true
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Execute sealed A3 v2 checkpoint
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          N: ${{ matrix.replicate }}
+        run: |
+          rm -rf result work
+          mkdir -p result work
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_checkpoint_a3.py \
+            --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+            --representation "$REP" --triad-id "$TID" --fold "$FOLD" --replicate "$N" \
+            --workers 3 --thresholds 1 --state-in "prev/state.json" --work "work/$REP/$FOLD/r$N/s11" --out result/state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s11-${{ github.run_id }}
+          path: result/state.json
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
+
+  stage12:
+    if: ${{ always() && needs.gate.result == 'success' && needs.prepare.result == 'success' && needs.qualify.result == 'success' }}
+    needs: [gate,prepare,qualify,stage11]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+        replicate: ${{ fromJSON(needs.gate.outputs.replicates) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover previous sealed checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s11-${{ github.run_id }}
+          path: prev
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+          fail-on-cache-miss: true
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Execute sealed A3 v2 checkpoint
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          N: ${{ matrix.replicate }}
+        run: |
+          rm -rf result work
+          mkdir -p result work
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_checkpoint_a3.py \
+            --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+            --representation "$REP" --triad-id "$TID" --fold "$FOLD" --replicate "$N" \
+            --workers 3 --thresholds 1 --state-in "prev/state.json" --work "work/$REP/$FOLD/r$N/s12" --out result/state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s12-${{ github.run_id }}
+          path: result/state.json
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
+
+  stage13:
+    if: ${{ always() && needs.gate.result == 'success' && needs.prepare.result == 'success' && needs.qualify.result == 'success' }}
+    needs: [gate,prepare,qualify,stage12]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+        replicate: ${{ fromJSON(needs.gate.outputs.replicates) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover previous sealed checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s12-${{ github.run_id }}
+          path: prev
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+          fail-on-cache-miss: true
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Execute sealed A3 v2 checkpoint
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          N: ${{ matrix.replicate }}
+        run: |
+          rm -rf result work
+          mkdir -p result work
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_checkpoint_a3.py \
+            --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+            --representation "$REP" --triad-id "$TID" --fold "$FOLD" --replicate "$N" \
+            --workers 3 --thresholds 1 --state-in "prev/state.json" --work "work/$REP/$FOLD/r$N/s13" --out result/state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s13-${{ github.run_id }}
+          path: result/state.json
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
+
+  stage14:
+    if: ${{ always() && needs.gate.result == 'success' && needs.prepare.result == 'success' && needs.qualify.result == 'success' }}
+    needs: [gate,prepare,qualify,stage13]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+        replicate: ${{ fromJSON(needs.gate.outputs.replicates) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover previous sealed checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s13-${{ github.run_id }}
+          path: prev
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+          fail-on-cache-miss: true
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Execute sealed A3 v2 checkpoint
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          N: ${{ matrix.replicate }}
+        run: |
+          rm -rf result work
+          mkdir -p result work
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_checkpoint_a3.py \
+            --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+            --representation "$REP" --triad-id "$TID" --fold "$FOLD" --replicate "$N" \
+            --workers 3 --thresholds 1 --state-in "prev/state.json" --work "work/$REP/$FOLD/r$N/s14" --out result/state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s14-${{ github.run_id }}
+          path: result/state.json
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
+
+  stage15:
+    if: ${{ always() && needs.gate.result == 'success' && needs.prepare.result == 'success' && needs.qualify.result == 'success' }}
+    needs: [gate,prepare,qualify,stage14]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+        replicate: ${{ fromJSON(needs.gate.outputs.replicates) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover previous sealed checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s14-${{ github.run_id }}
+          path: prev
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+          fail-on-cache-miss: true
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Execute sealed A3 v2 checkpoint
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          N: ${{ matrix.replicate }}
+        run: |
+          rm -rf result work
+          mkdir -p result work
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_checkpoint_a3.py \
+            --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+            --representation "$REP" --triad-id "$TID" --fold "$FOLD" --replicate "$N" \
+            --workers 3 --thresholds 1 --state-in "prev/state.json" --work "work/$REP/$FOLD/r$N/s15" --out result/state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s15-${{ github.run_id }}
+          path: result/state.json
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
+
+  stage16:
+    if: ${{ always() && needs.gate.result == 'success' && needs.prepare.result == 'success' && needs.qualify.result == 'success' }}
+    needs: [gate,prepare,qualify,stage15]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+        replicate: ${{ fromJSON(needs.gate.outputs.replicates) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover previous sealed checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s15-${{ github.run_id }}
+          path: prev
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+          fail-on-cache-miss: true
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Execute sealed A3 v2 checkpoint
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          N: ${{ matrix.replicate }}
+        run: |
+          rm -rf result work
+          mkdir -p result work
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_checkpoint_a3.py \
+            --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+            --representation "$REP" --triad-id "$TID" --fold "$FOLD" --replicate "$N" \
+            --workers 3 --thresholds 1 --state-in "prev/state.json" --work "work/$REP/$FOLD/r$N/s16" --out result/state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s16-${{ github.run_id }}
+          path: result/state.json
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
+
+  stage17:
+    if: ${{ always() && needs.gate.result == 'success' && needs.prepare.result == 'success' && needs.qualify.result == 'success' }}
+    needs: [gate,prepare,qualify,stage16]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+        replicate: ${{ fromJSON(needs.gate.outputs.replicates) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recover previous sealed checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s16-${{ github.run_id }}
+          path: prev
+      - uses: actions/cache/restore@v4
+        with:
+          path: prepared
+          key: ${{ env.A3_CACHE_KEY }}
+          fail-on-cache-miss: true
+      - name: Restore exact MUMmer 4.0.1
+        run: |
+          tar -xzf prepared/mummer4.tar.gz
+          echo "MUMMER_EXE=$GITHUB_WORKSPACE/mummer4/bin/mummer" >> "$GITHUB_ENV"
+          "$GITHUB_WORKSPACE/mummer4/bin/mummer" --version
+      - name: Execute sealed A3 v2 checkpoint
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GA: ${{ needs.gate.outputs.genome_a }}
+          GB: ${{ needs.gate.outputs.genome_b }}
+          GC: ${{ needs.gate.outputs.genome_c }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+          N: ${{ matrix.replicate }}
+        run: |
+          rm -rf result work
+          mkdir -p result work
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_checkpoint_a3.py \
+            --a "prepared/$GA.fasta" --b "prepared/$GB.fasta" --c "prepared/$GC.fasta" \
+            --representation "$REP" --triad-id "$TID" --fold "$FOLD" --replicate "$N" \
+            --workers 3 --thresholds 1 --state-in "prev/state.json" --work "work/$REP/$FOLD/r$N/s17" --out result/state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s17-${{ github.run_id }}
+          path: result/state.json
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
+
+  finalize:
+    if: ${{ always() && needs.gate.result == 'success' && needs.prepare.result == 'success' && needs.qualify.result == 'success' }}
+    needs: [gate,prepare,qualify,stage17]
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+        replicate: ${{ fromJSON(needs.gate.outputs.replicates) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-s17-${{ github.run_id }}
+          path: terminal
+      - name: Finalize completed N1 score
+        run: |
+          mkdir -p final
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_finalize_a3.py \
+            --state terminal/state.json --out final/score.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-final-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r${{ matrix.replicate }}-${{ github.run_id }}
+          path: final/score.json
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 0
+
+  merge:
+    if: ${{ always() && needs.finalize.result == 'success' }}
+    needs: [gate,finalize]
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        representation: ${{ fromJSON(needs.gate.outputs.representations) }}
+        fold: [AB_C, AC_B, BC_A]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: exp0003-a3v2-final-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-r*-${{ github.run_id }}
+          path: scores
+      - name: Reconstruct frozen N1 chunk
+        env:
+          TID: ${{ needs.gate.outputs.triad_id }}
+          GROUP: ${{ needs.gate.outputs.group }}
+          REP: ${{ matrix.representation }}
+          FOLD: ${{ matrix.fold }}
+        run: |
+          mkdir -p merged
+          PYTHONPATH=cloud/scripts python3 cloud/scripts/exp0003_n1_merge_a3.py \
+            --input-dir scores --group "$GROUP" --triad-id "$TID" \
+            --representation "$REP" --fold "$FOLD" \
+            --out "merged/${TID}_${REP}_${FOLD}_${GROUP}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exp0003-a3v2-${{ needs.gate.outputs.triad_id }}-${{ needs.gate.outputs.group }}-${{ matrix.representation }}-${{ matrix.fold }}-merged-${{ github.run_id }}
+          path: merged/*.json
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
+
+  group-complete:
+    if: ${{ always() }}
+    needs: [gate,prepare,qualify,merge]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Record execution state only
+        env:
+          PREP: ${{ needs.prepare.result }}
+          QUAL: ${{ needs.qualify.result }}
+          MERGE: ${{ needs.merge.result }}
+        run: |
+          echo "prepare=$PREP qualify=$QUAL merge=$MERGE"
+          test "$PREP" = "success"
+          test "$QUAL" = "success"
+          test "$MERGE" = "success"
