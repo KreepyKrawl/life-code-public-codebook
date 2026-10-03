@@ -1,0 +1,38 @@
+name: LIFE-CODE EXP-0003 Cancel Superseded Runs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'cloud/requests/exp0003-cancel-superseded-runs.json'
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  cancel:
+    runs-on: ubuntu-slim
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cancel only frozen superseded run IDs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' > /tmp/run_ids.txt
+          import json
+          x=json.load(open('cloud/requests/exp0003-cancel-superseded-runs.json'))
+          assert x['schema']=='LIFE_CODE_EXP0003_CANCEL_SUPERSEDED_RUNS_V1'
+          assert x['scientific_outcomes_inspected'] is False
+          for r in x['run_ids']:
+              print(int(r))
+          PY
+          while read -r RUN; do
+            echo "cancelling superseded run $RUN"
+            gh api --method POST "repos/$REPO/actions/runs/$RUN/force-cancel" >/dev/null 2>&1 || \
+            gh api --method POST "repos/$REPO/actions/runs/$RUN/cancel" >/dev/null 2>&1 || true
+          done < /tmp/run_ids.txt
+          echo "superseded-run cancellation requests sent"
