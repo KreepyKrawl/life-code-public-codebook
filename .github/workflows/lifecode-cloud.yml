@@ -35,6 +35,7 @@ on:
     branches: [main]
     paths:
       - 'cloud/requests/*.json'
+      - '!cloud/requests/exp0003-*.json'
 
 permissions:
   contents: read
