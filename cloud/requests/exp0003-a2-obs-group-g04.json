@@ -15,5 +15,6 @@
   "workflow_git_blob": "26907678cb97585e363b7d727b48c3398a79aba0",
   "frozen_base_commit": "a67bdaaa5795d11d11696be05cfb032b97b094a0",
   "authoritative_scope": "A3_OBS_ONLY",
-  "primary_outcomes_inspected": false
+  "primary_outcomes_inspected": false,
+  "operational_retry": "2026-10-06_G04_checkpoint-chain-restart_after_cancelled-stage04"
 }
