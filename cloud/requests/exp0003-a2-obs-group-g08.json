@@ -1,11 +1,6 @@
 {
   "schema": "LIFE_CODE_EXP0003_A2_OBS_REQUEST_V1",
   "triad_id": "A3",
-  "group": "G08",
-  "representations": [
-    "C11",
-    "C12"
-  ],
   "source_prepared_run_id": 36160342712,
   "source_prepared_artifact": "exp0003-A3-prepared-36160342712",
   "source_prepared_digest": "sha256:c754b105a7a9d7be1fe5a694c00f4fc0611e90601dc89b676e2716e744807cdc",
@@ -15,5 +10,11 @@
   "workflow_git_blob": "26907678cb97585e363b7d727b48c3398a79aba0",
   "frozen_base_commit": "a67bdaaa5795d11d11696be05cfb032b97b094a0",
   "authoritative_scope": "A3_OBS_ONLY",
-  "primary_outcomes_inspected": false
+  "primary_outcomes_inspected": false,
+  "group": "G08",
+  "representations": [
+    "C11",
+    "C12"
+  ],
+  "operational_retry": "2026-10-07_G08_clean-restart_after_checkpoint-chain-failure"
 }
