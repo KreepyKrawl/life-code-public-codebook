@@ -1,6 +1,6 @@
 {
   "schema": "LIFE_CODE_EXP0003_CANCEL_SUPERSEDED_RUNS_V1",
-  "reason": "Cancel all scientifically superseded EXP-0003 execution runs, accidental generic LIFE-CODE Cloud Runner duplicates, and the two broken A2 OBS attempts superseded by clean operational restarts. A2 remains authoritative for A3 OBS; A3 N1 v2 remains authoritative for A3 N1. No scientific outcomes inspected.",
+  "reason": "Cancel all scientifically superseded EXP-0003 execution runs, accidental generic LIFE-CODE Cloud Runner duplicates, and broken A2 OBS attempts superseded by clean operational restarts. A2 remains authoritative for A3 OBS; A3 N1 v2 remains authoritative for A3 N1. No scientific outcomes inspected.",
   "run_ids": [
     36160342712,
     36865736730,
@@ -73,10 +73,13 @@
     37131215198,
     37131217536,
     37131220501,
+    36950063021,
     36950072000,
-    36950077907
+    36950075117,
+    36950077907,
+    36950083206
   ],
   "scientific_outcomes_inspected": false,
-  "updated_for_queue_cleanup": "2026-10-06",
-  "operational_note": "G04 and G06 old A2 attempts had cancelled checkpoint stages and downstream artifact-recovery failures; clean restarts were triggered without changing scientific inputs or inspecting outcomes."
+  "updated_for_queue_cleanup": "2026-10-07",
+  "operational_note": "G01, G04, G05, G06, and G08 old A2 attempts developed cancelled or failed checkpoint branches that would force downstream artifact-recovery failures. Clean restarts were triggered from identical frozen scientific inputs. G02, G03, and G07 remain untouched because their checkpoint chains are clean."
 }
